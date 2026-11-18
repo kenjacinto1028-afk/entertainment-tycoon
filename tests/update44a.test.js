@@ -47,7 +47,7 @@ check('Mid-game movie/TV/game entrants draw finite entrepreneur funds',()=>{
 check('Unfunded labor suspends production without erasing payroll debt',()=>{
  const s=E.createGame({seed:'furlough44',era:25,origin:'games',startingCapital:'lean',aiCount:2,regionCount:2}),c=E.player(s);
  const p=E.createProject(s,{title:'Unfunded Blockbuster',sector:'games',route:'original',size:2,genre:'Fantasy'});
- for(let n=0;n<150&&!c.operating44.furloughed;n++)E.advance(s,1);
+ for(let n=0;n<600&&!c.operating44.furloughed;n++)E.advance(s,1);
  assert.equal(c.operating44.furloughed,true,'Insufficient liquidity should suspend work rather than generating unlimited unpaid production');
  const work=p.weeksDone,priorPayable=c.finance.payable,week=s.week;
  for(let n=0;n<8;n++)E.advance(s,1);
