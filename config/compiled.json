@@ -160,6 +160,17 @@
       ],
       "LEGENDS_KEEP": 200
     },
+    "HALL": {
+      "_note": "Hall of Fame (Legends). Points per title level for creators and franchises; each yearly creative award adds AWARD_POINTS; each extra franchise release adds RELEASE_POINT. Lists show the top TOP entries. Derived from release history, no save data.",
+      "POINTS": {
+        "hit": 1,
+        "smash": 2,
+        "legendary": 4
+      },
+      "AWARD_POINTS": 2,
+      "RELEASE_POINT": 0.25,
+      "TOP": 25
+    },
     "IPO": {
       "_note": "R7: IPO sized from company value. Public holders own FLOAT of the company after listing; raise = expected valuation x FLOAT/(1-FLOAT). Fee = max(MIN_FEE, raise x FEE_RATE). Public-market money tops up the investor pool by the raise (pool conservation unchanged). Proceeds are paid-in equity, never revenue.",
       "MIN_FLOAT": 0.05,
@@ -243,7 +254,8 @@
           "views": [
             "world",
             "news",
-            "history"
+            "history",
+            "legends"
           ]
         },
         {
@@ -274,6 +286,7 @@
         "world": "World & Rivals",
         "news": "Industry News",
         "history": "Industry History",
+        "legends": "Hall of Fame",
         "chistory": "Company History",
         "finance": "Financials",
         "career": "Career & Ownership",

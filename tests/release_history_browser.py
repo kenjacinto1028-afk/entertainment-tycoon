@@ -1,4 +1,4 @@
-"""Release History pages: open at widths 390 and 1360 in all depth modes, filters and paging work, no page scroll, no errors."""
+"""Release History + Hall of Fame pages: open at widths 390 and 1360 in all depth modes, filters and paging work, no page scroll, no errors."""
 import os,sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -35,7 +35,13 @@ with sync_playwright() as pw:
    go('chistory','company')
    assert page.locator('h1',has_text='Company History').count()==1
    assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth+1')
+   go('legends','market')
+   assert page.locator('h1',has_text='Hall of Fame').count()==1,(depth,width)
+   assert page.locator('#hof-t').count()==1
+   assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth+1'),'h-scroll hall '+depth+str(width)
+   page.locator('#hof-t').select_option('legendary');page.wait_for_timeout(100)
+   assert page.locator('h1',has_text='Hall of Fame').count()==1
    assert not errors,errors
    ctx.close()
  browser.close()
-print('RELEASE HISTORY BROWSER PASS')
+print('RELEASE HISTORY + HALL BROWSER PASS')
