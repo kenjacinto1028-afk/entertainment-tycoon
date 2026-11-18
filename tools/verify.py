@@ -21,7 +21,7 @@ for t in sorted((ROOT/'tests').glob('depth_modes_*.test.js')):
  call(['node',f'tests/{t.name}'])
  print(f'PASS {t.stem}')
 if a.browser:
- for script in ['tests/update52_accessibility_browser.py','tests/update52_recovery_browser.py','tests/depth_modes_d2_browser.py','tests/depth_modes_d4_browser.py','tests/depth_modes_d5_browser.py','tests/depth_modes_d6_browser.py','tests/depth_modes_form_browser.py','tests/release_history_browser.py','tests/depth_modes_r4_browser.py']:
+ for script in ['tests/update52_accessibility_browser.py','tests/update52_recovery_browser.py','tests/depth_modes_d2_browser.py','tests/depth_modes_d4_browser.py','tests/depth_modes_d5_browser.py','tests/depth_modes_d6_browser.py','tests/depth_modes_form_browser.py','tests/release_history_browser.py','tests/depth_modes_r4_browser.py','tests/goals_dock_browser.py']:
   print(call([sys.executable,script],timeout=140).strip())
 config=json.loads((ROOT/'config/compiled.json').read_text())
 assert config['save']['SAVE_VERSION']==38
