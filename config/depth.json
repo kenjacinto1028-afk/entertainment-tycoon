@@ -37,6 +37,23 @@
       "stopForAdvisory": false
     }
   },
+  "BOARD": {
+    "_note": "B1: Board Reputation meter (0-100). Starts at START when the studio incorporates. Yearly review at the first week of each year: target = profit > 0 and revenue >= last year x TARGET_REVENUE_GROWTH. Release effects count only for titles released after incorporation; contract jobs are ignored. A Hit = lifetime receipts >= HIT_MULTIPLE x cost; a Flop = receipts < FLOP_FRACTION x cost once the title is FLOP_AGE_WEEKS old.",
+    "START": 50,
+    "MIN": 0,
+    "MAX": 100,
+    "TARGET_REVENUE_GROWTH": 1.05,
+    "TARGET_HIT": 8,
+    "TARGET_MISS": -8,
+    "PROFIT_YEAR": 4,
+    "LOSS_YEAR": -6,
+    "RELEASE_HIT": 3,
+    "RELEASE_FLOP": -2,
+    "HIT_MULTIPLE": 3,
+    "FLOP_FRACTION": 0.5,
+    "FLOP_AGE_WEEKS": 52,
+    "HISTORY_KEEP": 40
+  },
   "INBOX": {
     "_note": "D3: yearlyCards = max Inbox decision cards per game year (null = no limit). lowPriorityCards = low-priority items only get a card while fewer than this many cards were shown this year. autoDisputes = client delivery disputes are settled automatically (paid rework if affordable, else neutral arbitration).",
     "simple": {

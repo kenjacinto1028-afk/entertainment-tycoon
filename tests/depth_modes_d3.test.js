@@ -18,7 +18,7 @@ check('Limits per mode match the spec pace targets; new games start an empty log
  assert.equal(INBOX.veryComplex.yearlyCards,null);assert.equal(INBOX.veryComplex.autoDisputes,false);
  assert(INBOX.simple.yearlyCards>=8&&INBOX.simple.yearlyCards<=12);assert(INBOX.standard.yearlyCards>=15&&INBOX.standard.yearlyCards<=25);
  assert(INBOX.simple.autoDisputes&&INBOX.standard.autoDisputes);
- const s=game('standard');assert.equal(s.version,36);assert.equal(E.SAVE_VERSION,36);
+ const s=game('standard');assert.equal(s.version,E.SAVE_VERSION);assert.equal(E.SAVE_VERSION,37);
  assert.deepEqual(E.decisionCardLog(s),{year:25,cards:0,low:0,auto:0,limit:INBOX.standard.yearlyCards,lowLimit:INBOX.standard.lowPriorityCards});
  assert.deepEqual(E.audit(s),[]);return {simple:INBOX.simple.yearlyCards,standard:INBOX.standard.yearlyCards};
 });
@@ -85,7 +85,7 @@ check('Card log survives save/load; v35 saves upgrade to v36; audit catches a ba
  const s=game('standard');counters(s,10);const t=E.loadState(JSON.stringify(s));
  assert.deepEqual(t.decisionCards,s.decisionCards);assert.deepEqual(E.audit(t),[]);
  const old=JSON.parse(JSON.stringify(s));old.version=35;delete old.decisionCards;for(const a of old.inbox)delete a.depthTriage;
- const u=E.loadState(old);assert.equal(u.version,36);assert.deepEqual(u.decisionCards,{year:25,cards:0,low:0,auto:0});assert.deepEqual(E.audit(u),[]);
+ const u=E.loadState(old);assert.equal(u.version,E.SAVE_VERSION);assert.deepEqual(u.decisionCards,{year:25,cards:0,low:0,auto:0});assert.deepEqual(E.audit(u),[]);
  E.advance(u,2);assert.deepEqual(E.audit(u),[]);
  u.decisionCards.cards=-1;assert(E.audit(u).includes('Invalid decision card log'));
 });
