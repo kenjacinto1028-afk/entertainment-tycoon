@@ -34,7 +34,7 @@ test('17 TV: age classification remains separate from critic, audience and award
  const award=s.tvHonors.find(a=>a.projectId===p.id);A(award?.projectId===p.id);A.equal(award.source,'observed');A(award.week>p.releaseWeek);audit(s);return {classification:p.television.classification,award:award.name};
 });
 test('17 TV: syndication rights expire by territory and stop unauthorized receipts',()=>{
- const s=E.createGame({era:25,origin:'established',seed:'update48-tv-rights',startingCapital:'funded',aiCount:9,regionCount:2}),book=E.createProject(s,{sector:'publishing',route:'original',title:'Station Story',size:.6});
+ const s=E.createGame({era:25,origin:'established',seed:'update48-tv-rights',startingCapital:'funded',aiCount:9,regionCount:2,depth:'veryComplex'})/* expiry case: Standard auto-renew would keep the license alive */,book=E.createProject(s,{sector:'publishing',route:'original',title:'Station Story',size:.6});
  const broadcaster=s.companies.find(c=>!c.isPlayer&&c.capabilities.tv&&c.finance.cash>18000);A(broadcaster);
  const grant=E.grantRightsPackage43(s,{ipId:book.ipId,holderId:broadcaster.id,media:'tv',territories:['North Coast'],fee:2500,weeks:70,exclusive:true,continuationWeeks:0});
  const season=E.createProject(s,{companyId:broadcaster.id,sector:'tv',route:'adaptation',title:'Station Story on Air',ipId:book.ipId,size:.6,releaseTerritories:['North Coast']});
