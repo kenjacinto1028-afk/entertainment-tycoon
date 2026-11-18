@@ -1,0 +1,9 @@
+{
+  "HISTORY_PAGE": {
+    "defaultSize": 25,
+    "minSize": 5,
+    "maxSize": 100
+  },
+  "LEGENDARY_SHOWN": 8,
+  "REPUTATION_HISTORY_KEPT": 10
+}

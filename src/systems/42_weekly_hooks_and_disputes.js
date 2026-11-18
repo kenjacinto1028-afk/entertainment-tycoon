@@ -45,7 +45,7 @@ function boardRepChange(s,c,delta,why){const B=CFG.depth.BOARD,r=c.corporate?.bo
  r.history.push({week:s.week,delta:r.value-before,why,value:r.value});if(r.history.length>B.HISTORY_KEEP)r.history.splice(0,r.history.length-B.HISTORY_KEEP);
  return r.value-before;}
 function boardRepStatus(s,c=player(s)){const r=c?.corporate?.boardRep;if(!r)return null;
- return {value:r.value,target:r.target?{...r.target}:null,history:r.history.slice(-10),overrides:r.overrides,blocks:r.blocks,promise:r.promise};}
+ return {value:r.value,target:r.target?{...r.target}:null,history:r.history.slice(-CFG.display_limits.REPUTATION_HISTORY_KEPT),overrides:r.overrides,blocks:r.blocks,promise:r.promise};}
 function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c.bankrupt)return;
  const B=CFG.depth.BOARD,year=yearAt(s.week);
  if(r.lastReviewYear<year){ // yearly review, first week of the new year

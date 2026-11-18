@@ -65,12 +65,14 @@
         {
           "minReputation": 0,
           "maxSize": 0.75,
+          "sizeName": "small",
           "payBonus": 0,
           "label": "Small jobs only"
         },
         {
           "minReputation": 35,
           "maxSize": 1,
+          "sizeName": "mid-size",
           "payBonus": 0.05,
           "label": "Mid-size jobs, +5% pay"
         },
@@ -622,6 +624,15 @@
       "floor": 0.7,
       "noteThreshold": 0.95
     }
+  },
+  "display_limits": {
+    "HISTORY_PAGE": {
+      "defaultSize": 25,
+      "minSize": 5,
+      "maxSize": 100
+    },
+    "LEGENDARY_SHOWN": 8,
+    "REPUTATION_HISTORY_KEPT": 10
   },
   "events": {
     "messages": {

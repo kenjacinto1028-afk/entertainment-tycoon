@@ -354,13 +354,13 @@ function contractTier(s,c=player(s)){
   const T=CFG.depth.CONTRACT_TIERS.tiers,rep=Number(c?.reputation)||0;
   let i=0;for(let k=0;k<T.length;k++)if(rep>=T[k].minReputation)i=k;
   const t=T[i],n=T[i+1]||null;
-  return {tier:i+1,reputation:rep,maxSize:t.maxSize,payBonus:t.payBonus,label:t.label,nextAt:n?n.minReputation:null,nextLabel:n?n.label:null};
+  return {tier:i+1,reputation:rep,maxSize:t.maxSize,sizeName:t.sizeName,payBonus:t.payBonus,label:t.label,nextAt:n?n.minReputation:null,nextLabel:n?n.label:null};
 }
 function contractSizeLockMessage(s,size,c=player(s)){
   const t=contractTier(s,c);
   if(t.maxSize===null||size<=t.maxSize+1e-9)return null;
   const T=CFG.depth.CONTRACT_TIERS.tiers,nx=T.find(x=>x.minReputation>t.reputation&&(x.maxSize===null||size<=x.maxSize+1e-9));
-  return CFG.depth.CONTRACT_TIERS.lockedMessage.replace('{sizeName}',t.maxSize<=0.75+1e-9?'small':'mid-size').replace('{next}',nx?nx.minReputation:t.nextAt);
+  return CFG.depth.CONTRACT_TIERS.lockedMessage.replace('{sizeName}',t.sizeName||'mid-size').replace('{next}',nx?nx.minReputation:t.nextAt);
 }
 function createBackgroundFirm(s,sector,index,era) {
   if(!available(sector,s.week))throw new Error('Minor firm cannot precede world industry debut.');
@@ -6157,7 +6157,7 @@ function boardRepChange(s,c,delta,why){const B=CFG.depth.BOARD,r=c.corporate?.bo
  r.history.push({week:s.week,delta:r.value-before,why,value:r.value});if(r.history.length>B.HISTORY_KEEP)r.history.splice(0,r.history.length-B.HISTORY_KEEP);
  return r.value-before;}
 function boardRepStatus(s,c=player(s)){const r=c?.corporate?.boardRep;if(!r)return null;
- return {value:r.value,target:r.target?{...r.target}:null,history:r.history.slice(-10),overrides:r.overrides,blocks:r.blocks,promise:r.promise};}
+ return {value:r.value,target:r.target?{...r.target}:null,history:r.history.slice(-CFG.display_limits.REPUTATION_HISTORY_KEPT),overrides:r.overrides,blocks:r.blocks,promise:r.promise};}
 function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c.bankrupt)return;
  const B=CFG.depth.BOARD,year=yearAt(s.week);
  if(r.lastReviewYear<year){ // yearly review, first week of the new year
@@ -6694,7 +6694,7 @@ function releaseHistory(s,o={}){
  const keys=['year','title','company','quality','critic','sales','revenue','profit'],key=keys.includes(o.sort)?o.sort:'year',dir=o.dir==='asc'?1:-1;
  f.sort((a,b)=>{let x=a[key],y=b[key];if(x==null&&y==null)return a.title.localeCompare(b.title);if(x==null)return 1;if(y==null)return -1;
   const d=typeof x==='string'?x.localeCompare(y):x-y;return d*dir||(b.week||0)-(a.week||0)||a.title.localeCompare(b.title);});
- const size=clamp(Math.floor(Number(o.pageSize))||25,5,100),pages=Math.max(1,Math.ceil(f.length/size)),page=clamp(Math.floor(Number(o.page))||1,1,pages);
+ const HP=CFG.display_limits.HISTORY_PAGE,size=clamp(Math.floor(Number(o.pageSize))||HP.defaultSize,HP.minSize,HP.maxSize),pages=Math.max(1,Math.ceil(f.length/size)),page=clamp(Math.floor(Number(o.page))||1,1,pages);
  const sum={total:f.length,hits:f.filter(r=>r.tier).length,legendary:f.filter(r=>r.tier==='legendary').length,
   revenue:o.scope==='player'?money(f.reduce((a,r)=>a+(r.revenue||0),0)):null,best:f.filter(r=>!r.historic).sort((a,b)=>(b.critic??b.quality)-(a.critic??a.quality))[0]?.title||null};
  return {rows:o.all?f:f.slice((page-1)*size,page*size),total:f.length,page,pages,pageSize:size,lists,summary:sum};

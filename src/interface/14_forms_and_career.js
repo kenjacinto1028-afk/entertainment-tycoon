@@ -98,7 +98,7 @@ function careerPanel(){
  const SM=S.studioMilestones||{},LG=(S.legends||[]).filter(l=>l.companyId===E.player(S).id);
  const legendsPanel=panel('Reputation milestones and legends',
   row('Milestones reached',Object.keys(SM).length?Object.keys(SM).map(k=>esc(k.replace(/^releases(\d+)$/,'$1 releases').replace('firstAward','first award').replace('firstLegendary','first Legendary'))).join(' · '):'None yet')+
-  (LG.length?LG.slice(-8).reverse().map(l=>row(esc(l.title),`Legendary · ${l.multiple}x cost · quality ${l.quality}`)).join(''):row('Legendary titles','None yet (8x cost and quality 85+)')));
+  (LG.length?LG.slice(-CFG.display_limits.LEGENDARY_SHOWN).reverse().map(l=>row(esc(l.title),`Legendary · ${l.multiple}x cost · quality ${l.quality}`)).join(''):row('Legendary titles','None yet (8x cost and quality 85+)')));
  const board=incorporated?panel('Board and shareholder authority',
   row('Founder voting share',Math.round(status.ownership.founderShare*CFG.tuning_ui.board__001)/CFG.tuning_ui.board__002+'%')+
   row('Founder / private investors / public shares',`${status.ownership.founder} / ${status.ownership.investor} / ${status.ownership.public}`)+

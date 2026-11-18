@@ -100,7 +100,7 @@ renderFinance=function(){return originalRenderFinance47()+bankWorkouts47();};// 
 // Release History pages: industry (view 'history') and player company (view 'chistory'). Read-only; the engine does the filtering, sorting and paging (E.releaseHistory).
 const histState={history:{},chistory:{}};
 const TIER_LABEL={hit:'Hit',smash:'Smash',legendary:'Legendary'};
-function renderReleaseHistory(v){const scope=v==='chistory'?'player':'industry',st=histState[v],q=E.releaseHistory(S,{scope,...st,page:st.page,pageSize:25}),L=q.lists,o=(val,label,cur)=>`<option value="${esc(val)}"${String(cur??'all')===String(val)?' selected':''}>${esc(label)}</option>`;
+function renderReleaseHistory(v){const scope=v==='chistory'?'player':'industry',st=histState[v],q=E.releaseHistory(S,{scope,...st,page:st.page,pageSize:CFG.display_limits.HISTORY_PAGE.defaultSize}),L=q.lists,o=(val,label,cur)=>`<option value="${esc(val)}"${String(cur??'all')===String(val)?' selected':''}>${esc(label)}</option>`;
  const yrs=['',...L.years],tiers=[['all','All titles'],['any','Any Hit or better'],['hit','Hit'],['smash','Smash'],['legendary','Legendary']];
  const sorts=[['year','Year'],['title','Title'],['company','Company'],['quality','Quality'],['critic','Critic score'],['sales','Sales'],...(scope==='player'?[['revenue','Revenue'],['profit','Profit']]:[])];
  const fld=(label,id,inner)=>`<div class="form-field"><label for="hist-${id}">${label}</label>${inner}</div>`,sel=(id,inner)=>`<select id="hist-${id}" data-hist="${id}" data-hview="${v}">${inner}</select>`;

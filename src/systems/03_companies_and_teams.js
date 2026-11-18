@@ -84,13 +84,13 @@ function contractTier(s,c=player(s)){
   const T=CFG.depth.CONTRACT_TIERS.tiers,rep=Number(c?.reputation)||0;
   let i=0;for(let k=0;k<T.length;k++)if(rep>=T[k].minReputation)i=k;
   const t=T[i],n=T[i+1]||null;
-  return {tier:i+1,reputation:rep,maxSize:t.maxSize,payBonus:t.payBonus,label:t.label,nextAt:n?n.minReputation:null,nextLabel:n?n.label:null};
+  return {tier:i+1,reputation:rep,maxSize:t.maxSize,sizeName:t.sizeName,payBonus:t.payBonus,label:t.label,nextAt:n?n.minReputation:null,nextLabel:n?n.label:null};
 }
 function contractSizeLockMessage(s,size,c=player(s)){
   const t=contractTier(s,c);
   if(t.maxSize===null||size<=t.maxSize+1e-9)return null;
   const T=CFG.depth.CONTRACT_TIERS.tiers,nx=T.find(x=>x.minReputation>t.reputation&&(x.maxSize===null||size<=x.maxSize+1e-9));
-  return CFG.depth.CONTRACT_TIERS.lockedMessage.replace('{sizeName}',t.maxSize<=0.75+1e-9?'small':'mid-size').replace('{next}',nx?nx.minReputation:t.nextAt);
+  return CFG.depth.CONTRACT_TIERS.lockedMessage.replace('{sizeName}',t.sizeName||'mid-size').replace('{next}',nx?nx.minReputation:t.nextAt);
 }
 function createBackgroundFirm(s,sector,index,era) {
   if(!available(sector,s.week))throw new Error('Minor firm cannot precede world industry debut.');
