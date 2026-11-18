@@ -94,6 +94,10 @@ function careerPanel(){
  `<p class="panel-sub">Practical finances, ledgers and leadership are required; no arbitrary minimum company size. This is not an IPO.</p>`+
  (status.stage==='founder'?btn('Incorporate this company',`data-gov-incorporate ${ready.eligible?'':'disabled'}`,'primary'):
  row('Incorporation',esc(status.stage))));
+ const SM=S.studioMilestones||{},LG=(S.legends||[]).filter(l=>l.companyId===E.player(S).id);
+ const legendsPanel=panel('Reputation milestones and legends',
+  row('Milestones reached',Object.keys(SM).length?Object.keys(SM).map(k=>esc(k.replace(/^releases(\d+)$/,'$1 releases').replace('firstAward','first award').replace('firstLegendary','first Legendary'))).join(' · '):'None yet')+
+  (LG.length?LG.slice(-8).reverse().map(l=>row(esc(l.title),`Legendary · ${l.multiple}x cost · quality ${l.quality}`)).join(''):row('Legendary titles','None yet (8x cost and quality 85+)')));
  const board=incorporated?panel('Board and shareholder authority',
   row('Founder voting share',Math.round(status.ownership.founderShare*CFG.tuning_ui.board__001)/CFG.tuning_ui.board__002+'%')+
   row('Founder / private investors / public shares',`${status.ownership.founder} / ${status.ownership.investor} / ${status.ownership.public}`)+
@@ -121,5 +125,5 @@ function careerPanel(){
  history.continuations.map(x=>`<div class="small-stat"><span>${esc(x.fromId)} → ${esc(x.toId)}</span><strong>${fmt(x.capital)} personal capital</strong></div>`).join('')+
  `<p class="panel-sub">Titles, liabilities, creator permissions, and contracts stay with their actual legal owners after an executive change or fresh-company continuation.</p>`);
  return pageHeader('Founder journey','Career & Ownership','Optional corporate rules; the simplest publisher can remain private and founder-run forever.')+
- `<div class="dashboard-grid"><div class="stack">${leadership}${readiness}${chronology}</div><div class="stack">${board}${valuation}</div></div>`;
+ `<div class="dashboard-grid"><div class="stack">${leadership}${readiness}${chronology}</div><div class="stack">${board}${legendsPanel}${valuation}</div></div>`;
 }
