@@ -137,6 +137,7 @@ function createProject(s,data={}) {
   }
   const estimate=previewProject(s,{...data,sector,companyId:c.id,withForecast:!isAI});
   const cost=money(estimate.grandTotal),reserve=money(cost*CFG.tuning_engine.reserve__001);
+  if(route==='contract'&&!signed&&c.id===s.playerId){const locked=contractSizeLockMessage(s,estimate.size,c);if(locked)throw new Error(locked);}
   if(route==='contract'&&!estimate.clientId)throw new Error('No funded client currently offers this commission. Pick a different project or wait for buyer funds.');
   if(route==='contract'&&!eligibleClients(s,estimate.contractFee,c.id).some(b=>b.id===estimate.clientId))
     throw new Error('Client lacks committed cash for this commission.');

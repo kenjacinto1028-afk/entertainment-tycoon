@@ -6,8 +6,11 @@ function updatePreview(){const form=$('project-form');if(!form)return;const data
     const select=$('client-select'),old=select.value;
     select.innerHTML='<option value="auto">Delegate buyer selection</option>'+clients.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} · fully funded</option>`).join('');
     select.value=(old==='auto'||clients.some(c=>c.id===old))?old:'auto';data.clientId=select.value;
-    $('client-status').textContent=clients.length?`${clients.length} funded buyer${clients.length===1?'':'s'} available for this project budget.`:'No buyer can currently fund this commission. Try a smaller scale or wait.';
+    const tier=E.contractTier(S);form.querySelectorAll('select[name=size] option').forEach(o=>{o.disabled=!!E.contractSizeLockMessage(S,Number(o.value));});
+    const sel=form.querySelector('select[name=size]');if(sel&&sel.selectedOptions[0]?.disabled){const ok=[...sel.options].find(o=>!o.disabled);if(ok){sel.value=ok.value;return updatePreview();}}
+    $('client-status').textContent=`Client trust: ${tier.label}${tier.nextAt?' (next tier at Reputation '+tier.nextAt+')':''}. `+(clients.length?`${clients.length} funded buyer${clients.length===1?'':'s'} available for this project budget.`:'No buyer can currently fund this commission. Try a smaller scale or wait.');
   }
+  else form.querySelectorAll('select[name=size] option').forEach(o=>{o.disabled=false;});
   let sponsorQuote=null;
   if(co){
     sponsorQuote=E.coProductionQuote(S,data);
