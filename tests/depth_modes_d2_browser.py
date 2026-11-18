@@ -21,7 +21,7 @@ with sync_playwright() as pw:
  assert [o.get_attribute('value') for o in sel.locator('option').all()]==['simple','standard','veryComplex']
  page.locator('#new-game-form button[type="submit"]').click()
  page.get_by_role('dialog').wait_for(state='detached')
- page.locator('[data-view="settings"]').first.click()
+ page.locator('[data-view="settings"]').first.evaluate('b=>b.click()')  # D6: left menu is hidden in Simple/Standard
  assert page.locator('[data-depth-switch]').count()==2
  assert page.locator('[data-depth-switch="standard"]').count()==0
  assert not errors,errors
@@ -42,7 +42,7 @@ with sync_playwright() as pw:
  page.locator('#new-depth').select_option('simple')
  page.locator('#new-game-form button[type="submit"]').click()
  page.get_by_role('dialog').wait_for(state='detached')
- page.locator('[data-view="settings"]').first.click()
+ page.locator('[data-view="settings"]').first.evaluate('b=>b.click()')  # D6: left menu is hidden in Simple/Standard
  assert page.locator('[data-depth-switch="simple"]').count()==0
  assert page.locator('[data-depth-switch="standard"]').count()==1
  assert not errors,errors

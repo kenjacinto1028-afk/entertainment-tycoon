@@ -55,6 +55,21 @@
       "autoDisputes": false
     }
   },
+  "TABS5": {
+    "_note": "D6: Simple and Standard show these 5 tabs instead of the left menu. views = screens inside the tab (first visible one opens by default); a view hidden by HIDE.nav is skipped. Very Complex keeps the left menu.",
+    "tabs": [
+      {"id": "dashboard", "label": "Dashboard", "icon": "▦", "views": ["dashboard"]},
+      {"id": "projects", "label": "Projects", "icon": "▣", "views": ["productions", "library", "teams"]},
+      {"id": "market", "label": "Market & Rivals", "icon": "◎", "views": ["world", "news"]},
+      {"id": "company", "label": "Company", "icon": "▥", "views": ["finance", "career", "settings"]},
+      {"id": "inbox", "label": "Inbox", "icon": "✉", "views": ["inbox"]}
+    ],
+    "viewLabels": {
+      "dashboard": "Overview", "productions": "Productions", "library": "Library & Rights", "teams": "Teams",
+      "world": "World & Rivals", "news": "Industry News", "finance": "Financials", "career": "Career & Ownership",
+      "settings": "Game & Saves", "inbox": "Inbox"
+    }
+  },
   "ADVANCE_TO_DECISION": {
     "_note": "D4: maxWeeks = safety cap for the Advance to next decision button (stops after this many weeks even if no decision card opened).",
     "maxWeeks": 52
