@@ -1235,6 +1235,16 @@ function renderReleaseHistory(v){const scope=v==='chistory'?'player':'industry',
 document.addEventListener('change',event=>{const t=event.target,v=t.dataset&&t.dataset.hview;if(!v||!t.dataset.hist||!S)return;const st=histState[v];st[t.dataset.hist]=t.value;st.page=1;render();const el=document.getElementById(t.id);if(el)el.focus();});
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-hpage]');if(!b||!S)return;histState[b.dataset.hview].page=Number(b.dataset.hpage);render();window.scrollTo(0,0);});
 
+// M1: phone polish. On phones, tall read-only panels fold behind "Show more" and plain tables stack as cards.
+(function(){const prev=render;
+ render=function(){const r=prev.apply(this,arguments);
+  if(window.innerWidth>600)return r;
+  document.querySelectorAll('#content table.list-table:not(.hist-table)').forEach(t=>{if(t.querySelector('[colspan],[rowspan]'))return;const h=[...t.querySelectorAll('thead th')].map(x=>x.textContent.trim());if(!h.length)return;t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(h[i])td.setAttribute('data-label',h[i]);}));t.classList.add('m1-stack');});
+  document.querySelectorAll('#content .panel').forEach(p=>{if(p.dataset.m1||p.querySelector('form,input,select,textarea'))return;if(p.scrollHeight<=720)return;p.dataset.m1='1';p.classList.add('m1-collapsed');p.insertAdjacentHTML('beforeend','<button type="button" class="btn btn-outline m1-more" aria-expanded="false">Show more</button>');});
+  return r;};
+ document.addEventListener('click',e=>{const b=e.target.closest('.m1-more');if(!b)return;const p=b.closest('.panel'),open=!p.classList.toggle('m1-collapsed');b.textContent=open?'Show less':'Show more';b.setAttribute('aria-expanded',String(open));});
+})();
+
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u47]');if(!b)return;
  const action=b.dataset.u47,id=b.dataset.id47;
  if(action==='inspect'){safe(()=>{const r=E.commissionInspection47(S,id);notify(r.autoResolved?'Client disputed delivery; settled automatically ('+(r.settlement==='paid-rework'?'paid rework':'neutral arbitration')+').':r.status==='open'?'Client delivery contested. Review remedy or arbitration.':'Client approved inspection; production continues.');});return;}

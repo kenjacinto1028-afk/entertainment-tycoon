@@ -58,6 +58,35 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
 .hist-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;font-size:12px;color:var(--muted)}
 .hist-table td{vertical-align:top}
 @media(max-width:600px){.list-table.hist-table,.hist-table tbody{display:block;overflow:visible}.hist-table thead{display:none}.hist-table tr{display:block;border-top:1px solid var(--border);padding:10px 0}.hist-table td{display:flex;justify-content:space-between;gap:12px;border:0;padding:4px 0}.hist-table td::before{content:attr(data-label);color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase;flex:none}.hist-table td>*{text-align:right}}
+
+/* M1: phone polish (UI only) */
+@media(max-width:850px){
+ .toast{top:auto;bottom:160px;left:12px;right:12px;max-width:none;text-align:center}
+}
+@media(max-width:600px){
+ body.tabs5 .turnbar{bottom:80px}
+ .turnbar{padding:8px 6px;min-height:0}
+ .turnbar .turn-actions .btn span{display:none}
+ .turnbar .turn-actions{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:6px;width:100%}
+ .turnbar .turn-actions .turn-label{display:none}
+ .turnbar .turn-actions .btn{min-height:44px;padding:6px 4px;font-size:11px;white-space:normal;line-height:1.15;text-align:center}
+ body.tabs5 .tab5 button{min-height:48px}
+ body.tabs5 .main-shell{padding-bottom:180px}
+ #content .btn,#content .panel-link,#content select,#content input:not([type=checkbox]):not([type=radio]),.subtabs5 .tab,#content .tab{min-height:44px}
+ #content .panel-link{display:inline-flex;align-items:center}
+ .subtabs5{display:flex;flex-wrap:nowrap;overflow-x:auto;padding-right:28px;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent);mask-image:linear-gradient(to right,#000 88%,transparent)}
+ .subtabs5 .tab{flex:0 0 auto;white-space:nowrap}
+ .card-tag,.panel-sub,.item-sub,.metric-sub,.eyebrow,#content th,#content small,#content label,#content .status{font-size:12px}
+ .panel.m1-collapsed{max-height:440px;overflow:hidden;position:relative}
+ .panel.m1-collapsed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
+ .panel.m1-collapsed .m1-more{position:absolute;left:16px;right:16px;bottom:12px;z-index:1}
+ .panel .m1-more{width:calc(100% - 0px);margin-top:12px}
+ .m1-stack,.m1-stack tbody{display:block}.m1-stack thead{display:none}
+ .m1-stack tr{display:block;border-top:1px solid var(--border);padding:10px 0}
+ .m1-stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:4px 0}
+ .m1-stack td::before{content:attr(data-label);color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;flex:none}
+ .m1-stack td>*{text-align:right}
+}
 </style></head>
 <body>
 <div class="app" id="app">
@@ -8033,6 +8062,16 @@ function renderReleaseHistory(v){const scope=v==='chistory'?'player':'industry',
  st.page=q.page;return head+summary+filters+table;}
 document.addEventListener('change',event=>{const t=event.target,v=t.dataset&&t.dataset.hview;if(!v||!t.dataset.hist||!S)return;const st=histState[v];st[t.dataset.hist]=t.value;st.page=1;render();const el=document.getElementById(t.id);if(el)el.focus();});
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-hpage]');if(!b||!S)return;histState[b.dataset.hview].page=Number(b.dataset.hpage);render();window.scrollTo(0,0);});
+
+// M1: phone polish. On phones, tall read-only panels fold behind "Show more" and plain tables stack as cards.
+(function(){const prev=render;
+ render=function(){const r=prev.apply(this,arguments);
+  if(window.innerWidth>600)return r;
+  document.querySelectorAll('#content table.list-table:not(.hist-table)').forEach(t=>{if(t.querySelector('[colspan],[rowspan]'))return;const h=[...t.querySelectorAll('thead th')].map(x=>x.textContent.trim());if(!h.length)return;t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(h[i])td.setAttribute('data-label',h[i]);}));t.classList.add('m1-stack');});
+  document.querySelectorAll('#content .panel').forEach(p=>{if(p.dataset.m1||p.querySelector('form,input,select,textarea'))return;if(p.scrollHeight<=720)return;p.dataset.m1='1';p.classList.add('m1-collapsed');p.insertAdjacentHTML('beforeend','<button type="button" class="btn btn-outline m1-more" aria-expanded="false">Show more</button>');});
+  return r;};
+ document.addEventListener('click',e=>{const b=e.target.closest('.m1-more');if(!b)return;const p=b.closest('.panel'),open=!p.classList.toggle('m1-collapsed');b.textContent=open?'Show less':'Show more';b.setAttribute('aria-expanded',String(open));});
+})();
 
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u47]');if(!b)return;
  const action=b.dataset.u47,id=b.dataset.id47;
