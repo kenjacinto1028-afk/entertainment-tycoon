@@ -1,0 +1,67 @@
+{
+  "runDate": "2026-11-17",
+  "quarterAudits": 192,
+  "saveReloads": 16,
+  "rows": [
+    {
+      "seed": "u45-publishing-low",
+      "era": 1,
+      "origin": "publisher",
+      "difficulty": "standard",
+      "companyCount": 14,
+      "companyFailures": 0,
+      "openingCash": 82000,
+      "endingCash": 172831.68,
+      "playerProjects": 12,
+      "released": 255,
+      "maxConsumerWalletShare": 0.8045,
+      "saveMB": 5.15,
+      "quarterAudits": 48
+    },
+    {
+      "seed": "u45-cinema-growth",
+      "era": 4,
+      "origin": "film",
+      "difficulty": "challenging",
+      "companyCount": 14,
+      "companyFailures": 0,
+      "openingCash": 146250,
+      "endingCash": 791933.23,
+      "playerProjects": 12,
+      "released": 357,
+      "maxConsumerWalletShare": 0.8094,
+      "saveMB": 6.48,
+      "quarterAudits": 48
+    },
+    {
+      "seed": "u45-tv-growth",
+      "era": 7,
+      "origin": "tv",
+      "difficulty": "casual",
+      "companyCount": 8,
+      "companyFailures": 1,
+      "openingCash": 232200,
+      "endingCash": 637257.02,
+      "playerProjects": 12,
+      "released": 168,
+      "maxConsumerWalletShare": 0.6757,
+      "saveMB": 4.13,
+      "quarterAudits": 48
+    },
+    {
+      "seed": "u45-games-mature",
+      "era": 25,
+      "origin": "games",
+      "difficulty": "standard",
+      "companyCount": 13,
+      "companyFailures": 0,
+      "openingCash": 160000,
+      "endingCash": 664050.34,
+      "playerProjects": 12,
+      "released": 348,
+      "maxConsumerWalletShare": 0.7817,
+      "saveMB": 6.59,
+      "quarterAudits": 48
+    }
+  ]
+}

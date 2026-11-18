@@ -1,0 +1,5 @@
+PASS u46-publishing-low: 12 years, 48 quarter audits, 4 saved reloads, wallet peak 0.807, companies 14, releases 267
+PASS u46-cinema-growth: 12 years, 48 quarter audits, 4 saved reloads, wallet peak 0.812, companies 14, releases 366
+PASS u46-tv-growth: 12 years, 48 quarter audits, 4 saved reloads, wallet peak 0.679, companies 8, releases 170
+PASS u46-games-mature: 12 years, 48 quarter audits, 4 saved reloads, wallet peak 0.779, companies 13, releases 359
+UPDATE46 MULTISEED 4/4 worlds, 192 quarterly audits, 16 save reloads

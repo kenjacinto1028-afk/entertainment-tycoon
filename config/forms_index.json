@@ -1,0 +1,830 @@
+[
+  {
+    "key": "manuscriptOfferModal__min_001",
+    "value": "250",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__max_001",
+    "value": "250000",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__step_001",
+    "value": "10",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__min_002",
+    "value": "0.04",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__max_002",
+    "value": "0.35",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__step_002",
+    "value": "0.01",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__min_003",
+    "value": "0",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__max_003",
+    "value": "0.20",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "manuscriptOfferModal__step_003",
+    "value": "0.01",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 200
+  },
+  {
+    "key": "publishingAuthorPitchModal__maxlength_001",
+    "value": "62",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 205
+  },
+  {
+    "key": "imprintCreationModal__maxlength_001",
+    "value": "42",
+    "file": "src/interface/04_publishing.js",
+    "original_line": 207
+  },
+  {
+    "key": "commissionModal__maxlength_001",
+    "value": "62",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__min_001",
+    "value": "500",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__max_001",
+    "value": "1000000",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__step_001",
+    "value": "10",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__value_001",
+    "value": "0.75",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__value_002",
+    "value": "1",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "commissionModal__value_003",
+    "value": "1.5",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 243
+  },
+  {
+    "key": "staffContractModal__min_001",
+    "value": "60",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 267
+  },
+  {
+    "key": "staffContractModal__max_001",
+    "value": "400",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 267
+  },
+  {
+    "key": "staffContractModal__step_001",
+    "value": "1",
+    "file": "src/interface/05_staff_and_people.js",
+    "original_line": 267
+  },
+  {
+    "key": "renderSettings__maxlength_001",
+    "value": "36",
+    "file": "src/interface/08_portfolio_finance_world_settings.js",
+    "original_line": 426
+  },
+  {
+    "key": "newGameModal__maxlength_001",
+    "value": "42",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__maxlength_002",
+    "value": "40",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_001",
+    "value": "31",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__min_001",
+    "value": "18",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__max_001",
+    "value": "75",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__maxlength_003",
+    "value": "40",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_002",
+    "value": "1",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_003",
+    "value": "2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_004",
+    "value": "3",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_005",
+    "value": "2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_006",
+    "value": "5",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_007",
+    "value": "9",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_008",
+    "value": "12",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_009",
+    "value": "0.5",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_010",
+    "value": "1",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_011",
+    "value": "1.75",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_012",
+    "value": "2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_013",
+    "value": "3",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "newGameModal__value_014",
+    "value": "4",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 459
+  },
+  {
+    "key": "projectModal__maxlength_001",
+    "value": "62",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__maxlength_002",
+    "value": "60",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_001",
+    "value": "0.75",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_002",
+    "value": "1",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_003",
+    "value": "1.5",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_004",
+    "value": "2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_005",
+    "value": "0.1",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_006",
+    "value": "0.2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_007",
+    "value": "0.35",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_008",
+    "value": "0.2",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_009",
+    "value": "0.3",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_010",
+    "value": "0.4",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_011",
+    "value": "0.10",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_012",
+    "value": "0.14",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_013",
+    "value": "0.18",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_014",
+    "value": "0.21",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_015",
+    "value": "0.28",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "projectModal__value_016",
+    "value": "0.35",
+    "file": "src/interface/09_saves_and_production_forms.js",
+    "original_line": 462
+  },
+  {
+    "key": "franchiseModal__maxlength_001",
+    "value": "80",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 493
+  },
+  {
+    "key": "franchiseModal__maxlength_002",
+    "value": "600",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 493
+  },
+  {
+    "key": "franchiseModal__rows_001",
+    "value": "3",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 493
+  },
+  {
+    "key": "printOrderModal__min_001",
+    "value": "1",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 520
+  },
+  {
+    "key": "printOrderModal__max_001",
+    "value": "10000",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 520
+  },
+  {
+    "key": "printOrderModal__step_001",
+    "value": "1",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 520
+  },
+  {
+    "key": "printOrderModal__value_001",
+    "value": "500",
+    "file": "src/interface/10_production_form_handlers.js",
+    "original_line": 520
+  },
+  {
+    "key": "subsidiaryModal__maxlength_001",
+    "value": "42",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 523
+  },
+  {
+    "key": "subsidiaryModal__min_001",
+    "value": "1000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 523
+  },
+  {
+    "key": "subsidiaryModal__value_001",
+    "value": "25000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 523
+  },
+  {
+    "key": "bankLoanModal__min_001",
+    "value": "5000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 528
+  },
+  {
+    "key": "bankLoanModal__step_001",
+    "value": "500",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 528
+  },
+  {
+    "key": "repayBankModal__min_001",
+    "value": "0.01",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 537
+  },
+  {
+    "key": "repayBankModal__step_001",
+    "value": "0.01",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 537
+  },
+  {
+    "key": "optionModal__min_001",
+    "value": "100",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 549
+  },
+  {
+    "key": "optionModal__max_001",
+    "value": "1000000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 549
+  },
+  {
+    "key": "optionModal__step_001",
+    "value": "100",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 549
+  },
+  {
+    "key": "optionModal__value_001",
+    "value": "1800",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 549
+  },
+  {
+    "key": "optionModal__min_002",
+    "value": "0",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 550
+  },
+  {
+    "key": "optionModal__max_002",
+    "value": "1000000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 550
+  },
+  {
+    "key": "optionModal__step_002",
+    "value": "100",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 550
+  },
+  {
+    "key": "optionModal__value_002",
+    "value": "2400",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 550
+  },
+  {
+    "key": "optionModal__value_003",
+    "value": "0.08",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 551
+  },
+  {
+    "key": "optionModal__value_004",
+    "value": "0.12",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 551
+  },
+  {
+    "key": "optionModal__value_005",
+    "value": "0.16",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 551
+  },
+  {
+    "key": "optionModal__value_006",
+    "value": "0.20",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 551
+  },
+  {
+    "key": "optionModal__value_007",
+    "value": "0.30",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 551
+  },
+  {
+    "key": "renewalModal__min_001",
+    "value": "100",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 558
+  },
+  {
+    "key": "renewalModal__max_001",
+    "value": "1000000",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 558
+  },
+  {
+    "key": "renewalModal__step_001",
+    "value": "100",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 558
+  },
+  {
+    "key": "renewalModal__value_001",
+    "value": "1300",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 558
+  },
+  {
+    "key": "renewalModal__value_002",
+    "value": "26",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 559
+  },
+  {
+    "key": "renewalModal__value_003",
+    "value": "52",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 559
+  },
+  {
+    "key": "renewalModal__value_004",
+    "value": "104",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 559
+  },
+  {
+    "key": "renewalModal__value_005",
+    "value": "208",
+    "file": "src/interface/11_corporate_and_contract_modals.js",
+    "original_line": 559
+  },
+  {
+    "key": "markup__min_001",
+    "value": "5000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 652
+  },
+  {
+    "key": "markup__max_001",
+    "value": "250000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 652
+  },
+  {
+    "key": "markup__step_001",
+    "value": "1000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 652
+  },
+  {
+    "key": "markup__value_001",
+    "value": "15000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 652
+  },
+  {
+    "key": "markup__min_002",
+    "value": "0",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 653
+  },
+  {
+    "key": "markup__max_002",
+    "value": "250000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 653
+  },
+  {
+    "key": "markup__step_002",
+    "value": "500",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 653
+  },
+  {
+    "key": "markup__value_002",
+    "value": "25000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 653
+  },
+  {
+    "key": "markup__min_003",
+    "value": "2",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__max_003",
+    "value": "26",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__min_004",
+    "value": "5000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__max_004",
+    "value": "150000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__step_003",
+    "value": "1000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__min_005",
+    "value": "0.2",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__max_005",
+    "value": "1",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__step_004",
+    "value": "0.05",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 654
+  },
+  {
+    "key": "markup__maxlength_001",
+    "value": "42",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 657
+  },
+  {
+    "key": "markup__maxlength_002",
+    "value": "42",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 659
+  },
+  {
+    "key": "markup__min_006",
+    "value": "20000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 659
+  },
+  {
+    "key": "markup__step_005",
+    "value": "1000",
+    "file": "src/interface/13_click_action_handlers.js",
+    "original_line": 659
+  },
+  {
+    "key": "markup__min_007",
+    "value": "5000",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 994
+  },
+  {
+    "key": "markup__step_006",
+    "value": "100",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 994
+  },
+  {
+    "key": "markup__min_008",
+    "value": "5000",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 996
+  },
+  {
+    "key": "markup__step_007",
+    "value": "100",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 996
+  },
+  {
+    "key": "markup__min_009",
+    "value": "100",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 997
+  },
+  {
+    "key": "markup__step_008",
+    "value": "100",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 997
+  },
+  {
+    "key": "markup__maxlength_003",
+    "value": "40",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 998
+  },
+  {
+    "key": "markup__min_010",
+    "value": "5000",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 999
+  },
+  {
+    "key": "markup__step_009",
+    "value": "1000",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 999
+  },
+  {
+    "key": "markup__value_003",
+    "value": "8000",
+    "file": "src/interface/16_setup_and_start_screen.js",
+    "original_line": 999
+  },
+  {
+    "key": "managementPanel43__min_001",
+    "value": "0",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1068
+  },
+  {
+    "key": "managementPanel43__max_001",
+    "value": "5000",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1068
+  },
+  {
+    "key": "managementPanel43__step_001",
+    "value": "100",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1068
+  },
+  {
+    "key": "rightsPackagePanel43__min_001",
+    "value": "13",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1093
+  },
+  {
+    "key": "rightsPackagePanel43__max_001",
+    "value": "260",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1093
+  },
+  {
+    "key": "rightsPackagePanel43__value_001",
+    "value": "104",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1093
+  },
+  {
+    "key": "rightsPackagePanel43__min_002",
+    "value": "100",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1094
+  },
+  {
+    "key": "rightsPackagePanel43__max_002",
+    "value": "100000",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1094
+  },
+  {
+    "key": "rightsPackagePanel43__step_001",
+    "value": "100",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1094
+  },
+  {
+    "key": "rightsPackagePanel43__value_002",
+    "value": "2200",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1094
+  },
+  {
+    "key": "rightsPackagePanel43__min_003",
+    "value": "0",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1095
+  },
+  {
+    "key": "rightsPackagePanel43__max_003",
+    "value": "40",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1095
+  },
+  {
+    "key": "rightsPackagePanel43__step_002",
+    "value": "1",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1095
+  },
+  {
+    "key": "rightsPackagePanel43__value_003",
+    "value": "12",
+    "file": "src/interface/17_portraits_and_rights.js",
+    "original_line": 1095
+  }
+]

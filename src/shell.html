@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Studio Syndicate · Playable Update 41</title><style>@@STYLES@@</style></head>
+<body>
+<div class="app" id="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-logo">S<span>✦</span></div><div class="brand-copy"><strong>STUDIO<br>SYNDICATE</strong><small>THE ENTERTAINMENT TYCOON</small></div></div>
+    <div class="side-label">MANAGE</div>
+    <nav class="nav" id="main-nav" aria-label="Main menu">
+      <button type="button" data-view="dashboard"><span class="nav-ico">▦</span>Overview</button>
+      <button type="button" data-view="productions"><span class="nav-ico">▣</span>Productions</button>
+      <button type="button" data-view="library"><span class="nav-ico">◇</span>Library & Rights</button>
+      <button type="button" data-view="teams"><span class="nav-ico">✦</span>Teams & Capacity</button>
+      <button type="button" data-view="finance"><span class="nav-ico">▥</span>Financials</button>
+      <button type="button" data-view="career"><span class="nav-ico">♟</span>Career &amp; Ownership</button>
+      <button type="button" data-view="world"><span class="nav-ico">◎</span>World & Rivals</button>
+    </nav>
+    <div class="side-label">INTELLIGENCE</div>
+    <nav class="nav" id="secondary-nav" aria-label="Information">
+      <button type="button" data-view="inbox"><span class="nav-ico">✉</span>Action Inbox <span class="nav-count" id="inbox-count">0</span></button>
+      <button type="button" data-view="news"><span class="nav-ico">◈</span>Industry News</button>
+      <button type="button" data-view="settings"><span class="nav-ico">⚙</span>Game & Saves</button>
+    </nav>
+    <div class="sidebar-footer"><span class="online-dot"></span><span>PLAYABLE UPDATE 41<br><small>Local single-player game</small></span></div>
+  </aside>
+  <div class="main-shell"><header class="topbar">
+    <button class="mobile-menu ghost-icon" id="menu-toggle" aria-label="Toggle menu">☰</button>
+    <div class="top-company"><span class="company-avatar" id="company-avatar">S</span><span><strong id="top-company">Syndicate Works</strong><small id="top-subtitle">Independent Publisher</small></span></div>
+    <div class="top-actions"><span class="date-chip" id="top-date">YEAR 1 · WEEK 1</span><span class="cash-chip" id="top-cash">$82,000</span><button class="theme-btn" id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">◐</button><button class="small-ghost" id="quick-save">Save</button></div>
+  </header>
+  <main class="content" id="content" tabindex="-1"></main>
+  <div class="turnbar"><div class="turnbar-help"><span class="pulse"></span><span id="turn-msg">World simulation paused · Make your next move</span></div><div class="turn-actions"><span class="turn-label">ADVANCE TIME</span><button class="btn btn-outline" data-advance="1">+ 1 Week</button><button class="btn btn-outline" data-advance="4">+ 4 Weeks</button><button class="btn btn-primary" data-advance="13">+ 13 Weeks <span>→</span></button></div></div>
+  </div>
+</div>
+<div id="modal" class="modal-host" aria-live="polite"></div><div id="toast" role="status" aria-live="polite" class="toast"></div>
+<script>@@ENGINE@@</script><script>@@UI@@</script>
+</body></html>

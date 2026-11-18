@@ -1,0 +1,101 @@
+
+=== update42a ===
+Update42A: 7/7 checks passed
+
+=== update42b ===
+Update42B: 8/8 checks passed
+
+=== update42c ===
+Update42C: 11/11 checks passed
+
+=== update43a ===
+UPDATE43A 8/8
+
+=== update43b ===
+UPDATE43B 8/8
+
+=== update43c ===
+UPDATE43C 7/7
+
+=== update44a ===
+UPDATE44A 6/6 focused checks passed
+
+=== update44_cross_system ===
+UPDATE44 cross-system 6/6 passed
+
+=== update45_world_production ===
+UPDATE45 WORLD+PRODUCTION 4/4 tests
+
+=== update45_rights ===
+UPDATE45 RIGHTS 6/6 checks
+
+=== update45_business ===
+UPDATE45 BUSINESS 6/6
+
+=== update45_streaming_wallet ===
+PASS 3 independent funded services share TV subscription budget across 80 region-weeks; peak 0.886; save v34
+
+=== update45_industry ===
+UPDATE45 INDUSTRY 6/6
+
+=== update46_commissions_gate ===
+Update46 contracts 5/5
+
+=== update46_publishing_gate ===
+Update46 publishing 4/4
+
+=== update46_investments_gate ===
+Update46 investment 4/4
+
+=== update46_streaming_gate ===
+Update46 streaming 2/2
+
+=== update46_finance_gate ===
+Update46 finance 3/3
+
+=== update46_acquisitions_gate ===
+Update46 acquisitions 3/3
+
+=== update46_governance_gate ===
+Update46 governance 4/4
+
+=== update46_delegation_gate ===
+Update46 delegation 3/3
+ALL 21 SUITES PASS
+=== update47_careers_gate.test.js ===
+PASS named leader recruitment and dismissal preserves stable identity and real cash payments {"retiredId":"employee_00003","newLead":"employee_00069"}
+PASS mentorship and consensual renewal change future team performance and paid salary {"mentorSkill":58,"leadCompleted":1,"weeklySalary":128}
+PASS culture impacts annual morale and exits while keeping payroll and team identity coherent {"supportiveMorale":74,"leanMorale":62}
+PASS aging, director appointment and retirement do not conjure shares or studio-owned IP {"founderAge":70,"studioOwner":"company_00001"}
+Update47 careers 4/4
+=== update47_disputes_gate.test.js ===
+PASS client disputes pause active work and protected cash through save/load {"held":9009,"pausedWeeks":6}
+PASS funded remedy costs real cash, extends project and releases full reserved escrow only on delivery {"cost":350,"fee":12870}
+PASS arbitration splits previously funded reserve, preserves earned milestones and client prepayment accounting {"protected":40600.56,"refunded":20532.28,"award":20068.28}
+PASS disputed canceled job refunds unearned funds without duplicating outcome {"refund":34354.32}
+Update47 disputes 4/4
+=== update47_editorial_gate.test.js ===
+PASS negotiated exclusive manuscript license respects real owner cash and optional creator veto {"owner":"company_00009","payment":2120,"veto":"rejected"}
+PASS editorial choice changes creative and technical quality independently at actual cost and time {"creativeBefore":86,"creativeAfter":91,"technicalBefore":86,"technicalAfter":91}
+PASS delegated web serial can choose cadence and one substantive arc without chapter micromanagement {"weeks":11,"finishedWeeks":13,"arcs":1}
+PASS creator-approved manuscript forbids unauthorized creative redirection after a legally scoped adaptation starts {"legalOwner":"company_00009","licenseHolder":"company_00001"}
+Update47 editorial 4/4
+=== update47_lenders_gate.test.js ===
+PASS a real R&D funded cash crisis creates unpaid principal and lender refusal of further borrowing {"missed":1,"cash":0,"arrears":1009.61}
+PASS lender restructures remaining debt only once without issuing money or erasing interest {"principal":18333.33,"interest":176.28,"oldRate":0.1,"newRate":0.13}
+PASS rescheduled future monthly principal follows remaining claim, not original draw; audits pass {"weekStart":1261,"weeks":7,"loanStatus":"delinquent","due":763.89,"interest":359.61}
+PASS bankruptcy never cancels lender balance and disallows fresh workouts {"outstanding":18333.33}
+Update47 lenders 4/4
+=== update47_rivals_gate.test.js ===
+PASS autonomous competitors sign real co-production agreements backed by sponsor cash, not player cash {"rivalDeals":36,"committed":230658}
+PASS rivals make bounded multi-year plans and execute cash-funded capacity or vendor improvements {"rivals":12,"executedActions":14}
+PASS reconstructed public industry intelligence never leaks private cash or exact competitor forecasts {"name":"Copper Lantern Press","privateEstimates":"estimated"}
+PASS yearly autonomous entry comes from finite founders and insolvencies preserve historical rival identities {"debutEntrants":6,"newEntrants":0,"companyCount":12}
+Update47 rivals 4/4
+=== update47_succession_gate.test.js ===
+PASS elected lawful employee receives management authority but no founder shares or source-IP {"employee":"employee_00003","shares":1000}
+PASS shareholder loss of control permits only personally funded new studio; legacy company retains assets and debts {"oldCompany":"company_00001","newCompany":"company_00076","founderPersonalCash":107090}
+PASS new entity cannot be conjured before loss of lawful executive role or from zero founder funds {"control":"transition"}
+PASS ending a run preserves historical campaign and disallows future financial transactions {"endStatus":"ended","started":"active"}
+Update47 succession 4/4
+=== update47_longrun_acceptance.test.js ===

@@ -1,0 +1,7 @@
+PASS Funded client commissions work across all four media and deliver only agreed fee [{"sector":"publishing","fee":13179,"clientReceivable":0,"contractEarned":13179},{"sector":"movie","fee":59964,"clientReceivable":0,"contractEarned":59964},{"sector":"tv","fee":39866,"clientReceivable":0,"contractEarned":39866},{"sector":"games","fee":50739,"clientReceivable":0,"contractEarned":50739}]
+PASS Cancelled client work returns unearned escrow, preserves earned milestones and IP {"funded":13728,"earned":4118.4}
+PASS Unfunded prospective client cannot commission or create unbacked liabilities {}
+PASS Bank revolver cannot generate earnings, debt persists after expiry and forced arrears {"lineId":"credit_00075","obligation":6000}
+PASS Company share acquisition preserves independent creditor and title ledgers {"price":98284.17,"ownership":"company_00007"}
+PASS Lawful successor inherits job but not cash, votes or trademark ownership {"successor":"employee_00003"}
+UPDATE45 BUSINESS 6/6

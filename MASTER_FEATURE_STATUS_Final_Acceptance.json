@@ -1,0 +1,1706 @@
+{
+  "project": "Studio Syndicate",
+  "build": "Update 52 (unchanged game) / Final acceptance 2026-11-18",
+  "save_version": 34,
+  "provenance": "Update52 game/engine unchanged. Gates06 and29 accepted on 2026-11-18 after independent user-run native Windows origin test (`NATIVE-ORIGIN AUTOMATION PASS`), user-attested NVDA manual tests, and review of retained 2x100-year, 6 multi-seed, and 35-suite regression evidence. No new engine simulations run for this signoff; formal design-spec approval remains separate.",
+  "foundation_verified_count": 309,
+  "partial_count": 0,
+  "unbuilt_count": 0,
+  "accepted_workstream_gates": 29,
+  "new_this_update": [],
+  "features": {
+    "Q03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Major-vs-background AI fidelity"
+    },
+    "Q07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Compact settled older activity"
+    },
+    "Q15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Performance-aware simulation"
+    },
+    "Q17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "No untested claims"
+    },
+    "A01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Entertainment tycoon sandbox"
+    },
+    "A02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Four core industries"
+    },
+    "A03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing-first default"
+    },
+    "A04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "No compulsory victory"
+    },
+    "B01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World Year 1: Publishing"
+    },
+    "B02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World Year 4: Movies"
+    },
+    "B03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World Year 7: Television"
+    },
+    "B04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World Year 10: Video Games"
+    },
+    "B07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Default chronological campaign"
+    },
+    "B08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Advanced era presets"
+    },
+    "B10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Newly founded advanced studios"
+    },
+    "B11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Four publishing origins"
+    },
+    "B12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Company age vs world age"
+    },
+    "B13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Global industry gate"
+    },
+    "C12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Reproducible world seed"
+    },
+    "Q01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Weekly world progression"
+    },
+    "Q05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Stable IDs and ownership records"
+    },
+    "Q14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Repeatable seed baseline"
+    },
+    "D09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Budget and cash tracking"
+    },
+    "J01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Three linked profit views"
+    },
+    "J02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Direct project contribution"
+    },
+    "J03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Separately disclosed overhead"
+    },
+    "J04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Group consolidation"
+    },
+    "J05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Cash versus accounting profit"
+    },
+    "L01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Monthly close"
+    },
+    "L02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Income statements"
+    },
+    "L03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Balance sheets"
+    },
+    "L04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Cash-flow statements"
+    },
+    "L05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Budgets versus actuals"
+    },
+    "L17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Simple stable regional taxes"
+    },
+    "L18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Automatic eligible incentives"
+    },
+    "L19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Tax cash visibility"
+    },
+    "Q02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Monthly financial settlement"
+    },
+    "Q06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Precise active obligations"
+    },
+    "Q12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Finance/rights integrity checks"
+    },
+    "B05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Industry growth after debut"
+    },
+    "B09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Mature Entertainment Age"
+    },
+    "B17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Configurable progression pace"
+    },
+    "B18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing-only initial prehistory"
+    },
+    "B19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Advanced-era historical generation"
+    },
+    "C02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Starting capital"
+    },
+    "C03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World maturity"
+    },
+    "C05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "AI company count"
+    },
+    "C06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "World population"
+    },
+    "C07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Geographic/world scale"
+    },
+    "C08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Difficulty presets"
+    },
+    "C09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "AI fairness"
+    },
+    "C10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology discovery pace"
+    },
+    "C11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology adoption pace"
+    },
+    "C13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Extreme setup warnings"
+    },
+    "N01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Regional markets"
+    },
+    "N02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Consumer spending budgets"
+    },
+    "N03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Demographic/genre cohorts"
+    },
+    "N04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Macroeconomic variables"
+    },
+    "N05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Global cycles, regional effects"
+    },
+    "N06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Occasional external shocks"
+    },
+    "N07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology discoveries"
+    },
+    "N08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology adoption"
+    },
+    "N09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology obsolescence"
+    },
+    "Q04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Aggregated consumer markets"
+    },
+    "A05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Hands-on or delegated"
+    },
+    "A06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Distinct outcomes"
+    },
+    "A07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Original and contract work"
+    },
+    "A08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Shared rules, distinct industries"
+    },
+    "A09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "All four can originate IP"
+    },
+    "B14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Company capability unlock"
+    },
+    "B15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Soft access to capabilities"
+    },
+    "B16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Progression and milestone signals"
+    },
+    "C04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Starting company capabilities"
+    },
+    "D01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Unified project record"
+    },
+    "D02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Project creation/commissioning"
+    },
+    "D03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Structured creative decisions"
+    },
+    "D04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Project phases and milestones"
+    },
+    "D05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Weekly production turns"
+    },
+    "D06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Team workload/capacity"
+    },
+    "D07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Individual overrides"
+    },
+    "D08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Creative versus technical quality"
+    },
+    "D10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Project risks and interventions"
+    },
+    "D11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Marketing and positioning"
+    },
+    "D12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Release competition"
+    },
+    "D13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Post-release lifecycle"
+    },
+    "K11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Team-first workload"
+    },
+    "K15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Shared corporate services"
+    },
+    "K17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Manager authority"
+    },
+    "C14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional interactive tutorial"
+    },
+    "C15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Contextual help and adviser"
+    },
+    "C16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional objectives and achievements"
+    },
+    "P01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "High-contrast modern UI"
+    },
+    "P02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Light and dark themes"
+    },
+    "P03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Left sidebar/subtabs"
+    },
+    "P04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "One Productions hub"
+    },
+    "P05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Adaptive dashboards"
+    },
+    "P07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Searchable/sortable tables"
+    },
+    "P08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Split list/detail workspaces"
+    },
+    "P10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Management Inbox"
+    },
+    "P12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Pause rules"
+    },
+    "P13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Simulation control bar"
+    },
+    "P14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Dedicated news page/widget"
+    },
+    "P17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Mobile companion"
+    },
+    "P18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Accessible status communication"
+    },
+    "Q08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Multiple manual save slots"
+    },
+    "Q09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Autosaves and recovery"
+    },
+    "Q10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Export/import saves"
+    },
+    "Q11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Versioned save compatibility"
+    },
+    "Q13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Cross-system event consistency"
+    },
+    "I01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Unified IP registry"
+    },
+    "I02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Underlying versus derivative rights"
+    },
+    "I03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Rights packages"
+    },
+    "I04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Binding pre-debut options"
+    },
+    "I05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Option exercise and expiry"
+    },
+    "I06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "License and distribution clocks"
+    },
+    "I07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Contract-defined continuation"
+    },
+    "I08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Automatic rights validation"
+    },
+    "I09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Negotiated contracts"
+    },
+    "I10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Creative approvals/vetoes"
+    },
+    "I11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Consent-aware renewals"
+    },
+    "I12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Rights calendar"
+    },
+    "I23": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Royalty obligations"
+    },
+    "E21": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing services contracts"
+    },
+    "G09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Commissioning/licensing"
+    },
+    "H11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing and funding deals"
+    },
+    "H12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Commissioned development"
+    },
+    "H13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Co-development"
+    },
+    "I21": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Licensing externally"
+    },
+    "L10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Project/co-financing"
+    },
+    "N19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Trust for major contracts"
+    },
+    "C01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Founder creation"
+    },
+    "K01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Named direct employees"
+    },
+    "K02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Significant external talent"
+    },
+    "K03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Recruitment and interviews"
+    },
+    "K04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Skills/specialties"
+    },
+    "K05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Traits and relationships"
+    },
+    "K06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Salaries and contracts"
+    },
+    "K07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Training/mentorship"
+    },
+    "K08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Performance and reviews"
+    },
+    "K09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Retention and exits"
+    },
+    "K10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Aging and generations"
+    },
+    "K12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Custom departments/divisions"
+    },
+    "K14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing imprints"
+    },
+    "K16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Delegated HR"
+    },
+    "K18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Employee/company culture"
+    },
+    "K19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Leadership personalities"
+    },
+    "K20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Multi-level management views"
+    },
+    "M01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Player founder identity"
+    },
+    "E01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Novels and nonfiction"
+    },
+    "E02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Comics/manga/graphic novels"
+    },
+    "E03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Web serial fiction"
+    },
+    "E06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Manuscript acquisition"
+    },
+    "E07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Author and agent negotiation"
+    },
+    "E08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Editorial analysis"
+    },
+    "E09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Revision rounds"
+    },
+    "E10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Cover/art/layout"
+    },
+    "E11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Flexible serialization detail"
+    },
+    "E23": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Talent development"
+    },
+    "E04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Audiobooks"
+    },
+    "E05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Ebooks/digital publishing"
+    },
+    "E12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Printing and print runs"
+    },
+    "E13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Inventory and returns"
+    },
+    "E14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Digital platforms and distribution"
+    },
+    "E15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Advance recoupment and royalties"
+    },
+    "E16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Weekly unit sales"
+    },
+    "E17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Reviews and bestseller charts"
+    },
+    "E18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Preorders and demand forecasts"
+    },
+    "E19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Backlist and reprints"
+    },
+    "E20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Licensing and translations"
+    },
+    "E22": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing imprints"
+    },
+    "E24": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Publishing platform operations"
+    },
+    "N10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "AI corporate identities"
+    },
+    "N11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Multi-year AI planning"
+    },
+    "N12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Constrained AI forecasting"
+    },
+    "N13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "AI projects/hiring/bids"
+    },
+    "N14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "AI strategic partnerships"
+    },
+    "N15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Dynamic company population"
+    },
+    "N16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Organic market concentration"
+    },
+    "N17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Mostly abstract institutions"
+    },
+    "N18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Public and private competitor data"
+    },
+    "N20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Festivals and awards bodies"
+    },
+    "D14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Major-project postmortems"
+    },
+    "D15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Minor-project reviews"
+    },
+    "D16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Major-release criteria"
+    },
+    "J06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Four investment strategies"
+    },
+    "J07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Three forecast scenarios"
+    },
+    "J08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Downside cash warnings"
+    },
+    "J09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Opportunity cost"
+    },
+    "J10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Forecast evidence"
+    },
+    "J11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Automatic major postmortems"
+    },
+    "J12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional minor postmortems"
+    },
+    "J14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Historical comparison"
+    },
+    "O01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Monthly economic briefings"
+    },
+    "O02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Quarterly economic reports"
+    },
+    "O03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Company financial reports"
+    },
+    "O16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Actual vs estimate vs forecast"
+    },
+    "F01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Original films and adaptations"
+    },
+    "F02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Screenplay development"
+    },
+    "F03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Financing and budgets"
+    },
+    "F04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Deep casting and auditions"
+    },
+    "F05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Talent availability/exclusivity"
+    },
+    "F06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Phased production"
+    },
+    "F07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Owned/rented/outsource facilities"
+    },
+    "F08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Locations and logistics"
+    },
+    "F09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Production disruptions"
+    },
+    "F10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Test screenings"
+    },
+    "F11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Rewrites, reshoots, editing"
+    },
+    "F12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Live-action, animation and hybrid"
+    },
+    "F20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Profit participation"
+    },
+    "F13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Theatrical distribution"
+    },
+    "F14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Regional weekly box office"
+    },
+    "F15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Release windows"
+    },
+    "F16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Festivals and premieres"
+    },
+    "F17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Film awards"
+    },
+    "F18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Content classifications"
+    },
+    "F19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Critic/audience reviews"
+    },
+    "G01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Original series and adaptations"
+    },
+    "G02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Season-based management"
+    },
+    "G03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional episode editing"
+    },
+    "G04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Writers' rooms and showrunners"
+    },
+    "G05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Recurring cast contracts"
+    },
+    "G17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Film/TV resource sharing"
+    },
+    "G06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Broadcast networks and schedules"
+    },
+    "G07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Regional TV ratings"
+    },
+    "G08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Advertising economics"
+    },
+    "G10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Renewals and cancellations"
+    },
+    "G11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Syndication and catalog"
+    },
+    "G18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "TV awards and classifications"
+    },
+    "H01": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Original games/adaptations"
+    },
+    "H02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Major design choices"
+    },
+    "H03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Prototypes and preproduction"
+    },
+    "H04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Milestone development"
+    },
+    "H05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Bugs and technical stability"
+    },
+    "H06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Proprietary engines"
+    },
+    "H07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Engine/tool licensing"
+    },
+    "H08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Technology acquisition"
+    },
+    "H15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Demos, beta tests, preorders"
+    },
+    "H16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Certification and regional launch"
+    },
+    "H21": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Separate critic/user responses"
+    },
+    "H09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Fictional platform ecosystems"
+    },
+    "H10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Platform generations"
+    },
+    "H14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Platform exclusivity"
+    },
+    "H17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Business models"
+    },
+    "H18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Postlaunch support"
+    },
+    "H19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Player communities and modding"
+    },
+    "H20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional esports"
+    },
+    "B06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Later streaming evolution"
+    },
+    "G12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Streaming service launch"
+    },
+    "G13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Subscribers and churn"
+    },
+    "G14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Subscription tiers/pricing"
+    },
+    "G15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Original and licensed catalog"
+    },
+    "G16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "International streaming"
+    },
+    "H22": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Digital storefronts"
+    },
+    "H23": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Game subscriptions"
+    },
+    "H24": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Digital distribution networks"
+    },
+    "L06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Cash runway/solvency"
+    },
+    "L07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Loans and revolving credit"
+    },
+    "L08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Automated lenders"
+    },
+    "L09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Equity investors"
+    },
+    "L11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Investment committees"
+    },
+    "L20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Profit versus valuation"
+    },
+    "I15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Franchises and cross-media branches"
+    },
+    "I16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Main and alternate canon"
+    },
+    "I17": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Auto-populated Franchise Bible"
+    },
+    "I18": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional Bible editing"
+    },
+    "I19": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Franchise/release coordination"
+    },
+    "I20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Franchise audience feedback"
+    },
+    "I22": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Internal cross-division licenses"
+    },
+    "J13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Long-run franchise contribution"
+    },
+    "O13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Franchise histories"
+    },
+    "P15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "IP tree/timeline/rights views"
+    },
+    "I13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Acquisition due diligence"
+    },
+    "I14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Corporate and asset purchases differ"
+    },
+    "K13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Subsidiaries"
+    },
+    "L12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Acquisition financing"
+    },
+    "L13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Integration/restructuring"
+    },
+    "L14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Financial distress"
+    },
+    "L15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Risk policies"
+    },
+    "L16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Intragroup transfer pricing"
+    },
+    "L21": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Simplified optional public markets"
+    },
+    "M02": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Founder, entity and shares differ"
+    },
+    "M03": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional corporation readiness"
+    },
+    "M04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Corporation-only board governance"
+    },
+    "M05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Private-company continuation"
+    },
+    "M06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Optional IPO"
+    },
+    "M07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Board power and votes"
+    },
+    "P16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Corporation-stage governance screens"
+    },
+    "M08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Advance succession planning"
+    },
+    "M09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Lawful succession choice"
+    },
+    "M10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Loss of control"
+    },
+    "M11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Fresh-company continuation"
+    },
+    "M12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Run conclusion"
+    },
+    "M13": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Configurable failure severity"
+    },
+    "B20": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Industry debut announcements"
+    },
+    "O04": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Financial rankings"
+    },
+    "O05": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Creative rankings"
+    },
+    "O06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Audience rankings"
+    },
+    "O07": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "All-time records"
+    },
+    "O08": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Region/era/industry filters"
+    },
+    "O09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Industry news"
+    },
+    "O10": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "News search/archive"
+    },
+    "O11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Historical company lineage"
+    },
+    "O12": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Creator careers and awards"
+    },
+    "O14": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Annual finance snapshots"
+    },
+    "O15": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Generated versus played history"
+    },
+    "P09": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Stylized cartoon portraits"
+    },
+    "P06": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Saved dashboard layouts"
+    },
+    "P11": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "Delegation/batch approvals"
+    },
+    "Q16": {
+      "foundation_verified": true,
+      "partial": false,
+      "description": "100-year automated tests"
+    }
+  },
+  "workstream_feature_counts": {
+    "1": {
+      "verified": 4,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "2": {
+      "verified": 18,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "3": {
+      "verified": 17,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "4": {
+      "verified": 25,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "5": {
+      "verified": 24,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "6": {
+      "verified": 21,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "7": {
+      "verified": 13,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "8": {
+      "verified": 8,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "9": {
+      "verified": 18,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "10": {
+      "verified": 10,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "11": {
+      "verified": 13,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "12": {
+      "verified": 10,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "13": {
+      "verified": 15,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "14": {
+      "verified": 13,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "15": {
+      "verified": 7,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "16": {
+      "verified": 6,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "17": {
+      "verified": 6,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "18": {
+      "verified": 11,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "19": {
+      "verified": 7,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "20": {
+      "verified": 6,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "21": {
+      "verified": 3,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "22": {
+      "verified": 6,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "23": {
+      "verified": 10,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "24": {
+      "verified": 8,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "25": {
+      "verified": 8,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "26": {
+      "verified": 6,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "27": {
+      "verified": 13,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "28": {
+      "verified": 2,
+      "partial": 0,
+      "unbuilt": 0
+    },
+    "29": {
+      "verified": 1,
+      "partial": 0,
+      "unbuilt": 0
+    }
+  },
+  "final_acceptance_date": "2026-11-18"
+}

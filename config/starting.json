@@ -1,0 +1,155 @@
+{
+  "ORIGINS": {
+    "publisher": {
+      "name": "Independent Publisher",
+      "sector": "publishing",
+      "cash": 82000,
+      "reputation": 29,
+      "teamGenres": [
+        "Fantasy",
+        "Mystery"
+      ],
+      "weeklyCommitment": 0,
+      "preferredFormat": "Novel"
+    },
+    "comics": {
+      "name": "Comic / Manga Studio",
+      "sector": "publishing",
+      "cash": 71000,
+      "reputation": 34,
+      "teamGenres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "weeklyCommitment": 90,
+      "preferredFormat": "Comic / Manga"
+    },
+    "contract": {
+      "name": "Contract Editorial Studio",
+      "sector": "publishing",
+      "cash": 65000,
+      "reputation": 26,
+      "teamGenres": [
+        "Mystery",
+        "Drama"
+      ],
+      "weeklyCommitment": 45,
+      "preferredFormat": "Novel"
+    },
+    "established": {
+      "name": "Established Publishing House",
+      "sector": "publishing",
+      "cash": 148000,
+      "reputation": 48,
+      "teamGenres": [
+        "Romance",
+        "Drama",
+        "Fantasy"
+      ],
+      "weeklyCommitment": 170,
+      "preferredFormat": "Novel"
+    },
+    "film": {
+      "name": "New Film Studio",
+      "sector": "movie",
+      "cash": 195000,
+      "reputation": 26
+    },
+    "tv": {
+      "name": "New TV Studio",
+      "sector": "tv",
+      "cash": 172000,
+      "reputation": 26
+    },
+    "games": {
+      "name": "New Game Studio",
+      "sector": "games",
+      "cash": 160000,
+      "reputation": 26
+    }
+  },
+  "CAPITAL_PRESETS": {
+    "lean": 0.72,
+    "standard": 1,
+    "funded": 1.45
+  },
+  "STAFF_FIRST": [
+    "Amara",
+    "Ivo",
+    "Celine",
+    "Rohan",
+    "Marin",
+    "Noel",
+    "Eva",
+    "Tariq",
+    "Jules",
+    "Kiran",
+    "Luz",
+    "Tessa",
+    "Elian",
+    "Mina",
+    "Theo",
+    "Arden"
+  ],
+  "STAFF_LAST": [
+    "Vale",
+    "Fenn",
+    "Mercer",
+    "Briar",
+    "Rowan",
+    "Quill",
+    "Sato",
+    "Keene",
+    "Hale",
+    "North",
+    "Wren",
+    "Glass",
+    "Reed",
+    "Aster"
+  ],
+  "STAFF_TRAITS": [
+    "collaborative",
+    "ambitious",
+    "meticulous",
+    "inventive",
+    "steady"
+  ],
+  "CULTURES": [
+    "balanced",
+    "supportive",
+    "lean"
+  ],
+  "FOUNDER_BACKGROUNDS": [
+    "editorial",
+    "finance",
+    "production"
+  ],
+  "FOUNDER_FOCUSES": [
+    "creative",
+    "commercial",
+    "people"
+  ],
+  "SPECIALIST_NAMES": [
+    "Mira Rowan",
+    "Niko Vale",
+    "Asha Calder",
+    "Tomas Finch",
+    "Lena Glass",
+    "Ari Juniper",
+    "Rhea Mercer",
+    "Cato Stone",
+    "Vera Wren"
+  ],
+  "SPECIALIST_DISCIPLINES": [
+    "editorial",
+    "technical",
+    "production"
+  ],
+  "TEAM_LABELS": [
+    "Story Desk",
+    "Creative Unit",
+    "Production Crew",
+    "Development Team",
+    "Specialist Unit"
+  ]
+}

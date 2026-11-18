@@ -1,0 +1,4 @@
+PASS desktop corporate readiness, rejected board vote, optional IPO and finance audit
+PASS real browser batch authorizes limited terms but no project, fee, or IP transfer
+PASS mobile dashboard layout survives a fresh document using explicit storage shim
+UPDATE46 browser 3/3; real origin bound save persistence not tested

@@ -1,0 +1,10 @@
+PASS width=1440: dialog name/focus/Tab trap, 3 labelled fields, tab arrows, save slots, import control, invalid JSON, Escape return, nav current
+PASS width=390: dialog name/focus/Tab trap, 3 labelled fields, tab arrows, save slots, import control, invalid JSON, Escape return, nav current
+2/2 UI accessibility workflows passed; storage shim disclosed; no native-origin claim
+PASS Update50 browser 1350 platform cards, paid recurring event controls, keyboard tab focus, clean audit
+PASS Update50 browser 390 platform cards, paid recurring event controls, keyboard tab focus, clean audit
+UPDATE49 BROWSER 2/2, explicit in-memory storage shim only
+PASS simulated durable storage across new document, named save rollback, real JSON backup/export/import, theme, no JS errors
+PASS mobile 390px drawer, settings controls, world, no JS errors
+PASS keyboard focus, labelled save slots and accessible navigation basics
+UPDATE44 browser 3/3; origin-bound persistence cannot be measured in this restricted environment

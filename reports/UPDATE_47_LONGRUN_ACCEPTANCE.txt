@@ -1,0 +1,3 @@
+PASS 30-year organic staff cohort ages, departs, remains ledger consistent, and is stable on reload {"years":30,"annualAudits":30,"departed":5,"employeeRecords":30,"sourceIdsKept":9}
+PASS genuine lender workout does not destroy claims in later monthly closes or creditor failure {"monthsAfterWorkout":24,"principalBefore":18333.33,"principalAfter":18333.33,"interestAtWorkout":176.28,"interestAfter":4942.92,"borrowerBankrupt":false}
+UPDATE47 long-run acceptance 2/2

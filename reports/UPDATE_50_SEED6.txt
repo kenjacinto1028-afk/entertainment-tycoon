@@ -1,0 +1,22 @@
+CHECKPOINT u50-y25-small-publisher 1/20
+CHECKPOINT u50-y25-small-publisher 2/20
+CHECKPOINT u50-y25-small-publisher 3/20
+CHECKPOINT u50-y25-small-publisher 4/20
+CHECKPOINT u50-y25-small-publisher 5/20
+CHECKPOINT u50-y25-small-publisher 6/20
+CHECKPOINT u50-y25-small-publisher 7/20
+CHECKPOINT u50-y25-small-publisher 8/20
+CHECKPOINT u50-y25-small-publisher 9/20
+CHECKPOINT u50-y25-small-publisher 10/20
+CHECKPOINT u50-y25-small-publisher 11/20
+CHECKPOINT u50-y25-small-publisher 12/20
+CHECKPOINT u50-y25-small-publisher 13/20
+CHECKPOINT u50-y25-small-publisher 14/20
+CHECKPOINT u50-y25-small-publisher 15/20
+CHECKPOINT u50-y25-small-publisher 16/20
+CHECKPOINT u50-y25-small-publisher 17/20
+CHECKPOINT u50-y25-small-publisher 18/20
+CHECKPOINT u50-y25-small-publisher 19/20
+CHECKPOINT u50-y25-small-publisher 20/20
+PASS u50-y25-small-publisher 20 years wallet peak 0.46692 releases publishing bankrupt 0 save 4.53 MB
+UPDATE50 MULTISEED 1/6, 20 annual audits, 5 reloads, 1040 weekly wallet checks

@@ -1,0 +1,10 @@
+PASS chron-casual audits 48 rivals 11 closed 0 released 236 playerCash 399475.34 playerFurlough false
+PASS chron-standard audits 48 rivals 12 closed 2 released 246 playerCash 134841.6 playerFurlough false
+PASS chron-challenge audits 48 rivals 12 closed 1 released 273 playerCash 410054.97 playerFurlough false
+PASS film-casual audits 48 rivals 9 closed 0 released 196 playerCash 998688.88 playerFurlough false
+PASS film-standard audits 48 rivals 9 closed 0 released 215 playerCash 571428.33 playerFurlough false
+PASS film-challenge audits 48 rivals 9 closed 0 released 237 playerCash 1056778.72 playerFurlough false
+PASS mature-casual audits 48 rivals 5 closed 0 released 148 playerCash 1213957.42 playerFurlough false
+PASS mature-standard audits 48 rivals 5 closed 0 released 159 playerCash 821916.21 playerFurlough false
+PASS mature-challenge audits 48 rivals 5 closed 0 released 174 playerCash 1793740.38 playerFurlough false
+UPDATE44 balance 9 seeded worlds 432 quarterly audits

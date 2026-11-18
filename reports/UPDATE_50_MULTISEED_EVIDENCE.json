@@ -1,0 +1,105 @@
+{
+  "completeWorlds": 6,
+  "simulatedYears": 102,
+  "annualAudits": 102,
+  "fourYearReloads": 24,
+  "weeklyWalletChecks": 5304,
+  "rows": [
+    {
+      "seed": "u50-y1-labor-recession",
+      "years": 14,
+      "walletPeak": 0.84741,
+      "releaseSectors": [
+        "games",
+        "movie",
+        "publishing",
+        "tv"
+      ],
+      "organicBankruptcies": 3,
+      "maxSaveMB": 6.75,
+      "evidence": "reports/UPDATE_50_MULTISEED.txt"
+    },
+    {
+      "seed": "u50-y4-small-film",
+      "years": 18,
+      "walletPeak": 0.64999,
+      "releaseSectors": [
+        "games",
+        "movie",
+        "publishing",
+        "tv"
+      ],
+      "organicBankruptcies": 1,
+      "maxSaveMB": 5.12,
+      "evidence": "reports/UPDATE_50_MULTISEED.txt"
+    },
+    {
+      "seed": "u50-y7-television",
+      "years": 16,
+      "walletPeak": 0.70297,
+      "releaseSectors": [
+        "games",
+        "movie",
+        "publishing",
+        "tv"
+      ],
+      "organicBankruptcies": 1,
+      "maxSaveMB": 6.21,
+      "evidence": "reports/UPDATE_50_MULTISEED.txt"
+    },
+    {
+      "seed": "u50-y10-game-growth",
+      "years": 18,
+      "walletPeak": 0.69836,
+      "releaseSectors": [
+        "games",
+        "movie",
+        "publishing",
+        "tv"
+      ],
+      "organicBankruptcies": 0,
+      "maxSaveMB": 5.63,
+      "evidence": "reports/UPDATE_50_MULTISEED.txt"
+    },
+    {
+      "seed": "u50-y25-mature-broad",
+      "era": 25,
+      "origin": "games",
+      "difficulty": "challenging",
+      "years": 16,
+      "projects": 16,
+      "releaseSectors": [
+        "games",
+        "movie",
+        "publishing",
+        "tv"
+      ],
+      "companies": 13,
+      "organicBankruptcies": 0,
+      "walletPeak": 0.78971,
+      "maxSaveMB": 8.7,
+      "playerCash": 1300406.97,
+      "liveManagement": "active",
+      "evidence": "reports/UPDATE_50_u50-y25-mature-broad.summary.json"
+    },
+    {
+      "seed": "u50-y25-small-publisher",
+      "era": 25,
+      "origin": "publisher",
+      "difficulty": "casual",
+      "years": 20,
+      "projects": 20,
+      "releaseSectors": [
+        "publishing"
+      ],
+      "companies": 5,
+      "organicBankruptcies": 0,
+      "walletPeak": 0.46692,
+      "maxSaveMB": 4.53,
+      "playerCash": 875816.47,
+      "liveManagement": "active",
+      "evidence": "reports/UPDATE_50_u50-y25-small-publisher.summary.json"
+    }
+  ],
+  "note": "First four completed before original combined timeout; last two completed individually with annual checkpoint resumes. No phantom passes for interrupted partial worlds."
+}

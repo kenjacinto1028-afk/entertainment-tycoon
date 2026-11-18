@@ -1,0 +1,5 @@
+PASS a real R&D funded cash crisis creates unpaid principal and lender refusal of further borrowing {"missed":1,"cash":0,"arrears":1009.61}
+PASS lender restructures remaining debt only once without issuing money or erasing interest {"principal":18333.33,"interest":176.28,"oldRate":0.1,"newRate":0.13}
+PASS rescheduled future monthly principal follows remaining claim, not original draw; audits pass {"weekStart":1261,"weeks":7,"loanStatus":"delinquent","due":763.89,"interest":359.61}
+PASS bankruptcy never cancels lender balance and disallows fresh workouts {"outstanding":18333.33}
+Update47 lenders 4/4

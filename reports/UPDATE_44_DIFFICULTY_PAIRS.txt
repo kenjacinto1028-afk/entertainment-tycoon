@@ -1,0 +1,19 @@
+PASS paired-balance44-1-1 casual open 110700 close 87981.93 launches 10
+PASS paired-balance44-1-1 standard open 82000 close 163123.58 launches 10
+PASS paired-balance44-1-1 challenging open 61500 close 76070.68 launches 10
+PASS paired-balance44-1-2 casual open 110700 close 231909.36 launches 10
+PASS paired-balance44-1-2 standard open 82000 close 132566.44 launches 10
+PASS paired-balance44-1-2 challenging open 61500 close 122577.61 launches 10
+PASS paired-balance44-4-1 casual open 263250 close 784227.96 launches 10
+PASS paired-balance44-4-1 standard open 195000 close 623378.45 launches 10
+PASS paired-balance44-4-1 challenging open 146250 close 651058.09 launches 10
+PASS paired-balance44-4-2 casual open 263250 close 536727.32 launches 10
+PASS paired-balance44-4-2 standard open 195000 close 513690.51 launches 10
+PASS paired-balance44-4-2 challenging open 146250 close 521659.74 launches 10
+PASS paired-balance44-25-1 casual open 216000 close 1020508.89 launches 10
+PASS paired-balance44-25-1 standard open 160000 close 946928.94 launches 10
+PASS paired-balance44-25-1 challenging open 120000 close 861783.39 launches 10
+PASS paired-balance44-25-2 casual open 216000 close 823806.43 launches 10
+PASS paired-balance44-25-2 standard open 160000 close 674634.62 launches 10
+PASS paired-balance44-25-2 challenging open 120000 close 625064.67 launches 10
+UPDATE44 paired difficulty 18 worlds 180 yearly audits

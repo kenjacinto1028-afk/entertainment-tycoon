@@ -1,0 +1,35 @@
+{
+  "EPS": 0.031,
+  "DUTY_KINDS": {
+    "tax": [
+      "automatic-tax",
+      "automatic-sales-tax",
+      "automatic-payroll-levy",
+      "settle-tax"
+    ],
+    "royalty": [
+      "royalty",
+      "settle-royalty"
+    ],
+    "interest": [
+      "loan-interest",
+      "loan-overdue-interest",
+      "bank-early-interest",
+      "bank-interest-payment"
+    ]
+  },
+  "CENTRAL_SERVICES": {
+    "finance": {
+      "weekly": 90,
+      "label": "Treasury and financial review"
+    },
+    "hr": {
+      "weekly": 80,
+      "label": "Recruitment and retention"
+    },
+    "legal": {
+      "weekly": 110,
+      "label": "Rights calendar and contract risk"
+    }
+  }
+}

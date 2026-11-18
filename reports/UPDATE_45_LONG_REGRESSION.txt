@@ -1,0 +1,14 @@
+== update42_integration ==
+PASS chronological-one: era1 weeks=416 companies=13 audit=32 save=4543465B elapsed=2771ms
+PASS chronological-two: era1 weeks=416 companies=13 audit=32 save=4524227B elapsed=5316ms
+PASS mature-living-world: era25 weeks=1664 companies=10 audit=32 save=4053753B elapsed=7047ms
+UPDATE42 integration 3/3 seeds; 7047ms
+== update42_stress ==
+PASS long-publisher-42 20 years; 80 quarter audits, 4 save reloads; companies 16 group assets 0 save MB 10.28 time ms 13002
+PASS long-mature-42 20 years; 80 quarter audits, 4 save reloads; companies 11 group assets 3877130.94 save MB 8.04 time ms 8031
+UPDATE42 longer stress 2/2
+== update44_finance_gate ==
+PASS finance-year1-44 8 years 104 monthly settlements, reconciliation and obligation checks
+PASS finance-games-44 8 years 104 monthly settlements, reconciliation and obligation checks
+PASS finance-group-44 8 years 104 monthly settlements, reconciliation and obligation checks
+UPDATE44 FINANCE GATE PASS periods=312 entityStatements=2474 groupStatements=312 saveReloads=12

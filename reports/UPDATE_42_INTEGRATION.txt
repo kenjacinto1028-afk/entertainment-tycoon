@@ -1,0 +1,4 @@
+PASS chronological-one: era1 weeks=416 companies=13 audit=32 save=4318881B elapsed=2104ms
+PASS chronological-two: era1 weeks=416 companies=13 audit=32 save=4521509B elapsed=4109ms
+PASS mature-living-world: era25 weeks=1664 companies=11 audit=32 save=4167440B elapsed=5832ms
+UPDATE42 integration 3/3 seeds; 5833ms

@@ -1,0 +1,9 @@
+PASS tutorial disabled by default, player can start and dismiss it
+PASS optional tutorial uses real dashboard, project, finance, rights and week actions
+PASS selected goals track true completed releases without cash gifts
+PASS goals can be deselected and not claimed before actual milestones
+PASS adviser reflects real cash and rights without changing the world
+PASS cartoon identity stays stable across generations, save and load
+PASS actual project release and grant generate unique linked story records
+PASS audit rejects fabricated release events
+UPDATE43B 8/8

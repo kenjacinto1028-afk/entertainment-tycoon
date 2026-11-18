@@ -1,0 +1,34 @@
+# KNOWN_BUGS — current handoff evidence
+
+**Status at packaging:** No currently confirmed, reproducible, unfixed gameplay or financial-integrity defect was identified in the **refactored source** by the retained 35 engine suites and the listed simulated browser tests. This is **not** a claim that no bugs exist. Do not fabricate incidents or mark unexecuted tests as passed.
+
+## Open verification risks (not yet demonstrated bugs)
+
+| ID / severity | Observation / impact | Reproduce or verify | Current status / action |
+|---|---|---|---|
+| KB-01 / medium, environment-dependent | Browser native-origin persistence of the **newly generated handoff HTML** has not yet been tested after restarting a real browser. The old accepted Update 52 build passed the user's Windows test. Possible risk: relative asset/config/source change affecting the build. | Open `Studio_Syndicate_Playable_Handoff.html` in a real Chrome/Edge profile; create a campaign, save/advance, close all browser windows, reopen same exact file/origin, confirm autosave and a manual slot survive; test >5 MB, orphaned recovery and JSON export/import. | **Unverified on refactor**; follow the known-good `tests/update52_real_origin_acceptance.py` which now targets the generated handoff HTML by default. Do not assert failure. |
+| KB-02 / medium, environment-dependent | Independent screen-reader check for the **refactored HTML** has not been rerun. The user confirmed NVDA on accepted Update 52; injected Chromium tests pass the refactor. | Use current Windows NVDA + Chrome/Edge on handoff HTML; tab through start form, dialogs, four industry tabs, save slots, Inbox and rights; verify labels, role, live error announcements, focus return and keyboard-only export/import. | **Unverified on refactor**, not a confirmed regression. |
+| KB-03 / medium, platform-dependent | Long-lived games can grow beyond browser storage quotas. Original 100-year raw save was reported around 16–24 MB; gzip storage greatly reduces it but quotas and private mode vary. | Fill browser profile quota or run a 100-year save in private browsing; attempt multiple slots/autosave and reopen; verify warning, preserved old save and JSON backup. | Resilience/limits should be stress-tested per browser. No known data-loss bug from the completed tests. |
+| KB-04 / low / performance | Century-length games and very large seeded worlds can be expensive; earlier 20–100-year command runs sometimes timed out under constrained test environment but resumed from checkpoints. | Generate maximum configured world size, many detailed rivals, run repeated long cycles while monitoring UI latency, JSON size and memory; compare after reload. | Performance characterization pending on the refactor, not a confirmed simulation bug. |
+
+## Historical issues **resolved in earlier accepted releases** (do not reopen as open bugs)
+
+| Historical issue | Earlier reproduction | Fixed behavior / existing evidence |
+|---|---|---|
+| Rights owner distribution after granting exclusive third-party same-medium license | Grant rival an exclusive region/medium and continue selling own title there. | Same-medium/territory sales now disallowed during exclusive term; `update45_rights.test.js`. |
+| Multiple services exceeding a shared TV wallet | Operate 3 funded streaming operators in one region. | Subscription claims share finite consumer budget; `update45_streaming_wallet.test.js`, `update46_streaming_gate.test.js`. |
+| Storefront paying fictitious commission to its owner / third-party game not routed | Open owned store, list owned and licensed third-party games. | No artificial internal fee; real third-party retail settlement; `update48_store_gate.test.js`. |
+| Industry debut firms appearing with unlimited free capital | Reach global film/TV/game debut with AI companies. | New entrants spend finite founder startup capital; `update44a.test.js`. |
+| Insolvent teams working indefinitely without funded payroll | Deplete company cash during active project. | Unfunded production suspends rather than bypassing payroll; `update44a.test.js`. |
+| Scope validation wrongly refusing multiple authorized adaptation regions | Obtain permission for multiple regions and request adaptation. | Uses properly scoped rights; `update44_cross_system.test.js`, `update45_rights.test.js`. |
+| Valid child sublicense could not renew by consent | Have sublicense with eligible parent term, request consensual extension. | Renewal restricted to parent media, territory and end date with real funding; `update45_rights.test.js`. |
+| Disputed client milestone had no resolution | Fund a contract, challenge delivery milestone. | Paid rework, cancellation/refund and neutral arbitration; `update47_disputes_gate.test.js`. |
+| Loan workout did not exist for delinquent borrower | Create delinquent loan, seek consent. | One lender-approved extension with higher rate; no debt writeoff; `update47_lenders_gate.test.js`. |
+| Missing/corrupt IndexedDB autosave pointer could hide valid recovery | Delete local pointer or corrupt primary while preserving valid database recovery. | Preference and recovery handling added; `update52_recovery_browser.py`. |
+| Autosave/recovery replacement could be interrupted mid-update | Fault during database save. | Atomic IndexedDB readwrite transaction and retry semantics; historic Update 51 tests. |
+| Previous real-origin manual-slot acceptance test failed prematurely | Restore from async IndexedDB and immediately compare UI before read completed. | Acceptance runner corrected to wait; user retest reached `NATIVE-ORIGIN AUTOMATION PASS` on original Update 52. |
+| During this handoff, converting objectives' JS predicate functions to JSON dropped them | Start objectives and evaluate completion after initial config extraction. | Kept `OBJECTIVE_TESTS43` in `src/systems/39_capability_unlocks_and_adviser.js` with labels/thresholds in `config/onboarding.json`; full regression and deterministic hashes passed. |
+
+## How to report a newly discovered bug
+
+Use `ID`, build SHA-256, browser/Node version, seed, start year/origin, world age/week, exact steps/inputs, expected vs actual, last save JSON (redact only user-entered sensitive names), console stack trace, `StudioEngine.audit` output, and whether reproduced after fresh save/load. Keep cash, rights, stock, company ownership and legal obligations intact when fixing. Add a focused test reproducing the issue **before** changing engine code.

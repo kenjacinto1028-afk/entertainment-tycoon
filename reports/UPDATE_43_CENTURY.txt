@@ -1,0 +1,23 @@
+CHECK century-publishing-43 Y10 worldY11 companies=12 projects=152 saveMB=3.69 audit=PASS elapsed=1s
+CHECK century-publishing-43 Y20 worldY21 companies=12 projects=362 saveMB=6.37 audit=PASS elapsed=3s
+CHECK century-publishing-43 Y30 worldY31 companies=12 projects=574 saveMB=9.00 audit=PASS elapsed=6s
+CHECK century-publishing-43 Y40 worldY41 companies=12 projects=791 saveMB=11.56 audit=PASS elapsed=9s
+CHECK century-publishing-43 Y50 worldY51 companies=12 projects=1011 saveMB=14.24 audit=PASS elapsed=13s
+CHECK century-publishing-43 Y60 worldY61 companies=12 projects=1233 saveMB=17.05 audit=PASS elapsed=19s
+CHECK century-publishing-43 Y70 worldY71 companies=12 projects=1452 saveMB=19.79 audit=PASS elapsed=26s
+CHECK century-publishing-43 Y80 worldY81 companies=12 projects=1669 saveMB=22.35 audit=PASS elapsed=37s
+CHECK century-publishing-43 Y90 worldY91 companies=12 projects=1888 saveMB=25.17 audit=PASS elapsed=52s
+CHECK century-publishing-43 Y100 worldY101 companies=12 projects=2108 saveMB=27.74 audit=PASS elapsed=69s
+PASS century-publishing-43 100 years 100 yearly audits 10 save/reloads maxSaveMB 27.74 successionAppointments 0 transitionWeeks 2809 elapsedS 69
+CHECK century-mature-43 Y10 worldY35 companies=5 projects=116 saveMB=3.26 audit=PASS elapsed=1s
+CHECK century-mature-43 Y20 worldY45 companies=5 projects=239 saveMB=4.78 audit=PASS elapsed=2s
+CHECK century-mature-43 Y30 worldY55 companies=5 projects=361 saveMB=6.22 audit=PASS elapsed=3s
+CHECK century-mature-43 Y40 worldY65 companies=5 projects=483 saveMB=7.64 audit=PASS elapsed=4s
+CHECK century-mature-43 Y50 worldY75 companies=5 projects=607 saveMB=9.14 audit=PASS elapsed=6s
+CHECK century-mature-43 Y60 worldY85 companies=5 projects=729 saveMB=10.59 audit=PASS elapsed=8s
+CHECK century-mature-43 Y70 worldY95 companies=5 projects=855 saveMB=12.03 audit=PASS elapsed=11s
+CHECK century-mature-43 Y80 worldY105 companies=5 projects=980 saveMB=13.53 audit=PASS elapsed=14s
+CHECK century-mature-43 Y90 worldY115 companies=5 projects=1102 saveMB=14.90 audit=PASS elapsed=17s
+CHECK century-mature-43 Y100 worldY125 companies=5 projects=1229 saveMB=16.36 audit=PASS elapsed=21s
+PASS century-mature-43 100 years 100 yearly audits 10 save/reloads maxSaveMB 16.36 successionAppointments 0 transitionWeeks 2913 elapsedS 21
+UPDATE43 Q16 2/2 centuries passed

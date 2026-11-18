@@ -1,0 +1,7 @@
+PASS Legacy version 32 migrates to v33 without changing cash or IP ownership
+PASS Founder-manager may step down and hire a lawful replacement without asset transfer
+PASS Eligibility rejects unrelated staff and unpaid/new-company asset grabs
+PASS Mid-game movie/TV/game entrants draw finite entrepreneur funds
+PASS Unfunded labor suspends production without erasing payroll debt
+PASS Tampering with finite founder capital is caught by integrity audit
+UPDATE44A 6/6 focused checks passed

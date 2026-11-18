@@ -1,0 +1,5 @@
+PASS Discovery pace separate from adoption, no waves before global sector gates {"fastDiscovery":328,"slowDiscovery":416,"fastAdoption":1,"slowAdoption":0.42}
+PASS Finite regional cohorts across maximum world size and low-wallet world [{"seed":"max-world45","peakConsumerShare":0.756,"companies":13,"background":28},{"seed":"lean-world45","peakConsumerShare":0.744,"companies":13,"background":28}]
+PASS Same seed, same initial world, technologies and regions after serialization {"week":1260,"companies":13}
+PASS Finite distinct team slots, reassignments and interventions preserve audit {"active":3,"workWeeksTotal":14}
+UPDATE45 WORLD+PRODUCTION 4/4 tests

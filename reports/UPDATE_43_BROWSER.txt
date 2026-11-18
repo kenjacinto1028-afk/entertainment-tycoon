@@ -1,0 +1,4 @@
+PASS desktop founder setup, paid profile, controls, guided tutorial, goals, vector portraits, archive
+PASS mature desktop original game, funded publisher agreement, regional license, stable founder identity
+PASS mobile 390px optional onboarding, management, years, navigation, no JS errors
+UPDATE43 browser 3/3

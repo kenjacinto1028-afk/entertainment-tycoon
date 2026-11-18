@@ -1,0 +1,180 @@
+{
+  "kind": "ui",
+  "open": "src/ui_bootstrap/open.js",
+  "parts": [
+    "src/interface/01_ui_state_and_utilities.js",
+    "src/interface/02_dashboard_and_streaming.js",
+    "src/interface/03_games.js",
+    "src/interface/04_publishing.js",
+    "src/interface/05_staff_and_people.js",
+    "src/interface/06_library_and_royalties.js",
+    "src/interface/07_rights_and_research.js",
+    "src/interface/08_portfolio_finance_world_settings.js",
+    "src/interface/09_saves_and_production_forms.js",
+    "src/interface/10_production_form_handlers.js",
+    "src/interface/11_corporate_and_contract_modals.js",
+    "src/interface/12_navigation_render_and_init.js",
+    "src/interface/13_click_action_handlers.js",
+    "src/interface/14_forms_and_career.js",
+    "src/interface/15_world_and_corporate_panels.js",
+    "src/interface/16_setup_and_start_screen.js",
+    "src/interface/17_portraits_and_rights.js",
+    "src/interface/18_funding_and_financial_views.js",
+    "src/interface/19_game_service_handlers.js"
+  ],
+  "close": "src/ui_bootstrap/close.js",
+  "partsDetail": [
+    {
+      "file": "01_ui_state_and_utilities.js",
+      "system": "interface",
+      "statements": 41,
+      "bytes": 10505,
+      "first": "usestrict",
+      "last": "metric"
+    },
+    {
+      "file": "02_dashboard_and_streaming.js",
+      "system": "interface",
+      "statements": 6,
+      "bytes": 18972,
+      "first": "renderDashboard",
+      "last": "streamingBusinessPanel"
+    },
+    {
+      "file": "03_games.js",
+      "system": "games",
+      "statements": 2,
+      "bytes": 14165,
+      "first": "renderProductions",
+      "last": "gameStudioPanel"
+    },
+    {
+      "file": "04_publishing.js",
+      "system": "publishing",
+      "statements": 4,
+      "bytes": 11643,
+      "first": "publishingBusinessPanel",
+      "last": "imprintCreationModal"
+    },
+    {
+      "file": "05_staff_and_people.js",
+      "system": "navigation",
+      "statements": 9,
+      "bytes": 20341,
+      "first": "publishingTalentPanel",
+      "last": "teamDevelopmentModal"
+    },
+    {
+      "file": "06_library_and_royalties.js",
+      "system": "interface",
+      "statements": 9,
+      "bytes": 15743,
+      "first": "renderLibrary",
+      "last": "royaltyStatementPanel"
+    },
+    {
+      "file": "07_rights_and_research.js",
+      "system": "navigation",
+      "statements": 4,
+      "bytes": 22120,
+      "first": "rightsCalendarPanel",
+      "last": "renderInnovationPanel"
+    },
+    {
+      "file": "08_portfolio_finance_world_settings.js",
+      "system": "navigation",
+      "statements": 5,
+      "bytes": 21417,
+      "first": "renderPortfolioIntelligence",
+      "last": "renderSettings"
+    },
+    {
+      "file": "09_saves_and_production_forms.js",
+      "system": "navigation",
+      "statements": 10,
+      "bytes": 13860,
+      "first": "slotInfo",
+      "last": "projectModal"
+    },
+    {
+      "file": "10_production_form_handlers.js",
+      "system": "navigation",
+      "statements": 7,
+      "bytes": 22367,
+      "first": "updatePreview",
+      "last": "printOrderModal"
+    },
+    {
+      "file": "11_corporate_and_contract_modals.js",
+      "system": "navigation",
+      "statements": 7,
+      "bytes": 11085,
+      "first": "subsidiaryModal",
+      "last": "counterOfferModal"
+    },
+    {
+      "file": "12_navigation_render_and_init.js",
+      "system": "interface",
+      "statements": 6,
+      "bytes": 5328,
+      "first": "pendingRightsPanel",
+      "last": "init"
+    },
+    {
+      "file": "13_click_action_handlers.js",
+      "system": "interface",
+      "statements": 1,
+      "bytes": 31980,
+      "first": "event_click",
+      "last": "event_click"
+    },
+    {
+      "file": "14_forms_and_career.js",
+      "system": "interface",
+      "statements": 7,
+      "bytes": 16147,
+      "first": "event_input",
+      "last": "careerPanel"
+    },
+    {
+      "file": "15_world_and_corporate_panels.js",
+      "system": "world",
+      "statements": 8,
+      "bytes": 11592,
+      "first": "corporateFinancePanel",
+      "last": "growthWorld42"
+    },
+    {
+      "file": "16_setup_and_start_screen.js",
+      "system": "interface",
+      "statements": 9,
+      "bytes": 10054,
+      "first": "originalFinance42_originalWorld42",
+      "last": "newGameModal"
+    },
+    {
+      "file": "17_portraits_and_rights.js",
+      "system": "interface",
+      "statements": 9,
+      "bytes": 10966,
+      "first": "portrait43",
+      "last": "rightsPackagePanel43"
+    },
+    {
+      "file": "18_funding_and_financial_views.js",
+      "system": "interface",
+      "statements": 19,
+      "bytes": 10217,
+      "first": "gameFunding43",
+      "last": "renderFinance"
+    },
+    {
+      "file": "19_game_service_handlers.js",
+      "system": "games",
+      "statements": 5,
+      "bytes": 4258,
+      "first": "event_click",
+      "last": "init"
+    }
+  ]
+}

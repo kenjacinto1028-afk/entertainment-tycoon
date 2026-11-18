@@ -1,0 +1,5 @@
+PASS autonomous competitors sign real co-production agreements backed by sponsor cash, not player cash {"rivalDeals":36,"committed":230658}
+PASS rivals make bounded multi-year plans and execute cash-funded capacity or vendor improvements {"rivals":12,"executedActions":14}
+PASS reconstructed public industry intelligence never leaks private cash or exact competitor forecasts {"name":"Copper Lantern Press","privateEstimates":"estimated"}
+PASS yearly autonomous entry comes from finite founders and insolvencies preserve historical rival identities {"debutEntrants":6,"newEntrants":0,"companyCount":12}
+Update47 rivals 4/4

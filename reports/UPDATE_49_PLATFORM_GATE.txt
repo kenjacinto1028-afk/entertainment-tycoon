@@ -1,0 +1,5 @@
+PASS 19 platform emergence: zero installs before debut, regional installed audience and independent adoption rates {"earlyPC":231,"slowMobile":2302,"fastMobile":4103}
+PASS 19 released games can only sell installed-generation units from finite regional wallets, with no console creation {"market":3235,"units":199,"gross":4776}
+PASS 19 ongoing esports hosting is real monthly expense; pause, restore and reload preserve claims {"payments":5,"paid":6250,"history":7}
+PASS 19 service suspends automatically when business cannot fund it; unaffordable events cannot go into debt {"cash":8431.31,"paid":1250,"status":"paused"}
+UPDATE49 PLATFORM 4/4

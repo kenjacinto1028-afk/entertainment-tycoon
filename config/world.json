@@ -1,0 +1,172 @@
+{
+  "SECTORS": {
+    "publishing": {
+      "name": "Publishing",
+      "year": 1,
+      "cost": 11500,
+      "weeks": 12,
+      "icon": "book-open"
+    },
+    "movie": {
+      "name": "Movies",
+      "year": 4,
+      "cost": 52000,
+      "weeks": 25,
+      "icon": "clapperboard"
+    },
+    "tv": {
+      "name": "Television",
+      "year": 7,
+      "cost": 34500,
+      "weeks": 21,
+      "icon": "tv"
+    },
+    "games": {
+      "name": "Video Games",
+      "year": 10,
+      "cost": 44000,
+      "weeks": 29,
+      "icon": "gamepad-2"
+    }
+  },
+  "MONTHS": [
+    "Ember",
+    "Thaw",
+    "Bloom",
+    "Rainfall",
+    "Solstice",
+    "Harvest",
+    "Goldleaf",
+    "Amber",
+    "Frostfall",
+    "Longnight",
+    "Deepwinter",
+    "Dawn"
+  ],
+  "MONTH_WEEKS": [
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    4,
+    4,
+    5,
+    4,
+    4,
+    5
+  ],
+  "WORLD_SCALES": {
+    "1": {
+      "label": "Focused",
+      "perSector": 2
+    },
+    "2": {
+      "label": "Broad",
+      "perSector": 4
+    },
+    "3": {
+      "label": "Large",
+      "perSector": 7
+    }
+  },
+  "BACKGROUND_LEDGER_LIMIT": 5000,
+  "WORLD_MATURITY": {
+    "emerging": 0.72,
+    "standard": 1,
+    "developed": 1.3
+  },
+  "TECH_PACES": {
+    "slow": 1.5,
+    "standard": 1,
+    "fast": 0.65
+  },
+  "ADOPTION_PACES": {
+    "slow": 0.42,
+    "standard": 1,
+    "fast": 1.7
+  },
+  "CAPABILITY_PACES": {
+    "deliberate": 1.22,
+    "standard": 1,
+    "accelerated": 0.82
+  },
+  "POPULATION_SCALES": [
+    0.5,
+    1,
+    1.75
+  ],
+  "DEFAULT_RIVAL_COUNTS": {
+    "1": 3,
+    "4": 5,
+    "7": 7,
+    "10": 9,
+    "25": 9
+  },
+  "LEDGER_RETAIN": 4500,
+  "LEDGER_TRIM_AT": 5000,
+  "INDUSTRY_ENTRANTS": {
+    "4": [
+      "movie",
+      "movie"
+    ],
+    "7": [
+      "tv",
+      "tv"
+    ],
+    "10": [
+      "games",
+      "games"
+    ]
+  },
+  "HISTORICAL_ARCHIVE_TITLES": [
+    "The Clockwork Orchard",
+    "Sable City",
+    "Beyond the Quiet Sea",
+    "Glass Harbor",
+    "The Last Lantern",
+    "Copper Atlas",
+    "Pale Horizon",
+    "Firelight Keep"
+  ],
+  "RIVAL_INITIAL_SECTOR_WEIGHTS": [
+    "publishing",
+    "publishing",
+    "publishing",
+    "movie",
+    "movie",
+    "tv",
+    "tv",
+    "games",
+    "games"
+  ],
+  "PRODUCTION_PHASES": {
+    "publishing": [
+      "manuscript",
+      "editing",
+      "art-and-typesetting",
+      "distribution"
+    ],
+    "movie": [
+      "script",
+      "preproduction",
+      "principal-production",
+      "postproduction",
+      "theatrical-windows"
+    ],
+    "tv": [
+      "writers-room",
+      "season-blocks",
+      "broadcast-slot",
+      "renewal"
+    ],
+    "games": [
+      "prototype",
+      "production",
+      "QA",
+      "certification",
+      "postlaunch-support"
+    ]
+  }
+}

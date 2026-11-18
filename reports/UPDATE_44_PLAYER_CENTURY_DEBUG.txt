@@ -1,0 +1,458 @@
+PASS player-century-publisher44 {"seed":"player-century-publisher44","era":1,"years":100,"launches":100,"appointments":2,"transitionWeeks":2,"lateActiveWeeks":2652,"playerCash":3729979.63,"minCash":109017.18,"playerStatus":"active","ownerId":"company_00001","playablePercent":99.962,"maxSerialized":32516259,"completedReleases":100,"issues":[],"elapsedSeconds":0}
+BEGIN player-century-game44 year 51
+BEFORE player-century-game44 51 1 management active cash 5879670.11 employees 2
+AFTER player-century-game44 51 1 management active
+BEFORE player-century-game44 51 14 management active cash 5878858.37 employees 2
+AFTER player-century-game44 51 14 management active
+BEFORE player-century-game44 51 27 management active cash 5903909.91 employees 2
+AFTER player-century-game44 51 27 management active
+BEFORE player-century-game44 51 40 management active cash 5966470.82 employees 2
+AFTER player-century-game44 51 40 management active
+BEGIN player-century-game44 year 52
+BEFORE player-century-game44 52 1 management active cash 6012700.99 employees 2
+AFTER player-century-game44 52 1 management active
+BEFORE player-century-game44 52 14 management active cash 6016234.12 employees 2
+AFTER player-century-game44 52 14 management active
+BEFORE player-century-game44 52 27 management active cash 6038911.79 employees 2
+AFTER player-century-game44 52 27 management active
+BEFORE player-century-game44 52 40 management active cash 6101388.86 employees 2
+AFTER player-century-game44 52 40 management active
+BEGIN player-century-game44 year 53
+BEFORE player-century-game44 53 1 management active cash 6147567 employees 2
+AFTER player-century-game44 53 1 management active
+BEFORE player-century-game44 53 14 management active cash 6149398.76 employees 2
+AFTER player-century-game44 53 14 management active
+BEFORE player-century-game44 53 27 management active cash 6167150.85 employees 2
+AFTER player-century-game44 53 27 management active
+BEFORE player-century-game44 53 40 management active cash 6224304.18 employees 2
+AFTER player-century-game44 53 40 management active
+BEGIN player-century-game44 year 54
+BEFORE player-century-game44 54 1 management active cash 6264775.67 employees 2
+AFTER player-century-game44 54 1 management active
+BEFORE player-century-game44 54 14 management active cash 6266109.64 employees 2
+AFTER player-century-game44 54 14 management active
+BEFORE player-century-game44 54 27 management active cash 6286264.86 employees 2
+AFTER player-century-game44 54 27 management active
+BEFORE player-century-game44 54 40 management active cash 6360254.26 employees 2
+AFTER player-century-game44 54 40 management active
+BEGIN player-century-game44 year 55
+BEFORE player-century-game44 55 1 management active cash 6410338.93 employees 2
+AFTER player-century-game44 55 1 management active
+BEFORE player-century-game44 55 14 management active cash 6420728.62 employees 2
+AFTER player-century-game44 55 14 management active
+BEFORE player-century-game44 55 27 management active cash 6449425.67 employees 2
+AFTER player-century-game44 55 27 management active
+BEFORE player-century-game44 55 40 management active cash 6527044.64 employees 2
+AFTER player-century-game44 55 40 management active
+BEGIN player-century-game44 year 56
+BEFORE player-century-game44 56 1 management active cash 6576579.98 employees 2
+AFTER player-century-game44 56 1 management active
+BEFORE player-century-game44 56 14 management active cash 6585243.04 employees 2
+AFTER player-century-game44 56 14 management active
+BEFORE player-century-game44 56 27 management active cash 6613360.44 employees 2
+AFTER player-century-game44 56 27 management active
+BEFORE player-century-game44 56 40 management active cash 6696877 employees 2
+AFTER player-century-game44 56 40 management active
+BEGIN player-century-game44 year 57
+BEFORE player-century-game44 57 1 management active cash 6749437.7 employees 2
+AFTER player-century-game44 57 1 management active
+BEFORE player-century-game44 57 14 management active cash 6760673.96 employees 2
+AFTER player-century-game44 57 14 management active
+BEFORE player-century-game44 57 27 management active cash 6786358.42 employees 2
+AFTER player-century-game44 57 27 management active
+BEFORE player-century-game44 57 40 management active cash 6851271.19 employees 2
+AFTER player-century-game44 57 40 management active
+BEGIN player-century-game44 year 58
+BEFORE player-century-game44 58 1 management active cash 6897624.9 employees 2
+AFTER player-century-game44 58 1 management active
+BEFORE player-century-game44 58 14 management active cash 6895392.03 employees 2
+AFTER player-century-game44 58 14 management active
+BEFORE player-century-game44 58 27 management active cash 6913467.19 employees 2
+AFTER player-century-game44 58 27 management active
+BEFORE player-century-game44 58 40 management active cash 6979014.62 employees 2
+AFTER player-century-game44 58 40 management active
+BEGIN player-century-game44 year 59
+BEFORE player-century-game44 59 1 management active cash 7026765.82 employees 2
+AFTER player-century-game44 59 1 management active
+BEFORE player-century-game44 59 14 management active cash 7029953.6 employees 2
+AFTER player-century-game44 59 14 management active
+BEFORE player-century-game44 59 27 management active cash 7059051.13 employees 2
+AFTER player-century-game44 59 27 management active
+BEFORE player-century-game44 59 40 management active cash 7130188.8 employees 2
+AFTER player-century-game44 59 40 management active
+BEGIN player-century-game44 year 60
+BEFORE player-century-game44 60 1 management active cash 7184150.28 employees 2
+AFTER player-century-game44 60 1 management active
+BEFORE player-century-game44 60 14 management active cash 7192375.43 employees 2
+AFTER player-century-game44 60 14 management active
+BEFORE player-century-game44 60 27 management active cash 7222429.42 employees 2
+AFTER player-century-game44 60 27 management active
+BEFORE player-century-game44 60 40 management active cash 7294885.11 employees 2
+AFTER player-century-game44 60 40 management active
+CHECK player-century-game44 year 60 active true appointments 1 cash 7346381.84 releases 60 sizeMB 10.2 elapsedS 2
+BEGIN player-century-game44 year 61
+BEFORE player-century-game44 61 1 management active cash 7346381.84 employees 2
+AFTER player-century-game44 61 1 management active
+BEFORE player-century-game44 61 14 management active cash 7354764.55 employees 2
+AFTER player-century-game44 61 14 management active
+BEFORE player-century-game44 61 27 management active cash 7379947.53 employees 2
+AFTER player-century-game44 61 27 management active
+BEFORE player-century-game44 61 40 management active cash 7446275.15 employees 2
+AFTER player-century-game44 61 40 management active
+BEGIN player-century-game44 year 62
+BEFORE player-century-game44 62 1 management active cash 7490575.01 employees 2
+AFTER player-century-game44 62 1 management active
+BEFORE player-century-game44 62 14 management active cash 7496748.78 employees 2
+AFTER player-century-game44 62 14 management active
+BEFORE player-century-game44 62 27 management active cash 7528784.48 employees 2
+AFTER player-century-game44 62 27 management active
+BEFORE player-century-game44 62 40 management active cash 7614162.83 employees 2
+AFTER player-century-game44 62 40 management active
+BEGIN player-century-game44 year 63
+BEFORE player-century-game44 63 1 management active cash 7676362.39 employees 2
+AFTER player-century-game44 63 1 management active
+BEFORE player-century-game44 63 14 management active cash 7688761.19 employees 2
+AFTER player-century-game44 63 14 management active
+BEFORE player-century-game44 63 27 management active cash 7719201.34 employees 2
+AFTER player-century-game44 63 27 management active
+BEFORE player-century-game44 63 40 management active cash 7795909.28 employees 2
+AFTER player-century-game44 63 40 management active
+BEGIN player-century-game44 year 64
+BEFORE player-century-game44 64 1 management active cash 7848654.37 employees 2
+AFTER player-century-game44 64 1 management active
+BEFORE player-century-game44 64 14 management active cash 7855755.82 employees 2
+AFTER player-century-game44 64 14 management active
+BEFORE player-century-game44 64 27 management active cash 7878670.65 employees 2
+AFTER player-century-game44 64 27 management active
+BEFORE player-century-game44 64 40 management active cash 7949719.58 employees 2
+AFTER player-century-game44 64 40 management active
+BEGIN player-century-game44 year 65
+BEFORE player-century-game44 65 1 management active cash 7994928.01 employees 2
+AFTER player-century-game44 65 1 management active
+BEFORE player-century-game44 65 14 management active cash 7999386.92 employees 2
+AFTER player-century-game44 65 14 management active
+BEFORE player-century-game44 65 27 management active cash 8028520.41 employees 2
+AFTER player-century-game44 65 27 management active
+BEFORE player-century-game44 65 40 management active cash 8103429.17 employees 2
+AFTER player-century-game44 65 40 management active
+BEGIN player-century-game44 year 66
+BEFORE player-century-game44 66 1 management active cash 8159439 employees 2
+AFTER player-century-game44 66 1 management active
+BEFORE player-century-game44 66 14 management active cash 8166090.12 employees 2
+AFTER player-century-game44 66 14 management active
+BEFORE player-century-game44 66 27 management active cash 8196763.26 employees 2
+AFTER player-century-game44 66 27 management active
+BEFORE player-century-game44 66 40 management active cash 8281943.87 employees 2
+AFTER player-century-game44 66 40 management active
+BEGIN player-century-game44 year 67
+BEFORE player-century-game44 67 1 management active cash 8347340.94 employees 2
+AFTER player-century-game44 67 1 management active
+BEFORE player-century-game44 67 14 management active cash 8361119.75 employees 2
+AFTER player-century-game44 67 14 management active
+BEFORE player-century-game44 67 27 management active cash 8392307.92 employees 2
+AFTER player-century-game44 67 27 management active
+BEFORE player-century-game44 67 40 management active cash 8479223.96 employees 2
+AFTER player-century-game44 67 40 management active
+BEGIN player-century-game44 year 68
+BEFORE player-century-game44 68 1 management active cash 8539634.83 employees 2
+AFTER player-century-game44 68 1 management active
+BEFORE player-century-game44 68 14 management active cash 8547591.27 employees 2
+AFTER player-century-game44 68 14 management active
+BEFORE player-century-game44 68 27 management active cash 8581026.71 employees 2
+AFTER player-century-game44 68 27 management active
+BEFORE player-century-game44 68 40 management active cash 8655774.66 employees 2
+AFTER player-century-game44 68 40 management active
+BEGIN player-century-game44 year 69
+BEFORE player-century-game44 69 1 management active cash 8712004.65 employees 2
+AFTER player-century-game44 69 1 management active
+BEFORE player-century-game44 69 14 management active cash 8719650.08 employees 2
+AFTER player-century-game44 69 14 management active
+BEFORE player-century-game44 69 27 management active cash 8748065.63 employees 2
+AFTER player-century-game44 69 27 management active
+BEFORE player-century-game44 69 40 management active cash 8813970.33 employees 2
+AFTER player-century-game44 69 40 management active
+BEGIN player-century-game44 year 70
+BEFORE player-century-game44 70 1 management active cash 8861131.88 employees 2
+AFTER player-century-game44 70 1 management active
+BEFORE player-century-game44 70 14 management active cash 8866834.29 employees 2
+AFTER player-century-game44 70 14 management active
+BEFORE player-century-game44 70 27 management active cash 8889529.26 employees 2
+AFTER player-century-game44 70 27 management active
+BEFORE player-century-game44 70 40 management active cash 8958701.72 employees 2
+AFTER player-century-game44 70 40 management active
+CHECK player-century-game44 year 70 active true appointments 2 cash 9000599.49 releases 70 sizeMB 11.4 elapsedS 5
+BEGIN player-century-game44 year 71
+BEFORE player-century-game44 71 1 management active cash 9000599.49 employees 2
+AFTER player-century-game44 71 1 management active
+BEFORE player-century-game44 71 14 management active cash 9002126.26 employees 2
+AFTER player-century-game44 71 14 management active
+BEFORE player-century-game44 71 27 management active cash 9024590 employees 2
+AFTER player-century-game44 71 27 management active
+BEFORE player-century-game44 71 40 management active cash 9100507.86 employees 2
+AFTER player-century-game44 71 40 management active
+BEGIN player-century-game44 year 72
+BEFORE player-century-game44 72 1 management active cash 9151570.91 employees 2
+AFTER player-century-game44 72 1 management active
+BEFORE player-century-game44 72 14 management active cash 9161049.4 employees 2
+AFTER player-century-game44 72 14 management active
+BEFORE player-century-game44 72 27 management active cash 9188341.09 employees 2
+AFTER player-century-game44 72 27 management active
+BEFORE player-century-game44 72 40 management active cash 9264354.1 employees 2
+AFTER player-century-game44 72 40 management active
+BEGIN player-century-game44 year 73
+BEFORE player-century-game44 73 1 management active cash 9322315.09 employees 2
+AFTER player-century-game44 73 1 management active
+BEFORE player-century-game44 73 14 management active cash 9329156.55 employees 2
+AFTER player-century-game44 73 14 management active
+BEFORE player-century-game44 73 27 management active cash 9358254.21 employees 2
+AFTER player-century-game44 73 27 management active
+BEFORE player-century-game44 73 40 management active cash 9430844.31 employees 2
+AFTER player-century-game44 73 40 management active
+BEGIN player-century-game44 year 74
+BEFORE player-century-game44 74 1 management active cash 9489446.52 employees 2
+AFTER player-century-game44 74 1 management active
+BEFORE player-century-game44 74 14 management active cash 9499188.72 employees 2
+AFTER player-century-game44 74 14 management active
+BEFORE player-century-game44 74 27 management active cash 9529392.27 employees 2
+AFTER player-century-game44 74 27 management active
+BEFORE player-century-game44 74 40 management active cash 9590131.07 employees 2
+AFTER player-century-game44 74 40 management active
+BEGIN player-century-game44 year 75
+BEFORE player-century-game44 75 1 management active cash 9635763.21 employees 2
+AFTER player-century-game44 75 1 management active
+BEFORE player-century-game44 75 14 management active cash 9635774.53 employees 2
+AFTER player-century-game44 75 14 management active
+BEFORE player-century-game44 75 27 management active cash 9660612.92 employees 2
+AFTER player-century-game44 75 27 management active
+BEFORE player-century-game44 75 40 management active cash 9738146.5 employees 2
+AFTER player-century-game44 75 40 management active
+BEGIN player-century-game44 year 76
+BEFORE player-century-game44 76 1 management active cash 9791400.88 employees 2
+AFTER player-century-game44 76 1 management active
+BEFORE player-century-game44 76 14 management active cash 9802937.17 employees 2
+AFTER player-century-game44 76 14 management active
+BEFORE player-century-game44 76 27 management active cash 9834467.79 employees 2
+AFTER player-century-game44 76 27 management active
+BEFORE player-century-game44 76 40 management active cash 9921672.94 employees 2
+AFTER player-century-game44 76 40 management active
+BEGIN player-century-game44 year 77
+BEFORE player-century-game44 77 1 management active cash 9982943.64 employees 2
+AFTER player-century-game44 77 1 management active
+BEFORE player-century-game44 77 14 management active cash 9997912.01 employees 2
+AFTER player-century-game44 77 14 management active
+BEFORE player-century-game44 77 27 management active cash 10021164.38 employees 2
+AFTER player-century-game44 77 27 management active
+BEFORE player-century-game44 77 40 management active cash 10090450.03 employees 2
+AFTER player-century-game44 77 40 management active
+BEGIN player-century-game44 year 78
+BEFORE player-century-game44 78 1 management active cash 10143634.43 employees 2
+AFTER player-century-game44 78 1 management active
+BEFORE player-century-game44 78 14 management active cash 10146275.96 employees 2
+AFTER player-century-game44 78 14 management active
+BEFORE player-century-game44 78 27 management active cash 10174037.38 employees 2
+AFTER player-century-game44 78 27 management active
+BEFORE player-century-game44 78 40 management active cash 10253063.7 employees 2
+AFTER player-century-game44 78 40 management active
+BEGIN player-century-game44 year 79
+BEFORE player-century-game44 79 1 management active cash 10314189.42 employees 2
+AFTER player-century-game44 79 1 management active
+BEFORE player-century-game44 79 14 management active cash 10326045.94 employees 2
+AFTER player-century-game44 79 14 management active
+BEFORE player-century-game44 79 27 management active cash 10350743.14 employees 2
+AFTER player-century-game44 79 27 management active
+BEFORE player-century-game44 79 40 management active cash 10416930.4 employees 2
+AFTER player-century-game44 79 40 management active
+BEGIN player-century-game44 year 80
+BEFORE player-century-game44 80 1 management active cash 10456416.8 employees 2
+AFTER player-century-game44 80 1 management active
+BEFORE player-century-game44 80 14 management active cash 10454175.6 employees 2
+AFTER player-century-game44 80 14 management active
+BEFORE player-century-game44 80 27 management active cash 10476567.88 employees 2
+AFTER player-century-game44 80 27 management active
+BEFORE player-century-game44 80 40 management active cash 10560776.11 employees 2
+AFTER player-century-game44 80 40 management active
+CHECK player-century-game44 year 80 active true appointments 2 cash 10620515.92 releases 80 sizeMB 12.9 elapsedS 7
+BEGIN player-century-game44 year 81
+BEFORE player-century-game44 81 1 management active cash 10620515.92 employees 2
+AFTER player-century-game44 81 1 management active
+BEFORE player-century-game44 81 14 management active cash 10634518.47 employees 2
+AFTER player-century-game44 81 14 management active
+BEFORE player-century-game44 81 27 management active cash 10665753.53 employees 2
+AFTER player-century-game44 81 27 management active
+BEFORE player-century-game44 81 40 management active cash 10751316.61 employees 2
+AFTER player-century-game44 81 40 management active
+BEGIN player-century-game44 year 82
+BEFORE player-century-game44 82 1 management active cash 10818924.27 employees 2
+AFTER player-century-game44 82 1 management active
+BEFORE player-century-game44 82 14 management active cash 10830823.1 employees 2
+AFTER player-century-game44 82 14 management active
+BEFORE player-century-game44 82 27 management active cash 10853309.81 employees 2
+AFTER player-century-game44 82 27 management active
+BEFORE player-century-game44 82 40 management active cash 10911762.66 employees 2
+AFTER player-century-game44 82 40 management active
+BEGIN player-century-game44 year 83
+BEFORE player-century-game44 83 1 management active cash 10948733.42 employees 2
+AFTER player-century-game44 83 1 management active
+BEFORE player-century-game44 83 14 management active cash 10942808.16 employees 2
+AFTER player-century-game44 83 14 management active
+BEFORE player-century-game44 83 27 management active cash 10958777.28 employees 2
+AFTER player-century-game44 83 27 management active
+BEFORE player-century-game44 83 40 management active cash 11024289.23 employees 2
+AFTER player-century-game44 83 40 management active
+BEGIN player-century-game44 year 84
+BEFORE player-century-game44 84 1 management active cash 11070133.56 employees 2
+AFTER player-century-game44 84 1 management active
+BEFORE player-century-game44 84 14 management active cash 11078345.56 employees 2
+AFTER player-century-game44 84 14 management active
+BEFORE player-century-game44 84 27 management active cash 11104338.94 employees 2
+AFTER player-century-game44 84 27 management active
+BEFORE player-century-game44 84 40 management active cash 11181821.62 employees 2
+AFTER player-century-game44 84 40 management active
+BEGIN player-century-game44 year 85
+BEFORE player-century-game44 85 1 management active cash 11240326.9 employees 2
+AFTER player-century-game44 85 1 management active
+BEFORE player-century-game44 85 14 management active cash 11246782.8 employees 2
+AFTER player-century-game44 85 14 management active
+BEFORE player-century-game44 85 27 management active cash 11275625.8 employees 2
+AFTER player-century-game44 85 27 management active
+BEFORE player-century-game44 85 40 management active cash 11356261.21 employees 2
+AFTER player-century-game44 85 40 management active
+BEGIN player-century-game44 year 86
+BEFORE player-century-game44 86 1 management active cash 11407457.25 employees 2
+AFTER player-century-game44 86 1 management active
+BEFORE player-century-game44 86 14 management active cash 11417657.9 employees 2
+AFTER player-century-game44 86 14 management active
+BEFORE player-century-game44 86 27 management active cash 11440928.89 employees 2
+AFTER player-century-game44 86 27 management active
+BEFORE player-century-game44 86 40 management active cash 11513423.5 employees 2
+AFTER player-century-game44 86 40 management active
+BEGIN player-century-game44 year 87
+BEFORE player-century-game44 87 1 management active cash 11568821.23 employees 2
+AFTER player-century-game44 87 1 management active
+BEFORE player-century-game44 87 14 management active cash 11576105.92 employees 2
+AFTER player-century-game44 87 14 management active
+BEFORE player-century-game44 87 27 management active cash 11606129.1 employees 2
+AFTER player-century-game44 87 27 management active
+BEFORE player-century-game44 87 40 management active cash 11680581.19 employees 2
+AFTER player-century-game44 87 40 management active
+BEGIN player-century-game44 year 88
+BEFORE player-century-game44 88 1 management active cash 11733925.27 employees 2
+AFTER player-century-game44 88 1 management active
+BEFORE player-century-game44 88 14 management active cash 11740580.35 employees 2
+AFTER player-century-game44 88 14 management active
+BEFORE player-century-game44 88 27 management active cash 11765897.15 employees 2
+AFTER player-century-game44 88 27 management active
+BEFORE player-century-game44 88 40 management active cash 11841308.85 employees 2
+AFTER player-century-game44 88 40 management active
+BEGIN player-century-game44 year 89
+BEFORE player-century-game44 89 1 management active cash 11892655.54 employees 2
+AFTER player-century-game44 89 1 management active
+BEFORE player-century-game44 89 14 management active cash 11901125.86 employees 2
+AFTER player-century-game44 89 14 management active
+BEFORE player-century-game44 89 27 management active cash 11930718.85 employees 2
+AFTER player-century-game44 89 27 management active
+BEFORE player-century-game44 89 40 management active cash 12012748.63 employees 2
+AFTER player-century-game44 89 40 management active
+BEGIN player-century-game44 year 90
+BEFORE player-century-game44 90 1 management active cash 12073477.97 employees 2
+AFTER player-century-game44 90 1 management active
+BEFORE player-century-game44 90 14 management active cash 12086056.76 employees 2
+AFTER player-century-game44 90 14 management active
+BEFORE player-century-game44 90 27 management active cash 12118322.5 employees 2
+AFTER player-century-game44 90 27 management active
+BEFORE player-century-game44 90 40 management active cash 12200839.14 employees 2
+AFTER player-century-game44 90 40 management active
+CHECK player-century-game44 year 90 active true appointments 3 cash 12263094.39 releases 90 sizeMB 14.2 elapsedS 11
+BEGIN player-century-game44 year 91
+BEFORE player-century-game44 91 1 management active cash 12263094.39 employees 2
+AFTER player-century-game44 91 1 management active
+BEFORE player-century-game44 91 14 management active cash 12277662.29 employees 2
+AFTER player-century-game44 91 14 management active
+BEFORE player-century-game44 91 27 management active cash 12308662.1 employees 2
+AFTER player-century-game44 91 27 management active
+BEFORE player-century-game44 91 40 management active cash 12380804.68 employees 2
+AFTER player-century-game44 91 40 management active
+BEGIN player-century-game44 year 92
+BEFORE player-century-game44 92 1 management active cash 12427357.68 employees 2
+AFTER player-century-game44 92 1 management active
+BEFORE player-century-game44 92 14 management active cash 12432478.91 employees 2
+AFTER player-century-game44 92 14 management active
+BEFORE player-century-game44 92 27 management active cash 12461093.76 employees 2
+AFTER player-century-game44 92 27 management active
+BEFORE player-century-game44 92 40 management active cash 12542435.85 employees 2
+AFTER player-century-game44 92 40 management active
+BEGIN player-century-game44 year 93
+BEFORE player-century-game44 93 1 management active cash 12594919.68 employees 2
+AFTER player-century-game44 93 1 management active
+BEFORE player-century-game44 93 14 management active cash 12602883.37 employees 2
+AFTER player-century-game44 93 14 management active
+BEFORE player-century-game44 93 27 management active cash 12624675.99 employees 2
+AFTER player-century-game44 93 27 management active
+BEFORE player-century-game44 93 40 management active cash 12684852.72 employees 2
+AFTER player-century-game44 93 40 management active
+BEGIN player-century-game44 year 94
+BEFORE player-century-game44 94 1 management active cash 12726316.76 employees 2
+AFTER player-century-game44 94 1 management active
+BEFORE player-century-game44 94 14 management active cash 12729120.6 employees 2
+AFTER player-century-game44 94 14 management active
+BEFORE player-century-game44 94 27 management active cash 12748942.44 employees 2
+AFTER player-century-game44 94 27 management active
+BEFORE player-century-game44 94 40 management active cash 12806968.87 employees 2
+AFTER player-century-game44 94 40 management active
+BEGIN player-century-game44 year 95
+BEFORE player-century-game44 95 1 management active cash 12854031 employees 2
+AFTER player-century-game44 95 1 management active
+BEFORE player-century-game44 95 14 management active cash 12852757.57 employees 2
+AFTER player-century-game44 95 14 management active
+BEFORE player-century-game44 95 27 management active cash 12879276.81 employees 2
+AFTER player-century-game44 95 27 management active
+BEFORE player-century-game44 95 40 management active cash 12949666.35 employees 2
+AFTER player-century-game44 95 40 management active
+BEGIN player-century-game44 year 96
+BEFORE player-century-game44 96 1 management active cash 12999392.16 employees 2
+AFTER player-century-game44 96 1 management active
+BEFORE player-century-game44 96 14 management active cash 13002597.64 employees 2
+AFTER player-century-game44 96 14 management active
+BEFORE player-century-game44 96 27 management active cash 13028117.25 employees 2
+AFTER player-century-game44 96 27 management active
+BEFORE player-century-game44 96 40 management active cash 13098350.29 employees 2
+AFTER player-century-game44 96 40 management active
+BEGIN player-century-game44 year 97
+BEFORE player-century-game44 97 1 management active cash 13150521.7 employees 2
+AFTER player-century-game44 97 1 management active
+BEFORE player-century-game44 97 14 management active cash 13158648.37 employees 2
+AFTER player-century-game44 97 14 management active
+BEFORE player-century-game44 97 27 management active cash 13181759.66 employees 2
+AFTER player-century-game44 97 27 management active
+BEFORE player-century-game44 97 40 management active cash 13245492.73 employees 2
+AFTER player-century-game44 97 40 management active
+BEGIN player-century-game44 year 98
+BEFORE player-century-game44 98 1 management active cash 13289312.61 employees 2
+AFTER player-century-game44 98 1 management active
+BEFORE player-century-game44 98 14 management active cash 13290250.97 employees 2
+AFTER player-century-game44 98 14 management active
+BEFORE player-century-game44 98 27 management active cash 13309432.12 employees 2
+AFTER player-century-game44 98 27 management active
+BEFORE player-century-game44 98 40 management active cash 13380389.12 employees 2
+AFTER player-century-game44 98 40 management active
+BEGIN player-century-game44 year 99
+BEFORE player-century-game44 99 1 management active cash 13435013.07 employees 2
+AFTER player-century-game44 99 1 management active
+BEFORE player-century-game44 99 14 management active cash 13437639.19 employees 2
+AFTER player-century-game44 99 14 management active
+BEFORE player-century-game44 99 27 management active cash 13459848.59 employees 2
+AFTER player-century-game44 99 27 management active
+BEFORE player-century-game44 99 40 management active cash 13523203.56 employees 2
+AFTER player-century-game44 99 40 management active
+BEGIN player-century-game44 year 100
+BEFORE player-century-game44 100 1 management active cash 13569509.96 employees 2
+AFTER player-century-game44 100 1 management active
+BEFORE player-century-game44 100 14 management active cash 13573059.6 employees 2
+AFTER player-century-game44 100 14 management active
+BEFORE player-century-game44 100 27 management active cash 13592794.14 employees 2
+AFTER player-century-game44 100 27 management active
+BEFORE player-century-game44 100 40 management active cash 13650675.09 employees 2
+AFTER player-century-game44 100 40 management active
+CHECK player-century-game44 year 100 active true appointments 3 cash 13687578.25 releases 100 sizeMB 15.5 elapsedS 15
+PASS player-century-game44 {"seed":"player-century-game44","era":25,"years":100,"launches":100,"appointments":3,"transitionWeeks":3,"lateActiveWeeks":2652,"playerCash":13687578.25,"minCash":237061.38,"playerStatus":"active","ownerId":"company_00001","playablePercent":99.942,"maxSerialized":15546131,"completedReleases":100,"issues":[],"elapsedSeconds":15}
+UPDATE44 managed century 2 worlds, 200 yearly audits, 20 save/reloads

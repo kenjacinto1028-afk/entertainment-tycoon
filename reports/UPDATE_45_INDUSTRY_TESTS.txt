@@ -1,0 +1,7 @@
+PASS Publishing: paid promotion, physical inventory, unit sales, translation, writeoffs {"printed":2445,"sold":1927,"returned":33,"writtenOff":5}
+PASS Movies: funded premiere and distribution, actual ticket sales vs content ratings {"gross":176449.91,"rating":"T","critic":64,"audience":66}
+PASS Television: season ordering, optional edits, broadcaster schedule and renewal {"gross":191400.72,"episodes":6,"ip":"ip_00070"}
+PASS Games: prototype, QA, certification, separate critic/player scores, paid patch {"bugs":0,"certification":true,"critic":69,"user":64}
+PASS Investment forecasts do not mutate world and postmortems compare actual vs prediction {"actual":143540,"expected":190492.17,"assessment":"Behind the estimate"}
+PASS Rival private intelligence is estimated, public facts known, archive records actual releases {"archiveRows":5}
+UPDATE45 INDUSTRY 6/6

@@ -1,0 +1,81 @@
+{
+  "MANUSCRIPT_NAMES": [
+    "The River Behind Glass",
+    "Moonlit Fire Letters",
+    "Twelve Forgotten Maps",
+    "The Last Blue Orchard",
+    "The Quiet Observatory",
+    "The House of Comets"
+  ],
+  "PUBLISHING_TREATMENTS": {
+    "research": {
+      "format": "Nonfiction",
+      "cost": 1150,
+      "creative": 4,
+      "technical": 1,
+      "weeks": 1
+    },
+    "illustration": {
+      "format": "Comic / Manga",
+      "cost": 1450,
+      "creative": 2,
+      "technical": 5,
+      "weeks": 2
+    },
+    "narration": {
+      "format": "Audiobook",
+      "cost": 1650,
+      "creative": 2,
+      "technical": 5,
+      "weeks": 2
+    },
+    "conversion": {
+      "format": "Ebook",
+      "cost": 750,
+      "creative": 0,
+      "technical": 4,
+      "weeks": 0
+    }
+  },
+  "PUBLISHING_PRICES": {
+    "Novel": 20,
+    "Nonfiction": 24,
+    "Comic / Manga": 13,
+    "Web Serial": 4,
+    "Ebook": 9,
+    "Audiobook": 16
+  },
+  "PUBLISHING_CHANNELS": [
+    "mixed",
+    "direct",
+    "wholesale",
+    "digital",
+    "owned"
+  ],
+  "EDITORIAL_ACTIONS": {
+    "development": {
+      "label": "Development edit",
+      "fraction": 0.065,
+      "minimum": 650,
+      "creative": 5,
+      "technical": 0,
+      "weeks": 2
+    },
+    "copyedit": {
+      "label": "Copyedit and proofreading",
+      "fraction": 0.04,
+      "minimum": 440,
+      "creative": 0,
+      "technical": 5,
+      "weeks": 1
+    },
+    "cover": {
+      "label": "Cover and presentation design",
+      "fraction": 0.035,
+      "minimum": 480,
+      "creative": 1,
+      "technical": 4,
+      "weeks": 1
+    }
+  }
+}

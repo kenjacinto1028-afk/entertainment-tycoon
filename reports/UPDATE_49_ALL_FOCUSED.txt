@@ -1,0 +1,73 @@
+=== update47_careers_gate ===
+PASS named leader recruitment and dismissal preserves stable identity and real cash payments {"retiredId":"employee_00003","newLead":"employee_00069"}
+PASS mentorship and consensual renewal change future team performance and paid salary {"mentorSkill":58,"leadCompleted":1,"weeklySalary":128}
+PASS culture impacts annual morale and exits while keeping payroll and team identity coherent {"supportiveMorale":74,"leanMorale":62}
+PASS aging, director appointment and retirement do not conjure shares or studio-owned IP {"founderAge":70,"studioOwner":"company_00001"}
+Update47 careers 4/4
+=== update47_disputes_gate ===
+PASS client disputes pause active work and protected cash through save/load {"held":9009,"pausedWeeks":6}
+PASS funded remedy costs real cash, extends project and releases full reserved escrow only on delivery {"cost":350,"fee":12870}
+PASS arbitration splits previously funded reserve, preserves earned milestones and client prepayment accounting {"protected":40600.56,"refunded":20532.28,"award":20068.28}
+PASS disputed canceled job refunds unearned funds without duplicating outcome {"refund":34354.32}
+Update47 disputes 4/4
+=== update47_editorial_gate ===
+PASS negotiated exclusive manuscript license respects real owner cash and optional creator veto {"owner":"company_00009","payment":2120,"veto":"rejected"}
+PASS editorial choice changes creative and technical quality independently at actual cost and time {"creativeBefore":86,"creativeAfter":91,"technicalBefore":86,"technicalAfter":91}
+PASS delegated web serial can choose cadence and one substantive arc without chapter micromanagement {"weeks":11,"finishedWeeks":13,"arcs":1}
+PASS creator-approved manuscript forbids unauthorized creative redirection after a legally scoped adaptation starts {"legalOwner":"company_00009","licenseHolder":"company_00001"}
+Update47 editorial 4/4
+=== update47_lenders_gate ===
+PASS a real R&D funded cash crisis creates unpaid principal and lender refusal of further borrowing {"missed":1,"cash":0,"arrears":1009.61}
+PASS lender restructures remaining debt only once without issuing money or erasing interest {"principal":18333.33,"interest":176.28,"oldRate":0.1,"newRate":0.13}
+PASS rescheduled future monthly principal follows remaining claim, not original draw; audits pass {"weekStart":1261,"weeks":7,"loanStatus":"delinquent","due":763.89,"interest":359.61}
+PASS bankruptcy never cancels lender balance and disallows fresh workouts {"outstanding":18333.33}
+Update47 lenders 4/4
+=== update47_rivals_gate ===
+PASS autonomous competitors sign real co-production agreements backed by sponsor cash, not player cash {"rivalDeals":40,"committed":200066}
+PASS rivals make bounded multi-year plans and execute cash-funded capacity or vendor improvements {"rivals":12,"executedActions":12}
+PASS reconstructed public industry intelligence never leaks private cash or exact competitor forecasts {"name":"Copper Lantern Press","privateEstimates":"estimated"}
+PASS yearly autonomous entry comes from finite founders and insolvencies preserve historical rival identities {"debutEntrants":6,"newEntrants":0,"companyCount":12}
+Update47 rivals 4/4
+=== update47_succession_gate ===
+PASS elected lawful employee receives management authority but no founder shares or source-IP {"employee":"employee_00003","shares":1000}
+PASS shareholder loss of control permits only personally funded new studio; legacy company retains assets and debts {"oldCompany":"company_00001","newCompany":"company_00076","founderPersonalCash":107090}
+PASS new entity cannot be conjured before loss of lawful executive role or from zero founder funds {"control":"transition"}
+PASS ending a run preserves historical campaign and disallows future financial transactions {"endStatus":"ended","started":"active"}
+Update47 succession 4/4
+=== update48_archive_gate ===
+PASS 27: award/press/financial and audience records come from actual releases and known-v-estimated data {"awards":1,"news":2,"rankRows":8}
+PASS 27: history snapshots remain legal-entity scoped over 12 years; saved player title remains searchable {"snapshots":12,"news":1,"activeNews":210,"archivedNews":25}
+UPDATE48 ARCHIVE 2/2
+=== update48_film_gate ===
+PASS 14 film: funded talent, exclusive casting across film and TV, finite owned backlot {"castFee":3080,"facility":18500,"firstRelease":1271}
+PASS 14 film: script, paid location/facility decisions, screening feedback and reshoot {"screening":998.4,"scriptDrafts":1,"reshoots":1}
+PASS 15 cinema: region premieres, window transitions, age categories, real festival honors and backend {"gross":143688.97,"backend":4310.68,"festival":"North Coast Screen Awards","rating":"M"}
+UPDATE48 FILM 3/3
+=== update48_franchise_gate ===
+PASS 23: four-medium franchise has single source ownership, main and alternate canon, crossmedia linked works {"ip":"ip_00065","works":4,"events":9,"net":257315.76}
+PASS 23: independent adaptation retains external producer revenue and owner has only earned license {"externalGross":35233.01,"ownerLicensingIncome":7227.96}
+UPDATE48 FRANCHISE 2/2
+=== update48_games_gate ===
+PASS 18 games: design, funded proprietary vs licensed tool decisions, ongoing engine maintenance {"engineInvestment":19000,"maintenance":240,"proprietaryFee":200.2,"licensedFee":743.6}
+PASS 18 games: failed regional cert never authorizes launch; paid QA enables later certification {"failedInitially":false,"certified":["North Coast"],"gross":12360}
+PASS 19 games: platform debut gates, paid community/esports/patch/DLC and evolving monetization {"platform":"pc","bugs":16,"esports":2}
+PASS 19 games: independent store exclusive has funded term and no longer blocks after expiry {"grant":20000,"week":1302,"expires":1301}
+UPDATE48 GAMES 4/4
+=== update48_store_gate ===
+PASS 21: first-party own game earns actual customer receipts without external store commission {"weekReceipts":2784}
+PASS 21: independent paid game catalog listing routes external store commission and respects fixed license {"licenseFee":10000,"storeReceipts":8,"windowEnd":1327}
+PASS 21: game subscriptions reserve one consumer wallet and expire with catalog windows {"subscriptionGross":120438.85,"windowExpired":true}
+UPDATE48 STORE 3/3
+=== update48_tv_gate ===
+PASS 16 TV: production teams, writer room, episode decisions and talent exclusivity {"season2":"project_01289","castFee":3785.1}
+PASS 17 TV: multiple network shows share finite advertising wallet and legal syndication window {"totalAdGross":155230.01,"syndication":23513.39}
+PASS 17 TV: age classification remains separate from critic, audience and awards {"classification":"M","award":"Aurora Television Awards"}
+PASS 17 TV: syndication rights expire by territory and stop unauthorized receipts {"grossAtExpiry":72308.02,"expiry":1318}
+UPDATE48 TV 4/4
+=== update49_platform_gate ===
+PASS 19 platform emergence: zero installs before debut, regional installed audience and independent adoption rates {"earlyPC":231,"slowMobile":2302,"fastMobile":4103}
+PASS 19 released games can only sell installed-generation units from finite regional wallets, with no console creation {"market":3235,"units":199,"gross":4776}
+PASS 19 ongoing esports hosting is real monthly expense; pause, restore and reload preserve claims {"payments":5,"paid":6250,"history":7}
+PASS 19 service suspends automatically when business cannot fund it; unaffordable events cannot go into debt {"cash":8244.47,"paid":1250,"status":"paused"}
+UPDATE49 PLATFORM 4/4
+ALL CURRENT FOCUSED SUITES PASS

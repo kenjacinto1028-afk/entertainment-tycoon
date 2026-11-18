@@ -1,0 +1,4 @@
+Update48 Chromium storage-origin probe (2026-11-17)
+Attempted playwright browser route interception on https://studio-syndicate.test/ (in-memory page.fulfill, no external network) to obtain a real secure origin and localStorage continuity across reloads.
+Result: Page.goto failed with `net::ERR_BLOCKED_BY_ADMINISTRATOR` BEFORE route interception. Local HTTP and file:// likewise blocked by environment per retained Update44-47 browser evidence.
+This is NOT a passing native-origin localStorage test. Existing Chromium 4/4 UI workflows on Update48 HTML use an explicit localStorage shim; the real browser-origin save-persistence acceptance gate 06 remains OPEN.

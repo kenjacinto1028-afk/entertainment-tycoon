@@ -1,0 +1,20 @@
+{
+  "seed": "u50-y25-mature-broad",
+  "era": 25,
+  "origin": "games",
+  "difficulty": "challenging",
+  "years": 16,
+  "projects": 16,
+  "releaseSectors": [
+    "games",
+    "movie",
+    "publishing",
+    "tv"
+  ],
+  "companies": 13,
+  "organicBankruptcies": 0,
+  "walletPeak": 0.78971,
+  "maxSaveMB": 8.7,
+  "playerCash": 1300406.97,
+  "liveManagement": "active"
+}

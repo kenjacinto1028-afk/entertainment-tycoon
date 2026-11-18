@@ -1,0 +1,4 @@
+PASS u50-y1-labor-recession 14 years wallet peak 0.84741 releases games/movie/publishing/tv bankrupt 3 save 6.75 MB
+PASS u50-y4-small-film 18 years wallet peak 0.64999 releases games/movie/publishing/tv bankrupt 1 save 5.12 MB
+PASS u50-y7-television 16 years wallet peak 0.70297 releases games/movie/publishing/tv bankrupt 1 save 6.21 MB
+PASS u50-y10-game-growth 18 years wallet peak 0.69836 releases games/movie/publishing/tv bankrupt 0 save 5.63 MB

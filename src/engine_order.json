@@ -1,0 +1,405 @@
+{
+  "kind": "engine",
+  "open": "src/engine_bootstrap/open.js",
+  "parts": [
+    "src/systems/01_world_calendar_and_setup.js",
+    "src/systems/02_staff_and_careers.js",
+    "src/systems/03_companies_and_teams.js",
+    "src/systems/04_news_and_relationships.js",
+    "src/systems/05_client_contracts_and_coproduction.js",
+    "src/systems/06_project_finance_and_cancellation.js",
+    "src/systems/07_world_initialization_and_forecasting.js",
+    "src/systems/08_publishing.js",
+    "src/systems/09_publishing.js",
+    "src/systems/10_publishing.js",
+    "src/systems/11_project_creation_and_royalties.js",
+    "src/systems/12_production.js",
+    "src/systems/13_staff_capability_and_loans.js",
+    "src/systems/14_governance.js",
+    "src/systems/15_rights_deals_and_royalties.js",
+    "src/systems/16_market.js",
+    "src/systems/17_finance.js",
+    "src/systems/18_reporting_and_world_time.js",
+    "src/systems/19_archive_and_talent_rights.js",
+    "src/systems/20_talent_rights_and_franchise.js",
+    "src/systems/21_obligations_and_project_budgets.js",
+    "src/systems/22_financial_reporting.js",
+    "src/systems/23_audits.js",
+    "src/systems/24_audits.js",
+    "src/systems/25_saves.js",
+    "src/systems/26_film.js",
+    "src/systems/27_television.js",
+    "src/systems/28_rights.js",
+    "src/systems/29_television.js",
+    "src/systems/30_games.js",
+    "src/systems/31_games.js",
+    "src/systems/32_governance.js",
+    "src/systems/33_corporate_risk_and_equity.js",
+    "src/systems/34_corporate_ipo_and_succession.js",
+    "src/systems/35_governance_audits_and_rivals.js",
+    "src/systems/36_ai_rivals_and_divisions.js",
+    "src/systems/37_governance.js",
+    "src/systems/38_corporate_services_and_era.js",
+    "src/systems/39_capability_unlocks_and_adviser.js",
+    "src/systems/40_portraits_and_rights_packages.js",
+    "src/systems/41_games.js",
+    "src/systems/42_weekly_hooks_and_disputes.js",
+    "src/systems/43_games.js",
+    "src/systems/44_platform_audit_and_exports.js"
+  ],
+  "close": "src/engine_bootstrap/close.js",
+  "partsDetail": [
+    {
+      "file": "01_world_calendar_and_setup.js",
+      "system": "unlocks",
+      "statements": 54,
+      "bytes": 13030,
+      "first": "usestrict",
+      "last": "adoptTechnology"
+    },
+    {
+      "file": "02_staff_and_careers.js",
+      "system": "staff",
+      "statements": 27,
+      "bytes": 12240,
+      "first": "adoptTechnologyForRival",
+      "last": "renewEmployee"
+    },
+    {
+      "file": "03_companies_and_teams.js",
+      "system": "core",
+      "statements": 16,
+      "bytes": 11944,
+      "first": "departLeader",
+      "last": "createCompany"
+    },
+    {
+      "file": "04_news_and_relationships.js",
+      "system": "core",
+      "statements": 14,
+      "bytes": 10147,
+      "first": "news",
+      "last": "counterpartyTrust"
+    },
+    {
+      "file": "05_client_contracts_and_coproduction.js",
+      "system": "production",
+      "statements": 6,
+      "bytes": 11026,
+      "first": "configureCommissionAuthority",
+      "last": "startCoProduction"
+    },
+    {
+      "file": "06_project_finance_and_cancellation.js",
+      "system": "core",
+      "statements": 8,
+      "bytes": 11509,
+      "first": "refundPartnerReserve",
+      "last": "cancelProject"
+    },
+    {
+      "file": "07_world_initialization_and_forecasting.js",
+      "system": "games",
+      "statements": 6,
+      "bytes": 15616,
+      "first": "createGame",
+      "last": "forecastProject"
+    },
+    {
+      "file": "08_publishing.js",
+      "system": "publishing",
+      "statements": 15,
+      "bytes": 13956,
+      "first": "MANUSCRIPT_NAMES",
+      "last": "openPublishingPreorders"
+    },
+    {
+      "file": "09_publishing.js",
+      "system": "publishing",
+      "statements": 15,
+      "bytes": 13145,
+      "first": "publishingFormatAvailable",
+      "last": "projectEvidence"
+    },
+    {
+      "file": "10_publishing.js",
+      "system": "publishing",
+      "statements": 6,
+      "bytes": 10165,
+      "first": "projectHistory",
+      "last": "editorialDecision"
+    },
+    {
+      "file": "11_project_creation_and_royalties.js",
+      "system": "production",
+      "statements": 9,
+      "bytes": 19735,
+      "first": "recordCreatorCredit",
+      "last": "createProject"
+    },
+    {
+      "file": "12_production.js",
+      "system": "production",
+      "statements": 12,
+      "bytes": 18104,
+      "first": "isPrintEdition",
+      "last": "projectWork"
+    },
+    {
+      "file": "13_staff_capability_and_loans.js",
+      "system": "banks",
+      "statements": 7,
+      "bytes": 14573,
+      "first": "capabilityCost",
+      "last": "repayLoan"
+    },
+    {
+      "file": "14_governance.js",
+      "system": "governance",
+      "statements": 9,
+      "bytes": 10519,
+      "first": "foundSubsidiary",
+      "last": "optionWillingness"
+    },
+    {
+      "file": "15_rights_deals_and_royalties.js",
+      "system": "core",
+      "statements": 13,
+      "bytes": 11816,
+      "first": "offerRights",
+      "last": "settleRoyalty"
+    },
+    {
+      "file": "16_market.js",
+      "system": "market",
+      "statements": 4,
+      "bytes": 17040,
+      "first": "royaltyStatements",
+      "last": "weekSales"
+    },
+    {
+      "file": "17_finance.js",
+      "system": "finance",
+      "statements": 8,
+      "bytes": 16922,
+      "first": "reviewReleases",
+      "last": "closePeriod"
+    },
+    {
+      "file": "18_reporting_and_world_time.js",
+      "system": "world",
+      "statements": 6,
+      "bytes": 13024,
+      "first": "shortMoney",
+      "last": "portfolioRecords"
+    },
+    {
+      "file": "19_archive_and_talent_rights.js",
+      "system": "rights",
+      "statements": 12,
+      "bytes": 10111,
+      "first": "searchNewsArchive",
+      "last": "configureTalentAuthority"
+    },
+    {
+      "file": "20_talent_rights_and_franchise.js",
+      "system": "rights",
+      "statements": 21,
+      "bytes": 17959,
+      "first": "delegateSpecialists",
+      "last": "franchiseFinancial"
+    },
+    {
+      "file": "21_obligations_and_project_budgets.js",
+      "system": "core",
+      "statements": 7,
+      "bytes": 10689,
+      "first": "obligationExposure",
+      "last": "closeProjectBudgets"
+    },
+    {
+      "file": "22_financial_reporting.js",
+      "system": "core",
+      "statements": 6,
+      "bytes": 9713,
+      "first": "portfolioBudget",
+      "last": "financialStatements"
+    },
+    {
+      "file": "23_audits.js",
+      "system": "audits",
+      "statements": 1,
+      "bytes": 20147,
+      "first": "auditIdentities",
+      "last": "auditIdentities"
+    },
+    {
+      "file": "24_audits.js",
+      "system": "audits",
+      "statements": 1,
+      "bytes": 38501,
+      "first": "audit",
+      "last": "audit"
+    },
+    {
+      "file": "25_saves.js",
+      "system": "saves",
+      "statements": 1,
+      "bytes": 21729,
+      "first": "loadState",
+      "last": "loadState"
+    },
+    {
+      "file": "26_film.js",
+      "system": "film",
+      "statements": 14,
+      "bytes": 11174,
+      "first": "FILM_DISTRIBUTION",
+      "last": "filmWindowChannel"
+    },
+    {
+      "file": "27_television.js",
+      "system": "television",
+      "statements": 15,
+      "bytes": 10792,
+      "first": "filmDemandMultiplier",
+      "last": "tvUseBacklot"
+    },
+    {
+      "file": "28_rights.js",
+      "system": "rights",
+      "statements": 12,
+      "bytes": 12002,
+      "first": "tvDemandMultiplier",
+      "last": "licenseStreamingTitle"
+    },
+    {
+      "file": "29_television.js",
+      "system": "television",
+      "statements": 6,
+      "bytes": 12032,
+      "first": "streamingCatalog",
+      "last": "gameAnswerExclusive"
+    },
+    {
+      "file": "30_games.js",
+      "system": "games",
+      "statements": 23,
+      "bytes": 14571,
+      "first": "gameBookExclusive",
+      "last": "gameAtRelease"
+    },
+    {
+      "file": "31_games.js",
+      "system": "games",
+      "statements": 14,
+      "bytes": 10697,
+      "first": "gameDemandMultiplier",
+      "last": "gameStoreReport"
+    },
+    {
+      "file": "32_governance.js",
+      "system": "governance",
+      "statements": 12,
+      "bytes": 10948,
+      "first": "auditVideoGames",
+      "last": "corporateRisk"
+    },
+    {
+      "file": "33_corporate_risk_and_equity.js",
+      "system": "core",
+      "statements": 12,
+      "bytes": 10133,
+      "first": "setRiskPolicy",
+      "last": "raiseEquity"
+    },
+    {
+      "file": "34_corporate_ipo_and_succession.js",
+      "system": "core",
+      "statements": 11,
+      "bytes": 10013,
+      "first": "launchIPO",
+      "last": "reviewFounderTransition"
+    },
+    {
+      "file": "35_governance_audits_and_rivals.js",
+      "system": "audits",
+      "statements": 8,
+      "bytes": 10734,
+      "first": "auditGovernance",
+      "last": "rivalYearlyPopulation"
+    },
+    {
+      "file": "36_ai_rivals_and_divisions.js",
+      "system": "banks",
+      "statements": 18,
+      "bytes": 10478,
+      "first": "rivalMarketConcentration",
+      "last": "createDivision"
+    },
+    {
+      "file": "37_governance.js",
+      "system": "governance",
+      "statements": 23,
+      "bytes": 18217,
+      "first": "assignTeamDivision",
+      "last": "integrateAcquisition"
+    },
+    {
+      "file": "38_corporate_services_and_era.js",
+      "system": "core",
+      "statements": 18,
+      "bytes": 10028,
+      "first": "groupInternalLicense",
+      "last": "eraOverview43"
+    },
+    {
+      "file": "39_capability_unlocks_and_adviser.js",
+      "system": "core",
+      "statements": 18,
+      "bytes": 11475,
+      "first": "capabilityReadiness43",
+      "last": "adviser43"
+    },
+    {
+      "file": "40_portraits_and_rights_packages.js",
+      "system": "rights",
+      "statements": 18,
+      "bytes": 12691,
+      "first": "PORTRAIT_COLORS43",
+      "last": "grantRightsPackage43"
+    },
+    {
+      "file": "41_games.js",
+      "system": "games",
+      "statements": 9,
+      "bytes": 11258,
+      "first": "gamePublisherQuote43",
+      "last": "audit43C"
+    },
+    {
+      "file": "42_weekly_hooks_and_disputes.js",
+      "system": "core",
+      "statements": 21,
+      "bytes": 12151,
+      "first": "update43CWeek",
+      "last": "commissionResolve47"
+    },
+    {
+      "file": "43_games.js",
+      "system": "games",
+      "statements": 14,
+      "bytes": 12242,
+      "first": "audit47A",
+      "last": "gameLiveServiceWeek49"
+    },
+    {
+      "file": "44_platform_audit_and_exports.js",
+      "system": "core",
+      "statements": 4,
+      "bytes": 6202,
+      "first": "audit49",
+      "last": "exports"
+    }
+  ]
+}

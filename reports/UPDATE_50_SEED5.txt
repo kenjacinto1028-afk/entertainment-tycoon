@@ -1,0 +1,17 @@
+CHECKPOINT u50-y25-mature-broad 2/16
+CHECKPOINT u50-y25-mature-broad 3/16
+CHECKPOINT u50-y25-mature-broad 4/16
+CHECKPOINT u50-y25-mature-broad 5/16
+CHECKPOINT u50-y25-mature-broad 6/16
+CHECKPOINT u50-y25-mature-broad 7/16
+CHECKPOINT u50-y25-mature-broad 8/16
+CHECKPOINT u50-y25-mature-broad 9/16
+CHECKPOINT u50-y25-mature-broad 10/16
+CHECKPOINT u50-y25-mature-broad 11/16
+CHECKPOINT u50-y25-mature-broad 12/16
+CHECKPOINT u50-y25-mature-broad 13/16
+CHECKPOINT u50-y25-mature-broad 14/16
+CHECKPOINT u50-y25-mature-broad 15/16
+CHECKPOINT u50-y25-mature-broad 16/16
+PASS u50-y25-mature-broad 16 years wallet peak 0.78971 releases games/movie/publishing/tv bankrupt 0 save 8.7 MB
+UPDATE50 MULTISEED 1/6, 15 annual audits, 4 reloads, 780 weekly wallet checks

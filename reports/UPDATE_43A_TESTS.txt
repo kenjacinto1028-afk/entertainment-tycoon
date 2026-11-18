@@ -1,0 +1,9 @@
+PASS Year1 has 8 years literary-only generated history with no fabricated cash
+PASS Year25 has deterministic era-valid archives and independent company age
+PASS Configurable staff profile spends real cash and adds finite capacity
+PASS Partner-ready paid startup in mature world but prohibited before global debut
+PASS Readiness separates global access, real company capability, finite work slots
+PASS Management mode is granular, optional, and persists without changing ownership
+PASS Delegation spends on authorized idle team, not free skill or rights waiver
+PASS v31 save converts to v32 without fictional backfill
+UPDATE43A 8/8

@@ -1,0 +1,4 @@
+PASS 21: first-party own game earns actual customer receipts without external store commission {"weekReceipts":5855.06}
+PASS 21: independent paid game catalog listing routes external store commission and respects fixed license {"licenseFee":10000,"storeReceipts":8,"windowEnd":1327}
+PASS 21: game subscriptions reserve one consumer wallet and expire with catalog windows {"subscriptionGross":119584.31,"windowExpired":true}
+UPDATE48 STORE 3/3

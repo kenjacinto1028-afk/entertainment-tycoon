@@ -1,0 +1,5 @@
+PASS negotiated exclusive manuscript license respects real owner cash and optional creator veto {"owner":"company_00009","payment":2120,"veto":"rejected"}
+PASS editorial choice changes creative and technical quality independently at actual cost and time {"creativeBefore":86,"creativeAfter":91,"technicalBefore":86,"technicalAfter":91}
+PASS delegated web serial can choose cadence and one substantive arc without chapter micromanagement {"weeks":11,"finishedWeeks":13,"arcs":1}
+PASS creator-approved manuscript forbids unauthorized creative redirection after a legally scoped adaptation starts {"legalOwner":"company_00009","licenseHolder":"company_00001"}
+Update47 editorial 4/4

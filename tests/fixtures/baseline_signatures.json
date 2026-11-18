@@ -1,0 +1,32 @@
+[
+  {
+    "seed": "handoff-alpha",
+    "version": 34,
+    "week": 78,
+    "sha256": "baa55a9964b75c16cb577ed2ed98b24d894eb0b73d1a9237a3aab1ebe439c1eb",
+    "length": 1827624,
+    "companies": 5,
+    "projects": 17,
+    "audit": 0
+  },
+  {
+    "seed": "handoff-beta",
+    "version": 34,
+    "week": 78,
+    "sha256": "3b45888fa6ee83e469da957da26f6074af9a3577dd2904f7b1eeb485046c41de",
+    "length": 1771170,
+    "companies": 5,
+    "projects": 11,
+    "audit": 0
+  },
+  {
+    "seed": "handoff-game",
+    "version": 34,
+    "week": 1326,
+    "sha256": "bec4e2dba26bfd0fda2e97b3d50b612917ea11af3ad6ea6fd71ece7b05ad60d5",
+    "length": 1993934,
+    "companies": 10,
+    "projects": 32,
+    "audit": 0
+  }
+]

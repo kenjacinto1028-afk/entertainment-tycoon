@@ -1,0 +1,2258 @@
+[
+  {
+    "key": "hireQuote__001",
+    "value": 7200,
+    "origin_line": 9,
+    "origin_col": 32,
+    "scope": "hireQuote",
+    "context": "ney(n||0); const hireQuote=()=>Math.round(7200*({deliberate:1.22,standard:1,accelerated:.82"
+  },
+  {
+    "key": "hireQuote__002",
+    "value": 1.22,
+    "origin_line": 9,
+    "origin_col": 50,
+    "scope": "hireQuote",
+    "context": "ireQuote=()=>Math.round(7200*({deliberate:1.22,standard:1,accelerated:.82}[S?.settings?.cap"
+  },
+  {
+    "key": "hireQuote__003",
+    "value": 0.82,
+    "origin_line": 9,
+    "origin_col": 78,
+    "scope": "hireQuote",
+    "context": "*({deliberate:1.22,standard:1,accelerated:.82}[S?.settings?.capabilityPace]||1)*100)/100; "
+  },
+  {
+    "key": "hireQuote__004",
+    "value": 100,
+    "origin_line": 9,
+    "origin_col": 116,
+    "scope": "hireQuote",
+    "context": "ted:.82}[S?.settings?.capabilityPace]||1)*100)/100; const signed=n=>(n<0?'-':'')+fmt(Math."
+  },
+  {
+    "key": "hireQuote__005",
+    "value": 100,
+    "origin_line": 9,
+    "origin_col": 121,
+    "scope": "hireQuote",
+    "context": "82}[S?.settings?.capabilityPace]||1)*100)/100; const signed=n=>(n<0?'-':'')+fmt(Math.abs(n"
+  },
+  {
+    "key": "remember__001",
+    "value": 1200000,
+    "origin_line": 38,
+    "origin_col": 21,
+    "scope": "remember",
+    "context": "beyond browser quota. if(current.length<1200000&&previous!==DB_POINTER50&&queuedSaves50===0)"
+  },
+  {
+    "key": "notify__001",
+    "value": 4100,
+    "origin_line": 52,
+    "origin_col": 367,
+    "scope": "notify",
+    "context": "imeout=setTimeout(()=>n.className='toast',4100);} function safe(fn){try{fn();remember();ren"
+  },
+  {
+    "key": "render__001",
+    "value": 3500,
+    "origin_line": 55,
+    "origin_col": 302,
+    "scope": "render",
+    "context": "cash').classList.toggle('negative',f.cash<3500);$('inbox-count').textContent=myAlerts().len"
+  },
+  {
+    "key": "projectRows__001",
+    "value": 100,
+    "origin_line": 63,
+    "origin_col": 2539,
+    "scope": "projectRows",
+    "context": "dth:${Math.round(p.weeksDone/p.weeksTotal*100)}%\"></i></div>`:`<strong class=\"${E.currentP"
+  },
+  {
+    "key": "feed__001",
+    "value": 4,
+    "origin_line": 64,
+    "origin_col": 26,
+    "scope": "feed",
+    "context": "/table></div>`;} function feed(news,count=4){const list=news.slice(0,count);return list."
+  },
+  {
+    "key": "alertRows__001",
+    "value": 4,
+    "origin_line": 65,
+    "origin_col": 32,
+    "scope": "alertRows",
+    "context": "esses.');} function alertRows(items,count=4){const list=items.slice(0,count);return list"
+  },
+  {
+    "key": "kpis__001",
+    "value": 3500,
+    "origin_line": 70,
+    "origin_col": 123,
+    "scope": "kpis",
+    "context": " funds, not accounting profit','◉',f.cash<3500?'negative':'')}${metric('LIFETIME NET PROFIT"
+  },
+  {
+    "key": "next__001",
+    "value": 5,
+    "origin_line": 72,
+    "origin_col": 37,
+    "scope": "next",
+    "context": "iv>`; const next=act.length?act.slice(0,5):[]; const productionPanel=panel('Producti"
+  },
+  {
+    "key": "newsPanel__001",
+    "value": 4,
+    "origin_line": 77,
+    "origin_col": 64,
+    "scope": "newsPanel",
+    "context": "el('Latest from the industry',feed(S.news,4),`<button class=\"panel-link\" data-view=\"news"
+  },
+  {
+    "key": "inboxPanel__001",
+    "value": 3,
+    "origin_line": 78,
+    "origin_col": 62,
+    "scope": "inboxPanel",
+    "context": "panel('Management inbox',alertRows(alerts,3),`<button class=\"panel-link\" data-view=\"inbo"
+  },
+  {
+    "key": "topFranchises__001",
+    "value": 5,
+    "origin_line": 79,
+    "origin_col": 40,
+    "scope": "topFranchises",
+    "context": "); const topFranchises=ownIPs().slice(0,5); const franchisePanel=panel('Your franchi"
+  },
+  {
+    "key": "records__001",
+    "value": 12,
+    "origin_line": 92,
+    "origin_col": 31,
+    "scope": "records",
+    "context": "torPool(S); const records=titles.slice(0,12).map(p=>{ const f=p.cinema;if(!f)return ''"
+  },
+  {
+    "key": "free__001",
+    "value": 2500,
+    "origin_line": 94,
+    "origin_col": 115,
+    "scope": "free",
+    "context": "ng?actorPool.filter(a=>a.available&&a.fee+2500<E.player(S).finance.cash).slice(0,5):[]; r"
+  },
+  {
+    "key": "free__002",
+    "value": 5,
+    "origin_line": 94,
+    "origin_col": 154,
+    "scope": "free",
+    "context": "ee+2500<E.player(S).finance.cash).slice(0,5):[]; return `<article class=\"record\" data-"
+  },
+  {
+    "key": "records__002",
+    "value": 4,
+    "origin_line": 95,
+    "origin_col": 649,
+    "scope": "records",
+    "context": "weekly box office: ${r.recentWeeks.slice(-4).map(w=>esc(w.region)+' '+fmt(w.gross)).join"
+  },
+  {
+    "key": "records__003",
+    "value": 2,
+    "origin_line": 96,
+    "origin_col": 585,
+    "scope": "records",
+    "context": "e!=='contract'?E.activeRegions(S).slice(0,2).map(r=>btn('Premiere: '+esc(r.name),`data-f"
+  },
+  {
+    "key": "records__004",
+    "value": 400,
+    "origin_line": 97,
+    "origin_col": 180,
+    "scope": "records",
+    "context": "?'':btn('Audition '+esc(a.name)+' · '+fmt(400),`data-film-audition=\"${esc(a.id)}\" data-fil"
+  },
+  {
+    "key": "records__005",
+    "value": 100,
+    "origin_line": 97,
+    "origin_col": 647,
+    "scope": "records",
+    "context": "me||'Historical actor')} · ${(f.castShare*100).toFixed(1)}% of actual box-office receipts "
+  },
+  {
+    "key": "cinemaBusinessPanel__001",
+    "value": 18500,
+    "origin_line": 100,
+    "origin_col": 234,
+    "scope": "cinemaBusinessPanel",
+    "context": "ot?btn('Open staffed film backlot · '+fmt(18500),'data-film-build-backlot','outline'):E.play"
+  },
+  {
+    "key": "tv__001",
+    "value": 10,
+    "origin_line": 103,
+    "origin_col": 72,
+    "scope": "tv",
+    "context": "jects().filter(p=>p.sector==='tv').slice(-10).reverse(),actors=E.filmActorPool(S); const"
+  },
+  {
+    "key": "rows__001",
+    "value": 6,
+    "origin_line": 111,
+    "origin_col": 47,
+    "scope": "rows",
+    "context": " ${!t.actions.some(x=>x.kind==='order')?[6,10,16].filter(n=>n!==t.episodes).map(n=>btn("
+  },
+  {
+    "key": "rows__002",
+    "value": 10,
+    "origin_line": 111,
+    "origin_col": 49,
+    "scope": "rows",
+    "context": "${!t.actions.some(x=>x.kind==='order')?[6,10,16].filter(n=>n!==t.episodes).map(n=>btn('Or"
+  },
+  {
+    "key": "rows__003",
+    "value": 16,
+    "origin_line": 111,
+    "origin_col": 52,
+    "scope": "rows",
+    "context": "t.actions.some(x=>x.kind==='order')?[6,10,16].filter(n=>n!==t.episodes).map(n=>btn('Order"
+  },
+  {
+    "key": "rows__004",
+    "value": 4,
+    "origin_line": 116,
+    "origin_col": 119,
+    "scope": "rows",
+    "context": "ctors.filter(a=>!a.busyProjectId).slice(0,4).map(a=>btn('Cast '+esc(a.name)+' · '+fmt(a."
+  },
+  {
+    "key": "rows__005",
+    "value": 0.11,
+    "origin_line": 116,
+    "origin_col": 172,
+    "scope": "rows",
+    "context": "tn('Cast '+esc(a.name)+' · '+fmt(a.fee*(1+.11*(t.seasonNumber-1))),`data-tv-cast=\"${esc(a."
+  },
+  {
+    "key": "streamingBusinessPanel__001",
+    "value": 42000,
+    "origin_line": 123,
+    "origin_col": 455,
+    "scope": "streamingBusinessPanel",
+    "context": "s.tv?btn('Launch Syndicate Stream · '+fmt(42000),'data-tv-launch-stream','primary'):badge('T"
+  },
+  {
+    "key": "rivals__001",
+    "value": 5,
+    "origin_line": 124,
+    "origin_col": 303,
+    "scope": "rivals",
+    "context": "='released'&&p.route!=='contract').slice(-5); const activeIds=new Set(data.catalog.map("
+  },
+  {
+    "key": "streamingBusinessPanel__002",
+    "value": 7,
+    "origin_line": 130,
+    "origin_col": 193,
+    "scope": "streamingBusinessPanel",
+    "context": "ojectId===p.id&&w.endWeek>S.week)).slice(-7).map(p=>btn('Stream '+esc(p.title)+' · 52 we"
+  },
+  {
+    "key": "f__001",
+    "value": 1.22,
+    "origin_line": 136,
+    "origin_col": 38,
+    "scope": "f",
+    "context": "v>`; else if(!has){const f=({deliberate:1.22,standard:1,accelerated:.82})[S.settings.capa"
+  },
+  {
+    "key": "f__002",
+    "value": 0.82,
+    "origin_line": 136,
+    "origin_col": 66,
+    "scope": "f",
+    "context": "=({deliberate:1.22,standard:1,accelerated:.82})[S.settings.capabilityPace]||1;const partne"
+  },
+  {
+    "key": "partner__001",
+    "value": 100,
+    "origin_line": 136,
+    "origin_col": 161,
+    "scope": "partner",
+    "context": "h.round(E.capabilityCost(sec,'partner')*f*100)/100,internal=Math.round(E.capabilityCost(se"
+  },
+  {
+    "key": "partner__002",
+    "value": 100,
+    "origin_line": 136,
+    "origin_col": 166,
+    "scope": "partner",
+    "context": "nd(E.capabilityCost(sec,'partner')*f*100)/100,internal=Math.round(E.capabilityCost(sec,'in"
+  },
+  {
+    "key": "internal__001",
+    "value": 100,
+    "origin_line": 136,
+    "origin_col": 225,
+    "scope": "internal",
+    "context": ".round(E.capabilityCost(sec,'internal')*f*100)/100;content=`<div class=\"section-note\">This"
+  },
+  {
+    "key": "internal__002",
+    "value": 100,
+    "origin_line": 136,
+    "origin_col": 230,
+    "scope": "internal",
+    "context": "d(E.capabilityCost(sec,'internal')*f*100)/100;content=`<div class=\"section-note\">This sect"
+  },
+  {
+    "key": "mine__001",
+    "value": 7,
+    "origin_line": 144,
+    "origin_col": 99,
+    "scope": "mine",
+    "context": "r==='games'&&p.route!=='contract').slice(-7).reverse(),store=(S.gameStores||[]).find(x=>"
+  },
+  {
+    "key": "studies__001",
+    "value": 24,
+    "origin_line": 149,
+    "origin_col": 428,
+    "scope": "studies",
+    "context": "game-cert=\"${esc(p.id)}\"`)} ${activeYear>=24?btn('Free-to-play model',`data-game-model=\"$"
+  },
+  {
+    "key": "storePart__001",
+    "value": 19,
+    "origin_line": 150,
+    "origin_col": 368,
+    "scope": "storePart",
+    "context": "er or an extra industry.</p>${activeYear>=19&&c.capabilities.games?btn('Launch owned digi"
+  },
+  {
+    "key": "storePart__002",
+    "value": 27500,
+    "origin_line": 150,
+    "origin_col": 438,
+    "scope": "storePart",
+    "context": "('Launch owned digital game store · '+fmt(27500),'data-game-open-store','primary'):badge('La"
+  },
+  {
+    "key": "rivals__002",
+    "value": 6,
+    "origin_line": 151,
+    "origin_col": 309,
+    "scope": "rivals",
+    "context": "='released'&&p.route==='original').slice(-6),offers=(S.gameStoreOffers||[]).filter(x=>x."
+  },
+  {
+    "key": "gameStudioPanel__001",
+    "value": 19000,
+    "origin_line": 160,
+    "origin_col": 449,
+    "scope": "gameStudioPanel",
+    "context": " reusable proprietary game engine · '+fmt(19000),'data-game-build-engine'):c.gameEngine?'<p "
+  },
+  {
+    "key": "works__001",
+    "value": 12,
+    "origin_line": 164,
+    "origin_col": 91,
+    "scope": "works",
+    "context": "publishing'&&p.route!=='contract').slice(-12).reverse(); const controls=works.map(p=>{ "
+  },
+  {
+    "key": "controls__001",
+    "value": 0.85,
+    "origin_line": 174,
+    "origin_col": 78,
+    "scope": "controls",
+    "context": "&&p.weeksDone>0&&p.weeksDone<p.weeksTotal*.85&&!p.serialArcDecisions?.length?['tighten','e"
+  },
+  {
+    "key": "controls__002",
+    "value": 900,
+    "origin_line": 175,
+    "origin_col": 62,
+    "scope": "controls",
+    "context": "rderCampaign?btn('Reader interest · '+fmt(900),`data-pub-preorder=\"${esc(p.id)}\"`):'')+ "
+  },
+  {
+    "key": "controls__003",
+    "value": 2,
+    "origin_line": 176,
+    "origin_col": 96,
+    "scope": "controls",
+    "context": "ions?.some(t=>t.region===r.name)).slice(0,2).map(r=>btn('Translate · '+esc(r.name),`data"
+  },
+  {
+    "key": "controls__004",
+    "value": 2,
+    "origin_line": 177,
+    "origin_col": 72,
+    "scope": "controls",
+    "context": "nts.filter(i=>i.id!==p.imprintId).slice(0,2).map(i=>btn('Imprint: '+esc(i.name),`data-pu"
+  },
+  {
+    "key": "market__001",
+    "value": 100,
+    "origin_line": 181,
+    "origin_col": 288,
+    "scope": "market",
+    "context": "ance ${fmt(m.advance)} · ${(m.royaltyRate*100).toFixed(0)}% royalty · ${Math.round((m.agen"
+  },
+  {
+    "key": "market__002",
+    "value": 100,
+    "origin_line": 181,
+    "origin_col": 347,
+    "scope": "market",
+    "context": " royalty · ${Math.round((m.agencyRate||0)*100)}% agent share of author receipts · ${m.crea"
+  },
+  {
+    "key": "pending__001",
+    "value": 100,
+    "origin_line": 182,
+    "origin_col": 295,
+    "scope": "pending",
+    "context": "round((o.counter||o.proposal).royaltyRate*100)}% · agent ${Math.round(((o.counter||o.propo"
+  },
+  {
+    "key": "pending__002",
+    "value": 100,
+    "origin_line": 182,
+    "origin_col": 363,
+    "scope": "pending",
+    "context": "d(((o.counter||o.proposal).agencyRate||0)*100)}%${(o.counter||o.proposal).approvalRequired"
+  },
+  {
+    "key": "pitches__001",
+    "value": 2,
+    "origin_line": 188,
+    "origin_col": 49,
+    "scope": "pitches",
+    "context": "c.filter(a=>a.status==='rejected').slice(-2).map(a=>`<p class=\"panel-sub\">Creator vetoed"
+  },
+  {
+    "key": "outletButtons__001",
+    "value": 7000,
+    "origin_line": 190,
+    "origin_col": 134,
+    "scope": "outletButtons",
+    "context": "line')}`:btn('Launch owned outlet · '+fmt(7000),'data-pub-outlet-open','primary'); const o"
+  },
+  {
+    "key": "outletPane__001",
+    "value": 7000,
+    "origin_line": 191,
+    "origin_col": 113,
+    "scope": "outletPane",
+    "context": "\">Optional first-party book retail: ${fmt(7000)} setup, ${fmt(outlet.monthlyCost||500)} per"
+  },
+  {
+    "key": "outletPane__002",
+    "value": 500,
+    "origin_line": 191,
+    "origin_col": 153,
+    "scope": "outletPane",
+    "context": "t(7000)} setup, ${fmt(outlet.monthlyCost||500)} per monthly close while open, then 8% fulf"
+  },
+  {
+    "key": "publishingBusinessPanel__001",
+    "value": 2000,
+    "origin_line": 193,
+    "origin_col": 165,
+    "scope": "publishingBusinessPanel",
+    "context": "ries or extra sales. Creation costs ${fmt(2000)} and genre fit affects reader share.</p>${b"
+  },
+  {
+    "key": "imprintCreationModal__001",
+    "value": 2000,
+    "origin_line": 204,
+    "origin_col": 153,
+    "scope": "imprintCreationModal",
+    "context": "nternal genre brand with a one-time ${fmt(2000)} cost. The parent retains all cash, IP and "
+  },
+  {
+    "key": "imprintCreationModal__002",
+    "value": 2000,
+    "origin_line": 204,
+    "origin_col": 620,
+    "scope": "imprintCreationModal",
+    "context": "s=\"btn btn-primary\">Found brand for ${fmt(2000)}</button></form>`);} function publishingTal"
+  },
+  {
+    "key": "charts__001",
+    "value": 8,
+    "origin_line": 208,
+    "origin_col": 58,
+    "scope": "charts",
+    "context": ".publishingCharts(S,{metric:'gross',limit:8}); return panel('Publishing talent discover"
+  },
+  {
+    "key": "publishingTalentPanel__001",
+    "value": 1250,
+    "origin_line": 209,
+    "origin_col": 130,
+    "scope": "publishingTalentPanel",
+    "context": "endent writers/artists per year for ${fmt(1250)} each. Each remains freelance; no automatic"
+  },
+  {
+    "key": "publishingTalentPanel__002",
+    "value": 1800,
+    "origin_line": 209,
+    "origin_col": 264,
+    "scope": "publishingTalentPanel",
+    "context": "l. Optional annual fellowships cost ${fmt(1800)} and improve future creative work.</p><div "
+  },
+  {
+    "key": "publishingTalentPanel__003",
+    "value": 10,
+    "origin_line": 209,
+    "origin_col": 532,
+    "scope": "publishingTalentPanel",
+    "context": " visits','active')}</div>${talents.slice(-10).reverse().map(t=>`<div class=\"small-stat\"><"
+  },
+  {
+    "key": "gross__001",
+    "value": 5,
+    "origin_line": 213,
+    "origin_col": 57,
+    "scope": "gross",
+    "context": ".publishingCharts(S,{metric:'gross',limit:5}),critics=E.publishingCharts(S,{metric:'crit"
+  },
+  {
+    "key": "critics__001",
+    "value": 5,
+    "origin_line": 213,
+    "origin_col": 113,
+    "scope": "critics",
+    "context": "publishingCharts(S,{metric:'critic',limit:5}); const list=(rows,field,isMoney)=>rows.le"
+  },
+  {
+    "key": "offers__001",
+    "value": 8,
+    "origin_line": 219,
+    "origin_col": 168,
+    "scope": "offers",
+    "context": "(o.status)&&S.week<=o.expiresWeek).slice(-8).reverse(); const policy=S.coProductionPoli"
+  },
+  {
+    "key": "policy__001",
+    "value": 15000,
+    "origin_line": 220,
+    "origin_col": 70,
+    "scope": "policy",
+    "context": "nPolicy||{autoCounter:false,maxCommitment:15000,maxShare:.35}; return panel('Co-productions"
+  },
+  {
+    "key": "policy__002",
+    "value": 0.35,
+    "origin_line": 220,
+    "origin_col": 85,
+    "scope": "policy",
+    "context": "ounter:false,maxCommitment:15000,maxShare:.35}; return panel('Co-productions · independen"
+  },
+  {
+    "key": "coProductionPanel__001",
+    "value": 100,
+    "origin_line": 223,
+    "origin_col": 311,
+    "scope": "coProductionPanel",
+    "context": "tner share ≤ ${Math.round(policy.maxShare*100)}%; you still approve each production.`:'All"
+  },
+  {
+    "key": "coProductionPanel__002",
+    "value": 100,
+    "origin_line": 224,
+    "origin_col": 306,
+    "scope": "coProductionPanel",
+    "context": "'counter'?o.counterShare:o.acceptedShare)*100)}% gross share · expires in ${o.expiresWeek-"
+  },
+  {
+    "key": "coProductionPanel__003",
+    "value": 12,
+    "origin_line": 225,
+    "origin_col": 225,
+    "scope": "coProductionPanel",
+    "context": "re</th></tr></thead><tbody>${deals.slice(-12).reverse().map(d=>`<tr><td><strong>${esc(d.t"
+  },
+  {
+    "key": "coProductionPanel__004",
+    "value": 100,
+    "origin_line": 225,
+    "origin_col": 480,
+    "scope": "coProductionPanel",
+    "context": "urned</td><td>${Math.round(d.revenueShare*100)}% of actual gross sales</td><td>${fmt(d.unp"
+  },
+  {
+    "key": "offers__002",
+    "value": 12,
+    "origin_line": 229,
+    "origin_col": 123,
+    "scope": "offers",
+    "context": "ctor===sec&&o.status!=='declined').slice(-12).reverse(); const policy=S.commissionPolicy"
+  },
+  {
+    "key": "policy__003",
+    "value": 15000,
+    "origin_line": 230,
+    "origin_col": 61,
+    "scope": "policy",
+    "context": "mmissionPolicy||{autoCounter:false,maxFee:15000,minMargin:.12}; return panel('Client commis"
+  },
+  {
+    "key": "policy__004",
+    "value": 0.12,
+    "origin_line": 230,
+    "origin_col": 77,
+    "scope": "policy",
+    "context": "{autoCounter:false,maxFee:15000,minMargin:.12}; return panel('Client commissions & signed"
+  },
+  {
+    "key": "commissionDesk__001",
+    "value": 100,
+    "origin_line": 234,
+    "origin_col": 162,
+    "scope": "commissionDesk",
+    "context": "th at least ${Math.round(policy.minMargin*100)}% direct margin; no production starts witho"
+  },
+  {
+    "key": "quote__001",
+    "value": 0.75,
+    "origin_line": 238,
+    "origin_col": 67,
+    "scope": "quote",
+    "context": "oject(S,{sector:sec,route:'contract',size:.75,withForecast:false}),clients=E.eligibleClien"
+  },
+  {
+    "key": "pol__001",
+    "value": 2100,
+    "origin_line": 245,
+    "origin_col": 51,
+    "scope": "pol",
+    "context": "ol=S.talentPolicy||{autoBook:false,maxFee:2100};const hr=c.staffPolicy||{autoFill:true,maxS"
+  },
+  {
+    "key": "hr__001",
+    "value": 180,
+    "origin_line": 245,
+    "origin_col": 106,
+    "scope": "hr",
+    "context": "r=c.staffPolicy||{autoFill:true,maxSalary:180}; const salaryRows=candidates.slice(0,10).m"
+  },
+  {
+    "key": "salaryRows__001",
+    "value": 10,
+    "origin_line": 246,
+    "origin_col": 38,
+    "scope": "salaryRows",
+    "context": "80}; const salaryRows=candidates.slice(0,10).map(x=>`<div class=\"small-stat\"><span class"
+  },
+  {
+    "key": "renderTeams__001",
+    "value": 8,
+    "origin_line": 254,
+    "origin_col": 195,
+    "scope": "renderTeams",
+    "context": "ete histories.</p>${roster.careers.slice(-8).map(x=>`<div class=\"small-stat\"><span class"
+  },
+  {
+    "key": "renderTeams__002",
+    "value": 1250,
+    "origin_line": 255,
+    "origin_col": 676,
+    "scope": "renderTeams",
+    "context": "sub\">${btn('Scout emerging writer · '+fmt(1250),'data-creator-scout=\"writer\"','outline')} $"
+  },
+  {
+    "key": "renderTeams__003",
+    "value": 1250,
+    "origin_line": 255,
+    "origin_col": 761,
+    "scope": "renderTeams",
+    "context": "e')} ${btn('Scout emerging artist · '+fmt(1250),'data-creator-scout=\"artist\"','outline')} ·"
+  },
+  {
+    "key": "staffHiringModal__001",
+    "value": 3,
+    "origin_line": 260,
+    "origin_col": 634,
+    "scope": "staffHiringModal",
+    "context": ".weeklySalary)}/wk · ${fmt(x.weeklySalary*3)} fee</option>`).join('')}</select></div><p "
+  },
+  {
+    "key": "staffContractModal__001",
+    "value": 20,
+    "origin_line": 264,
+    "origin_col": 664,
+    "scope": "staffContractModal",
+    "context": "ax=\"400\" step=\"1\" value=\"${e.weeklySalary+20}\" required></div><div class=\"modal-bottom\"><"
+  },
+  {
+    "key": "teamDevelopmentModal__001",
+    "value": 2500,
+    "origin_line": 269,
+    "origin_col": 689,
+    "scope": "teamDevelopmentModal",
+    "context": "ion value=\"mentorship\">Mentorship · ${fmt(2500)} · +3 skill</option><option value=\"speciali"
+  },
+  {
+    "key": "teamDevelopmentModal__002",
+    "value": 1800,
+    "origin_line": 269,
+    "origin_col": 763,
+    "scope": "teamDevelopmentModal",
+    "context": "n value=\"specialize\">Switch genre · ${fmt(1800)} · +1 skill</option></select></div><div cla"
+  },
+  {
+    "key": "renderLibrary__001",
+    "value": 12,
+    "origin_line": 272,
+    "origin_col": 585,
+    "scope": "renderLibrary",
+    "context": "er(g=>g.endWeek>S.week&&g.endWeek-S.week<=12).length),'Within 12 weeks','!')}</div>`+ p"
+  },
+  {
+    "key": "four__001",
+    "value": 4,
+    "origin_line": 280,
+    "origin_col": 35,
+    "scope": "four",
+    "context": "/div>`; const four=plan.timeline.slice(0,4); return panel('Cash runway · committed-onl"
+  },
+  {
+    "key": "monthlyReconciliationPanel__001",
+    "value": 6,
+    "origin_line": 297,
+    "origin_col": 276,
+    "scope": "monthlyReconciliationPanel",
+    "context": "h</th></tr></thead><tbody>${ready.slice(0,6).map(r=>`<tr><td><strong>${esc(r.name)} · Y$"
+  },
+  {
+    "key": "closedBudgetPanel__001",
+    "value": 6,
+    "origin_line": 302,
+    "origin_col": 381,
+    "scope": "closedBudgetPanel",
+    "context": "/th></tr></thead><tbody>${monthly.slice(0,6).map(r=>`<tr><td>${esc(r.name)} Y${r.year}${"
+  },
+  {
+    "key": "closedSettlementPanel__001",
+    "value": 6,
+    "origin_line": 314,
+    "origin_col": 387,
+    "scope": "closedSettlementPanel",
+    "context": "id</th></tr></thead><tbody>${rows.slice(0,6).map(r=>`<tr><td>${esc(r.period)} Y${r.year}"
+  },
+  {
+    "key": "activeObligationPanel__001",
+    "value": 12,
+    "origin_line": 333,
+    "origin_col": 180,
+    "scope": "activeObligationPanel",
+    "context": "/th></tr></thead><tbody>${r.debts.slice(0,12).map(d=>`<tr><td>${esc(names[d.kind]||d.kind"
+  },
+  {
+    "key": "royaltyStatementPanel__001",
+    "value": 12,
+    "origin_line": 347,
+    "origin_col": 225,
+    "scope": "royaltyStatementPanel",
+    "context": "id</th></tr></thead><tbody>${rows.slice(0,12).map(r=>`<tr><td>${esc(r.sourceTitle)}<span "
+  },
+  {
+    "key": "upcoming__001",
+    "value": 104,
+    "origin_line": 351,
+    "origin_col": 71,
+    "scope": "upcoming",
+    "context": "ndar(S,{companyId:S.playerId,horizonWeeks:104}); return panel('Rights calendar · next 104"
+  },
+  {
+    "key": "rightsCalendarPanel__001",
+    "value": 16,
+    "origin_line": 353,
+    "origin_col": 357,
+    "scope": "rightsCalendarPanel",
+    "context": "th></tr></thead><tbody>${upcoming.slice(0,16).map(r=>`<tr><td>${esc(r.sourceTitle)}</td><"
+  },
+  {
+    "key": "rightsCalendarPanel__002",
+    "value": 12,
+    "origin_line": 353,
+    "origin_col": 643,
+    "scope": "rightsCalendarPanel",
+    "context": "nly':'Not authorized'}${r.remainingWeeks<=12?' · approaching deadline':''}</td></tr>`).jo"
+  },
+  {
+    "key": "coProductionFinancePanel__001",
+    "value": 12,
+    "origin_line": 359,
+    "origin_col": 223,
+    "scope": "coProductionFinancePanel",
+    "context": "</th></tr></thead><tbody>${r.deals.slice(-12).reverse().map(d=>`<tr><td>${esc(d.title)}<s"
+  },
+  {
+    "key": "reports__001",
+    "value": 8,
+    "origin_line": 362,
+    "origin_col": 190,
+    "scope": "reports",
+    "context": "lter(r=>r.companyId===S.playerId).slice(0,8),loans=(S.loans||[]).filter(l=>l.debtorId==="
+  },
+  {
+    "key": "entries__001",
+    "value": 28,
+    "origin_line": 362,
+    "origin_col": 367,
+    "scope": "entries",
+    "context": "es=E.transactionsFor(S,S.playerId).slice(-28).reverse();const max=Math.max(1,...reports.m"
+  },
+  {
+    "key": "chart__001",
+    "value": 3,
+    "origin_line": 363,
+    "origin_col": 238,
+    "scope": "chart",
+    "context": "gative-bar':''}\" style=\"height:${Math.max(3,Math.round(Math.abs(r.net)/max*102))}px\" tit"
+  },
+  {
+    "key": "chart__002",
+    "value": 102,
+    "origin_line": 363,
+    "origin_col": 271,
+    "scope": "chart",
+    "context": "Math.max(3,Math.round(Math.abs(r.net)/max*102))}px\" title=\"${esc(r.name)} ${signed(r.net)}"
+  },
+  {
+    "key": "chart__003",
+    "value": 3,
+    "origin_line": 363,
+    "origin_col": 372,
+    "scope": "chart",
+    "context": "an class=\"bar-label\">${esc(r.name.slice(0,3))}</span></div>`).join('')}</div>`:empty('No"
+  },
+  {
+    "key": "renderFinance__001",
+    "value": 5000,
+    "origin_line": 364,
+    "origin_col": 182,
+    "scope": "renderFinance",
+    "context": "x and royalties remain distinct.',credit>=5000?btn('Request loan','data-borrow','primary'):"
+  },
+  {
+    "key": "renderFinance__002",
+    "value": 100,
+    "origin_line": 366,
+    "origin_col": 6432,
+    "scope": "renderFinance",
+    "context": ")} ${Math.round(statements.income.taxRate*100)}%</span><strong>${fmt(statements.income.est"
+  },
+  {
+    "key": "renderFinance__003",
+    "value": 1000,
+    "origin_line": 366,
+    "origin_col": 6636,
+    "scope": "renderFinance",
+    "context": "e.homeRegion)||E.REGIONS[0]).salesTaxRate*1000)/10}% regional sales levy and ${Math.round(("
+  },
+  {
+    "key": "renderFinance__004",
+    "value": 10,
+    "origin_line": 366,
+    "origin_col": 6642,
+    "scope": "renderFinance",
+    "context": "Region)||E.REGIONS[0]).salesTaxRate*1000)/10}% regional sales levy and ${Math.round((E.RE"
+  },
+  {
+    "key": "renderFinance__005",
+    "value": 1000,
+    "origin_line": 366,
+    "origin_col": 6773,
+    "scope": "renderFinance",
+    "context": "omeRegion)||E.REGIONS[0]).payrollLevyRate*1000)/10}% employer levy. Tax is settled without "
+  },
+  {
+    "key": "renderFinance__006",
+    "value": 10,
+    "origin_line": 366,
+    "origin_col": 6779,
+    "scope": "renderFinance",
+    "context": "ion)||E.REGIONS[0]).payrollLevyRate*1000)/10}% employer levy. Tax is settled without pape"
+  },
+  {
+    "key": "renderFinance__007",
+    "value": 100,
+    "origin_line": 366,
+    "origin_col": 7850,
+    "scope": "renderFinance",
+    "context": ")} · ${Math.round(latestLoan.interestRate*100)}% yearly</strong></div><div class=\"small-st"
+  },
+  {
+    "key": "renderFinance__008",
+    "value": 5000,
+    "origin_line": 366,
+    "origin_col": 8470,
+    "scope": "renderFinance",
+    "context": "missed payments remain due.</p>`,(credit>=5000?btn('Borrow funds','data-borrow'):'')+(lates"
+  },
+  {
+    "key": "renderFinance__009",
+    "value": 12,
+    "origin_line": 366,
+    "origin_col": 13136,
+    "scope": "renderFinance",
+    "context": "/th></tr></thead><tbody>${h.years.slice(0,12).map(y=>`<tr><td>Y${y.year}</td><td>${y.rele"
+  },
+  {
+    "key": "renderFinance__010",
+    "value": 100,
+    "origin_line": 366,
+    "origin_col": 14917,
+    "scope": "renderFinance",
+    "context": "al ${Math.round(statements.income.taxRate*100)}% profit tax in ${esc(statements.income.hom"
+  },
+  {
+    "key": "renderInnovationPanel__001",
+    "value": 100,
+    "origin_line": 374,
+    "origin_col": 394,
+    "scope": "renderInnovationPanel",
+    "context": "h.round((b.effectiveness+b.researchBonus)*100)}% </small></div><span>${rCash>=4000?btn('Fu"
+  },
+  {
+    "key": "renderInnovationPanel__002",
+    "value": 4000,
+    "origin_line": 374,
+    "origin_col": 430,
+    "scope": "renderInnovationPanel",
+    "context": "onus)*100)}% </small></div><span>${rCash>=4000?btn('Fund research · '+fmt(3000),`data-fund-"
+  },
+  {
+    "key": "renderInnovationPanel__003",
+    "value": 3000,
+    "origin_line": 374,
+    "origin_col": 462,
+    "scope": "renderInnovationPanel",
+    "context": ">${rCash>=4000?btn('Fund research · '+fmt(3000),`data-fund-research=\"${key}\"`,'outline'):ba"
+  },
+  {
+    "key": "years__001",
+    "value": 35,
+    "origin_line": 384,
+    "origin_col": 203,
+    "scope": "years",
+    "context": "releaseWeek))))).sort((a,b)=>b-a).slice(0,35).map(x=>[String(x),'Year '+x])]; const cont"
+  },
+  {
+    "key": "rows__006",
+    "value": 15,
+    "origin_line": 386,
+    "origin_col": 110,
+    "scope": "rows",
+    "context": "'finance'?rankMetric:null,...params,limit:15}); const board=rows.length?`<div style=\"ove"
+  },
+  {
+    "key": "h__001",
+    "value": 7,
+    "origin_line": 390,
+    "origin_col": 49,
+    "scope": "h",
+    "context": " h=E.historicalCompanyFinances(S).slice(0,7); const history=h.length?h.map(x=>`<div cla"
+  },
+  {
+    "key": "renderWorld__001",
+    "value": 100,
+    "origin_line": 404,
+    "origin_col": 196,
+    "scope": "renderWorld",
+    "context": "MARKET CLIMATE',Math.round(S.macroeconomy*100)+'%','Demand index relative to baseline','◈'"
+  },
+  {
+    "key": "renderWorld__002",
+    "value": 100,
+    "origin_line": 406,
+    "origin_col": 656,
+    "scope": "renderWorld",
+    "context": "${esc(r.name)} · inflation ${(r.inflation*100).toFixed(1)}% · employment ${Math.round(r.em"
+  },
+  {
+    "key": "renderWorld__003",
+    "value": 100,
+    "origin_line": 406,
+    "origin_col": 713,
+    "scope": "renderWorld",
+    "context": "}% · employment ${Math.round(r.employment*100)}%</span><strong>${Math.round(r.confidence*1"
+  },
+  {
+    "key": "renderWorld__004",
+    "value": 100,
+    "origin_line": 406,
+    "origin_col": 760,
+    "scope": "renderWorld",
+    "context": "%</span><strong>${Math.round(r.confidence*100)}% consumer confidence</strong></div>`).join"
+  },
+  {
+    "key": "renderWorld__005",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 186,
+    "scope": "renderWorld",
+    "context": "n ${Math.round(S.settings.populationScale*100)}% of baseline. Each region has a finite fic"
+  },
+  {
+    "key": "renderWorld__006",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 568,
+    "scope": "renderWorld",
+    "context": "} · confidence ${Math.round(ec.confidence*100)}% · inflation ${(ec.inflation*100).toFixed("
+  },
+  {
+    "key": "renderWorld__007",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 603,
+    "scope": "renderWorld",
+    "context": "idence*100)}% · inflation ${(ec.inflation*100).toFixed(1)}% · ${esc(r.currency)} FX ${ec.f"
+  },
+  {
+    "key": "renderWorld__008",
+    "value": 2,
+    "origin_line": 407,
+    "origin_col": 665,
+    "scope": "renderWorld",
+    "context": "${esc(r.currency)} FX ${ec.fxRate.toFixed(2)} · wages ${Math.round(ec.wageIndex*100)}% ·"
+  },
+  {
+    "key": "renderWorld__009",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 703,
+    "scope": "renderWorld",
+    "context": "xed(2)} · wages ${Math.round(ec.wageIndex*100)}% · local interest ${Math.round(ec.interest"
+  },
+  {
+    "key": "renderWorld__010",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 757,
+    "scope": "renderWorld",
+    "context": "al interest ${Math.round(ec.interestIndex*100)}%</span><strong>${fmt(E.worldMarketBudget(S"
+  },
+  {
+    "key": "renderWorld__011",
+    "value": 100,
+    "origin_line": 407,
+    "origin_col": 1006,
+    "scope": "renderWorld",
+    "context": "map(c=>esc(c.name)+\" \"+Math.round(c.share*100)+\"%\").join(\" · \")}</small></div>`}).join('')"
+  },
+  {
+    "key": "renderWorld__012",
+    "value": 100,
+    "origin_line": 408,
+    "origin_col": 532,
+    "scope": "renderWorld",
+    "context": "k)}</span><strong>${Math.round(t.adoption*100)}% adoption</strong></div>`).join('')}<p cla"
+  },
+  {
+    "key": "renderWorld__013",
+    "value": 14,
+    "origin_line": 414,
+    "origin_col": 131,
+    "scope": "renderWorld",
+    "context": "lice().sort((a,b)=>b.year-a.year).slice(0,14).map(x=>`<div class=\"record\"><div class=\"car"
+  },
+  {
+    "key": "renderInbox__001",
+    "value": 100,
+    "origin_line": 418,
+    "origin_col": 673,
+    "scope": "renderInbox",
+    "context": "ons remain open.</p>`:''}${alertRows(list,100)}`,'','This inbox contains decisions or mana"
+  },
+  {
+    "key": "items__001",
+    "value": 300,
+    "origin_line": 419,
+    "origin_col": 108,
+    "scope": "items",
+    "context": "wsQuery,kind:newsKind,year:newsYear,limit:300}),kinds=['all',...new Set([...S.news,...(S.a"
+  },
+  {
+    "key": "renderNews__001",
+    "value": 12,
+    "origin_line": 420,
+    "origin_col": 789,
+    "scope": "renderNews",
+    "context": "ative honors',E.creativeAwards(S).slice(0,12).map(a=>{const project=S.projects.find(p=>p."
+  },
+  {
+    "key": "renderNews__002",
+    "value": 18,
+    "origin_line": 420,
+    "origin_col": 1327,
+    "scope": "renderNews",
+    "context": " versus played',E.worldHistory(S).slice(0,18).map(x=>`<div class=\"small-stat\"><span class"
+  },
+  {
+    "key": "renderNews__003",
+    "value": 300,
+    "origin_line": 420,
+    "origin_col": 1666,
+    "scope": "renderNews",
+    "context": "')+panel('Headlines & history',feed(items,300),`<span class=\"industry-pill\">${items.length"
+  },
+  {
+    "key": "renderSettings__001",
+    "value": 100,
+    "origin_line": 423,
+    "origin_col": 800,
+    "scope": "renderSettings",
+    "context": "ath.round((S.settings.populationScale||1)*100)}% of baseline</strong></div><div class=\"sma"
+  },
+  {
+    "key": "renderSettings__002",
+    "value": 2,
+    "origin_line": 423,
+    "origin_col": 3335,
+    "scope": "renderSettings",
+    "context": "re opening a different HTML file.</p>${[1,2,3].map(i=>`<div class=\"small-stat\"><span><la"
+  },
+  {
+    "key": "renderSettings__003",
+    "value": 3,
+    "origin_line": 423,
+    "origin_col": 3337,
+    "scope": "renderSettings",
+    "context": " opening a different HTML file.</p>${[1,2,3].map(i=>`<div class=\"small-stat\"><span><labe"
+  },
+  {
+    "key": "newGameModal__001",
+    "value": 4,
+    "origin_line": 456,
+    "origin_col": 386,
+    "scope": "newGameModal",
+    "context": "abel><select name=\"era\" id=\"new-era\">${[1,4,7,10,25].map(x=>`<option value=\"${x}\" ${x==="
+  },
+  {
+    "key": "newGameModal__002",
+    "value": 7,
+    "origin_line": 456,
+    "origin_col": 388,
+    "scope": "newGameModal",
+    "context": "el><select name=\"era\" id=\"new-era\">${[1,4,7,10,25].map(x=>`<option value=\"${x}\" ${x===er"
+  },
+  {
+    "key": "newGameModal__003",
+    "value": 10,
+    "origin_line": 456,
+    "origin_col": 390,
+    "scope": "newGameModal",
+    "context": "><select name=\"era\" id=\"new-era\">${[1,4,7,10,25].map(x=>`<option value=\"${x}\" ${x===era?'"
+  },
+  {
+    "key": "newGameModal__004",
+    "value": 25,
+    "origin_line": 456,
+    "origin_col": 393,
+    "scope": "newGameModal",
+    "context": "elect name=\"era\" id=\"new-era\">${[1,4,7,10,25].map(x=>`<option value=\"${x}\" ${x===era?'sel"
+  },
+  {
+    "key": "newGameModal__005",
+    "value": 25,
+    "origin_line": 456,
+    "origin_col": 466,
+    "scope": "newGameModal",
+    "context": "\" ${x===era?'selected':''}>Year ${x}${x===25?' · Mature entertainment era':''}</option>`)"
+  },
+  {
+    "key": "newGameModal__006",
+    "value": 100,
+    "origin_line": 456,
+    "origin_col": 1892,
+    "scope": "newGameModal",
+    "context": "c(r.name)} · ${Math.round(r.profitTaxRate*100)}%</option>`).join('')}</select></div><div c"
+  },
+  {
+    "key": "projectModal__001",
+    "value": 1000,
+    "origin_line": 459,
+    "origin_col": 5442,
+    "scope": "projectModal",
+    "context": "c(r.name)} · ${Math.round(r.incentiveRate*1000)/10}% eligible tax credit</option>`).join(''"
+  },
+  {
+    "key": "projectModal__002",
+    "value": 10,
+    "origin_line": 459,
+    "origin_col": 5448,
+    "scope": "projectModal",
+    "context": "me)} · ${Math.round(r.incentiveRate*1000)/10}% eligible tax credit</option>`).join('')}</"
+  },
+  {
+    "key": "updatePreview__001",
+    "value": 100,
+    "origin_line": 476,
+    "origin_col": 174,
+    "scope": "updatePreview",
+    "context": "ath.round(Number(data.participationShare)*100)}% proposed sales participation (may be coun"
+  },
+  {
+    "key": "franchiseModal__001",
+    "value": 52,
+    "origin_line": 490,
+    "origin_col": 2945,
+    "scope": "franchiseModal",
+    "context": "Id)}\" data-target-week=\"${Math.min(S.week+52,(r.plannedWeek||S.week)+4)}\"`,'outline')} ${"
+  },
+  {
+    "key": "franchiseModal__002",
+    "value": 4,
+    "origin_line": 490,
+    "origin_col": 2972,
+    "scope": "franchiseModal",
+    "context": "ath.min(S.week+52,(r.plannedWeek||S.week)+4)}\"`,'outline')} ${btn('Remove hold',`data-fr"
+  },
+  {
+    "key": "franchiseModal__003",
+    "value": 1000,
+    "origin_line": 490,
+    "origin_col": 3340,
+    "scope": "franchiseModal",
+    "context": "p':'down'} (${Math.round((r.multiplier-1)*1000)/10}%). This affects share of existing walle"
+  },
+  {
+    "key": "franchiseModal__004",
+    "value": 10,
+    "origin_line": 490,
+    "origin_col": 3346,
+    "scope": "franchiseModal",
+    "context": "wn'} (${Math.round((r.multiplier-1)*1000)/10}%). This affects share of existing wallets o"
+  },
+  {
+    "key": "franchiseModal__005",
+    "value": 18,
+    "origin_line": 490,
+    "origin_col": 4033,
+    "scope": "franchiseModal",
+    "context": "orical timeline</h3>${bible.events.slice(-18).map(e=>`<p class=\"panel-sub\">${weekLabel(e."
+  },
+  {
+    "key": "tooLate__001",
+    "value": 0.8,
+    "origin_line": 496,
+    "origin_col": 63,
+    "scope": "tooLate",
+    "context": "tus!=='active'||p.weeksDone/p.weeksTotal>=.80; showModal(`${modalHead('Publishing editori"
+  },
+  {
+    "key": "creatorCareerModal__001",
+    "value": 18,
+    "origin_line": 501,
+    "origin_col": 410,
+    "scope": "creatorCareerModal",
+    "context": "eased work credits</h3>${x.credits.slice(-18).reverse().map(c=>`<div class=\"small-stat\"><"
+  },
+  {
+    "key": "freelancers__001",
+    "value": 6,
+    "origin_line": 505,
+    "origin_col": 111,
+    "scope": "freelancers",
+    "context": "ord).sort((a,b)=>b.skill-a.skill).slice(0,6); const free=c.teams.filter(t=>t.id!==p.tea"
+  },
+  {
+    "key": "disabled__001",
+    "value": 0.8,
+    "origin_line": 507,
+    "origin_col": 106,
+    "scope": "disabled",
+    "context": "x=>x.kind===k)||p.weeksDone/p.weeksTotal>=.8||(k==='revision'&&p.route==='adaptation'&&S."
+  },
+  {
+    "key": "productionOpsModal__001",
+    "value": 100,
+    "origin_line": 508,
+    "origin_col": 160,
+    "scope": "productionOpsModal",
+    "context": "} · ${Math.round(p.weeksDone/p.weeksTotal*100)}% complete</p><div class=\"review-grid\"><div"
+  },
+  {
+    "key": "productionOpsModal__002",
+    "value": 0.08,
+    "origin_line": 508,
+    "origin_col": 683,
+    "scope": "productionOpsModal",
+    "context": "d. Creative revision costs ${fmt(p.budget*.08)} and extends development; technical polish "
+  },
+  {
+    "key": "productionOpsModal__003",
+    "value": 0.1,
+    "origin_line": 508,
+    "origin_col": 752,
+    "scope": "productionOpsModal",
+    "context": "nt; technical polish costs ${fmt(p.budget*.10)} and extends development; trimming remainin"
+  },
+  {
+    "key": "subsidiaryModal__001",
+    "value": 1.75,
+    "origin_line": 520,
+    "origin_col": 674,
+    "scope": "subsidiaryModal",
+    "context": "sc(sector)}\" data-min=\"${Math.ceil(v.cost*1.75)}\">${esc(v.name)} · starting capital ≥ ${fmt"
+  },
+  {
+    "key": "subsidiaryModal__002",
+    "value": 1.75,
+    "origin_line": 520,
+    "origin_col": 741,
+    "scope": "subsidiaryModal",
+    "context": "starting capital ≥ ${fmt(Math.ceil(v.cost*1.75))}</option>`).join('')}</select></div><div c"
+  },
+  {
+    "key": "subsidiaryModal__003",
+    "value": 18000,
+    "origin_line": 520,
+    "origin_col": 1089,
+    "scope": "subsidiaryModal",
+    "context": ".player(S).finance.cash)}. At least ${fmt(18000)} must remain. The subsidiary is a separate "
+  },
+  {
+    "key": "subsidiaryModal__004",
+    "value": 1000,
+    "origin_line": 521,
+    "origin_col": 160,
+    "scope": "subsidiaryModal",
+    "context": "min=min;amount.value=String(Math.ceil(min/1000)*1000); } function bankLoanModal(){const lim"
+  },
+  {
+    "key": "subsidiaryModal__005",
+    "value": 1000,
+    "origin_line": 521,
+    "origin_col": 166,
+    "scope": "subsidiaryModal",
+    "context": "n;amount.value=String(Math.ceil(min/1000)*1000); } function bankLoanModal(){const limit=E.l"
+  },
+  {
+    "key": "bankLoanModal__001",
+    "value": 5000,
+    "origin_line": 523,
+    "origin_col": 62,
+    "scope": "bankLoanModal",
+    "context": "dal(){const limit=E.loanLimit(S);if(limit<5000)return notify('No additional bank credit ava"
+  },
+  {
+    "key": "rate__001",
+    "value": 1000,
+    "origin_line": 524,
+    "origin_col": 44,
+    "scope": "rate",
+    "context": "const rate=Math.round(E.marketLoanRate(S)*1000)/10; showModal(`${modalHead('Request a bank"
+  },
+  {
+    "key": "rate__002",
+    "value": 10,
+    "origin_line": 524,
+    "origin_col": 50,
+    "scope": "rate",
+    "context": "rate=Math.round(E.marketLoanRate(S)*1000)/10; showModal(`${modalHead('Request a bank wor"
+  },
+  {
+    "key": "bankLoanModal__002",
+    "value": 20000,
+    "origin_line": 525,
+    "origin_col": 464,
+    "scope": "bankLoanModal",
+    "context": "imit}\" step=\"500\" value=\"${Math.min(limit,20000)}\" required></div><div class=\"form-field\"><l"
+  },
+  {
+    "key": "bankLoanModal__003",
+    "value": 20000,
+    "origin_line": 525,
+    "origin_col": 769,
+    "scope": "bankLoanModal",
+    "context": "thly principal for a ${fmt(Math.min(limit,20000))} loan begins around ${fmt(Math.min(limit,2"
+  },
+  {
+    "key": "bankLoanModal__004",
+    "value": 20000,
+    "origin_line": 525,
+    "origin_col": 818,
+    "scope": "bankLoanModal",
+    "context": "} loan begins around ${fmt(Math.min(limit,20000)/24)}, plus declining interest. Missed payme"
+  },
+  {
+    "key": "bankLoanModal__005",
+    "value": 24,
+    "origin_line": 525,
+    "origin_col": 825,
+    "scope": "bankLoanModal",
+    "context": "begins around ${fmt(Math.min(limit,20000)/24)}, plus declining interest. Missed payments "
+  },
+  {
+    "key": "owed__001",
+    "value": 100,
+    "origin_line": 531,
+    "origin_col": 73,
+    "scope": "owed",
+    "context": "rincipalOutstanding+loan.interestArrears)*100)/100; const limit=Math.round(Math.max(0,Mat"
+  },
+  {
+    "key": "owed__002",
+    "value": 100,
+    "origin_line": 531,
+    "origin_col": 78,
+    "scope": "owed",
+    "context": "palOutstanding+loan.interestArrears)*100)/100; const limit=Math.round(Math.max(0,Math.min"
+  },
+  {
+    "key": "limit__001",
+    "value": 2,
+    "origin_line": 532,
+    "origin_col": 74,
+    "scope": "limit",
+    "context": "x(0,Math.min(owed,c.finance.cash-overhead*2))*100)/100; if(limit<=0)return notify('Not "
+  },
+  {
+    "key": "limit__002",
+    "value": 100,
+    "origin_line": 532,
+    "origin_col": 78,
+    "scope": "limit",
+    "context": "Math.min(owed,c.finance.cash-overhead*2))*100)/100; if(limit<=0)return notify('Not enough"
+  },
+  {
+    "key": "limit__003",
+    "value": 100,
+    "origin_line": 532,
+    "origin_col": 83,
+    "scope": "limit",
+    "context": "min(owed,c.finance.cash-overhead*2))*100)/100; if(limit<=0)return notify('Not enough cash"
+  },
+  {
+    "key": "repayBankModal__001",
+    "value": 1000,
+    "origin_line": 534,
+    "origin_col": 497,
+    "scope": "repayBankModal",
+    "context": "mit}\" step=\"0.01\" value=\"${Math.min(limit,1000)}\" required></div><div class=\"form-field\"><l"
+  },
+  {
+    "key": "hireTeamModal__001",
+    "value": 7200,
+    "origin_line": 537,
+    "origin_col": 486,
+    "scope": "hireTeamModal",
+    "context": "=\"margin-top:18px\">Recruitment fee: ${fmt(7200)} now. Additional weekly shared payroll: app"
+  },
+  {
+    "key": "hireTeamModal__002",
+    "value": 450,
+    "origin_line": 537,
+    "origin_col": 552,
+    "scope": "hireTeamModal",
+    "context": "eekly shared payroll: approximately ${fmt(450)}. Specialty gives a small quality bonus and"
+  },
+  {
+    "key": "desc__001",
+    "value": 100,
+    "origin_line": 561,
+    "origin_col": 190,
+    "scope": "desc",
+    "context": "xerciseFee)} · ${Math.round(t.royaltyRate*100)}% royalties`; showModal(`${modalHead('Coun"
+  },
+  {
+    "key": "bytes__001",
+    "value": 2,
+    "origin_line": 575,
+    "origin_col": 57,
+    "scope": "bytes",
+    "context": "tSave(){const bytes=JSON.stringify(S,null,2);const url=URL.createObjectURL(new Blob([byt"
+  },
+  {
+    "key": "exportSave__001",
+    "value": 3000,
+    "origin_line": 575,
+    "origin_col": 334,
+    "scope": "exportSave",
+    "context": ");setTimeout(()=>URL.revokeObjectURL(url),3000);notify('Backup exported.');} async function"
+  },
+  {
+    "key": "label__001",
+    "value": 36,
+    "origin_line": 577,
+    "origin_col": 60,
+    "scope": "label",
+    "context": "save-name-'+n)?.value||'').trim().slice(0,36)||('Campaign slot '+n); if(!['1','2','3'].i"
+  },
+  {
+    "key": "saveSlot__001",
+    "value": 1200000,
+    "origin_line": 586,
+    "origin_col": 16,
+    "scope": "saveSlot",
+    "context": "cted browsers below. */ }} if(raw.length>1200000)throw new Error('Large save needs IndexedDB."
+  },
+  {
+    "key": "r__001",
+    "value": 100,
+    "origin_line": 646,
+    "origin_col": 236,
+    "scope": "r",
+    "context": "n;safe(()=>{const r=E.sellFounderShares(S,100);view='career';notify('Founder sold shares f"
+  },
+  {
+    "key": "r__002",
+    "value": 2000,
+    "origin_line": 647,
+    "origin_col": 177,
+    "scope": "r",
+    "context": ")return;safe(()=>{const r=E.payDividend(S,2000);view='career';notify('Dividend paid; founde"
+  },
+  {
+    "key": "documentEvents__001",
+    "value": 12000,
+    "origin_line": 648,
+    "origin_col": 183,
+    "scope": "documentEvents",
+    "context": "holders?'))return;safe(()=>{E.launchIPO(S,12000);view='career';notify('Company publicly list"
+  },
+  {
+    "key": "q__001",
+    "value": 15000,
+    "origin_line": 655,
+    "origin_col": 100,
+    "scope": "q",
+    "context": "tmentCommittee(S,{kind:'expansion',amount:15000});remember();showModal(modalHead('Investment"
+  },
+  {
+    "key": "documentEvents__002",
+    "value": 25000,
+    "origin_line": 656,
+    "origin_col": 679,
+    "scope": "documentEvents",
+    "context": "max(0,S.founderFunds)}\" value=\"${Math.min(25000,Math.floor(S.founderFunds/1000)*1000)}\" requ"
+  },
+  {
+    "key": "documentEvents__003",
+    "value": 1000,
+    "origin_line": 656,
+    "origin_col": 711,
+    "scope": "documentEvents",
+    "context": "{Math.min(25000,Math.floor(S.founderFunds/1000)*1000)}\" required></div><p class=\"panel-sub\""
+  },
+  {
+    "key": "documentEvents__004",
+    "value": 1000,
+    "origin_line": 656,
+    "origin_col": 717,
+    "scope": "documentEvents",
+    "context": "min(25000,Math.floor(S.founderFunds/1000)*1000)}\" required></div><p class=\"panel-sub\">Old c"
+  },
+  {
+    "key": "documentEvents__005",
+    "value": 42000,
+    "origin_line": 669,
+    "origin_col": 107,
+    "scope": "documentEvents",
+    "context": " a mature-era streaming service for '+fmt(42000)+' and recurring monthly costs?'))return;saf"
+  },
+  {
+    "key": "documentEvents__006",
+    "value": 52,
+    "origin_line": 671,
+    "origin_col": 110,
+    "scope": "documentEvents",
+    "context": "dataset.tvService,b.dataset.tvStreamOwned,52);notify('Owned screen release licensed for 5"
+  },
+  {
+    "key": "o__001",
+    "value": 52,
+    "origin_line": 672,
+    "origin_col": 128,
+    "scope": "o",
+    "context": "set.tvService,b.dataset.tvRequestExternal,52,2800);notify(o.status==='counter'?'Independe"
+  },
+  {
+    "key": "o__002",
+    "value": 2800,
+    "origin_line": 672,
+    "origin_col": 131,
+    "scope": "o",
+    "context": ".tvService,b.dataset.tvRequestExternal,52,2800);notify(o.status==='counter'?'Independent ow"
+  },
+  {
+    "key": "documentEvents__007",
+    "value": 27500,
+    "origin_line": 684,
+    "origin_col": 70,
+    "scope": "documentEvents",
+    "context": "me-open-store')){if(!confirm('Spend '+fmt(27500)+' on an owned game store and commit to oper"
+  },
+  {
+    "key": "o__003",
+    "value": 1800,
+    "origin_line": 686,
+    "origin_col": 103,
+    "scope": "o",
+    "context": "S,b.dataset.gameStore,b.dataset.gameOffer,1800);notify(o.status==='counter'?'Independent ri"
+  },
+  {
+    "key": "o__004",
+    "value": 3500,
+    "origin_line": 690,
+    "origin_col": 115,
+    "scope": "o",
+    "context": "dataset.gameStore,b.dataset.gameExclusive,3500,13);notify(o.status==='counter'?'Owner count"
+  },
+  {
+    "key": "o__005",
+    "value": 13,
+    "origin_line": 690,
+    "origin_col": 120,
+    "scope": "o",
+    "context": "et.gameStore,b.dataset.gameExclusive,3500,13);notify(o.status==='counter'?'Owner countere"
+  },
+  {
+    "key": "documentEvents__008",
+    "value": 18500,
+    "origin_line": 694,
+    "origin_col": 103,
+    "scope": "documentEvents",
+    "context": "Fund an in-house studio fit-out for '+fmt(18500)+' plus ongoing monthly maintenance? This is"
+  },
+  {
+    "key": "documentEvents__009",
+    "value": 1000,
+    "origin_line": 700,
+    "origin_col": 307,
+    "scope": "documentEvents",
+    "context": "participation '+Math.round(r.backendShare*1000)/10+'%.');});return;} if(b.dataset.commissi"
+  },
+  {
+    "key": "documentEvents__010",
+    "value": 10,
+    "origin_line": 700,
+    "origin_col": 313,
+    "scope": "documentEvents",
+    "context": "ipation '+Math.round(r.backendShare*1000)/10+'%.');});return;} if(b.dataset.commissionOp"
+  },
+  {
+    "key": "o__006",
+    "value": 15000,
+    "origin_line": 706,
+    "origin_col": 175,
+    "scope": "o",
+    "context": "ounter:!current.autoCounter,maxCommitment:15000,maxShare:.35});notify(o.autoCounter?'Minor f"
+  },
+  {
+    "key": "o__007",
+    "value": 0.35,
+    "origin_line": 706,
+    "origin_col": 190,
+    "scope": "o",
+    "context": ".autoCounter,maxCommitment:15000,maxShare:.35});notify(o.autoCounter?'Minor financing coun"
+  },
+  {
+    "key": "q__002",
+    "value": 0.75,
+    "origin_line": 709,
+    "origin_col": 236,
+    "scope": "q",
+    "context": "ionQuote(S,{sector:b.dataset.project,size:.75});if(!q.partners.length)throw new Error('No "
+  },
+  {
+    "key": "documentEvents__011",
+    "value": 3000,
+    "origin_line": 711,
+    "origin_col": 29,
+    "scope": "documentEvents",
+    "context": "undResearch){ if(!confirm('Spend '+fmt(3000)+' of real company cash on '+sectorName(b.da"
+  },
+  {
+    "key": "r__003",
+    "value": 3000,
+    "origin_line": 712,
+    "origin_col": 64,
+    "scope": "r",
+    "context": "E.investResearch(S,b.dataset.fundResearch,3000);notify('Research funded. Expertise level '+"
+  },
+  {
+    "key": "policy__005",
+    "value": 1500,
+    "origin_line": 724,
+    "origin_col": 139,
+    "scope": "policy",
+    "context": "utoRenew:!S.rightsPolicy.autoRenew,maxFee:1500,extensionWeeks:52});notify(policy.autoRenew?"
+  },
+  {
+    "key": "policy__006",
+    "value": 52,
+    "origin_line": 724,
+    "origin_col": 159,
+    "scope": "policy",
+    "context": "licy.autoRenew,maxFee:1500,extensionWeeks:52});notify(policy.autoRenew?'Routine renewal d"
+  },
+  {
+    "key": "old__001",
+    "value": 2100,
+    "origin_line": 725,
+    "origin_col": 102,
+    "scope": "old",
+    "context": "ld=S.talentPolicy||{autoBook:false,maxFee:2100};E.configureTalentAuthority(S,{autoBook:!old"
+  },
+  {
+    "key": "documentEvents__012",
+    "value": 2100,
+    "origin_line": 725,
+    "origin_col": 168,
+    "scope": "documentEvents",
+    "context": "uthority(S,{autoBook:!old.autoBook,maxFee:2100});notify(S.talentPolicy.autoBook?'Low-fee re"
+  },
+  {
+    "key": "rows__007",
+    "value": 7,
+    "origin_line": 732,
+    "origin_col": 265,
+    "scope": "rows",
+    "context": "eReleases(S,b.dataset.franchiseCoordinate,7);franchiseModal(b.dataset.franchiseCoordinat"
+  },
+  {
+    "key": "documentEvents__013",
+    "value": 1250,
+    "origin_line": 745,
+    "origin_col": 54,
+    "scope": "documentEvents",
+    "context": "et.creatorScout){if(!confirm('Spend '+fmt(1250)+' to scout one independent emerging '+b.dat"
+  },
+  {
+    "key": "documentEvents__014",
+    "value": 1800,
+    "origin_line": 746,
+    "origin_col": 81,
+    "scope": "documentEvents",
+    "context": "irm('Fund a creative fellowship for '+fmt(1800)+'? The creator remains independent and may "
+  },
+  {
+    "key": "p__001",
+    "value": 0.65,
+    "origin_line": 754,
+    "origin_col": 486,
+    "scope": "p",
+    "context": "lId:a.id,title:a.title,genre:a.genre,size:.65,format});notify(p.title+' approved for autho"
+  },
+  {
+    "key": "x__001",
+    "value": 10,
+    "origin_line": 768,
+    "origin_col": 262,
+    "scope": "x",
+    "context": ">{const x=E.batchApproveRoutineCounters(S,10);notify(x.approved.length+' limited countero"
+  },
+  {
+    "key": "documentEvents__015",
+    "value": 1000,
+    "origin_line": 797,
+    "origin_col": 161,
+    "scope": "documentEvents",
+    "context": "$('sub-capital').value=String(Math.ceil(i/1000)*1000);} if(event.target.id==='new-era'){$("
+  },
+  {
+    "key": "documentEvents__016",
+    "value": 1000,
+    "origin_line": 797,
+    "origin_col": 167,
+    "scope": "documentEvents",
+    "context": "-capital').value=String(Math.ceil(i/1000)*1000);} if(event.target.id==='new-era'){$('new-o"
+  },
+  {
+    "key": "leadership__001",
+    "value": 75,
+    "origin_line": 876,
+    "origin_col": 144,
+    "scope": "leadership",
+    "context": "ders</span><strong>${crew.filter(x=>x.age<75&&x.skill>=45).length}</strong></div>`:'')+ "
+  },
+  {
+    "key": "leadership__002",
+    "value": 45,
+    "origin_line": 876,
+    "origin_col": 157,
+    "scope": "leadership",
+    "context": "trong>${crew.filter(x=>x.age<75&&x.skill>=45).length}</strong></div>`:'')+ crew.filter("
+  },
+  {
+    "key": "leadership__003",
+    "value": 75,
+    "origin_line": 877,
+    "origin_col": 24,
+    "scope": "leadership",
+    "context": "trong></div>`:'')+ crew.filter(x=>x.age<75&&x.skill>=45).slice(0,5).map(x=>`<div class="
+  },
+  {
+    "key": "leadership__004",
+    "value": 45,
+    "origin_line": 877,
+    "origin_col": 37,
+    "scope": "leadership",
+    "context": ":'')+ crew.filter(x=>x.age<75&&x.skill>=45).slice(0,5).map(x=>`<div class=\"small-stat\">"
+  },
+  {
+    "key": "leadership__005",
+    "value": 5,
+    "origin_line": 877,
+    "origin_col": 49,
+    "scope": "leadership",
+    "context": ".filter(x=>x.age<75&&x.skill>=45).slice(0,5).map(x=>`<div class=\"small-stat\"><span>${esc"
+  },
+  {
+    "key": "board__001",
+    "value": 1000,
+    "origin_line": 883,
+    "origin_col": 71,
+    "scope": "board",
+    "context": ",Math.round(status.ownership.founderShare*1000)/10+'%')+ row('Founder / private investors"
+  },
+  {
+    "key": "board__002",
+    "value": 10,
+    "origin_line": 883,
+    "origin_col": 77,
+    "scope": "board",
+    "context": "round(status.ownership.founderShare*1000)/10+'%')+ row('Founder / private investors / p"
+  },
+  {
+    "key": "board__003",
+    "value": 25,
+    "origin_line": 891,
+    "origin_col": 60,
+    "scope": "board",
+    "context": "='private-corporation'&&E.yearAt(S.week)>=25?btn('Consider optional IPO','data-gov-ipo','"
+  },
+  {
+    "key": "board__004",
+    "value": 0.5,
+    "origin_line": 892,
+    "origin_col": 34,
+    "scope": "board",
+    "context": "e'):'')+ (status.ownership.founderShare<.5&&S.management.status==='active'?btn('Resolve"
+  },
+  {
+    "key": "board__005",
+    "value": 2000,
+    "origin_line": 893,
+    "origin_col": 24,
+    "scope": "board",
+    "context": "t','outline'):'')+ (E.companyProfit(c)>=2000?btn('Declare cash dividend','data-gov-divide"
+  },
+  {
+    "key": "board__006",
+    "value": 4,
+    "origin_line": 894,
+    "origin_col": 87,
+    "scope": "board",
+    "context": "lutions: ${c.corporate.resolutions.slice(-4).map(x=>esc(x.kind)+' '+(x.approved?'approve"
+  },
+  {
+    "key": "valuation__001",
+    "value": 100,
+    "origin_line": 899,
+    "origin_col": 50,
+    "scope": "valuation",
+    "context": "oan principal to value',(risk.loanToValue*100).toFixed(1)+'%')+ `<p class=\"panel-sub\">For"
+  },
+  {
+    "key": "chronology__001",
+    "value": 10,
+    "origin_line": 905,
+    "origin_col": 76,
+    "scope": "chronology",
+    "context": "and founder lineage',status.recent.slice(-10).reverse().map(x=>`<div class=\"small-stat\"><"
+  },
+  {
+    "key": "companyLevelsPanel__001",
+    "value": 6,
+    "origin_line": 918,
+    "origin_col": 23,
+    "scope": "companyLevelsPanel",
+    "context": "h}</strong></div>`+ chosen.teams.slice(0,6).map(t=>`<div class=\"small-stat\"><span>${esc"
+  },
+  {
+    "key": "companyLevelsPanel__002",
+    "value": 6,
+    "origin_line": 919,
+    "origin_col": 18,
+    "scope": "companyLevelsPanel",
+    "context": "trong></div>`).join('')+ projects.slice(-6).map(p=>`<div class=\"small-stat\"><span>${esc"
+  },
+  {
+    "key": "bank__001",
+    "value": 100,
+    "origin_line": 933,
+    "origin_col": 106,
+    "scope": "bank",
+    "context": "ate on borrowed balance',(loan.annualRate*100).toFixed(1)+'% / year')+ brief42('Bank as"
+  },
+  {
+    "key": "bank__002",
+    "value": 3,
+    "origin_line": 936,
+    "origin_col": 17,
+    "scope": "bank",
+    "context": "en-line\"','primary'):'')+ lines.slice(-3).reverse().map(l=>{const v=E.creditLineStatu"
+  },
+  {
+    "key": "bank__003",
+    "value": 4,
+    "origin_line": 937,
+    "origin_col": 94,
+    "scope": "bank",
+    "context": "ilityId&&l.principalOutstanding>0).slice(-4).reverse().map(l=>`<div class=\"small-stat\"><"
+  },
+  {
+    "key": "bank__004",
+    "value": 100,
+    "origin_line": 937,
+    "origin_col": 225,
+    "scope": "bank",
+    "context": "outstanding · ${Math.round(l.interestRate*100)}% interest</span>${btn('Pay principal','dat"
+  },
+  {
+    "key": "visible__001",
+    "value": 8,
+    "origin_line": 950,
+    "origin_col": 211,
+    "scope": "visible",
+    "context": "ubs=owned.slice(1),visible=rivals.slice(0,8),assets=S.ips.filter(x=>x.ownerId!==c.id&&!o"
+  },
+  {
+    "key": "assets__001",
+    "value": 7,
+    "origin_line": 950,
+    "origin_col": 297,
+    "scope": "assets",
+    "context": "!owned.some(o=>o.id===x.ownerId)).slice(0,7); const rivalsPanel=panel('Strategic acquis"
+  },
+  {
+    "key": "groupPanel__001",
+    "value": 5,
+    "origin_line": 971,
+    "origin_col": 26,
+    "scope": "groupPanel",
+    "context": "ce income.</p>`+ (x.teams||[]).slice(0,5).map(team=>{const opts=[{id:null,name:'Unass"
+  },
+  {
+    "key": "documentEvents__017",
+    "value": 25000,
+    "origin_line": 991,
+    "origin_col": 451,
+    "scope": "documentEvents",
+    "context": "100\" value=\"${Math.floor(Math.min(q.limit,25000)/100)*100}\"></div>`,'Sign and pay bank fee')"
+  },
+  {
+    "key": "documentEvents__018",
+    "value": 100,
+    "origin_line": 991,
+    "origin_col": 458,
+    "scope": "documentEvents",
+    "context": "lue=\"${Math.floor(Math.min(q.limit,25000)/100)*100}\"></div>`,'Sign and pay bank fee');retu"
+  },
+  {
+    "key": "documentEvents__019",
+    "value": 100,
+    "origin_line": 991,
+    "origin_col": 463,
+    "scope": "documentEvents",
+    "context": "${Math.floor(Math.min(q.limit,25000)/100)*100}\"></div>`,'Sign and pay bank fee');return; "
+  },
+  {
+    "key": "documentEvents__020",
+    "value": 5000,
+    "origin_line": 993,
+    "origin_col": 495,
+    "scope": "documentEvents",
+    "context": " value=\"${Math.floor(Math.min(q.available,5000)/100)*100}\"></div>`,'Borrow funds');return;}"
+  },
+  {
+    "key": "documentEvents__021",
+    "value": 100,
+    "origin_line": 993,
+    "origin_col": 501,
+    "scope": "documentEvents",
+    "context": "=\"${Math.floor(Math.min(q.available,5000)/100)*100}\"></div>`,'Borrow funds');return;} if"
+  },
+  {
+    "key": "documentEvents__022",
+    "value": 100,
+    "origin_line": 993,
+    "origin_col": 506,
+    "scope": "documentEvents",
+    "context": "ath.floor(Math.min(q.available,5000)/100)*100}\"></div>`,'Borrow funds');return;} if(acti"
+  },
+  {
+    "key": "documentEvents__023",
+    "value": 3000,
+    "origin_line": 994,
+    "origin_col": 540,
+    "scope": "documentEvents",
+    "context": "anding||0)}\" value=\"${Math.floor(Math.min(3000,l?.principalOutstanding||0)/100)*100}\"></div"
+  },
+  {
+    "key": "documentEvents__024",
+    "value": 100,
+    "origin_line": 994,
+    "origin_col": 573,
+    "scope": "documentEvents",
+    "context": "Math.min(3000,l?.principalOutstanding||0)/100)*100}\"></div>`,'Pay bank');return;} if(act"
+  },
+  {
+    "key": "documentEvents__025",
+    "value": 100,
+    "origin_line": 994,
+    "origin_col": 578,
+    "scope": "documentEvents",
+    "context": "min(3000,l?.principalOutstanding||0)/100)*100}\"></div>`,'Pay bank');return;} if(action=="
+  },
+  {
+    "key": "documentEvents__026",
+    "value": 800,
+    "origin_line": 1022,
+    "origin_col": 87,
+    "scope": "documentEvents",
+    "context": "nternalLicense(S,d.ipId,d.holder,d.medium,800,52);notify('Intragroup license granted for 5"
+  },
+  {
+    "key": "documentEvents__027",
+    "value": 52,
+    "origin_line": 1022,
+    "origin_col": 91,
+    "scope": "documentEvents",
+    "context": "nalLicense(S,d.ipId,d.holder,d.medium,800,52);notify('Intragroup license granted for 52 w"
+  },
+  {
+    "key": "portrait43__001",
+    "value": 68,
+    "origin_line": 1035,
+    "origin_col": 41,
+    "scope": "portrait43",
+    "context": "; function portrait43(personId,dimensions=68){ let p;try{p=E.portraitTraits43(S,personId"
+  },
+  {
+    "key": "d__001",
+    "value": 36,
+    "origin_line": 1036,
+    "origin_col": 100,
+    "scope": "d",
+    "context": "rn '';}const key=esc(personId),d=Math.max(36,Math.min(92,dimensions)); const hair=['M24 "
+  },
+  {
+    "key": "d__002",
+    "value": 92,
+    "origin_line": 1036,
+    "origin_col": 112,
+    "scope": "d",
+    "context": " key=esc(personId),d=Math.max(36,Math.min(92,dimensions)); const hair=['M24 41 Q15 20 28"
+  },
+  {
+    "key": "onboardingPanel43__001",
+    "value": 62,
+    "origin_line": 1047,
+    "origin_col": 56,
+    "scope": "onboardingPanel43",
+    "context": "\"ss-identity43\">${portrait43(S.founder.id,62)}<div><strong>${esc(S.founder.name)}</strong"
+  },
+  {
+    "key": "erasPanel43__001",
+    "value": 5,
+    "origin_line": 1057,
+    "origin_col": 33,
+    "scope": "erasPanel43",
+    "context": "ns.</p>`+ (S.prehistoryWorks||[]).slice(-5).reverse().map(x=>`<p class=\"item-sub\">Year "
+  },
+  {
+    "key": "events__001",
+    "value": 8,
+    "origin_line": 1060,
+    "origin_col": 67,
+    "scope": "events",
+    "context": "){const events=E.worldEvents43(S).slice(0,8); return panel('Traceable world event archi"
+  },
+  {
+    "key": "teamDepth43__001",
+    "value": 10,
+    "origin_line": 1070,
+    "origin_col": 18,
+    "scope": "teamDepth43",
+    "context": "nagement required.</p>`+ c.teams.slice(0,10).map(t=>`<div class=\"small-stat\"><span class"
+  },
+  {
+    "key": "teamDepth43__002",
+    "value": 40,
+    "origin_line": 1070,
+    "origin_col": 117,
+    "scope": "teamDepth43",
+    "context": "ity43\">${t.leaderId?portrait43(t.leaderId,40):''}<span>${esc(t.name)} · skill ${t.skill}<"
+  },
+  {
+    "key": "grants__001",
+    "value": 9,
+    "origin_line": 1081,
+    "origin_col": 103,
+    "scope": "grants",
+    "context": "id).filter(g=>g.kind==='license')).slice(-9).reverse(); const sublicenses=S.grants.filt"
+  },
+  {
+    "key": "rightsPackagePanel43__001",
+    "value": 35,
+    "origin_line": 1085,
+    "origin_col": 159,
+    "scope": "rightsPackagePanel43",
+    "context": "label><select name=\"ipId\">${allIps.slice(-35).map(ip=>`<option value=\"${esc(ip.id)}\">${es"
+  },
+  {
+    "key": "rightsPackagePanel43__002",
+    "value": 25,
+    "origin_line": 1086,
+    "origin_col": 111,
+    "scope": "rightsPackagePanel43",
+    "context": "ect name=\"holderId\">${independent.slice(0,25).map(c=>`<option value=\"${esc(c.id)}\">${esc("
+  },
+  {
+    "key": "rightsPackagePanel43__003",
+    "value": 4,
+    "origin_line": 1093,
+    "origin_col": 179,
+    "scope": "rightsPackagePanel43",
+    "context": "0,0)}${smallOption43('4 contracted weeks',4,0)}${smallOption43('12 contracted weeks',12,"
+  },
+  {
+    "key": "rightsPackagePanel43__004",
+    "value": 12,
+    "origin_line": 1093,
+    "origin_col": 222,
+    "scope": "rightsPackagePanel43",
+    "context": ",0)}${smallOption43('12 contracted weeks',12,0)}</select></div>`+ `<div class=\"form-fiel"
+  },
+  {
+    "key": "deals__001",
+    "value": 7,
+    "origin_line": 1100,
+    "origin_col": 85,
+    "scope": "deals",
+    "context": "filter(d=>d.studioId===S.playerId).slice(-7).reverse(); return panel('Independent game "
+  },
+  {
+    "key": "trade__001",
+    "value": 4,
+    "origin_line": 1107,
+    "origin_col": 48,
+    "scope": "trade",
+    "context": "t trade=(S.technologyTrades43||[]).slice(-4); return panel('Buy rival R&D · real techno"
+  },
+  {
+    "key": "technologyTrades43__001",
+    "value": 6,
+    "origin_line": 1110,
+    "origin_col": 19,
+    "scope": "technologyTrades43",
+    "context": "arty creative IP.</p>`+ (targets.slice(0,6).map(c=>Object.entries(c.research).filter((["
+  },
+  {
+    "key": "topLevel__001",
+    "value": 78,
+    "origin_line": 1120,
+    "origin_col": 156,
+    "scope": "topLevel",
+    "context": "\"ss-identity43\">${portrait43(S.founder.id,78)}<div><h3>${esc(S.founder.name)}</h3><p clas"
+  },
+  {
+    "key": "g__001",
+    "value": 100,
+    "origin_line": 1136,
+    "origin_col": 177,
+    "scope": "g",
+    "context": "mber(d.fee),royaltyRate:Number(d.royalty)/100,parentGrantId:d.parentGrantId||null, exclu"
+  },
+  {
+    "key": "documentEvents__028",
+    "value": 100,
+    "origin_line": 1142,
+    "origin_col": 101,
+    "scope": "documentEvents",
+    "context": "f real cash and earn '+Math.round(q.share*100)+'% of real external game receipts for 52 we"
+  },
+  {
+    "key": "work__001",
+    "value": 100,
+    "origin_line": 1152,
+    "origin_col": 134,
+    "scope": "work",
+    "context": "ound(p.weeksDone/Math.max(1,p.weeksTotal)*100); const action=x?.status==='open'?btn('Fun"
+  },
+  {
+    "key": "action__001",
+    "value": 30,
+    "origin_line": 1154,
+    "origin_col": 16,
+    "scope": "action",
+    "context": "${esc(p.id)}\"`,'outline'): (!x&&work>=30&&work<100?btn('Ask client for inspection',`d"
+  },
+  {
+    "key": "action__002",
+    "value": 100,
+    "origin_line": 1154,
+    "origin_col": 25,
+    "scope": "action",
+    "context": "d)}\"`,'outline'): (!x&&work>=30&&work<100?btn('Ask client for inspection',`data-u47=\"i"
+  },
+  {
+    "key": "documentEvents__029",
+    "value": 100,
+    "origin_line": 1176,
+    "origin_col": 103,
+    "scope": "documentEvents",
+    "context": "over 24 monthly closes at '+(q.annualRate*100).toFixed(1)+'% interest. Outstanding interes"
+  },
+  {
+    "key": "platformInfo__001",
+    "value": 4,
+    "origin_line": 1187,
+    "origin_col": 55,
+    "scope": "platformInfo",
+    "context": "s=\"two-cols\">'+E.activeRegions(S).slice(0,4).map(r=>{ const rows=market.filter(x=>x.r"
+  },
+  {
+    "key": "games__001",
+    "value": 6,
+    "origin_line": 1191,
+    "origin_col": 177,
+    "scope": "games",
+    "context": "].includes(p.videoGame?.mechanic)).slice(-6).reverse(); const service=panel('Optional o"
+  },
+  {
+    "key": "control__001",
+    "value": 1250,
+    "origin_line": 1196,
+    "origin_col": 60,
+    "scope": "control",
+    "context": "!live?btn('Start recurring events · '+fmt(1250),`data-u49-service=\"${esc(p.id)}\" data-u49-a"
+  },
+  {
+    "key": "control__002",
+    "value": 1250,
+    "origin_line": 1198,
+    "origin_col": 60,
+    "scope": "control",
+    "context": "='paused'?btn('Resume paid events · '+fmt(1250),`data-u49-service=\"${esc(p.id)}\" data-u49-a"
+  }
+]

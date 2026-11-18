@@ -1,0 +1,3 @@
+PASS long-publisher-42 20 years; 80 quarter audits, 4 save reloads; companies 16 group assets 0 save MB 10.17 time ms 11195
+PASS long-mature-42 20 years; 80 quarter audits, 4 save reloads; companies 11 group assets 4713948.66 save MB 7.80 time ms 5987
+UPDATE42 longer stress 2/2

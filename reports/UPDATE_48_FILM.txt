@@ -1,0 +1,4 @@
+PASS 14 film: funded talent, exclusive casting across film and TV, finite owned backlot {"castFee":3080,"facility":18500,"firstRelease":1271}
+PASS 14 film: script, paid location/facility decisions, screening feedback and reshoot {"screening":998.4,"scriptDrafts":1,"reshoots":1}
+PASS 15 cinema: region premieres, window transitions, age categories, real festival honors and backend {"gross":143688.97,"backend":4310.68,"festival":"North Coast Screen Awards","rating":"M"}
+UPDATE48 FILM 3/3

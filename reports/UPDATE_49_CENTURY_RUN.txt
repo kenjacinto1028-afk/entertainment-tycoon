@@ -1,0 +1,147 @@
+CHECKPOINT {"key":"publishing","era":1,"years":10,"done":false,"launches":10,"appointments":0,"transitionWeeks":0,"activeWeeks":520,"yearlyAudits":10,"reloads":1,"maxSave":3775766,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":3}
+CHECKPOINT {"key":"publishing","era":1,"years":30,"done":false,"launches":30,"appointments":0,"transitionWeeks":0,"activeWeeks":1560,"yearlyAudits":30,"reloads":3,"maxSave":8299866,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":8}
+CHECKPOINT {"key":"publishing","era":1,"years":50,"done":false,"launches":50,"appointments":1,"transitionWeeks":1,"activeWeeks":2600,"yearlyAudits":50,"reloads":5,"maxSave":13043776,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":14}
+CHECKPOINT {"key":"publishing","era":1,"years":70,"done":false,"launches":70,"appointments":1,"transitionWeeks":1,"activeWeeks":3640,"yearlyAudits":70,"reloads":7,"maxSave":17603101,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":14}
+ANNUAL publishing 71 projects 1297 companies 11 elapsedS 1
+ANNUAL publishing 72 projects 1315 companies 11 elapsedS 2
+ANNUAL publishing 73 projects 1335 companies 11 elapsedS 3
+ANNUAL publishing 74 projects 1352 companies 11 elapsedS 5
+ANNUAL publishing 75 projects 1374 companies 11 elapsedS 6
+CHECKPOINT {"key":"publishing","era":1,"years":75,"done":false,"launches":75,"appointments":2,"transitionWeeks":2,"activeWeeks":3900,"yearlyAudits":75,"reloads":7,"maxSave":17603101,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":7}
+ANNUAL publishing 76 projects 1391 companies 11 elapsedS 2
+ANNUAL publishing 77 projects 1411 companies 11 elapsedS 3
+ANNUAL publishing 78 projects 1426 companies 11 elapsedS 4
+ANNUAL publishing 79 projects 1441 companies 11 elapsedS 5
+ANNUAL publishing 80 projects 1462 companies 11 elapsedS 6
+CHECKPOINT {"key":"publishing","era":1,"years":80,"done":false,"launches":80,"appointments":2,"transitionWeeks":2,"activeWeeks":4160,"yearlyAudits":80,"reloads":8,"maxSave":19749656,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":7}
+ANNUAL publishing 81 projects 1481 companies 11 elapsedS 2
+ANNUAL publishing 82 projects 1502 companies 11 elapsedS 3
+ANNUAL publishing 83 projects 1521 companies 11 elapsedS 5
+ANNUAL publishing 84 projects 1538 companies 11 elapsedS 6
+ANNUAL publishing 85 projects 1556 companies 11 elapsedS 7
+CHECKPOINT {"key":"publishing","era":1,"years":85,"done":false,"launches":85,"appointments":2,"transitionWeeks":2,"activeWeeks":4420,"yearlyAudits":85,"reloads":8,"maxSave":19749656,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":8}
+ANNUAL publishing 86 projects 1574 companies 11 elapsedS 1
+ANNUAL publishing 87 projects 1592 companies 11 elapsedS 3
+ANNUAL publishing 88 projects 1609 companies 11 elapsedS 4
+ANNUAL publishing 89 projects 1629 companies 11 elapsedS 6
+ANNUAL publishing 90 projects 1648 companies 11 elapsedS 8
+CHECKPOINT {"key":"publishing","era":1,"years":90,"done":false,"launches":90,"appointments":2,"transitionWeeks":2,"activeWeeks":4680,"yearlyAudits":90,"reloads":9,"maxSave":22174930,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":9}
+ANNUAL publishing 91 projects 1668 companies 11 elapsedS 1
+ANNUAL publishing 92 projects 1688 companies 11 elapsedS 2
+ANNUAL publishing 93 projects 1706 companies 11 elapsedS 4
+ANNUAL publishing 94 projects 1729 companies 11 elapsedS 5
+ANNUAL publishing 95 projects 1748 companies 11 elapsedS 6
+CHECKPOINT {"key":"publishing","era":1,"years":95,"done":false,"launches":95,"appointments":2,"transitionWeeks":2,"activeWeeks":4940,"yearlyAudits":95,"reloads":9,"maxSave":22174930,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":7}
+ANNUAL publishing 96 projects 1768 companies 11 elapsedS 2
+ANNUAL publishing 97 projects 1784 companies 11 elapsedS 4
+ANNUAL publishing 98 projects 1806 companies 11 elapsedS 6
+ANNUAL publishing 99 projects 1825 companies 11 elapsedS 8
+ANNUAL publishing 100 projects 1844 companies 11 elapsedS 10
+CHECKPOINT {"key":"publishing","era":1,"years":100,"done":true,"launches":100,"appointments":2,"transitionWeeks":2,"activeWeeks":5200,"yearlyAudits":100,"reloads":10,"maxSave":24555411,"peakWallet":0.7375,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":11}
+PASS publishing 100 years, annual audit, decadal reload, ownership and finite demand
+ANNUAL games 1 projects 11 companies 5 elapsedS 0
+ANNUAL games 2 projects 24 companies 5 elapsedS 0
+ANNUAL games 3 projects 36 companies 5 elapsedS 1
+ANNUAL games 4 projects 50 companies 5 elapsedS 1
+ANNUAL games 5 projects 62 companies 5 elapsedS 1
+ANNUAL games 6 projects 73 companies 5 elapsedS 1
+ANNUAL games 7 projects 86 companies 5 elapsedS 1
+ANNUAL games 8 projects 98 companies 5 elapsedS 1
+ANNUAL games 9 projects 110 companies 5 elapsedS 1
+ANNUAL games 10 projects 122 companies 5 elapsedS 2
+ANNUAL games 11 projects 132 companies 5 elapsedS 2
+ANNUAL games 12 projects 144 companies 5 elapsedS 2
+ANNUAL games 13 projects 155 companies 5 elapsedS 2
+ANNUAL games 14 projects 169 companies 5 elapsedS 3
+ANNUAL games 15 projects 181 companies 5 elapsedS 3
+ANNUAL games 16 projects 196 companies 5 elapsedS 3
+ANNUAL games 17 projects 207 companies 5 elapsedS 4
+ANNUAL games 18 projects 218 companies 5 elapsedS 4
+ANNUAL games 19 projects 228 companies 5 elapsedS 4
+ANNUAL games 20 projects 240 companies 5 elapsedS 4
+CHECKPOINT {"key":"games","era":25,"years":20,"done":false,"launches":20,"appointments":0,"transitionWeeks":0,"activeWeeks":1040,"yearlyAudits":20,"reloads":2,"maxSave":4748279,"peakWallet":0.5438,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":5}
+ANNUAL games 21 projects 254 companies 5 elapsedS 1
+ANNUAL games 22 projects 263 companies 5 elapsedS 1
+ANNUAL games 23 projects 274 companies 5 elapsedS 1
+ANNUAL games 24 projects 285 companies 5 elapsedS 2
+ANNUAL games 25 projects 297 companies 5 elapsedS 2
+ANNUAL games 26 projects 309 companies 5 elapsedS 2
+ANNUAL games 27 projects 320 companies 5 elapsedS 2
+ANNUAL games 28 projects 333 companies 5 elapsedS 3
+ANNUAL games 29 projects 343 companies 5 elapsedS 3
+ANNUAL games 30 projects 355 companies 5 elapsedS 3
+ANNUAL games 31 projects 366 companies 5 elapsedS 4
+ANNUAL games 32 projects 379 companies 5 elapsedS 4
+ANNUAL games 33 projects 390 companies 5 elapsedS 4
+ANNUAL games 34 projects 401 companies 5 elapsedS 5
+ANNUAL games 35 projects 412 companies 5 elapsedS 5
+ANNUAL games 36 projects 425 companies 5 elapsedS 5
+ANNUAL games 37 projects 437 companies 5 elapsedS 6
+ANNUAL games 38 projects 450 companies 5 elapsedS 6
+ANNUAL games 39 projects 465 companies 5 elapsedS 6
+ANNUAL games 40 projects 476 companies 5 elapsedS 7
+CHECKPOINT {"key":"games","era":25,"years":40,"done":false,"launches":40,"appointments":0,"transitionWeeks":0,"activeWeeks":2080,"yearlyAudits":40,"reloads":4,"maxSave":7680413,"peakWallet":0.5834,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":7}
+ANNUAL games 41 projects 488 companies 5 elapsedS 1
+ANNUAL games 42 projects 500 companies 5 elapsedS 1
+ANNUAL games 43 projects 512 companies 5 elapsedS 2
+ANNUAL games 44 projects 526 companies 5 elapsedS 2
+ANNUAL games 45 projects 538 companies 5 elapsedS 2
+ANNUAL games 46 projects 549 companies 5 elapsedS 3
+ANNUAL games 47 projects 563 companies 5 elapsedS 3
+ANNUAL games 48 projects 574 companies 5 elapsedS 4
+ANNUAL games 49 projects 585 companies 5 elapsedS 4
+ANNUAL games 50 projects 597 companies 5 elapsedS 4
+ANNUAL games 51 projects 611 companies 5 elapsedS 5
+ANNUAL games 52 projects 620 companies 5 elapsedS 6
+ANNUAL games 53 projects 633 companies 5 elapsedS 6
+ANNUAL games 54 projects 644 companies 5 elapsedS 6
+ANNUAL games 55 projects 658 companies 5 elapsedS 7
+ANNUAL games 56 projects 671 companies 5 elapsedS 7
+ANNUAL games 57 projects 683 companies 5 elapsedS 7
+ANNUAL games 58 projects 695 companies 5 elapsedS 8
+ANNUAL games 59 projects 707 companies 5 elapsedS 8
+ANNUAL games 60 projects 720 companies 5 elapsedS 8
+CHECKPOINT {"key":"games","era":25,"years":60,"done":false,"launches":60,"appointments":1,"transitionWeeks":1,"activeWeeks":3120,"yearlyAudits":60,"reloads":6,"maxSave":10444161,"peakWallet":0.5901,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":9}
+ANNUAL games 61 projects 733 companies 5 elapsedS 1
+ANNUAL games 62 projects 744 companies 5 elapsedS 2
+ANNUAL games 63 projects 757 companies 5 elapsedS 2
+ANNUAL games 64 projects 768 companies 5 elapsedS 3
+ANNUAL games 65 projects 781 companies 5 elapsedS 3
+ANNUAL games 66 projects 795 companies 5 elapsedS 4
+ANNUAL games 67 projects 808 companies 5 elapsedS 4
+ANNUAL games 68 projects 819 companies 5 elapsedS 5
+ANNUAL games 69 projects 830 companies 5 elapsedS 5
+ANNUAL games 70 projects 843 companies 5 elapsedS 6
+ANNUAL games 71 projects 853 companies 5 elapsedS 7
+ANNUAL games 72 projects 867 companies 5 elapsedS 7
+ANNUAL games 73 projects 881 companies 5 elapsedS 8
+ANNUAL games 74 projects 893 companies 5 elapsedS 8
+ANNUAL games 75 projects 904 companies 5 elapsedS 9
+ANNUAL games 76 projects 916 companies 5 elapsedS 9
+ANNUAL games 77 projects 929 companies 5 elapsedS 10
+ANNUAL games 78 projects 940 companies 5 elapsedS 10
+ANNUAL games 79 projects 952 companies 5 elapsedS 11
+ANNUAL games 80 projects 965 companies 5 elapsedS 12
+CHECKPOINT {"key":"games","era":25,"years":80,"done":false,"launches":80,"appointments":2,"transitionWeeks":2,"activeWeeks":4160,"yearlyAudits":80,"reloads":8,"maxSave":13458832,"peakWallet":0.5912,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":13}
+ANNUAL games 81 projects 978 companies 5 elapsedS 1
+ANNUAL games 82 projects 990 companies 5 elapsedS 2
+ANNUAL games 83 projects 1004 companies 5 elapsedS 3
+ANNUAL games 84 projects 1017 companies 5 elapsedS 4
+ANNUAL games 85 projects 1028 companies 5 elapsedS 4
+ANNUAL games 86 projects 1040 companies 5 elapsedS 5
+ANNUAL games 87 projects 1051 companies 5 elapsedS 6
+ANNUAL games 88 projects 1065 companies 5 elapsedS 7
+ANNUAL games 89 projects 1076 companies 5 elapsedS 7
+ANNUAL games 90 projects 1088 companies 5 elapsedS 8
+ANNUAL games 91 projects 1102 companies 5 elapsedS 9
+ANNUAL games 92 projects 1113 companies 5 elapsedS 10
+ANNUAL games 93 projects 1127 companies 5 elapsedS 11
+ANNUAL games 94 projects 1139 companies 5 elapsedS 11
+ANNUAL games 95 projects 1151 companies 5 elapsedS 12
+ANNUAL games 96 projects 1161 companies 5 elapsedS 12
+ANNUAL games 97 projects 1177 companies 5 elapsedS 13
+ANNUAL games 98 projects 1191 companies 5 elapsedS 14
+ANNUAL games 99 projects 1200 companies 5 elapsedS 14
+ANNUAL games 100 projects 1215 companies 5 elapsedS 15
+CHECKPOINT {"key":"games","era":25,"years":100,"done":true,"launches":100,"appointments":2,"transitionWeeks":2,"activeWeeks":5200,"yearlyAudits":100,"reloads":10,"maxSave":16372185,"peakWallet":0.5917,"rootId":"company_00001","founderShares":1000,"lastSegmentSec":16}
+PASS games 100 years, annual audit, decadal reload, ownership and finite demand

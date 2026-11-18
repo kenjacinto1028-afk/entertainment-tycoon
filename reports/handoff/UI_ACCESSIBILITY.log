@@ -1,0 +1,3 @@
+PASS width=1360: dialog focus, named labels, critical alert, ordinary status, escape focus return
+PASS width=390: dialog focus, named labels, critical alert, ordinary status, escape focus return
+NOTE: localStorage is a test double; independent NVDA/VoiceOver and native origin remain unverified.

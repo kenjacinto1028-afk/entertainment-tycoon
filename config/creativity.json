@@ -1,0 +1,59 @@
+{
+  "GENRES": [
+    "Fantasy",
+    "Mystery",
+    "Romance",
+    "Science Fiction",
+    "Adventure",
+    "Drama"
+  ],
+  "THEMES": [
+    "Found family",
+    "Survival",
+    "Discovery",
+    "Power and responsibility"
+  ],
+  "TARGET_AUDIENCES": [
+    "all",
+    "young",
+    "family",
+    "mature"
+  ],
+  "CREATIVE_DIRECTIONS": [
+    "balanced",
+    "experimental",
+    "polished"
+  ],
+  "MARKET_POSITIONINGS": [
+    "broad",
+    "niche",
+    "prestige"
+  ],
+  "FRANCHISE_BRANCHES": [
+    "main",
+    "alternate",
+    "spinoff"
+  ],
+  "FORMATS": {
+    "publishing": [
+      "Novel",
+      "Nonfiction",
+      "Comic / Manga",
+      "Web Serial",
+      "Ebook",
+      "Audiobook"
+    ],
+    "movie": [
+      "Feature Film",
+      "Animated Film"
+    ],
+    "tv": [
+      "Series",
+      "Miniseries"
+    ],
+    "games": [
+      "Premium Game",
+      "Indie Game"
+    ]
+  }
+}

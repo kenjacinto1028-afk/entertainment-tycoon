@@ -1,0 +1,87 @@
+----- tests/update42a.test.js -----
+PASS Update41 v30 save migrates to current save format without changing booked cash
+PASS Rivals have reproducible, differentiated own-money multi-year plans
+PASS Competitor intelligence cannot expose exact private cash or plans
+PASS New competitors spend finite founder equity, never receive recurring rescues
+PASS Annual market concentration uses real audited historic revenue and no hidden financial leakage
+PASS Institutions expose automated lender, contract and regulator descriptions
+PASS Sequential saved quarters keep rival plans, history and valid ledgers
+Update42A: 7/7 checks passed
+----- tests/update42b.test.js -----
+PASS Lender decisions assess real collateral and decline unsupported applications
+PASS Opening bank facility books fee but cannot create cash or profit
+PASS Credit draws are real debt; repayments revolve availability and close only when paid
+PASS Interest accrues at actual monthly close and persists through saved games
+PASS Division allocations cannot transfer cash or assign a team across legal companies
+PASS Paid central services affect actual expense and HR morale without inventing receipts
+PASS Group finance presents separate entity books and reconciled consolidation
+PASS Credit facilities expire without cancelling outstanding bank obligations
+Update42B: 8/8 checks passed
+----- tests/update42c.test.js -----
+PASS Independent company quote is not an asset title transfer
+PASS Diligence reveals debt and rights only after funded investigation
+PASS Acquisition cannot clear cash reserves or buy without external cash
+PASS Funded company acquisition preserves target debt, source IP, staff and legal identity
+PASS Legal subsidiary recapitalization transfers money internally but not customer revenue or debt
+PASS External IP title transfer never implicitly transfers released work or optional licenses
+PASS Existing third-party rights block clean source acquisition instead of stripping obligations
+PASS Company purchase preserves pre-acquisition profit history in consolidated statements
+PASS Internal IP licenses are funded, time-limited and eliminated at group level
+PASS Acquired ownership, bank debt and group license survive save/reload
+PASS Live pre-acquisition co-production remains enforceable after ownership changes
+Update42C: 11/11 checks passed
+----- tests/update42_integration.test.js -----
+PASS chronological-one: era1 weeks=416 companies=13 audit=32 save=4543465B elapsed=2415ms
+PASS chronological-two: era1 weeks=416 companies=13 audit=32 save=4524227B elapsed=4387ms
+PASS mature-living-world: era25 weeks=1664 companies=10 audit=32 save=4053753B elapsed=6042ms
+UPDATE42 integration 3/3 seeds; 6042ms
+----- tests/update42_stress.test.js -----
+PASS long-publisher-42 20 years; 80 quarter audits, 4 save reloads; companies 16 group assets 0 save MB 10.28 time ms 11033
+PASS long-mature-42 20 years; 80 quarter audits, 4 save reloads; companies 11 group assets 3877130.94 save MB 8.04 time ms 6048
+UPDATE42 longer stress 2/2
+----- tests/update43a.test.js -----
+PASS Year1 has 8 years literary-only generated history with no fabricated cash
+PASS Year25 has deterministic era-valid archives and independent company age
+PASS Configurable staff profile spends real cash and adds finite capacity
+PASS Partner-ready paid startup in mature world but prohibited before global debut
+PASS Readiness separates global access, real company capability, finite work slots
+PASS Management mode is granular, optional, and persists without changing ownership
+PASS Delegation spends on authorized idle team, not free skill or rights waiver
+PASS v31 save converts to v32 without fictional backfill
+UPDATE43A 8/8
+----- tests/update43b.test.js -----
+PASS tutorial disabled by default, player can start and dismiss it
+PASS optional tutorial uses real dashboard, project, finance, rights and week actions
+PASS selected goals track true completed releases without cash gifts
+PASS goals can be deselected and not claimed before actual milestones
+PASS adviser reflects real cash and rights without changing the world
+PASS cartoon identity stays stable across generations, save and load
+PASS actual project release and grant generate unique linked story records
+PASS audit rejects fabricated release events
+UPDATE43B 8/8
+----- tests/update43c.test.js -----
+PASS Scoped rights authorize only contracted territory and preserve creator identity
+PASS Independent overlaps rejected, disjoint exclusive licensed territory permitted
+PASS Funded game publisher transfer keeps IP, prepaid and deferred entries balanced
+PASS Publisher delivery recognizes earned cash only once; live share payable
+PASS Game publisher cancellation preserves unpaid refund obligations
+PASS Technology transfer actually pays a funded independent seller and preserves history
+PASS No sector-before-debut right or technology trade; versioned save intact
+UPDATE43C 7/7
+----- tests/update44a.test.js -----
+PASS Legacy version 32 migrates to v33 without changing cash or IP ownership
+PASS Founder-manager may step down and hire a lawful replacement without asset transfer
+PASS Eligibility rejects unrelated staff and unpaid/new-company asset grabs
+PASS Mid-game movie/TV/game entrants draw finite entrepreneur funds
+PASS Unfunded labor suspends production without erasing payroll debt
+PASS Tampering with finite founder capital is caught by integrity audit
+UPDATE44A 6/6 focused checks passed
+----- tests/update44_cross_system.test.js -----
+PASS Four media produce distinct legal releases and reconciled customer ledgers [{"sector":"publishing","cashBefore":214600,"cashAfter":238594.61,"earnedGross":103740,"age":25},{"sector":"movie","cashBefore":282750,"cashAfter":277048.17,"earnedGross":123261.14,"age":25},{"sector":"tv","cashBefore":249400,"cashAfter":246452.46,"earnedGross":76469.1,"age":25},{"sector":"games","cashBefore":232000,"cashAfter":204641.31,"earnedGross":54434.24,"age":25}]
+PASS Territory and media licenses bind independent film production and expire {"filmReleased":true,"grossAtExpiry":212140.05,"royaltyLiabilities":0}
+PASS Pre-debut options bind future rights without permitting premature production {"grants":1}
+PASS Investment comparisons are read-only and distinguish viable strategy outcomes {"keys":["sector","estimatedWeek","basis","choices"]}
+PASS Acquired group preserves old obligations and eliminates internal artificial revenue {"subsidiary":"company_00007"}
+PASS Real publisher advances settle and survive load across production and sales {"advance":7084,"royalties":33823.02}
+UPDATE44 cross-system 6/6 passed
+Regression exit 0

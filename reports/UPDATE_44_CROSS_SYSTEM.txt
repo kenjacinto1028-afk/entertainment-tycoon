@@ -1,0 +1,7 @@
+PASS Four media produce distinct legal releases and reconciled customer ledgers [{"sector":"publishing","cashBefore":214600,"cashAfter":238594.61,"earnedGross":103740,"age":25},{"sector":"movie","cashBefore":282750,"cashAfter":277048.17,"earnedGross":123261.14,"age":25},{"sector":"tv","cashBefore":249400,"cashAfter":246452.46,"earnedGross":76469.1,"age":25},{"sector":"games","cashBefore":232000,"cashAfter":204641.31,"earnedGross":54434.24,"age":25}]
+PASS Territory and media licenses bind independent film production and expire {"filmReleased":true,"grossAtExpiry":212140.05,"royaltyLiabilities":0}
+PASS Pre-debut options bind future rights without permitting premature production {"grants":1}
+PASS Investment comparisons are read-only and distinguish viable strategy outcomes {"keys":["sector","estimatedWeek","basis","choices"]}
+PASS Acquired group preserves old obligations and eliminates internal artificial revenue {"subsidiary":"company_00007"}
+PASS Real publisher advances settle and survive load across production and sales {"advance":7084,"royalties":33823.02}
+UPDATE44 cross-system 6/6 passed

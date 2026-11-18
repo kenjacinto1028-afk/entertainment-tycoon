@@ -1,0 +1,6 @@
+intercept-http BLOCKED Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:7544/game
+intercept-https BLOCKED Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at https://studio.test/game
+intercept-public BLOCKED Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at https://example.com/studio
+file-origin BLOCKED Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/studio_syndicate_work/Studio_Syndicate_Playable_Update_49.html
+about-blank LOADED ['null', "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."]
+data-url BLOCKED Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at data:text/html,<html><head><title>Native probe</title></head><body>origin native probe</body></html>

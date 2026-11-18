@@ -1,0 +1,24 @@
+# Update 44 — two managed 100-year campaigns
+# Runs were resumed from serialized decade checkpoints following execution time limits.
+# This consolidated console excerpt retains available final segment lines only; the
+# cumulative 200 annual audits and 20 reloads are recorded in the final JSON summaries.
+# Missing earlier publisher decade console lines are not represented as fresh retests.
+
+player-century-publisher44
+CHECK player-century-publisher44 year 90 active true appointments 2 cash 3260790.9 releases 90 sizeMB 29.3 elapsedS 12
+CHECK player-century-publisher44 year 100 active true appointments 2 cash 3729979.63 releases 100 sizeMB 32.5 elapsedS 26
+
+player-century-game44
+CHECK player-century-game44 year 10 active true appointments 0 cash 899862.25 releases 10 sizeMB 3.3 elapsedS 1
+CHECK player-century-game44 year 20 active true appointments 0 cash 1696476.95 releases 20 sizeMB 4.7 elapsedS 2
+CHECK player-century-game44 year 30 active true appointments 0 cash 2841698 releases 30 sizeMB 6.1 elapsedS 3
+CHECK player-century-game44 year 40 active true appointments 0 cash 4358408.24 releases 40 sizeMB 7.5 elapsedS 5
+CHECK player-century-game44 year 50 active true appointments 1 cash 5879670.11 releases 50 sizeMB 8.8 elapsedS 7
+CHECK player-century-game44 year 60 active true appointments 1 cash 7346381.84 releases 60 sizeMB 10.2 elapsedS 2
+CHECK player-century-game44 year 70 active true appointments 2 cash 9000599.49 releases 70 sizeMB 11.4 elapsedS 5
+CHECK player-century-game44 year 80 active true appointments 2 cash 10620515.92 releases 80 sizeMB 12.9 elapsedS 7
+CHECK player-century-game44 year 90 active true appointments 3 cash 12263094.39 releases 90 sizeMB 14.2 elapsedS 11
+CHECK player-century-game44 year 100 active true appointments 3 cash 13687578.25 releases 100 sizeMB 15.5 elapsedS 15
+PASS player-century-publisher44 {"seed": "player-century-publisher44", "era": 1, "years": 100, "launches": 100, "appointments": 2, "transitionWeeks": 2, "lateActiveWeeks": 2652, "playerCash": 3729979.63, "minCash": 109017.18, "playerStatus": "active", "ownerId": "company_00001", "playablePercent": 99.962, "maxSerialized": 32516259, "completedReleases": 100, "issues": [], "elapsedSeconds": "segmented; not one elapsed measurement", "auditedYears": 100}
+PASS player-century-game44 {"seed": "player-century-game44", "era": 25, "years": 100, "launches": 100, "appointments": 3, "transitionWeeks": 3, "lateActiveWeeks": 2652, "playerCash": 13687578.25, "minCash": 237061.38, "playerStatus": "active", "ownerId": "company_00001", "playablePercent": 99.942, "maxSerialized": 15546131, "completedReleases": 100, "issues": [], "elapsedSeconds": "segmented; not one elapsed measurement", "auditedYears": 100}
+UPDATE44 managed century 2 worlds, 200 independently recorded yearly audits, 20 decade save/reloads

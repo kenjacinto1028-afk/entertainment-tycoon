@@ -1,0 +1,10 @@
+{
+  "total": 2444,
+  "types": {
+    "javascript numeric literal": 1850,
+    "numeric text in string/template": 322,
+    "persistence implementation literal": 3,
+    "HTML presentation literal": 16,
+    "CSS style literal": 253
+  }
+}

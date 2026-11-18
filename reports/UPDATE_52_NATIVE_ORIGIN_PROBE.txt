@@ -1,0 +1,2 @@
+BLOCKED: this Chromium environment forbids local-origin navigation. Native persistence NOT VERIFIED.
+EXIT_CODE=3

@@ -1,0 +1,1790 @@
+{
+  "version": 33,
+  "seed": "STUDIO-114",
+  "rng": 2758158614,
+  "sequence": 44,
+  "week": 0,
+  "startedYear": 1,
+  "playerId": "company_00001",
+  "settings": {
+    "difficulty": "standard",
+    "era": 1,
+    "origin": "publisher",
+    "worldScale": 1,
+    "startingCapital": "standard",
+    "worldMaturity": "standard",
+    "aiCount": 3,
+    "populationScale": 1,
+    "regionCount": 4,
+    "discoveryPace": "standard",
+    "adoptionPace": "standard",
+    "capabilityPace": "standard",
+    "startupProfile": "focused"
+  },
+  "regionalEconomy": {
+    "North Coast": {
+      "confidence": 1,
+      "inflation": 0.02,
+      "employment": 1,
+      "fxRate": 1,
+      "wageIndex": 1,
+      "interestIndex": 1
+    },
+    "Central Reach": {
+      "confidence": 1,
+      "inflation": 0.02,
+      "employment": 1,
+      "fxRate": 0.91,
+      "wageIndex": 1,
+      "interestIndex": 1
+    },
+    "Southern Isles": {
+      "confidence": 1,
+      "inflation": 0.02,
+      "employment": 1,
+      "fxRate": 1.08,
+      "wageIndex": 1,
+      "interestIndex": 1
+    },
+    "Eastern Vale": {
+      "confidence": 1,
+      "inflation": 0.02,
+      "employment": 1,
+      "fxRate": 0.96,
+      "wageIndex": 1,
+      "interestIndex": 1
+    }
+  },
+  "economicShocks": [],
+  "technology": {
+    "historyComplete": true
+  },
+  "marketBriefs": [],
+  "quarterlyMarketReports": [],
+  "companies": [
+    {
+      "id": "company_00001",
+      "name": "Syndicate Works",
+      "sector": "publishing",
+      "origin": "Independent Publisher",
+      "foundedYear": 1,
+      "reputation": 29,
+      "capacity": 2,
+      "homeRegion": "North Coast",
+      "teamLevel": 1,
+      "capabilities": {
+        "publishing": "internal"
+      },
+      "finance": {
+        "cash": 82000,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 82000,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 82000,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "research": {},
+      "techLicenses": {},
+      "isPlayer": true,
+      "annualBaseline": {
+        "revenue": 0,
+        "expense": 0
+      },
+      "bankrupt": false,
+      "parentId": null,
+      "investedCapital": 0,
+      "culture": "balanced",
+      "filmBacklot": null,
+      "staffPolicy": {
+        "autoFill": true,
+        "maxSalary": 180
+      },
+      "imprints": [],
+      "teams": [
+        {
+          "id": "team_00002",
+          "name": "Story Desk 1",
+          "specialty": "Fantasy",
+          "skill": 55,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00003",
+          "divisionId": null
+        },
+        {
+          "id": "team_00004",
+          "name": "Creative Unit 2",
+          "specialty": "Mystery",
+          "skill": 56,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00005",
+          "divisionId": null
+        }
+      ],
+      "originWeeklyCommitment": 0,
+      "preferredFormat": "Novel",
+      "corporate": {
+        "stage": "founder",
+        "baselineEquity": 82000,
+        "shares": {
+          "founder": 1000,
+          "investor": 0,
+          "public": 0
+        },
+        "board": null,
+        "policy": {
+          "minCashWeeks": 4,
+          "reviewLimit": 15000,
+          "maxDebtRatio": 0.7
+        },
+        "fundings": [],
+        "shareSales": [],
+        "dividends": [],
+        "resolutions": [],
+        "lineage": [
+          {
+            "week": 0,
+            "kind": "founded",
+            "companyId": "company_00001"
+          }
+        ],
+        "historyComplete": false,
+        "insurance": {
+          "active": false,
+          "startWeek": -1,
+          "premium": 240,
+          "coveredCost": 0,
+          "weeklyEvidence": [],
+          "premiumsPaid": 0,
+          "claimsPaid": 0
+        }
+      },
+      "startupProfile": "focused",
+      "startupProfileCost": 0,
+      "divisions": [],
+      "sharedServices": {
+        "finance": false,
+        "hr": false,
+        "legal": false
+      },
+      "operating44": {
+        "unfundedWeeks": 0,
+        "furloughed": false,
+        "startWeek": null,
+        "resumptions": 0
+      }
+    },
+    {
+      "id": "company_00007",
+      "name": "Copper Lantern Press",
+      "sector": "publishing",
+      "origin": "Independent Studio",
+      "foundedYear": 1,
+      "reputation": 42,
+      "capacity": 2,
+      "homeRegion": "North Coast",
+      "teamLevel": 1,
+      "capabilities": {
+        "publishing": "internal"
+      },
+      "finance": {
+        "cash": 107681.55,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 107681.55,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 107681.55,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "research": {},
+      "techLicenses": {},
+      "isPlayer": false,
+      "annualBaseline": {
+        "revenue": 0,
+        "expense": 0
+      },
+      "bankrupt": false,
+      "parentId": null,
+      "investedCapital": 0,
+      "culture": "balanced",
+      "filmBacklot": null,
+      "staffPolicy": {
+        "autoFill": true,
+        "maxSalary": 180
+      },
+      "imprints": [],
+      "teams": [
+        {
+          "id": "team_00008",
+          "name": "Story Desk 1",
+          "specialty": "Mystery",
+          "skill": 53,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00009",
+          "divisionId": null
+        },
+        {
+          "id": "team_00010",
+          "name": "Creative Unit 2",
+          "specialty": "Science Fiction",
+          "skill": 54,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00011",
+          "divisionId": null
+        }
+      ],
+      "aiIdentity": {
+        "style": "creator-led",
+        "risk": 0.52,
+        "specialty": "Romance",
+        "foundedBy": "Independent founders",
+        "historyComplete": true
+      },
+      "aiPlan": {
+        "issuedWeek": 0,
+        "reviewWeek": 52,
+        "endWeek": 156,
+        "goal": "technology",
+        "sector": "publishing",
+        "genre": "Romance",
+        "riskTolerance": 0.52,
+        "budgetCeiling": 53840.78,
+        "source": "private-company-plan",
+        "forecastBasis": "own cash and prior sales; future market behavior uncertain",
+        "ageAtIssue": 0
+      },
+      "divisions": [],
+      "sharedServices": {
+        "finance": false,
+        "hr": false,
+        "legal": false
+      },
+      "operating44": {
+        "unfundedWeeks": 0,
+        "furloughed": false,
+        "startWeek": null,
+        "resumptions": 0
+      }
+    },
+    {
+      "id": "company_00012",
+      "name": "Northstar Stories",
+      "sector": "publishing",
+      "origin": "Independent Studio",
+      "foundedYear": 1,
+      "reputation": 51,
+      "capacity": 1,
+      "homeRegion": "Central Reach",
+      "teamLevel": 1,
+      "capabilities": {
+        "publishing": "internal"
+      },
+      "finance": {
+        "cash": 99154.02,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 99154.02,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 99154.02,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "research": {},
+      "techLicenses": {},
+      "isPlayer": false,
+      "annualBaseline": {
+        "revenue": 0,
+        "expense": 0
+      },
+      "bankrupt": false,
+      "parentId": null,
+      "investedCapital": 0,
+      "culture": "balanced",
+      "filmBacklot": null,
+      "staffPolicy": {
+        "autoFill": true,
+        "maxSalary": 180
+      },
+      "imprints": [],
+      "teams": [
+        {
+          "id": "team_00013",
+          "name": "Story Desk 1",
+          "specialty": "Romance",
+          "skill": 51,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00014",
+          "divisionId": null
+        }
+      ],
+      "aiIdentity": {
+        "style": "deal-maker",
+        "risk": 0.42000000000000004,
+        "specialty": "Science Fiction",
+        "foundedBy": "Independent founders",
+        "historyComplete": true
+      },
+      "aiPlan": {
+        "issuedWeek": 0,
+        "reviewWeek": 52,
+        "endWeek": 208,
+        "goal": "partnerships",
+        "sector": "publishing",
+        "genre": "Science Fiction",
+        "riskTolerance": 0.42000000000000004,
+        "budgetCeiling": 49577.01,
+        "source": "private-company-plan",
+        "forecastBasis": "own cash and prior sales; future market behavior uncertain",
+        "ageAtIssue": 0
+      },
+      "divisions": [],
+      "sharedServices": {
+        "finance": false,
+        "hr": false,
+        "legal": false
+      },
+      "operating44": {
+        "unfundedWeeks": 0,
+        "furloughed": false,
+        "startWeek": null,
+        "resumptions": 0
+      }
+    },
+    {
+      "id": "company_00015",
+      "name": "Ink & Orbit",
+      "sector": "publishing",
+      "origin": "Independent Studio",
+      "foundedYear": 1,
+      "reputation": 48,
+      "capacity": 1,
+      "homeRegion": "Southern Isles",
+      "teamLevel": 1,
+      "capabilities": {
+        "publishing": "internal"
+      },
+      "finance": {
+        "cash": 122086.38,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 122086.38,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 122086.38,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "research": {},
+      "techLicenses": {},
+      "isPlayer": false,
+      "annualBaseline": {
+        "revenue": 0,
+        "expense": 0
+      },
+      "bankrupt": false,
+      "parentId": null,
+      "investedCapital": 0,
+      "culture": "balanced",
+      "filmBacklot": null,
+      "staffPolicy": {
+        "autoFill": true,
+        "maxSalary": 180
+      },
+      "imprints": [],
+      "teams": [
+        {
+          "id": "team_00016",
+          "name": "Story Desk 1",
+          "specialty": "Science Fiction",
+          "skill": 55,
+          "workWeeks": 0,
+          "completed": 0,
+          "trainingHistory": [],
+          "performanceHistory": [],
+          "leaderId": "employee_00017",
+          "divisionId": null
+        }
+      ],
+      "aiIdentity": {
+        "style": "expansionist",
+        "risk": 0.8200000000000001,
+        "specialty": "Adventure",
+        "foundedBy": "Independent founders",
+        "historyComplete": true
+      },
+      "aiPlan": {
+        "issuedWeek": 0,
+        "reviewWeek": 52,
+        "endWeek": 156,
+        "goal": "capacity",
+        "sector": "publishing",
+        "genre": "Adventure",
+        "riskTolerance": 0.8200000000000001,
+        "budgetCeiling": 61043.19,
+        "source": "private-company-plan",
+        "forecastBasis": "own cash and prior sales; future market behavior uncertain",
+        "ageAtIssue": 0
+      },
+      "divisions": [],
+      "sharedServices": {
+        "finance": false,
+        "hr": false,
+        "legal": false
+      },
+      "operating44": {
+        "unfundedWeeks": 0,
+        "furloughed": false,
+        "startWeek": null,
+        "resumptions": 0
+      }
+    }
+  ],
+  "backgroundFirms": [
+    {
+      "id": "minor_00018",
+      "name": "Pine House publishing",
+      "sector": "publishing",
+      "foundedYear": 1,
+      "genre": "Romance",
+      "productionRegion": "North Coast",
+      "quality": 42,
+      "finance": {
+        "cash": 31561.19,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 31561.19,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 31561.19,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "bankrupt": false,
+      "active": null,
+      "releases": [],
+      "releasedTotal": 0
+    },
+    {
+      "id": "minor_00019",
+      "name": "Silver House publishing",
+      "sector": "publishing",
+      "foundedYear": 1,
+      "genre": "Drama",
+      "productionRegion": "Central Reach",
+      "quality": 60,
+      "finance": {
+        "cash": 55175.45,
+        "prepaid": 0,
+        "receivable": 0,
+        "equity": 55175.45,
+        "revenue": 0,
+        "expense": 0,
+        "deferred": 0,
+        "payable": 0,
+        "periodRevenue": 0,
+        "periodExpense": 0,
+        "periodCashIn": 0,
+        "periodCashOut": 0,
+        "creditCarry": 0,
+        "periodCreditEarned": 0,
+        "taxPayable": 0,
+        "loanBalance": 0,
+        "interestPayable": 0,
+        "overheadBooked": 0,
+        "overheadAttributed": 0,
+        "investment": 0,
+        "inventory": 0,
+        "internalRevenue": 0,
+        "internalExpense": 0,
+        "periodOpening": {
+          "cash": 55175.45,
+          "prepaid": 0,
+          "receivable": 0,
+          "investment": 0,
+          "inventory": 0,
+          "deferred": 0,
+          "payable": 0,
+          "loanBalance": 0,
+          "revenue": 0,
+          "expense": 0
+        },
+        "periodHistoryComplete": true,
+        "periodOperatingCash": 0,
+        "periodFinancingCash": 0,
+        "periodInvestingCash": 0,
+        "periodDuty": {
+          "tax": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "royalty": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          },
+          "interest": {
+            "expense": 0,
+            "cashPaid": 0,
+            "payableChange": 0
+          }
+        },
+        "periodDutyOpening": {
+          "tax": 0,
+          "royalty": 0,
+          "interest": 0
+        },
+        "periodDutyComplete": true
+      },
+      "bankrupt": false,
+      "active": null,
+      "releases": [],
+      "releasedTotal": 0
+    }
+  ],
+  "employees": [
+    {
+      "id": "employee_00003",
+      "name": "Amara Rowan",
+      "role": "Team lead",
+      "specialty": "Fantasy",
+      "trait": "steady",
+      "skill": 55,
+      "age": 34,
+      "ageAtEntry": 34,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00001",
+      "teamId": "team_00002",
+      "weeklySalary": 84,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 66,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00001",
+          "teamId": "team_00002",
+          "weeklySalary": 84,
+          "generated": false
+        }
+      ]
+    },
+    {
+      "id": "employee_00005",
+      "name": "Celine Sato",
+      "role": "Team lead",
+      "specialty": "Romance",
+      "trait": "inventive",
+      "skill": 70,
+      "age": 38,
+      "ageAtEntry": 38,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00001",
+      "teamId": "team_00004",
+      "weeklySalary": 128,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 75,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00001",
+          "teamId": "team_00004",
+          "weeklySalary": 128,
+          "generated": false
+        }
+      ]
+    },
+    {
+      "id": "employee_00009",
+      "name": "Theo Briar",
+      "role": "Team lead",
+      "specialty": "Mystery",
+      "trait": "steady",
+      "skill": 51,
+      "age": 33,
+      "ageAtEntry": 33,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00007",
+      "teamId": "team_00008",
+      "weeklySalary": 129,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 81,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00007",
+          "teamId": "team_00008",
+          "weeklySalary": 129,
+          "generated": false
+        }
+      ]
+    },
+    {
+      "id": "employee_00011",
+      "name": "Rohan Reed",
+      "role": "Team lead",
+      "specialty": "Science Fiction",
+      "trait": "ambitious",
+      "skill": 72,
+      "age": 38,
+      "ageAtEntry": 38,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00007",
+      "teamId": "team_00010",
+      "weeklySalary": 81,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 66,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00007",
+          "teamId": "team_00010",
+          "weeklySalary": 81,
+          "generated": false
+        }
+      ]
+    },
+    {
+      "id": "employee_00014",
+      "name": "Elian Sato",
+      "role": "Team lead",
+      "specialty": "Romance",
+      "trait": "inventive",
+      "skill": 65,
+      "age": 40,
+      "ageAtEntry": 40,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00012",
+      "teamId": "team_00013",
+      "weeklySalary": 103,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 80,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00012",
+          "teamId": "team_00013",
+          "weeklySalary": 103,
+          "generated": false
+        }
+      ]
+    },
+    {
+      "id": "employee_00017",
+      "name": "Noel Vale",
+      "role": "Team lead",
+      "specialty": "Science Fiction",
+      "trait": "collaborative",
+      "skill": 58,
+      "age": 42,
+      "ageAtEntry": 42,
+      "enteredWeek": 0,
+      "status": "employed",
+      "employerId": "company_00015",
+      "teamId": "team_00016",
+      "weeklySalary": 125,
+      "contractEndWeek": 156,
+      "hiredWeek": 0,
+      "leftWeek": null,
+      "morale": 75,
+      "completed": 0,
+      "historyComplete": true,
+      "history": [
+        {
+          "week": 0,
+          "kind": "hired",
+          "companyId": "company_00015",
+          "teamId": "team_00016",
+          "weeklySalary": 125,
+          "generated": false
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "employee_00031",
+      "name": "Noel Rowan",
+      "role": "Team lead",
+      "specialty": "Drama",
+      "trait": "steady",
+      "skill": 58,
+      "age": 43,
+      "ageAtEntry": 43,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 89,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 78,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00032",
+      "name": "Elian Wren",
+      "role": "Team lead",
+      "specialty": "Romance",
+      "trait": "meticulous",
+      "skill": 65,
+      "age": 41,
+      "ageAtEntry": 41,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 152,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 83,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00033",
+      "name": "Arden Aster",
+      "role": "Team lead",
+      "specialty": "Mystery",
+      "trait": "ambitious",
+      "skill": 53,
+      "age": 34,
+      "ageAtEntry": 34,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 131,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 75,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00034",
+      "name": "Eva Rowan",
+      "role": "Team lead",
+      "specialty": "Adventure",
+      "trait": "steady",
+      "skill": 60,
+      "age": 32,
+      "ageAtEntry": 32,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 109,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 80,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00035",
+      "name": "Kiran Keene",
+      "role": "Team lead",
+      "specialty": "Science Fiction",
+      "trait": "inventive",
+      "skill": 77,
+      "age": 25,
+      "ageAtEntry": 25,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 88,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 72,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00036",
+      "name": "Amara Aster",
+      "role": "Team lead",
+      "specialty": "Fantasy",
+      "trait": "ambitious",
+      "skill": 55,
+      "age": 46,
+      "ageAtEntry": 46,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 151,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 77,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00037",
+      "name": "Rohan Fenn",
+      "role": "Team lead",
+      "specialty": "Drama",
+      "trait": "collaborative",
+      "skill": 72,
+      "age": 39,
+      "ageAtEntry": 39,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 130,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 69,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00038",
+      "name": "Luz North",
+      "role": "Team lead",
+      "specialty": "Adventure",
+      "trait": "meticulous",
+      "skill": 61,
+      "age": 40,
+      "ageAtEntry": 40,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 112,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 79,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00039",
+      "name": "Mina Reed",
+      "role": "Team lead",
+      "specialty": "Science Fiction",
+      "trait": "ambitious",
+      "skill": 78,
+      "age": 33,
+      "ageAtEntry": 33,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 91,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 71,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00040",
+      "name": "Mina Vale",
+      "role": "Team lead",
+      "specialty": "Science Fiction",
+      "trait": "inventive",
+      "skill": 63,
+      "age": 35,
+      "ageAtEntry": 35,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 153,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 81,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00041",
+      "name": "Luz Glass",
+      "role": "Team lead",
+      "specialty": "Adventure",
+      "trait": "steady",
+      "skill": 75,
+      "age": 42,
+      "ageAtEntry": 42,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 89,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 70,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00042",
+      "name": "Tariq Hale",
+      "role": "Team lead",
+      "specialty": "Drama",
+      "trait": "collaborative",
+      "skill": 58,
+      "age": 26,
+      "ageAtEntry": 26,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 110,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 78,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00043",
+      "name": "Marin Sato",
+      "role": "Team lead",
+      "specialty": "Fantasy",
+      "trait": "ambitious",
+      "skill": 70,
+      "age": 33,
+      "ageAtEntry": 33,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 131,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 67,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    },
+    {
+      "id": "employee_00044",
+      "name": "Ivo Briar",
+      "role": "Team lead",
+      "specialty": "Mystery",
+      "trait": "meticulous",
+      "skill": 53,
+      "age": 40,
+      "ageAtEntry": 40,
+      "enteredWeek": 0,
+      "status": "candidate",
+      "employerId": null,
+      "teamId": null,
+      "weeklySalary": 152,
+      "contractEndWeek": null,
+      "hiredWeek": null,
+      "leftWeek": null,
+      "morale": 75,
+      "completed": 0,
+      "historyComplete": true,
+      "history": []
+    }
+  ],
+  "specialists": [
+    {
+      "id": "talent_00022",
+      "name": "Mira Rowan",
+      "discipline": "editorial",
+      "skill": 55,
+      "fee": 825,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00023",
+      "name": "Niko Vale",
+      "discipline": "technical",
+      "skill": 84,
+      "fee": 2130,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00024",
+      "name": "Asha Calder",
+      "discipline": "production",
+      "skill": 57,
+      "fee": 915,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00025",
+      "name": "Tomas Finch",
+      "discipline": "editorial",
+      "skill": 56,
+      "fee": 870,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00026",
+      "name": "Lena Glass",
+      "discipline": "technical",
+      "skill": 81,
+      "fee": 1995,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00027",
+      "name": "Ari Juniper",
+      "discipline": "production",
+      "skill": 80,
+      "fee": 1950,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00028",
+      "name": "Rhea Mercer",
+      "discipline": "editorial",
+      "skill": 83,
+      "fee": 2085,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00029",
+      "name": "Cato Stone",
+      "discipline": "technical",
+      "skill": 82,
+      "fee": 2040,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    },
+    {
+      "id": "talent_00030",
+      "name": "Vera Wren",
+      "discipline": "production",
+      "skill": 77,
+      "fee": 1815,
+      "assignedProjectId": null,
+      "completed": 0,
+      "enteredWeek": 0,
+      "creatorRole": null,
+      "mentorshipHistory": []
+    }
+  ],
+  "creativeAwards": [],
+  "creatorRelations": [],
+  "creatorScouting": [],
+  "creatorHistoryComplete": true,
+  "filmActors": [],
+  "filmHonors": [],
+  "gameStores": [],
+  "gameStoreOffers": [],
+  "gameStoreWindows": [],
+  "gameMarketReserved": {},
+  "gameCommunityHistory": [],
+  "gameExclusiveOffers": [],
+  "tvHonors": [],
+  "tvCastRelations": [],
+  "streamingServices": [],
+  "streamingWindows": [],
+  "streamingOffers": [],
+  "streamingWeeklyReserved": {},
+  "streamingWeeklyTotal": 0,
+  "talentPolicy": {
+    "autoBook": false,
+    "maxFee": 2100
+  },
+  "remittances": [],
+  "loans": [],
+  "projects": [],
+  "manuscripts": [],
+  "manuscriptOffers": [],
+  "ips": [],
+  "franchiseNotes": {},
+  "grants": [],
+  "rightsOffers": [],
+  "creativeApprovals": [],
+  "rightsPolicy": {
+    "autoRenew": false,
+    "maxFee": 1500,
+    "extensionWeeks": 52
+  },
+  "commissionPolicy": {
+    "autoCounter": false,
+    "maxFee": 15000,
+    "minMargin": 0.12
+  },
+  "commissionOffers": [],
+  "commissionHistory": [],
+  "coProductions": [],
+  "coProductionOffers": [],
+  "coProductionPolicy": {
+    "autoCounter": false,
+    "maxCommitment": 15000,
+    "maxShare": 0.35
+  },
+  "works": [],
+  "obligations": [],
+  "royaltyAccounts": [],
+  "escrows": [],
+  "news": [
+    {
+      "id": "news_00021",
+      "week": 0,
+      "year": 1,
+      "title": "The age of publishing",
+      "body": "Literature and comics dominate the cultural market. Movies emerge globally in World Year 4.",
+      "kind": "world"
+    },
+    {
+      "id": "news_00020",
+      "week": 0,
+      "year": 1,
+      "title": "Welcome to Syndicate Works",
+      "body": "A small literary firm opens its doors in a publishing-first world. Make your mark, one release at a time.",
+      "kind": "company"
+    }
+  ],
+  "archivedNews": [],
+  "inbox": [],
+  "ledger": [],
+  "reports": [],
+  "snapshots": [],
+  "dashboardFocus": "operations",
+  "pausePolicy": {
+    "stopForAdvisory": false
+  },
+  "macroeconomy": 1,
+  "weeklyConsumerSpend": 0,
+  "founder": {
+    "id": "person_00006",
+    "name": "Alex Morgan",
+    "age": 31,
+    "ageAtEntry": 31,
+    "enteredWeek": 0,
+    "background": "editorial",
+    "focus": "creative",
+    "experience": 0,
+    "retirementNoted": false
+  },
+  "worldStory": [
+    {
+      "year": -8,
+      "text": "Glass Harbor 9 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m8",
+      "sector": "publishing"
+    },
+    {
+      "year": -7,
+      "text": "The Clockwork Orchard 8 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m7",
+      "sector": "publishing"
+    },
+    {
+      "year": -6,
+      "text": "Copper Atlas 7 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m6",
+      "sector": "publishing"
+    },
+    {
+      "year": -5,
+      "text": "Beyond the Quiet Sea 6 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m5",
+      "sector": "publishing"
+    },
+    {
+      "year": -4,
+      "text": "Firelight Keep 5 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m4",
+      "sector": "publishing"
+    },
+    {
+      "year": -3,
+      "text": "The Last Lantern 4 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m3",
+      "sector": "publishing"
+    },
+    {
+      "year": -2,
+      "text": "Sable City 3 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m2",
+      "sector": "publishing"
+    },
+    {
+      "year": -1,
+      "text": "Pale Horizon 2 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_m1",
+      "sector": "publishing"
+    },
+    {
+      "year": 0,
+      "text": "Beyond the Quiet Sea 1 (Publishing) — historical release",
+      "source": "Generated prehistory",
+      "archiveId": "archive_publishing_0",
+      "sector": "publishing"
+    }
+  ],
+  "investorPool": 500000,
+  "investorPoolOpening": 500000,
+  "insurancePool": 150000,
+  "insurancePoolOpening": 150000,
+  "insuranceFlows": [],
+  "governanceHistory": [],
+  "careerLineage": [],
+  "personalMoneyHistory": [],
+  "founderFunds": 0,
+  "runStatus": "active",
+  "management": {
+    "personId": "person_00006",
+    "role": "founder-manager",
+    "status": "active",
+    "plannedSuccessorId": null,
+    "historyComplete": false
+  },
+  "prehistoryWorks": [
+    {
+      "id": "archive_publishing_m8",
+      "year": -8,
+      "sector": "publishing",
+      "title": "Glass Harbor 9",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m7",
+      "year": -7,
+      "sector": "publishing",
+      "title": "The Clockwork Orchard 8",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m6",
+      "year": -6,
+      "sector": "publishing",
+      "title": "Copper Atlas 7",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m5",
+      "year": -5,
+      "sector": "publishing",
+      "title": "Beyond the Quiet Sea 6",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m4",
+      "year": -4,
+      "sector": "publishing",
+      "title": "Firelight Keep 5",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m3",
+      "year": -3,
+      "sector": "publishing",
+      "title": "The Last Lantern 4",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m2",
+      "year": -2,
+      "sector": "publishing",
+      "title": "Sable City 3",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_m1",
+      "year": -1,
+      "sector": "publishing",
+      "title": "Pale Horizon 2",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    },
+    {
+      "id": "archive_publishing_0",
+      "year": 0,
+      "sector": "publishing",
+      "title": "Beyond the Quiet Sea 1",
+      "companyId": null,
+      "companyName": "Historical independent creator",
+      "source": "generated",
+      "status": "archived",
+      "financials": "not reconstructed",
+      "rights": "unasserted",
+      "award": null
+    }
+  ],
+  "eraArchive": {
+    "originYear": 1,
+    "generated": true,
+    "coverageStart": -8,
+    "coverageEnd": 0,
+    "uncertain": true
+  },
+  "managementDepth43": {
+    "corporate": "guided",
+    "teams": {},
+    "projects": {},
+    "autoSpendLimit": 2400,
+    "actions": []
+  },
+  "rivalEvents": [],
+  "entrepreneurPool": 1200000,
+  "institutions": {
+    "bank": "Civic Credit Consortium",
+    "agency": "Creators Guild Network",
+    "regulator": "Regional Commerce Authority",
+    "active": true,
+    "historyComplete": true
+  },
+  "creditLines": [],
+  "diligenceRecords": [],
+  "acquisitionHistory": [],
+  "groupLicenseHistory": [],
+  "integrationHistory": [],
+  "hardening44": {
+    "startedWeek": 0,
+    "entrepreneurOpening": 1200000,
+    "debutCommitted": 0,
+    "seededVersion": 33
+  },
+  "debutFundings44": [],
+  "tutorial43": {
+    "enabled": false,
+    "completed": false,
+    "step": 0,
+    "visited": [],
+    "startedWeek": 0,
+    "launchCount": 0
+  },
+  "objectives43": {
+    "selected": [],
+    "selectedWeek": {},
+    "completed": {},
+    "history": []
+  },
+  "events43": [],
+  "events43Keys": {},
+  "gamePublisherDeals43": [],
+  "gamePublisherPayments43": [],
+  "technologyOffers43": [],
+  "technologyTrades43": []
+}

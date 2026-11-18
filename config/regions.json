@@ -1,0 +1,115 @@
+{
+  "REGIONS": [
+    {
+      "name": "North Coast",
+      "currency": "Crown",
+      "baseFx": 1,
+      "cash": 17000,
+      "productionCost": 1,
+      "incentiveRate": 0.02,
+      "profitTaxRate": 0.12,
+      "salesTaxRate": 0.02,
+      "payrollLevyRate": 0.005,
+      "tastes": {
+        "Fantasy": 1.3,
+        "Mystery": 1.05,
+        "Romance": 0.83,
+        "Science Fiction": 1.12,
+        "Adventure": 1,
+        "Drama": 0.85
+      }
+    },
+    {
+      "name": "Central Reach",
+      "currency": "Mark",
+      "baseFx": 0.91,
+      "cash": 12500,
+      "productionCost": 1.08,
+      "incentiveRate": 0.045,
+      "profitTaxRate": 0.11,
+      "salesTaxRate": 0.025,
+      "payrollLevyRate": 0.007,
+      "tastes": {
+        "Fantasy": 0.9,
+        "Mystery": 1.22,
+        "Romance": 1.15,
+        "Science Fiction": 0.85,
+        "Adventure": 1,
+        "Drama": 1.08
+      }
+    },
+    {
+      "name": "Southern Isles",
+      "currency": "Shell",
+      "baseFx": 1.08,
+      "cash": 11800,
+      "productionCost": 1.1,
+      "incentiveRate": 0.05,
+      "profitTaxRate": 0.1,
+      "salesTaxRate": 0.03,
+      "payrollLevyRate": 0.006,
+      "tastes": {
+        "Fantasy": 0.92,
+        "Mystery": 0.82,
+        "Romance": 1.36,
+        "Science Fiction": 0.9,
+        "Adventure": 1.05,
+        "Drama": 1.17
+      }
+    },
+    {
+      "name": "Eastern Vale",
+      "currency": "Florin",
+      "baseFx": 0.96,
+      "cash": 13000,
+      "productionCost": 0.96,
+      "incentiveRate": 0.025,
+      "profitTaxRate": 0.13,
+      "salesTaxRate": 0.015,
+      "payrollLevyRate": 0.004,
+      "tastes": {
+        "Fantasy": 1.08,
+        "Mystery": 0.9,
+        "Romance": 0.9,
+        "Science Fiction": 1.3,
+        "Adventure": 1.2,
+        "Drama": 0.95
+      }
+    }
+  ],
+  "COHORT_TASTES": [
+    {
+      "name": "Young explorers",
+      "tastes": {
+        "Fantasy": 1.38,
+        "Mystery": 0.83,
+        "Romance": 0.78,
+        "Science Fiction": 1.34,
+        "Adventure": 1.34,
+        "Drama": 0.68
+      }
+    },
+    {
+      "name": "Family readers",
+      "tastes": {
+        "Fantasy": 1.18,
+        "Mystery": 1.08,
+        "Romance": 1.08,
+        "Science Fiction": 0.94,
+        "Adventure": 1.15,
+        "Drama": 1.04
+      }
+    },
+    {
+      "name": "Mature audiences",
+      "tastes": {
+        "Fantasy": 0.78,
+        "Mystery": 1.25,
+        "Romance": 1.22,
+        "Science Fiction": 0.93,
+        "Adventure": 0.82,
+        "Drama": 1.36
+      }
+    }
+  ]
+}

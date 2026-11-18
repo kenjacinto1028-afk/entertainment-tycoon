@@ -1,0 +1,17 @@
+{
+  "TV_NETWORKS": [
+    "public",
+    "commercial",
+    "premium"
+  ],
+  "TV_SLOTS": [
+    "daytime",
+    "prime",
+    "late"
+  ],
+  "STREAM_TIERS": {
+    "basic": 8,
+    "standard": 12,
+    "premium": 17
+  }
+}

@@ -1,0 +1,8 @@
+PASS Update41 v30 save migrates to v31 without changing booked cash
+PASS Rivals have reproducible, differentiated own-money multi-year plans
+PASS Competitor intelligence cannot expose exact private cash or plans
+PASS New competitors spend finite founder equity, never receive recurring rescues
+PASS Annual market concentration uses real audited historic revenue and no hidden financial leakage
+PASS Institutions expose automated lender, contract and regulator descriptions
+PASS Sequential saved quarters keep rival plans, history and valid ledgers
+Update42A: 7/7 checks passed

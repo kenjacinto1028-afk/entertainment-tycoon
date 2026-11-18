@@ -1,0 +1,4 @@
+PASS simulated durable storage across new document, named save rollback, real JSON backup/export/import, theme, no JS errors
+PASS mobile 390px drawer, settings controls, world, no JS errors
+PASS keyboard focus, labelled save slots and accessible navigation basics
+UPDATE44 browser 3/3; origin-bound persistence cannot be measured in this restricted environment

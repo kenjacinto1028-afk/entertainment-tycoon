@@ -1,0 +1,40 @@
+[
+  {
+    "seed": "player-century-publisher44",
+    "era": 1,
+    "years": 100,
+    "launches": 100,
+    "appointments": 2,
+    "transitionWeeks": 2,
+    "lateActiveWeeks": 2652,
+    "playerCash": 3729979.63,
+    "minCash": 109017.18,
+    "playerStatus": "active",
+    "ownerId": "company_00001",
+    "playablePercent": 99.962,
+    "maxSerialized": 32516259,
+    "completedReleases": 100,
+    "issues": [],
+    "elapsedSeconds": "segmented; not one elapsed measurement",
+    "auditedYears": 100
+  },
+  {
+    "seed": "player-century-game44",
+    "era": 25,
+    "years": 100,
+    "launches": 100,
+    "appointments": 3,
+    "transitionWeeks": 3,
+    "lateActiveWeeks": 2652,
+    "playerCash": 13687578.25,
+    "minCash": 237061.38,
+    "playerStatus": "active",
+    "ownerId": "company_00001",
+    "playablePercent": 99.942,
+    "maxSerialized": 15546131,
+    "completedReleases": 100,
+    "issues": [],
+    "elapsedSeconds": "segmented; not one elapsed measurement",
+    "auditedYears": 100
+  }
+]

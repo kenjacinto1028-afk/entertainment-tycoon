@@ -1,0 +1,93 @@
+{
+  "STARTUP_PROFILES": {
+    "focused": "Focused specialist",
+    "team": "Additional production team",
+    "partner": "Paid partner-ready diversification"
+  },
+  "OBJECTIVE_DEFS43": {
+    "first_release": {
+      "name": "First release",
+      "hint": "Release a work you produced."
+    },
+    "catalog_three": {
+      "name": "Catalog builder",
+      "hint": "Release three works in your company."
+    },
+    "secure_cash": {
+      "name": "Healthy reserve",
+      "hint": "Finish a month with at least eight weeks of payroll and no unpaid trade bills."
+    },
+    "industry_reach": {
+      "name": "Second industry",
+      "hint": "Release authorized original work in two different debuted sectors."
+    },
+    "prestige": {
+      "name": "Creative recognition",
+      "hint": "Earn an actual fiction-world creative award."
+    }
+  },
+  "TUTORIAL_STEPS43": [
+    {
+      "key": "desk",
+      "title": "Find your director’s desk",
+      "instructions": "Open Overview and inspect your cash and production capacity.",
+      "screen": "dashboard"
+    },
+    {
+      "key": "greenlight",
+      "title": "Fund your first story",
+      "instructions": "Approve a small original work with a free production team.",
+      "screen": "productions"
+    },
+    {
+      "key": "rights",
+      "title": "Know your rights and money",
+      "instructions": "Visit Library & Rights and Financials. Your earnings are not always cash.",
+      "screen": "library"
+    },
+    {
+      "key": "weekly",
+      "title": "Advance a week",
+      "instructions": "Advance time to see real payroll and production progress.",
+      "screen": "dashboard"
+    }
+  ],
+  "PORTRAIT_COLORS43": {
+    "skins": [
+      "#f1c4a1",
+      "#d9a077",
+      "#b77959",
+      "#845342",
+      "#f6d4b7"
+    ],
+    "hairs": [
+      "#1f2937",
+      "#43352f",
+      "#6f4b33",
+      "#a5764a",
+      "#6e6b79"
+    ],
+    "shirts": [
+      "#3178a0",
+      "#8870b8",
+      "#397b65",
+      "#bd7650",
+      "#4a669d"
+    ],
+    "backdrops": [
+      "#e1ecf4",
+      "#f6e9db",
+      "#eee5f4",
+      "#deeee5",
+      "#f1e9de"
+    ]
+  },
+  "OBJECTIVE_RULES43": {
+    "firstReleaseCount": 1,
+    "catalogReleaseCount": 3,
+    "cashWeeksPayroll": 8,
+    "payableTolerance": 0.01,
+    "secureCashMinimumWeeks": 4,
+    "industryReachCount": 2
+  }
+}

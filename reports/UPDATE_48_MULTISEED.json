@@ -1,0 +1,28 @@
+{
+  "worlds": 2,
+  "yearsPerWorld": 8,
+  "quarterlyAudits": 64,
+  "reloads": 8,
+  "rows": [
+    {
+      "seed": "u48-origin-year1",
+      "era": 1,
+      "endYear": 9,
+      "projects": 8,
+      "companies": 9,
+      "bankrupt": 0,
+      "consumerPeak": 0.759,
+      "saveMB": 3.37
+    },
+    {
+      "seed": "u48-games-era25",
+      "era": 25,
+      "endYear": 33,
+      "projects": 8,
+      "companies": 7,
+      "bankrupt": 0,
+      "consumerPeak": 0.557,
+      "saveMB": 3.49
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+PASS Independent company quote is not an asset title transfer
+PASS Diligence reveals debt and rights only after funded investigation
+PASS Acquisition cannot clear cash reserves or buy without external cash
+PASS Funded company acquisition preserves target debt, source IP, staff and legal identity
+PASS Legal subsidiary recapitalization transfers money internally but not customer revenue or debt
+PASS External IP title transfer never implicitly transfers released work or optional licenses
+PASS Existing third-party rights block clean source acquisition instead of stripping obligations
+PASS Company purchase preserves pre-acquisition profit history in consolidated statements
+PASS Internal IP licenses are funded, time-limited and eliminated at group level
+PASS Acquired ownership, bank debt and group license survive save/reload
+PASS Live pre-acquisition co-production remains enforceable after ownership changes
+Update42C: 11/11 checks passed

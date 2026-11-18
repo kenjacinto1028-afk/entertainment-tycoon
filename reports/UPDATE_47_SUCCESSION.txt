@@ -1,0 +1,5 @@
+PASS elected lawful employee receives management authority but no founder shares or source-IP {"employee":"employee_00003","shares":1000}
+PASS shareholder loss of control permits only personally funded new studio; legacy company retains assets and debts {"oldCompany":"company_00001","newCompany":"company_00076","founderPersonalCash":107090}
+PASS new entity cannot be conjured before loss of lawful executive role or from zero founder funds {"control":"transition"}
+PASS ending a run preserves historical campaign and disallows future financial transactions {"endStatus":"ended","started":"active"}
+Update47 succession 4/4

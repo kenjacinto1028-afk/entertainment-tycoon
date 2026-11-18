@@ -1,0 +1,8 @@
+PASS Scoped rights authorize only contracted territory and preserve creator identity
+PASS Independent overlaps rejected, disjoint exclusive licensed territory permitted
+PASS Funded game publisher transfer keeps IP, prepaid and deferred entries balanced
+PASS Publisher delivery recognizes earned cash only once; live share payable
+PASS Game publisher cancellation preserves unpaid refund obligations
+PASS Technology transfer actually pays a funded independent seller and preserves history
+PASS No sector-before-debut right or technology trade; versioned save intact
+UPDATE43C 7/7

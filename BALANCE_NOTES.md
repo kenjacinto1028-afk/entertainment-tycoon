@@ -1,0 +1,38 @@
+# BALANCE_NOTES — measured behavior, risks and tuning map
+
+This report is **not** a list of newly invented balance bugs. It identifies validated safeguards and risks worth checking when playtesting. Handoff refactor must not silently rebalance the previously accepted simulation. Tuning is externalized in `config/`; source-specific keys and their original value/context are in the matching `*_index.json` files.
+
+## Verified safeguards retained
+
+| Area | Recorded evidence | What still merits human playtesting |
+|---|---|---|
+| Consumer demand | Finite regional and cohort wallets audited in multi-seed cases (`update45_world_production`, `update45_streaming_wallet`, `update48_store_gate`). Multiple streaming services and game stores no longer create extra customer spending. | Can a player discover disproportionately profitable marketing/distribution loops? Pricing and title release pacing may feel too easy/hard at some world ages. |
+| Rival fairness | Autonomous firms incur funded entrants, staff/capacity, contract and royalty obligations; income/market share tracked from actual sales; cash-constrained AI deals observed (`update47_rivals_gate`, `update45_business`). | Do rivals compete in an interesting, understandable way over 20–100 years without repetitive personalities or runaway concentration? |
+| Cash and debt | Close-of-month tax, interest, prepaids, royalties and group consolidation reconcile in retained suite; distressed loan workouts preserve principal, arrears and interest (`update47_lenders_gate`). | Can a player cycle credit/IPO/sell-assets to obtain cash that outpaces realistic servicing? Stress with no sales or simultaneous crises. |
+| Production | Staff/teams have finite slots; insolvent production pauses; project gross and cost separate (`update44a`, `update45_business`, `update46_publishing_gate`). | Are publishing print runs too lucrative vs ebook, film ticket income vs expenses, TV renewal/syndication too stable, games QA/certification too cheap? Assess actual play before adjusting. |
+| Rights and franchise | The unified ledger enforces term, territory, media, sublicensing, author veto, exclusivity, resale, and acquisition preservation (`update45_rights`, `update48_franchise_gate`). | Do legitimate deal offers arise often enough? Do expiration/renewal decisions meaningfully affect player strategy without too much inbox work? |
+| Long-run play | Original Update 49 passed two 100-year player-managed worlds; Update 50 six varied campaigns totalled 102 years; current refactor 35/35 focused engine suites and exact 78-week save-state signatures. | These results are not universal proof of hundred-year optimal balance or equal fun among all origins, difficulties, eras and settings. A fresh refactor-specific multi-seed century audit remains outstanding. |
+| Saves / UI | Accepted original Update 52 passed independent Windows native restart and user NVDA; refactored HTML passed Chromium accessibility/recovery with simulated storage only. | Real browser storage quota, NVDA on new build, very long historic lists and mobile responsiveness under load. |
+
+## Specific economy knobs and potential symptoms
+
+| Symptom to investigate (not confirmed defect) | Configuration / controlling system | Safe validation |
+|---|---|---|
+| Starts too rich/poor | `config/starting.json:ORIGINS`, `CAPITAL_PRESETS`; `config/world.json:WORLD_MATURITY`; difficulty multiplier in `config/tuning_engine.json` | Cash runway at Weeks 1, 13, 26, 52 by origin and difficulty; do not change company equity silently. |
+| Runaway sales or depleted regional wallets | `regions.json:REGIONS.cash`, tastes/cohorts; `tuning_engine.json:maturity__001..004`, `worldMarketBudget__001..006`, `titleWeights*`, `denominator*`; `16_market.js` | Compare weekly sum of all companies/background streaming/game store share vs each region/sector wallet, including platform caps. |
+| Easy bank leverage / loan spiral | `tuning_engine.json:base__001..003`, `marketLoanRate__001..002`, `serviceLoans*`, `scheduled*`; regional `.interestIndex` | No-sales repayment stress, refinance denial, lender insolvency and accrued interest through save/load. |
+| Inflation/FX unpredictability | `regions.json` starting FX/productionCost; regional economy update in `01_*` and `02_*` engine sections; `tuning_engine.json` keys for economic shocks | Repeat same seed with slow/fast technology, different population, several shocks, month-by-month regional briefs. |
+| Movie/TV/game break-even imbalance | `world.json:SECTORS.cost,weeks`; `film.json`, `television.json`, `games.json`; `tuning_engine.json` per-medium prices, royalties and revenue decay | Compare median completed-project *cash* ROI and *accounting* contribution, separate allocated overhead, by media and release year. |
+| Too little succession pressure / succession gaps | `starting.json` founder/employee inputs and `32..38` governance, `18` year/career hooks | 100-year weekly actively managed run; ensure lawful successor or authorized new-company continuation is possible but not guaranteed. |
+| Unstable service/storefront profitability | `television.json:STREAM_TIERS`, `games.json:GAME_MODELS/PLATFORMS`, `tuning_engine.json` platform penetration/price/weekly live costs | Three competing subscription services and independent first-party/third-party catalog; verify no double-counting, cost paid monthly. |
+
+## Non-negotiable invariants when tuning
+
+1. Consumer money can only be earned **once**; no internal trade counted again in consolidated revenue.
+2. No global sector debut bypass, even if an option/license exists for a future medium.
+3. Rights/creator veto and contract/loan/royalty obligations remain binding after company acquisitions, bankruptcy and succession.
+4. AI firms obey same cash, demand and capacity rules, with no hidden unlimited bailouts or rubber-band shares.
+5. Taxes are fictional, stable and automatic; not a compliance minigame. Cash ≠ profit and loans are liabilities, not income.
+6. No mandatory individual-chapter/episode/employee or legal/tax micromanagement; consequential choices should escalate, routine operations delegate.
+
+**Size/performance baseline:** Historic 100-year saves were around 16–24 MB uncompressed; an earlier 24.4 MB original save compressed to ~2.26 MB in a simulated database. Those are observed prior releases, **not** a guaranteed size or native-origin quota acceptance for this refactor.

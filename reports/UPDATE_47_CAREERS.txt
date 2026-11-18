@@ -1,0 +1,5 @@
+PASS named leader recruitment and dismissal preserves stable identity and real cash payments {"retiredId":"employee_00003","newLead":"employee_00069"}
+PASS mentorship and consensual renewal change future team performance and paid salary {"mentorSkill":58,"leadCompleted":1,"weeklySalary":128}
+PASS culture impacts annual morale and exits while keeping payroll and team identity coherent {"supportiveMorale":74,"leanMorale":62}
+PASS aging, director appointment and retirement do not conjure shares or studio-owned IP {"founderAge":70,"studioOwner":"company_00001"}
+Update47 careers 4/4

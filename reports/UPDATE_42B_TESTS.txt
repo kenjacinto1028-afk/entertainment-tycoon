@@ -1,0 +1,9 @@
+PASS Lender decisions assess real collateral and decline unsupported applications
+PASS Opening bank facility books fee but cannot create cash or profit
+PASS Credit draws are real debt; repayments revolve availability and close only when paid
+PASS Interest accrues at actual monthly close and persists through saved games
+PASS Division allocations cannot transfer cash or assign a team across legal companies
+PASS Paid central services affect actual expense and HR morale without inventing receipts
+PASS Group finance presents separate entity books and reconciled consolidation
+PASS Credit facilities expire without cancelling outstanding bank obligations
+Update42B: 8/8 checks passed

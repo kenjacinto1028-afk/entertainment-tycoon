@@ -1,0 +1,3 @@
+STAGE mount
+PASS 24MB audited century snapshot: Chromium gzip 2262527 bytes, fake-IDB roundtrip/recovery, real UI manual slot
+NOTE fake IndexedDB/localStorage quota in about:blank; this does NOT verify actual origin persistence

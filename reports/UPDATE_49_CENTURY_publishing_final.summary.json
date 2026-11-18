@@ -1,0 +1,16 @@
+{
+  "key": "publishing",
+  "era": 1,
+  "years": 100,
+  "done": true,
+  "launches": 100,
+  "appointments": 2,
+  "transitionWeeks": 2,
+  "activeWeeks": 5200,
+  "yearlyAudits": 100,
+  "reloads": 10,
+  "maxSave": 24419842,
+  "peakWallet": 0.7375,
+  "rootId": "company_00001",
+  "founderShares": 1000
+}

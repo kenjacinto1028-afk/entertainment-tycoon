@@ -1,0 +1,3 @@
+PASS width=1440: dialog name/focus/Tab trap, 3 labelled fields, tab arrows, save slots, import control, invalid JSON, Escape return, nav current
+PASS width=390: dialog name/focus/Tab trap, 3 labelled fields, tab arrows, save slots, import control, invalid JSON, Escape return, nav current
+2/2 UI accessibility workflows passed; storage shim disclosed; no native-origin claim

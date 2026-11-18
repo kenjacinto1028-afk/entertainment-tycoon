@@ -1,0 +1,122 @@
+
+=== update42a ===
+PASS Update41 v30 save migrates to current save format without changing booked cash
+PASS Rivals have reproducible, differentiated own-money multi-year plans
+PASS Competitor intelligence cannot expose exact private cash or plans
+PASS New competitors spend finite founder equity, never receive recurring rescues
+PASS Annual market concentration uses real audited historic revenue and no hidden financial leakage
+PASS Institutions expose automated lender, contract and regulator descriptions
+PASS Sequential saved quarters keep rival plans, history and valid ledgers
+Update42A: 7/7 checks passed
+
+=== update42b ===
+PASS Lender decisions assess real collateral and decline unsupported applications
+PASS Opening bank facility books fee but cannot create cash or profit
+PASS Credit draws are real debt; repayments revolve availability and close only when paid
+PASS Interest accrues at actual monthly close and persists through saved games
+PASS Division allocations cannot transfer cash or assign a team across legal companies
+PASS Paid central services affect actual expense and HR morale without inventing receipts
+PASS Group finance presents separate entity books and reconciled consolidation
+PASS Credit facilities expire without cancelling outstanding bank obligations
+Update42B: 8/8 checks passed
+
+=== update42c ===
+PASS Independent company quote is not an asset title transfer
+PASS Diligence reveals debt and rights only after funded investigation
+PASS Acquisition cannot clear cash reserves or buy without external cash
+PASS Funded company acquisition preserves target debt, source IP, staff and legal identity
+PASS Legal subsidiary recapitalization transfers money internally but not customer revenue or debt
+PASS External IP title transfer never implicitly transfers released work or optional licenses
+PASS Existing third-party rights block clean source acquisition instead of stripping obligations
+PASS Company purchase preserves pre-acquisition profit history in consolidated statements
+PASS Internal IP licenses are funded, time-limited and eliminated at group level
+PASS Acquired ownership, bank debt and group license survive save/reload
+PASS Live pre-acquisition co-production remains enforceable after ownership changes
+Update42C: 11/11 checks passed
+
+=== update43a ===
+PASS Year1 has 8 years literary-only generated history with no fabricated cash
+PASS Year25 has deterministic era-valid archives and independent company age
+PASS Configurable staff profile spends real cash and adds finite capacity
+PASS Partner-ready paid startup in mature world but prohibited before global debut
+PASS Readiness separates global access, real company capability, finite work slots
+PASS Management mode is granular, optional, and persists without changing ownership
+PASS Delegation spends on authorized idle team, not free skill or rights waiver
+PASS v31 save converts to v32 without fictional backfill
+UPDATE43A 8/8
+
+=== update43b ===
+PASS tutorial disabled by default, player can start and dismiss it
+PASS optional tutorial uses real dashboard, project, finance, rights and week actions
+PASS selected goals track true completed releases without cash gifts
+PASS goals can be deselected and not claimed before actual milestones
+PASS adviser reflects real cash and rights without changing the world
+PASS cartoon identity stays stable across generations, save and load
+PASS actual project release and grant generate unique linked story records
+PASS audit rejects fabricated release events
+UPDATE43B 8/8
+
+=== update43c ===
+PASS Scoped rights authorize only contracted territory and preserve creator identity
+PASS Independent overlaps rejected, disjoint exclusive licensed territory permitted
+PASS Funded game publisher transfer keeps IP, prepaid and deferred entries balanced
+PASS Publisher delivery recognizes earned cash only once; live share payable
+PASS Game publisher cancellation preserves unpaid refund obligations
+PASS Technology transfer actually pays a funded independent seller and preserves history
+PASS No sector-before-debut right or technology trade; versioned save intact
+UPDATE43C 7/7
+
+=== update44a ===
+PASS Legacy version 32 migrates to v33 without changing cash or IP ownership
+PASS Founder-manager may step down and hire a lawful replacement without asset transfer
+PASS Eligibility rejects unrelated staff and unpaid/new-company asset grabs
+PASS Mid-game movie/TV/game entrants draw finite entrepreneur funds
+PASS Unfunded labor suspends production without erasing payroll debt
+PASS Tampering with finite founder capital is caught by integrity audit
+UPDATE44A 6/6 focused checks passed
+
+=== update44_cross_system ===
+PASS Four media produce distinct legal releases and reconciled customer ledgers [{"sector":"publishing","cashBefore":214600,"cashAfter":238594.61,"earnedGross":103740,"age":25},{"sector":"movie","cashBefore":282750,"cashAfter":277048.17,"earnedGross":123261.14,"age":25},{"sector":"tv","cashBefore":249400,"cashAfter":246452.46,"earnedGross":76469.1,"age":25},{"sector":"games","cashBefore":232000,"cashAfter":204641.31,"earnedGross":54434.24,"age":25}]
+PASS Territory and media licenses bind independent film production and expire {"filmReleased":true,"grossAtExpiry":212140.05,"royaltyLiabilities":0}
+PASS Pre-debut options bind future rights without permitting premature production {"grants":1}
+PASS Investment comparisons are read-only and distinguish viable strategy outcomes {"keys":["sector","estimatedWeek","basis","choices"]}
+PASS Acquired group preserves old obligations and eliminates internal artificial revenue {"subsidiary":"company_00007"}
+PASS Real publisher advances settle and survive load across production and sales {"advance":7084,"royalties":33823.02}
+UPDATE44 cross-system 6/6 passed
+
+=== update45_world_production ===
+PASS Discovery pace separate from adoption, no waves before global sector gates {"fastDiscovery":328,"slowDiscovery":416,"fastAdoption":1,"slowAdoption":0.42}
+PASS Finite regional cohorts across maximum world size and low-wallet world [{"seed":"max-world45","peakConsumerShare":0.756,"companies":13,"background":28},{"seed":"lean-world45","peakConsumerShare":0.744,"companies":13,"background":28}]
+PASS Same seed, same initial world, technologies and regions after serialization {"week":1260,"companies":13}
+PASS Finite distinct team slots, reassignments and interventions preserve audit {"active":3,"workWeeksTotal":14}
+UPDATE45 WORLD+PRODUCTION 4/4 tests
+
+=== update45_rights ===
+PASS Exclusive grant blocks owner distribution only in its media and regions, and expires {"sourceOwner":"company_00001","holder":"company_00007"}
+PASS Exclusive grant cannot strand already active same-medium production {}
+PASS Creative approval veto remains binding for scoped adaptation {"veto":"pitchapproval_00092"}
+PASS Sublicensing cannot widen geography and requires parent permission {"sub":"grant_00097"}
+PASS Sublicense renewal requires consent and cannot run beyond parent end date {"parentExpiry":1352,"childExpiry":1313}
+PASS Contested renewal does not extend a rights window without mutual acceptance {"expires":1300}
+UPDATE45 RIGHTS 6/6 checks
+
+=== update45_business ===
+PASS Funded client commissions work across all four media and deliver only agreed fee [{"sector":"publishing","fee":13179,"clientReceivable":0,"contractEarned":13179},{"sector":"movie","fee":59964,"clientReceivable":0,"contractEarned":59964},{"sector":"tv","fee":39866,"clientReceivable":0,"contractEarned":39866},{"sector":"games","fee":50739,"clientReceivable":0,"contractEarned":50739}]
+PASS Cancelled client work returns unearned escrow, preserves earned milestones and IP {"funded":13728,"earned":4118.4}
+PASS Unfunded prospective client cannot commission or create unbacked liabilities {}
+PASS Bank revolver cannot generate earnings, debt persists after expiry and forced arrears {"lineId":"credit_00075","obligation":6000}
+PASS Company share acquisition preserves independent creditor and title ledgers {"price":98284.17,"ownership":"company_00007"}
+PASS Lawful successor inherits job but not cash, votes or trademark ownership {"successor":"employee_00003"}
+UPDATE45 BUSINESS 6/6
+
+=== update45_streaming_wallet ===
+PASS 3 independent funded services share TV subscription budget across 80 region-weeks; peak 0.886; save v34
+
+=== update45_industry ===
+PASS Publishing: paid promotion, physical inventory, unit sales, translation, writeoffs {"printed":2445,"sold":1927,"returned":33,"writtenOff":5}
+PASS Movies: funded premiere and distribution, actual ticket sales vs content ratings {"gross":176449.91,"rating":"T","critic":64,"audience":66}
+PASS Television: season ordering, optional edits, broadcaster schedule and renewal {"gross":191400.72,"episodes":6,"ip":"ip_00070"}
+PASS Games: prototype, QA, certification, separate critic/player scores, paid patch {"bugs":0,"certification":true,"critic":69,"user":64}
+PASS Investment forecasts do not mutate world and postmortems compare actual vs prediction {"actual":143540,"expected":190492.17,"assessment":"Behind the estimate"}
+PASS Rival private intelligence is estimated, public facts known, archive records actual releases {"archiveRows":5}
+UPDATE45 INDUSTRY 6/6

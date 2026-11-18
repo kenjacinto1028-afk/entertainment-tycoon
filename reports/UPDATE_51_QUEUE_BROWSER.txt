@@ -1,0 +1,2 @@
+PASS simulated-browser in-flight large→small race: most recent snapshot wins; pointer and queue valid
+NOTE simulated IndexedDB, not real origin persistence

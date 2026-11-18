@@ -1,0 +1,18 @@
+INITIAL succession-short-44 cash 82000 leaders 2 leader true founderAge 54
+STATUS succession-short-44 year 5 age 59 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-short-44 year 10 age 64 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-short-44 year 15 age 69 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-short-44 year 20 age 74 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+APPOINT 23 77 61
+STATUS succession-short-44 year 25 age 79 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-short-44 year 30 age 84 cash 0 bankrupt false status active staff 1 vacancies 1 candidates 14 founderFunds 0
+FINAL_AUDIT []
+INITIAL succession-mature-44 cash 160000 leaders 2 leader true founderAge 65
+STATUS succession-mature-44 year 5 age 70 cash 7728.41 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-mature-44 year 10 age 75 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+APPOINT 12 77 52
+STATUS succession-mature-44 year 15 age 80 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-mature-44 year 20 age 85 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-mature-44 year 25 age 90 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+STATUS succession-mature-44 year 30 age 95 cash 0 bankrupt false status active staff 2 vacancies 0 candidates 14 founderFunds 0
+FINAL_AUDIT []

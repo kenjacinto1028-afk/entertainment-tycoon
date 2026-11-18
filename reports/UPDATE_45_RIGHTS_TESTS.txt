@@ -1,0 +1,7 @@
+PASS Exclusive grant blocks owner distribution only in its media and regions, and expires {"sourceOwner":"company_00001","holder":"company_00007"}
+PASS Exclusive grant cannot strand already active same-medium production {}
+PASS Creative approval veto remains binding for scoped adaptation {"veto":"pitchapproval_00092"}
+PASS Sublicensing cannot widen geography and requires parent permission {"sub":"grant_00097"}
+PASS Sublicense renewal requires consent and cannot run beyond parent end date {"parentExpiry":1352,"childExpiry":1313}
+PASS Contested renewal does not extend a rights window without mutual acceptance {"expires":1300}
+UPDATE45 RIGHTS 6/6 checks

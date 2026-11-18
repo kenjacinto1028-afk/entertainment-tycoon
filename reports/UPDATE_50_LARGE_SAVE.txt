@@ -1,0 +1,8 @@
+STAGE mount
+STAGE loaded startup, injecting 24MB
+STAGE injected, saving
+STAGE saved, checking pointer
+STAGE pointer okay, decompressing and audit
+STAGE audit okay, opening settings
+PASS 24MB audited century save: gzip 2262527 bytes, IndexedDB emulation, pointer, slot 1, load, browser audit
+NOTE fake IndexedDB/localStorage quota in about:blank; this does NOT verify actual origin persistence

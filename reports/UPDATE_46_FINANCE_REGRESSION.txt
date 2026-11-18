@@ -1,0 +1,4 @@
+PASS finance-year1-44 8 years 104 monthly settlements, reconciliation and obligation checks
+PASS finance-games-44 8 years 104 monthly settlements, reconciliation and obligation checks
+PASS finance-group-44 8 years 104 monthly settlements, reconciliation and obligation checks
+UPDATE44 FINANCE GATE PASS periods=312 entityStatements=2474 groupStatements=312 saveReloads=12

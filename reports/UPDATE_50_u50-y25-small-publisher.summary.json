@@ -1,0 +1,17 @@
+{
+  "seed": "u50-y25-small-publisher",
+  "era": 25,
+  "origin": "publisher",
+  "difficulty": "casual",
+  "years": 20,
+  "projects": 20,
+  "releaseSectors": [
+    "publishing"
+  ],
+  "companies": 5,
+  "organicBankruptcies": 0,
+  "walletPeak": 0.46692,
+  "maxSaveMB": 4.53,
+  "playerCash": 875816.47,
+  "liveManagement": "active"
+}

@@ -1,0 +1,31 @@
+{
+  "FILM_DISTRIBUTION": [
+    "independent",
+    "wide",
+    "limited"
+  ],
+  "FILM_METHODS": [
+    "live-action",
+    "animation",
+    "hybrid"
+  ],
+  "FILM_ACTOR_NAMES": [
+    "Rae Vale",
+    "Kit Arden",
+    "Mika North",
+    "Jules Solis",
+    "Eden Hart",
+    "Leo Keene",
+    "Nova Pierce",
+    "Tali Moon",
+    "Ira Stone",
+    "Marin Gray",
+    "Devin Frost",
+    "Ari Quinn"
+  ],
+  "FILM_FESTIVAL_NAMES": [
+    "Crescent Film Festival",
+    "North Coast Screen Awards",
+    "Azure Lantern Film Festival"
+  ]
+}

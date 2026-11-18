@@ -1,0 +1,3 @@
+PASS 23: four-medium franchise has single source ownership, main and alternate canon, crossmedia linked works {"ip":"ip_00065","works":4,"events":9,"net":259872.04}
+PASS 23: independent adaptation retains external producer revenue and owner has only earned license {"externalGross":35233.01,"ownerLicensingIncome":7227.96}
+UPDATE48 FRANCHISE 2/2

@@ -1,0 +1,5 @@
+PASS 16 TV: production teams, writer room, episode decisions and talent exclusivity {"season2":"project_01289","castFee":3785.1}
+PASS 17 TV: multiple network shows share finite advertising wallet and legal syndication window {"totalAdGross":155230.01,"syndication":23513.39}
+PASS 17 TV: age classification remains separate from critic, audience and awards {"classification":"M","award":"Aurora Television Awards"}
+PASS 17 TV: syndication rights expire by territory and stop unauthorized receipts {"grossAtExpiry":72307.85,"expiry":1318}
+UPDATE48 TV 4/4

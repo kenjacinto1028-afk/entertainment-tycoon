@@ -1,0 +1,5 @@
+PASS 18 games: design, funded proprietary vs licensed tool decisions, ongoing engine maintenance {"engineInvestment":19000,"maintenance":240,"proprietaryFee":200.2,"licensedFee":743.6}
+PASS 18 games: failed regional cert never authorizes launch; paid QA enables later certification {"failedInitially":false,"certified":["North Coast"],"gross":23789.36}
+PASS 19 games: platform debut gates, paid community/esports/patch/DLC and evolving monetization {"platform":"pc","bugs":16,"esports":2}
+PASS 19 games: independent store exclusive has funded term and no longer blocks after expiry {"grant":20000,"week":1302,"expires":1301}
+UPDATE48 GAMES 4/4

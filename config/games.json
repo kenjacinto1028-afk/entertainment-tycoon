@@ -1,0 +1,29 @@
+{
+  "GAME_PLATFORMS": {
+    "pc": 10,
+    "console": 12,
+    "handheld": 15,
+    "mobile": 18
+  },
+  "GAME_MECHANICS": [
+    "strategy",
+    "roleplaying",
+    "simulation",
+    "action",
+    "puzzle"
+  ],
+  "GAME_MODELS": [
+    "premium",
+    "subscription",
+    "free-to-play"
+  ],
+  "GAME_STAGES": [
+    "concept",
+    "prototype",
+    "build",
+    "alpha",
+    "beta",
+    "certification",
+    "released"
+  ]
+}

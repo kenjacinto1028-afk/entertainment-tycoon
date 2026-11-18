@@ -1,0 +1,16 @@
+{
+  "key": "games",
+  "era": 25,
+  "years": 100,
+  "done": true,
+  "launches": 100,
+  "appointments": 2,
+  "transitionWeeks": 2,
+  "activeWeeks": 5200,
+  "yearlyAudits": 100,
+  "reloads": 10,
+  "maxSave": 16372185,
+  "peakWallet": 0.5917,
+  "rootId": "company_00001",
+  "founderShares": 1000
+}

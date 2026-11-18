@@ -1,0 +1,8 @@
+PASS 1/7: pointer has no autosave; use database recovery
+PASS 2/7: pointer missing; use orphaned committed database state
+PASS 3/7: valid localStorage must outrank stale database state
+PASS 4/7: corrupt indexed current; use valid database recovery
+PASS 5/7: missing pointer, corrupt database current, valid recovery
+PASS 6/7: current pointer missing data and no recovery preserves pointer
+PASS 7/7: no existing saves displays new world dialog
+NOTE: browser document injection uses simulated storage; native browser-origin persistence still unverified.

@@ -1,0 +1,62 @@
+{
+  "AI_NAMES": [
+    "Copper Lantern Press",
+    "Northstar Stories",
+    "Ink & Orbit",
+    "Glassbird House",
+    "Velvet Orchard",
+    "Starlight Pictures",
+    "Mosaic Screenworks",
+    "Foxglove Studio",
+    "Cedar Arc Games",
+    "Bluehour Interactive",
+    "Ivory Kite Media",
+    "Hearthside Editions",
+    "Wildcurrent Works",
+    "Skyline Frame"
+  ],
+  "CAPITAL_POOL": 500000,
+  "RIVAL_STYLES": [
+    "cautious",
+    "creator-led",
+    "expansionist",
+    "deal-maker"
+  ],
+  "RIVAL_GOALS": [
+    "specialize",
+    "capacity",
+    "technology",
+    "partnerships"
+  ],
+  "RIVAL_RELEASE_TITLES": [
+    "Hidden Harbor",
+    "Paper Skies",
+    "Velvet Meridian",
+    "The Last Orchard",
+    "Ash & Echo",
+    "Bright Atlas",
+    "Rift Beyond",
+    "A Quiet Storm",
+    "Echo Valley",
+    "The Long Night"
+  ],
+  "BACKGROUND_FIRM_PREFIXES": [
+    "Pine",
+    "Silver",
+    "Bramble",
+    "Golden",
+    "River",
+    "Hollow",
+    "Morning",
+    "Amber",
+    "Little",
+    "Quiet"
+  ],
+  "BACKGROUND_FIRM_SUFFIXES": [
+    "House",
+    "Works",
+    "Collective",
+    "Press",
+    "Studio"
+  ]
+}
