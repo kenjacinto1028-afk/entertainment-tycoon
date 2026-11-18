@@ -99,7 +99,7 @@ function forecastProject(s,data,plan,c) {
         const knownCompetition=s.projects.filter(p=>p.sector===plan.sector&&p.status==='released'&&p.releaseWeek<=futureWeek&&futureWeek-p.releaseWeek<CFG.tuning_engine.knownCompetition__001&&p.route!=='contract'&&(!p.grantId||s.grants.some(g=>g.id===p.grantId&&g.type==='license'&&g.startWeek<=futureWeek&&g.endWeek+g.continuationWeeks>futureWeek))).reduce((sum,p)=>{
           const competingAge=futureWeek-p.releaseWeek;
           const rivalReach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(p,k),0);
-          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
+          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*receptionMult(p)*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
         },0);
         gross+=budget*weight/(CFG.tuning_engine.forecastProject__005+weight+knownCompetition);
       }

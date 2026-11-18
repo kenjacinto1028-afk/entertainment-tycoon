@@ -241,5 +241,19 @@
       "standard": [],
       "veryComplex": []
     }
+  },
+  "RECEPTION": {
+    "_note": "R1: release reception roll. Each original title (player and AI, not contract jobs) rolls once at release in the listed modes. The roll comes from the world seed and the project id, so it does not use or shift the game's main random stream. Quality moves the roll: shift = clamp((quality - QUALITY_PIVOT) x QUALITY_SHIFT, -MAX_SHIFT, MAX_SHIFT); the level is picked from the cumulative odds at roll + shift. mult multiplies the title's demand weight for its whole life and legs stretches (or shortens) how slowly its sales fade; sales still come out of the same capped regional wallet.",
+    "modes": ["simple", "standard", "veryComplex"],
+    "LEVELS": [
+      {"key": "flop", "label": "Flop", "odds": 0.18, "mult": 0.35, "legs": 0.6, "news": "critics and audiences shrug"},
+      {"key": "weak", "label": "Weak", "odds": 0.22, "mult": 0.7, "legs": 0.85, "news": "a lukewarm reception"},
+      {"key": "solid", "label": "Solid", "odds": 0.36, "mult": 1, "legs": 1, "news": "a solid reception"},
+      {"key": "strong", "label": "Strong", "odds": 0.16, "mult": 1.4, "legs": 1.25, "news": "strong word of mouth"},
+      {"key": "breakout", "label": "Breakout", "odds": 0.08, "mult": 3, "legs": 1.8, "news": "a breakout success"}
+    ],
+    "QUALITY_PIVOT": 60,
+    "QUALITY_SHIFT": 0.004,
+    "MAX_SHIFT": 0.12
   }
 }

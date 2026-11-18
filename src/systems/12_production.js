@@ -194,6 +194,7 @@ function projectWork(s,p) {
       if(p.sector==='games'&&p.videoGame){p.criticScore=p.videoGame.criticRating;p.audienceScore=p.videoGame.userRating;}
     }
     if(p.sector==='games'&&p.videoGame)gameAtRelease(s,p);
+    receptionRoll(s,p);
     if(p.coProductionId)refundPartnerReserve(s,p,'released');
     if(p.route==='contract') {if(p.escrowId)deliverClientFee(s,p);else finalizeContract(s,c,p.earnedFee,p.advance,p.id);p.directRevenue=money(p.directRevenue+p.earnedFee);}
     else {initPrintEdition(s,p);const work={id:id(s,'work'),title:p.title,ipId:p.ipId,projectId:p.id,sector:p.sector,ownerId:c.id,releaseWeek:s.week};s.works.push(work);const ip=s.ips.find(x=>x.id===p.ipId);if(ip)ip.works.push(work.id);}
@@ -202,7 +203,7 @@ function projectWork(s,p) {
       if(c.isPlayer&&s.founder){s.founder.experience=(s.founder.experience||0)+1;s.founder.lastReleaseWeek=s.week;}
       team.completed++;if(!Array.isArray(team.performanceHistory))team.performanceHistory=[];team.performanceHistory.push({projectId:p.id,week:s.week,quality:p.quality,sector:p.sector,genre:p.genre});if(team.performanceHistory.length>CFG.tuning_engine.projectWork__026)team.performanceHistory.shift();}
     c.reputation=Math.round(clamp(c.reputation+(p.quality-CFG.tuning_engine.projectWork__027)/CFG.tuning_engine.projectWork__028,CFG.tuning_engine.projectWork__029,CFG.tuning_engine.projectWork__030));
-    if(c.isPlayer){news(s,p.title+' released',p.route==='contract'?'Commissioned work delivered; full fee recognized.':p.genre+' '+p.format+' enters the '+SECTORS[p.sector].name+' market.','release'); }
+    if(c.isPlayer){news(s,p.title+' released',p.route==='contract'?'Commissioned work delivered; full fee recognized.':p.genre+' '+p.format+' enters the '+SECTORS[p.sector].name+' market.'+(p.reception?' Reception: '+p.reception.label+', '+(CFG.depth.RECEPTION.LEVELS.find(l=>l.key===p.reception.key)?.news||'')+'.':''),'release'); }
     else if(rand(s)<CFG.tuning_engine.projectWork__031)news(s,c.name+' releases '+p.title,'A competing '+p.genre.toLowerCase()+' '+SECTORS[p.sector].name.toLowerCase()+' title enters the market.','competitor');
   }
 }

@@ -7,8 +7,8 @@ const game=(seed='board-b1',depth='standard')=>E.createGame({seed,era:25,origin:
 const rep=s=>E.player(s).corporate.boardRep;
 
 check('Config values exist; no meter before incorporation; starts at START on incorporation',()=>{
- assert.equal(B.START,50);assert.equal(B.MIN,0);assert.equal(B.MAX,100);assert.equal(E.SAVE_VERSION,37);
- const s=game();assert.equal(s.version,37);assert.equal(rep(s)??null,null);assert.equal(E.corporateStatus(s).boardRep,null);
+ assert.equal(B.START,50);assert.equal(B.MIN,0);assert.equal(B.MAX,100);assert(E.SAVE_VERSION>=37);
+ const s=game();assert.equal(s.version,E.SAVE_VERSION);assert.equal(rep(s)??null,null);assert.equal(E.corporateStatus(s).boardRep,null);
  assert.deepEqual(s.studioMilestones,{});assert.deepEqual(s.legends,[]);
  E.incorporateStudio(s);assert.equal(rep(s).value,50);assert.equal(E.corporateStatus(s).boardRep.value,50);
  assert.deepEqual(E.audit(s),[]);return {start:rep(s).value};
@@ -55,7 +55,7 @@ check('Save v37: round trip keeps the meter; v36 saves migrate (incorporated sta
  const s=game('b1-save');E.incorporateStudio(s);rep(s).value=63;
  const t=E.loadState(JSON.stringify(s));assert.equal(rep(t).value,63);assert.deepEqual(E.audit(t),[]);
  const old=JSON.parse(JSON.stringify(s));old.version=36;delete E_(old).boardRep;delete old.studioMilestones;delete old.legends;for(const p of old.projects)delete p.repMilestones;
- const u=E.loadState(old);assert.equal(u.version,37);assert.equal(rep(u).value,50);assert.deepEqual(u.legends,[]);assert.deepEqual(u.studioMilestones,{});
+ const u=E.loadState(old);assert.equal(u.version,E.SAVE_VERSION);assert.equal(rep(u).value,50);assert.deepEqual(u.legends,[]);assert.deepEqual(u.studioMilestones,{});
  assert(u.projects.every(p=>p.repMilestones&&typeof p.repMilestones==='object'));assert.deepEqual(E.audit(u),[]);E.advance(u,3);
  const f=game('b1-founder');const o=JSON.parse(JSON.stringify(f));o.version=36;delete E_(o).boardRep;const g=E.loadState(o);assert.equal(rep(g)??null,null);
  rep(t).value=500;assert(E.audit(t).includes('Invalid Board Reputation'));

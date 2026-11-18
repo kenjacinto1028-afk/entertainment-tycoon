@@ -57,8 +57,8 @@ function weekSales(s) {
       for(const cohort of cohortShares){
         const titleWeights=titles.map(p=>{
           if(!canDistribute43(s,p,region.name,s.week))return 0;
-          const age=s.week-p.releaseWeek,decay=Math.exp(-age/(p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004));
-          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*
+          const age=s.week-p.releaseWeek,decay=Math.exp(-age/((p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004)*receptionLegs(p)));
+          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
            (p.sector==='movie'&&p.cinema?filmDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='tv'&&p.television?tvDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='games'&&p.videoGame?gameDemandMultiplier(p,s.week,region.name)*gamePlatformDemand49(s,p,region.name):1)*

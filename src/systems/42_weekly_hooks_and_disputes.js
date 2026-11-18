@@ -1,6 +1,17 @@
 
 function update43CWeek(s){gamePublisherWeek43(s);rivalResearch43(s);boardRepWeek(s);repMilestoneWeek(s);}
 
+// R1 — release reception roll (flops and breakouts). Config: depth.json RECEPTION. Save v38 field p.reception.
+// The roll is derived from the world seed and project id, so it never consumes or shifts s.rng.
+function receptionUnit(s,p){let h=hash(String(s.seed)+':reception:'+p.id);h^=h>>>16;h=Math.imul(h,0x7feb352d);h^=h>>>15;h=Math.imul(h,0x846ca68b);h^=h>>>16;return (h>>>0)/4294967296;}
+function receptionRoll(s,p){const R=CFG.depth.RECEPTION;
+ if(p.route==='contract'||!R.modes.includes(s.settings?.depth)){p.reception=null;return null;}
+ const roll=receptionUnit(s,p),shift=clamp(((p.quality||0)-R.QUALITY_PIVOT)*R.QUALITY_SHIFT,-R.MAX_SHIFT,R.MAX_SHIFT),x=clamp(roll+shift,0,0.999999);
+ let acc=0,L=R.LEVELS[R.LEVELS.length-1];for(const l of R.LEVELS){acc+=l.odds;if(x<acc){L=l;break;}}
+ p.reception={key:L.key,label:L.label,mult:L.mult,legs:L.legs??1,roll:Math.round(roll*1e4)/1e4};return p.reception;}
+function receptionMult(p){return p.reception?.mult??1;}
+function receptionLegs(p){return p.reception?.legs??1;}
+
 // B4 — Reputation from title levels (Hit/Smash/Legendary) and studio milestones. Config: depth.json REPUTATION.
 function repGain(s,c,n){c.reputation=Math.round(clamp(c.reputation+n,CFG.tuning_engine.recognizeCreativeAwards__001,CFG.tuning_engine.recognizeCreativeAwards__002));}
 function repMilestoneWeek(s){const c=player(s);if(!c||c.bankrupt)return;const R=CFG.depth.REPUTATION,sm=s.studioMilestones||(s.studioMilestones={});
