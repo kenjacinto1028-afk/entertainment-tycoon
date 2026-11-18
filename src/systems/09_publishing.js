@@ -115,7 +115,7 @@ function previewProject(s,data={}) {
   const marketing=money(Math.round(budget*(Number(data.marketing)||CFG.tuning_engine.marketing__001)*CFG.tuning_engine.marketing__002)/CFG.tuning_engine.marketing__003);
   const printPhysical=sector==='publishing'&&data.route!=='contract'&&['Novel','Nonfiction','Comic / Manga'].includes(format);
   const initialPrintCash=printPhysical?money(Math.round(CFG.tuning_engine.initialPrintCash__001*size)*(format==='Comic / Manga'?CFG.tuning_engine.initialPrintCash__002:CFG.tuning_engine.initialPrintCash__003)):0;
-  const plan={sector,format,size,productionRegion:productionRegion.name,budget,weeks,marketing,grandTotal:money(budget+marketing),initialPrintCash,contractFee:money((budget+marketing)*CFG.tuning_engine.plan__001)};
+  const plan={sector,format,size,productionRegion:productionRegion.name,budget,weeks,marketing,grandTotal:money(budget+marketing),initialPrintCash,contractFee:money((budget+marketing)*CFG.tuning_engine.plan__001*(c.id===s.playerId?1+contractTier(s,c).payBonus:1))};
   if(data.route==='contract'){
     const signed=data.offerId?s.commissionOffers.find(o=>o.id===data.offerId):null;
     if(data.offerId&&(!signed||signed.status!=='accepted'||signed.producerId!==c.id||signed.sector!==sector))throw new Error('No accepted client offer for this project.');

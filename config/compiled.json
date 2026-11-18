@@ -60,6 +60,35 @@
   },
   "depth": {
     "DEFAULT": "standard",
+    "CONTRACT_TIERS": {
+      "tiers": [
+        {
+          "minReputation": 0,
+          "maxSize": 0.75,
+          "payBonus": 0,
+          "label": "Small jobs only"
+        },
+        {
+          "minReputation": 35,
+          "maxSize": 1,
+          "payBonus": 0.05,
+          "label": "Mid-size jobs, +5% pay"
+        },
+        {
+          "minReputation": 55,
+          "maxSize": null,
+          "payBonus": 0.1,
+          "label": "Any size, +10% pay"
+        },
+        {
+          "minReputation": 75,
+          "maxSize": null,
+          "payBonus": 0.2,
+          "label": "Any size, +20% pay"
+        }
+      ],
+      "lockedMessage": "Clients only trust you with {sizeName} jobs until Reputation {next}."
+    },
     "LABELS": {
       "simple": {
         "name": "Simple",

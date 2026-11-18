@@ -98,6 +98,7 @@ function requestCommission(s,data={}){
   const title=String(data.title||'').trim().slice(0,CFG.tuning_engine.title__001);
   if(!title)throw new Error('Commission title is required.');
   const plan=previewProject(s,{...data,sector,route:'contract',clientId:'auto',withForecast:false});
+  const locked=contractSizeLockMessage(s,plan.size,c);if(locked)throw new Error(locked);
   const client=company(s,data.clientId);
   if(!client||client.id===c.id||client.bankrupt||client.parentId||c.parentId||
      !eligibleClients(s,plan.contractFee,c.id).some(x=>x.id===client.id))throw new Error('No sufficiently funded independent client is available.');
