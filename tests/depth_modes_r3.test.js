@@ -2,6 +2,7 @@
 // R3: rivals choose a format mix (config rivals.json RIVAL_FORMAT_MIX). Multiseed coverage so suites see ebooks, audiobooks and indie games.
 const E=require('../dist/engine.js'),assert=require('node:assert/strict');let total=0;
 function check(label,fn){try{const ev=fn();console.log('PASS',label,ev?JSON.stringify(ev):'');total++;}catch(e){console.error('FAIL',label,e.stack);process.exitCode=1;}}
+E.CONFIG.depth.INSOLVENCY.furloughWeeks=0;// R6: these idle-player worlds must keep running
 const mk=(seed,era)=>E.createGame({seed,era,origin:'established',startingCapital:'funded',aiCount:8,depth:'standard'});
 const run=(seed,era,years)=>{const s=mk(seed,era);for(let w=0;w<52*years;w++)E.advance(s,1);return s;};
 const ai=s=>s.projects.filter(p=>p.companyId!==s.playerId&&p.route!=='contract'&&p.status==='released');

@@ -15,6 +15,7 @@ check('27: award/press/financial and audience records come from actual releases 
 check('27: history snapshots remain legal-entity scoped over 12 years; saved player title remains searchable',()=>{
  const s=E.createGame({era:25,origin:'established',seed:'update48-history-long',startingCapital:'funded',aiCount:6,regionCount:2}),p=E.createProject(s,{sector:'publishing',route:'original',title:'Permanent Archive',size:.6});
  for(let i=0;i<70&&p.status==='active';i++)E.advance(s,1);A.equal(p.status,'released');
+ E.CONFIG.depth.INSOLVENCY.furloughWeeks=0;// R6: this idle player is meant to survive 12 years; insolvency has its own test
  for(let i=0;i<12*52;i++){E.advance(s,1);if(i%52===0)audit(s);}
  const hist=E.historicalCompanyFinances(s,s.playerId);A(hist.length>=10);A(hist.every(x=>x.companyId===s.playerId&&x.source==='booked-entity-close'));
  const archive=E.searchNewsArchive(s,{query:'Permanent Archive'});A(archive.length>0,'old event should be searchable despite recent news compaction');A(s.archivedNews.some(x=>(x.title+' '+x.body).includes('Permanent Archive')),'event must be retained in archived storage after active-news compaction');
