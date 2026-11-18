@@ -1150,6 +1150,48 @@
       "Skyline Frame"
     ],
     "CAPITAL_POOL": 500000,
+    "RIVAL_FORMAT_MIX": {
+      "_note": "R3: how rivals choose a format for each new original title. Weights are relative; pool 'digital' or 'audio' multiplies the weight by that buyer group's current share (R2 FORMAT_POOLS) so digital and audio formats grow with the world. Publishing formats that need later technology are skipped until available.",
+      "publishing": [
+        {
+          "format": "Novel",
+          "weight": 56
+        },
+        {
+          "format": "Nonfiction",
+          "weight": 12
+        },
+        {
+          "format": "Comic / Manga",
+          "weight": 10
+        },
+        {
+          "format": "Web Serial",
+          "weight": 30,
+          "pool": "digital"
+        },
+        {
+          "format": "Ebook",
+          "weight": 45,
+          "pool": "digital"
+        },
+        {
+          "format": "Audiobook",
+          "weight": 45,
+          "pool": "audio"
+        }
+      ],
+      "games": [
+        {
+          "format": "Premium Game",
+          "weight": 78
+        },
+        {
+          "format": "Indie Game",
+          "weight": 22
+        }
+      ]
+    },
     "RIVAL_STYLES": [
       "cautious",
       "creator-led",
