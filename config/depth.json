@@ -46,6 +46,17 @@
       "stopForAdvisory": false
     }
   },
+  "REPUTATION": {
+    "_note": "B4: company Reputation gains (all modes, player titles only, contract jobs ignored). Each level is awarded once per title when lifetime receipts >= multiple x the title's cost. Legendary also needs quality or critic score >= minScore. Studio milestones give +1 once each. Reputation cap comes from tuning_engine recognizeCreativeAwards__002.",
+    "TITLE_LEVELS": [
+      {"key": "hit", "label": "Hit", "multiple": 3, "reputation": 2, "minScore": 0},
+      {"key": "smash", "label": "Smash", "multiple": 6, "reputation": 3, "minScore": 0},
+      {"key": "legendary", "label": "Legendary", "multiple": 8, "reputation": 5, "minScore": 85}
+    ],
+    "STUDIO_MILESTONE_REPUTATION": 1,
+    "RELEASE_COUNTS": [10, 25, 50, 100],
+    "LEGENDS_KEEP": 200
+  },
   "BOARD": {
     "_note": "B1: Board Reputation meter (0-100). Starts at START when the studio incorporates. Yearly review at the first week of each year: target = profit > 0 and revenue >= last year x TARGET_REVENUE_GROWTH. Release effects count only for titles released after incorporation; contract jobs are ignored. A Hit = lifetime receipts >= HIT_MULTIPLE x cost; a Flop = receipts < FLOP_FRACTION x cost once the title is FLOP_AGE_WEEKS old.",
     "START": 50,
