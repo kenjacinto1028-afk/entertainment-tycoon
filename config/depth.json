@@ -1,5 +1,19 @@
 {
   "DEFAULT": "standard",
+  "LABELS": {
+    "simple": {
+      "name": "Simple",
+      "blurb": "Fewest decisions; the game runs most things for you."
+    },
+    "standard": {
+      "name": "Standard",
+      "blurb": "Balanced; you choose releases and key deals."
+    },
+    "veryComplex": {
+      "name": "Very Complex",
+      "blurb": "Every rule and decision, as in the original game."
+    }
+  },
   "MODES": {
     "simple": {
       "staffAutoFill": true,

@@ -133,6 +133,7 @@ document.addEventListener('click',event=>{const b=event.target.closest('button,[
  if(b.dataset.dismiss){safe(()=>E.dismissAlert(S,b.dataset.dismiss));return;}
  if(b.hasAttribute('data-batch-counters')){if(!confirm('Accept only counteroffer terms that fit your current manager authority? No cash or rights will move and projects still require separate approval.'))return;safe(()=>{const x=E.batchApproveRoutineCounters(S,CFG.tuning_ui.x__001);notify(x.approved.length+' limited counteroffers approved, '+x.deferred.length+' deferred. Funded bookings still need your approval.');});return;}
  if(b.hasAttribute('data-batch-review')){safe(()=>{const n=E.dismissRoutineAdvisories(S);notify(n+' routine advisories reviewed; critical decisions remain open.');});return;}
+ if(b.hasAttribute('data-depth-switch')){safe(()=>{const m=E.setDepth(S,b.getAttribute('data-depth-switch'));notify('Game depth set to '+CFG.depth.LABELS[m].name+'.');});return;}
  if(b.hasAttribute('data-pause-policy')){safe(()=>{const p=E.setPausePolicy(S,!S.pausePolicy.stopForAdvisory);notify('Advisory skip interrupts '+(p.stopForAdvisory?'enabled':'disabled')+'. Critical interruptions remain mandatory.');});return;}
 
  if(b.dataset.enterSector){safe(()=>E.enterSector(S,b.dataset.enterSector,b.dataset.mode));return;}
