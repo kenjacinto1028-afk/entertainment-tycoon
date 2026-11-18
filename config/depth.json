@@ -242,6 +242,18 @@
       "veryComplex": []
     }
   },
+  "FORMAT_POOLS": {
+    "_note": "R2: book spending is split into print, digital and audio buyers. shares lists [world year, share] points for digital and audio (straight lines between points, flat after the last); print gets the rest. A format listed in reach sells only to those buyer groups; formats not listed (Novel, Nonfiction, Comic / Manga) are full releases that reach every group. Total book spending is unchanged.",
+    "shares": {
+      "digital": [[1, 0.08], [10, 0.10], [30, 0.25], [60, 0.35]],
+      "audio": [[1, 0], [4, 0.03], [30, 0.09], [60, 0.15]]
+    },
+    "reach": {
+      "Ebook": ["digital"],
+      "Web Serial": ["digital"],
+      "Audiobook": ["audio"]
+    }
+  },
   "RECEPTION": {
     "_note": "R1: release reception roll. Each original title (player and AI, not contract jobs) rolls once at release in the listed modes. The roll comes from the world seed and the project id, so it does not use or shift the game's main random stream. Quality moves the roll: shift = clamp((quality - QUALITY_PIVOT) x QUALITY_SHIFT, -MAX_SHIFT, MAX_SHIFT); the level is picked from the cumulative odds at roll + shift. mult multiplies the title's demand weight for its whole life and legs stretches (or shortens) how slowly its sales fade; sales still come out of the same capped regional wallet.",
     "modes": ["simple", "standard", "veryComplex"],

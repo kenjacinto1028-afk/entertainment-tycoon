@@ -43,12 +43,27 @@ function settleRoyaltyObligations(s,c) {
   }
   s.obligations=s.obligations.filter(o=>o.amount>CFG.tuning_engine.settleRoyaltyObligations__001);
 }
+// R2: book buyers are split into print, digital and audio groups (config
+// depth.json FORMAT_POOLS). Full releases reach every group; digital-only and
+// audio-only formats sell to their own group. Shares always sum to 1, so the
+// capped publishing wallet is unchanged.
+function formatPoolShares(s,week=s.week){
+  const F=CFG.depth.FORMAT_POOLS,y=yearAt(week),at=pts=>{if(y<=pts[0][0])return pts[0][1];
+    for(let i=1;i<pts.length;i++)if(y<=pts[i][0]){const [a,va]=pts[i-1],[b,vb]=pts[i];return va+(vb-va)*(y-a)/(b-a);}return pts[pts.length-1][1];};
+  const digital=at(F.shares.digital),audio=y>=CFG.tuning_engine.publishingFormatAvailable__001?at(F.shares.audio):0;
+  return {print:1-digital-audio,digital,audio};
+}
+function formatReach(format){return CFG.depth.FORMAT_POOLS.reach[format]||null;}
+function formatReachShare(s,format,week=s.week){const r=formatReach(format);if(!r)return 1;const sh=formatPoolShares(s,week);return r.reduce((n,k)=>n+sh[k],0);}
 function weekSales(s) {
   s.weeklyConsumerSpend=money((s.streamingWeeklyTotal||0)+Object.values(s.gameMarketReserved||{}).reduce((a,b)=>a+b,0));
   for(const [sector,info] of Object.entries(SECTORS)) {
     if(!available(sector,s.week))continue;
     const titles=s.projects.filter(p=>p.sector===sector&&p.status==='released'&&p.route!=='contract'&&s.week-p.releaseWeek<CFG.tuning_engine.titles__001&&s.week>=p.releaseWeek&&(!p.grantId||s.grants.some(g=>g.id===p.grantId&&g.type==='license'&&g.startWeek<=s.week&&g.endWeek+g.continuationWeeks>s.week)));
     if(!titles.length&&!s.backgroundFirms.some(b=>b.sector===sector&&b.releases.length))continue;
+    // Old single-pool maths whenever no format-limited title is selling, so
+    // worlds without ebooks/audiobooks/web serials keep identical numbers.
+    const pools=sector==='publishing'&&titles.some(p=>formatReach(p.format))?formatPoolShares(s):null;
     for(const region of activeRegions(s)) {
       const budget=Math.max(0,money(worldMarketBudget(s,sector,region.name)-(sector==='tv'?(s.streamingWeeklyReserved?.[region.name]||0):sector==='games'?(s.gameMarketReserved?.[region.name]||0):0)));
       const background=backgroundWeights(s,sector,region);
@@ -68,9 +83,16 @@ function weekSales(s) {
              (p.format==='Web Serial'?(p.serialReaderMomentum||1):1):1);
         });
         const minorWeights=background.map(b=>b.weight*cohort.tastes[b.genre]);
+        if(!pools){
         const denominator=CFG.tuning_engine.denominator__001+titleWeights.reduce((a,b)=>a+b,0)+minorWeights.reduce((a,b)=>a+b,0);
         for(let i=0;i<weights.length;i++)weights[i]+=cohort.share*titleWeights[i]/denominator;
         for(let i=0;i<minorShares.length;i++)minorShares[i]+=cohort.share*minorWeights[i]/denominator;
+        }else for(const [pool,share] of Object.entries(pools)){
+          if(share<=0)continue;const inPool=titles.map(p=>{const r=formatReach(p.format);return !r||r.includes(pool);});
+          const denominator=CFG.tuning_engine.denominator__001+titleWeights.reduce((a,b,i)=>a+(inPool[i]?b:0),0)+minorWeights.reduce((a,b)=>a+b,0);
+          for(let i=0;i<weights.length;i++)if(inPool[i])weights[i]+=share*cohort.share*titleWeights[i]/denominator;
+          for(let i=0;i<minorShares.length;i++)minorShares[i]+=share*cohort.share*minorWeights[i]/denominator;
+        }
       }
       for(let i=0;i<titles.length;i++) {
         const p=titles[i],targetGross=money(budget*weights[i]);

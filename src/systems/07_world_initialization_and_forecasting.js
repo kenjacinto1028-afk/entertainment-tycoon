@@ -92,7 +92,7 @@ function forecastProject(s,data,plan,c) {
     if(route!=='contract')for(let i=0;i<horizonWeeks;i++) {
       const futureWeek=s.week+plan.weeks+i;
       for(const region of activeRegions(s)) {
-        const budget=worldMarketBudget(s,plan.sector,region.name,futureWeek)*marketShift;
+        const budget=worldMarketBudget(s,plan.sector,region.name,futureWeek)*marketShift*(plan.sector==='publishing'?formatReachShare(s,plan.format,futureWeek):1);
         const decay=Math.exp(-i/(plan.sector==='publishing'?CFG.tuning_engine.decay__001:CFG.tuning_engine.decay__002));
         const reach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(candidate,k),0);
         const weight=((clamp(candidate.quality+qualityShift,CFG.tuning_engine.weight__006,CFG.tuning_engine.weight__007)/CFG.tuning_engine.weight__008)**CFG.tuning_engine.weight__009)*region.tastes[candidate.genre]*(1+CFG.tuning_engine.weight__010*(candidate.marketingBudget/Math.max(candidate.budget,1)))*decay*reach;
