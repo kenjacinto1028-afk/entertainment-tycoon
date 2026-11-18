@@ -145,6 +145,79 @@
         "budget-",
         "preview-"
       ]
+    },
+    "HIDE": {
+      "_note": "D5: panels whose heading starts with a listed text are not drawn in that mode. simple = standard list + simpleExtra. veryComplex hides nothing. nav = left-menu views hidden per mode (a hidden view falls back to the Overview).",
+      "panels": {
+        "standard": [
+          "Active obligations · contract and counterparty register",
+          "Closed-period statutory and rights settlements",
+          "Tax and rights settlement evidence",
+          "Group settlement · legal-company detail",
+          "Legal balance sheet · full components",
+          "Legal entity + division reporting",
+          "Multi-level legal-company drilldown",
+          "Subsidiary financial closes · separate legal books",
+          "Consolidated studio group",
+          "Group debt and settlement integrity",
+          "Your studio group",
+          "Your group and restructuring",
+          "Overhead attribution · lifetime tracked",
+          "Monthly close reconciliation",
+          "Obligations · reconciled",
+          "Cash-flow bridge · lifetime",
+          "Platform installed audiences · modeled estimates",
+          "Buy rival R&D · real technology transfer",
+          "Strategic acquisition market · real independent companies",
+          "Traceable world event archive",
+          "Rights calendar · next 104 weeks",
+          "Commercial rights by medium, territory and term",
+          "Client delivery inspections · protected escrow",
+          "Active production budget variance",
+          "Monthly production budget · approved versus actual",
+          "Company culture and HR authority",
+          "Rights-manager delegation",
+          "Lender crisis workout · real obligations",
+          "Decision depth · studio management"
+        ],
+        "simpleExtra": [
+          "Balance sheet · simplified",
+          "Income statement · lifetime",
+          "Recent transactions",
+          "Revolving bank credit · actual debt",
+          "Board and shareholder authority",
+          "Imprints · distinct publishing brands",
+          "Owned publishing outlet",
+          "Owned game storefront · lawful catalog",
+          "Streaming distribution · later technology",
+          "Streaming service · ",
+          "Digital distribution · era-gated",
+          "Invest in research and studio tools",
+          "Optional corporation readiness",
+          "Optional outside specialists",
+          "Territory licensing packages",
+          "Manuscript rights desk",
+          "Clean IP assets · separate from finished-work rights",
+          "Rights agreements",
+          "Independent smaller studios",
+          "Publishing talent discovery",
+          "Founder and executive development",
+          "Regional economic conditions",
+          "Quarterly world economic review",
+          "Latest monthly economic brief",
+          "Bank, talent agencies and regional regulator",
+          "Optional ongoing game community & esports",
+          "Technology discovery and adoption"
+        ]
+      },
+      "nav": {
+        "simple": [
+          "library",
+          "career"
+        ],
+        "standard": [],
+        "veryComplex": []
+      }
     }
   },
   "events": {

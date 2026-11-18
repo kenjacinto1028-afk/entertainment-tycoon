@@ -23,7 +23,8 @@ const myProjects=()=>S.projects.filter(p=>p.companyId===S.playerId);
 const badge=(label,type='')=>`<span class="status ${type}">${esc(label)}</span>`;
 const empty=(head,detail,icon='✦')=>`<div class="empty"><span class="empty-icon">${icon}</span><strong>${esc(head)}</strong>${esc(detail)}</div>`;
 const pageHeader=(eyebrow,title,sub,buttons='')=>`<section class="page-head"><div><div class="eyebrow">${eyebrow}</div><h1 class="page-title">${title}</h1><p class="page-sub">${sub}</p></div><div class="head-actions">${buttons}</div></section>`;
-const panel=(title,body,extra='',sub='')=>`<section class="panel"><div class="panel-header"><div><h2 class="panel-heading">${title}</h2>${sub?`<p class="panel-sub">${sub}</p>`:''}</div>${extra}</div>${body}</section>`;
+function depthHide45(kind,name){try{const m=S&&S.settings&&S.settings.depth||CFG.depth.DEFAULT,H=CFG.depth.HIDE;if(!H||m==='veryComplex')return false;if(kind==='nav')return (H.nav[m]||[]).includes(name);const l=m==='simple'?H.panels.standard.concat(H.panels.simpleExtra):H.panels.standard;return l.some(t=>String(name).startsWith(t));}catch(e){return false;}}
+const panel=(title,body,extra='',sub='')=>depthHide45('panel',title)?'':`<section class="panel"><div class="panel-header"><div><h2 class="panel-heading">${title}</h2>${sub?`<p class="panel-sub">${sub}</p>`:''}</div>${extra}</div>${body}</section>`;
 const btn=(text,attrs='',type='outline')=>`<button type="button" class="btn btn-${type}" ${attrs}>${text}</button>`;
 const timeTag=w=>`<time>${weekLabel(w)}</time>`;
 let S,view='dashboard',industry='publishing',newsQuery='',newsKind='all',newsYear='all',rankType='finance',rankMetric='profit',rankSector='all',rankRegion='all',rankYear='all',projectSearch='',projectSort='latest',selectedProjectId=null,toastTimeout,initialized=false;
