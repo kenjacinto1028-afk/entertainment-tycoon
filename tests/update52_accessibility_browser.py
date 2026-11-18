@@ -21,8 +21,9 @@ with sync_playwright() as pw:
   assert page.evaluate('document.activeElement.closest("#modal")!==null')
   page.locator('#new-game-form button[type="submit"]').click()
   assert page.get_by_role('dialog').count()==0
-  if width==390:page.locator('#menu-toggle').click()
-  page.locator('[data-view="settings"]').first.click()
+  # D6: Standard uses the 5-tab layout; Game & Saves lives under Company
+  page.locator('#tab5 [data-tab5="company"]').click()
+  page.locator('.subtabs5 [data-view="settings"]').click()
   page.get_by_role('button',name='Load campaign from slot 2').click()
   page.wait_for_function("()=>document.querySelector('#toast')?.textContent?.includes('Load slot failed')")
   assert page.get_by_role('alert').count()==1

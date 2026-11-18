@@ -20,7 +20,12 @@ with sync_playwright() as pw:
   page.locator('#main-nav [data-view="%s"],#secondary-nav [data-view="%s"]'%(v,v)).first.evaluate('b=>{b.hidden=false;b.click()}')
   page.wait_for_timeout(100)
  def has(page,text):return page.locator('#content h2.panel-heading',has_text=text).count()>0
- def nav_visible(page,v):return page.locator('#main-nav [data-view="%s"]'%v).is_visible()
+ def nav_visible(page,v):
+  # D6: Simple/Standard show the 5 tabs + sub-tabs instead of the left menu
+  if page.locator('.sidebar').is_visible():return page.locator('#main-nav [data-view="%s"]'%v).is_visible()
+  tabid={'library':'projects','productions':'projects','career':'company','finance':'company'}[v]
+  page.locator('#tab5 [data-tab5="%s"]'%tabid).click();page.wait_for_timeout(100)
+  return page.locator('.subtabs5 [data-view="%s"]'%v).count()>0
  # Very Complex: everything shown
  ctx,page,errors=new_game('veryComplex')
  assert nav_visible(page,'library') and nav_visible(page,'career')

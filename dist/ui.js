@@ -1177,7 +1177,28 @@ function bankWorkouts47(){
 }
 const originalRenderProductions47=renderProductions,originalRenderFinance47=renderFinance;
 renderProductions=function(){return originalRenderProductions47()+fundedDisputes47();};
-renderFinance=function(){return originalRenderFinance47()+bankWorkouts47();};
+renderFinance=function(){return originalRenderFinance47()+bankWorkouts47();};// D6: 5-tab layout for Simple and Standard (tab map in config/depth.json TABS5). Very Complex keeps the left menu.
+(function(){const prev=render,lastSub={};
+ const modeOn=()=>!!S&&((S.settings&&S.settings.depth)||CFG.depth.DEFAULT)!=='veryComplex';
+ const vis=t=>t.views.filter(v=>!depthHide45('nav',v));
+ render=function(){
+  const on=modeOn();document.body.classList.toggle('tabs5',on);
+  const a=document.activeElement;let key=null;
+  if(a&&a.dataset&&a.dataset.tab5)key='[data-tab5="'+a.dataset.tab5+'"]';else if(a&&a.closest&&a.closest('.subtabs5'))key='.subtabs5 [data-view="'+a.dataset.view+'"]';
+  const r=prev.apply(this,arguments),nav=document.getElementById('tab5');if(!nav)return r;
+  if(!on){nav.innerHTML='';return r;}
+  const T=CFG.depth.TABS5,cur=T.tabs.find(t=>t.views.includes(view))||T.tabs[0];lastSub[cur.id]=view;
+  const n=document.getElementById('inbox-count').textContent;
+  nav.innerHTML=T.tabs.map(t=>`<button type="button" data-tab5="${t.id}"${t===cur?' class="active" aria-current="page"':''}><span class="nav-ico t5-ico" aria-hidden="true">${t.icon}</span><span>${esc(t.label)}</span>${t.id==='inbox'&&n&&n!=='0'?`<span class="nav-count" aria-label="${esc(n)} waiting">${esc(n)}</span>`:''}</button>`).join('');
+  const vv=vis(cur);
+  if(vv.length>1)document.getElementById('content').insertAdjacentHTML('afterbegin',`<div class="tabbar subtabs5" role="group" aria-label="${esc(cur.label)} sections">${vv.map(v=>`<button type="button" class="tab${v===view?' active':''}" data-view="${v}"${v===view?' aria-current="page"':''}>${esc(T.viewLabels[v]||v)}</button>`).join('')}</div>`);
+  if(key){const el=document.querySelector(key);if(el)el.focus();}
+  return r;};
+ document.addEventListener('click',event=>{const b=event.target.closest('button[data-tab5]');if(!b||!S)return;
+  const t=CFG.depth.TABS5.tabs.find(x=>x.id===b.dataset.tab5);if(!t)return;const v=vis(t);
+  view=v.includes(lastSub[t.id])?lastSub[t.id]:(v[0]||'dashboard');render();remember();window.scrollTo(0,0);});
+})();
+
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u47]');if(!b)return;
  const action=b.dataset.u47,id=b.dataset.id47;
  if(action==='inspect'){safe(()=>{const r=E.commissionInspection47(S,id);notify(r.autoResolved?'Client disputed delivery; settled automatically ('+(r.settlement==='paid-rework'?'paid rework':'neutral arbitration')+').':r.status==='open'?'Client delivery contested. Review remedy or arbitration.':'Client approved inspection; production continues.');});return;}

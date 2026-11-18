@@ -35,3 +35,22 @@ body.dark {--bg:#121c19;--surface:#1b2a24;--surface-2:#22352c;--surface-3:#2c473
 
 /* D5: depth-hidden menu items */
 .nav [hidden]{display:none!important}
+/* D6: 5-tab layout (Simple / Standard) */
+.tab5{display:none}
+body.tabs5 .sidebar,body.tabs5 .mobile-menu{display:none}
+body.tabs5 .turnbar{left:0}
+body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface);border-bottom:1px solid var(--border)}
+.tab5 button{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 16px;border-radius:10px;font-weight:700;font-size:13px}
+.tab5 button:hover{border-color:var(--border)}
+.tab5 button.active{background:var(--accent);color:#fff}
+.dark .tab5 button.active{color:#102419}
+.tab5 .nav-count{margin-left:2px;background:#dcae79;color:#273427;min-width:19px;height:19px;display:inline-grid;place-items:center;border-radius:6px;font-size:11px;font-weight:800}
+.subtabs5{margin-bottom:18px}
+@media(max-width:850px){
+ body.tabs5 .tab5{position:fixed;bottom:0;left:0;right:0;z-index:9;padding:4px 6px;gap:2px;border-bottom:0;border-top:1px solid var(--border);justify-content:space-between}
+ body.tabs5 .tab5 button{flex:1 1 0;min-width:0;flex-direction:column;gap:2px;padding:6px 2px;font-size:10px;text-align:center}
+ body.tabs5 .tab5 .t5-ico{font-size:18px}
+ body.tabs5 .turnbar{bottom:56px}
+ body.tabs5 .main-shell{padding-bottom:140px}
+}
+@media(max-width:600px){body.tabs5 .main-shell{padding-bottom:190px}body.tabs5 .tab5{padding-left:2px;padding-right:2px}}
