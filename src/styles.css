@@ -32,3 +32,6 @@ body.dark {--bg:#121c19;--surface:#1b2a24;--surface-2:#22352c;--surface-3:#2c473
 /* Update 50: accessible keyboard-first import trigger; input stays operable programmatically. */
 .studio-file-input-50{position:absolute;width:1px;height:1px;opacity:0;clip-path:inset(50%);overflow:hidden;pointer-events:none}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* D5: depth-hidden menu items */
+.nav [hidden]{display:none!important}

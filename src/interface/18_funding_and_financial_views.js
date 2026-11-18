@@ -28,7 +28,7 @@ const baseRender43=render;
 render=function(){if(S&&['dashboard','productions','library','finance','world','settings'].includes(view))E.visitTutorial43(S,view);return baseRender43();};
 // D4: in Simple, "Advance to next decision" is the main (highlighted) button and the week buttons are secondary.
 const baseRender43D4=render;
-render=function(){const r=baseRender43D4();const simple=S&&(S.settings.depth||CFG.depth.DEFAULT)==='simple',b=document.getElementById('advance-decision');
+render=function(){if(S&&depthHide45('nav',view))view='dashboard';document.querySelectorAll('#main-nav [data-view],#secondary-nav [data-view]').forEach(b=>{b.hidden=!!S&&depthHide45('nav',b.dataset.view);});const r=baseRender43D4();const simple=S&&(S.settings.depth||CFG.depth.DEFAULT)==='simple',b=document.getElementById('advance-decision');
  if(b){b.classList.toggle('btn-primary',!!simple);b.classList.toggle('btn-outline',!simple);document.querySelectorAll('.turn-actions [data-advance]').forEach(x=>{x.classList.remove('btn-primary');x.classList.add('btn-outline');});
   if(!simple){const w=document.querySelector('.turn-actions [data-advance="13"]');if(w){w.classList.remove('btn-outline');w.classList.add('btn-primary');}}}
  return r;};
