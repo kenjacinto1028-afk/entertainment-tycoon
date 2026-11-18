@@ -54,6 +54,16 @@ function advance(s,count=1) {
   for(let i=0;i<n;i++){if(i>0&&pauses()){stopped=true;break;}singleWeek(s);moved++;if(n>1&&pauses()){stopped=true;break;}}
   return {weeks:moved,stopped,reason:stopped?'An important decision or warning needs attention.':''};
 }
+// Depth modes D4: advance week by week until a NEW Inbox card opens (or the config cap is reached).
+function advanceToDecision(s){
+  if(s.runStatus==='ended')return {weeks:0,stopped:true,reason:'Run concluded.',found:false,capped:false};
+  if(s.inbox.some(a=>a.open&&a.kind==='critical'))return {weeks:0,stopped:true,reason:'A decision is already waiting in your Inbox.',found:true,capped:false};
+  const cap=Math.max(1,Math.round(Number(CFG.depth.ADVANCE_TO_DECISION.maxWeeks)||1)),seen=new Set(s.inbox.filter(a=>a.open).map(a=>a.id));
+  let moved=0,found=false;
+  while(moved<cap){singleWeek(s);moved++;if(s.runStatus==='ended')break;if(s.inbox.some(a=>a.open&&!seen.has(a.id))){found=true;break;}}
+  const capped=!found&&s.runStatus!=='ended';
+  return {weeks:moved,stopped:found,found,capped,reason:found?'A decision needs your attention.':capped?'No decisions for '+moved+' weeks, so I stopped.':'Run concluded.'};
+}
 function dismissAlert(s,alertId){const item=s.inbox.find(a=>a.id===alertId);if(item)item.open=false;}
 // Approval queue is limited to TERMS already counteroffered by willing, real
 // counterparties. It never books production, commits partner cash or waives a

@@ -660,6 +660,7 @@ document.addEventListener('click',event=>{const b=event.target.closest('button,[
 
  if(b.dataset.view){view=b.dataset.view;document.querySelector('.sidebar').classList.remove('visible');render();return;}
  if(b.dataset.industry){industry=b.dataset.industry;render();document.querySelector(`[data-industry="${industry}"]`)?.focus();return;}
+ if(b.dataset.advanceDecision){const result=E.advanceToDecision(S);remember();render();$('turn-msg').textContent=result.found?'Advanced '+result.weeks+' week'+(result.weeks===1?'':'s')+' · A decision needs you · '+E.periodLabel(S.week):result.weeks?result.reason+' · '+E.periodLabel(S.week):result.reason;if(result.found&&result.weeks)notify('A decision card is waiting in your Inbox.');return;}
  if(b.dataset.advance){const result=E.advance(S,Number(b.dataset.advance));remember();render();$('turn-msg').textContent=result.stopped?'Skip interrupted · Review Action Inbox':'Advanced '+result.weeks+' week'+(result.weeks===1?'':'s')+' · '+E.periodLabel(S.week);if(result.stopped)notify('Stopped for a critical management issue.');return;}
  if(b.dataset.tvOrder){if(!confirm('Approve funded season resizing and the schedule effects?'))return;safe(()=>{E.tvPlanSeason(S,b.dataset.tvId,Number(b.dataset.tvOrder));notify('Episode order approved.');});return;}
  if(b.dataset.tvRoom){if(!confirm('Fund a writers room supervised by your existing team leader?'))return;safe(()=>{E.tvWritersRoom(S,b.dataset.tvId,b.dataset.tvRoom);notify('Writers room funded.');});return;}
@@ -1126,6 +1127,12 @@ renderTeams=function(){return baseRenderTeams43()+teamDepth43();};
 careerPanel=function(){return baseCareer43()+panel('Founder identity · retained through generations',`<div class="ss-identity43">${portrait43(S.founder.id,CFG.tuning_ui.topLevel__001)}<div><h3>${esc(S.founder.name)}</h3><p class="panel-sub">Portrait appearance remains stable across save/load. An executive transition never changes share or IP ownership by itself.</p></div></div>`);};
 const baseRender43=render;
 render=function(){if(S&&['dashboard','productions','library','finance','world','settings'].includes(view))E.visitTutorial43(S,view);return baseRender43();};
+// D4: in Simple, "Advance to next decision" is the main (highlighted) button and the week buttons are secondary.
+const baseRender43D4=render;
+render=function(){const r=baseRender43D4();const simple=S&&(S.settings.depth||CFG.depth.DEFAULT)==='simple',b=document.getElementById('advance-decision');
+ if(b){b.classList.toggle('btn-primary',!!simple);b.classList.toggle('btn-outline',!simple);document.querySelectorAll('.turn-actions [data-advance]').forEach(x=>{x.classList.remove('btn-primary');x.classList.add('btn-outline');});
+  if(!simple){const w=document.querySelector('.turn-actions [data-advance="13"]');if(w){w.classList.remove('btn-outline');w.classList.add('btn-primary');}}}
+ return r;};
 // Form and action handlers are local. They call engine safeguards and save.
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u43]');if(!b)return;const action=b.dataset.u43,id=b.dataset.id43;
  if(action==='jump'){view=b.dataset.next43||'dashboard';render();remember();return;}
