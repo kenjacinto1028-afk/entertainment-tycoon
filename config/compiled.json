@@ -3463,6 +3463,8 @@
     "hireQuote__004": 100,
     "hireQuote__005": 100,
     "remember__001": 1200000,
+    "autosaveDelayMs": 1500,
+    "productionRowsPage": 50,
     "notify__001": 4100,
     "render__001": 3500,
     "projectRows__001": 100,

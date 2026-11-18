@@ -36,8 +36,16 @@ let lastTrustedAutosave=null;
 const SLOT_PREFIX='studio-syndicate-f1-slot-',DB_POINTER50='@indexeddb-v50';
 const durableStore50=globalThis.StudioPersistence50;
 let pendingSave50=Promise.resolve(), queuedSaves50=0;
-function remember(){try{
-  const current=JSON.stringify(S),previous=localStorage.getItem(AUTOSAVE);
+// KB-04: autosave waits for a short pause (or the page being hidden) so rapid clicks on big saves stay fast.
+let rememberTimer=null,lastSaveLen=0;
+function remember(){if(rememberTimer){clearTimeout(rememberTimer);rememberTimer=null;}
+ if(!lastSaveLen||lastSaveLen<CFG.tuning_ui.remember__001){rememberNow();return;}// small saves are cheap: keep saving instantly
+ rememberTimer=setTimeout(rememberNow,CFG.tuning_ui.autosaveDelayMs);}
+function flushRemember(){if(rememberTimer){clearTimeout(rememberTimer);rememberTimer=null;if(S)rememberNow();}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushRemember();});
+window.addEventListener('pagehide',flushRemember);
+function rememberNow(){rememberTimer=null;try{
+  const current=JSON.stringify(S),previous=localStorage.getItem(AUTOSAVE);lastSaveLen=current.length;
   // Tiny worlds and legacy saves retain synchronous compatibility. Large worlds use
   // durable IndexedDB, never three 25 MB localStorage slots beyond browser quota.
   if(current.length<CFG.tuning_ui.remember__001&&previous!==DB_POINTER50&&queuedSaves50===0){
@@ -53,7 +61,7 @@ function remember(){try{
    try{localStorage.removeItem(RECOVERY);}catch(_){}
   }).catch(e=>notify('Autosave could not be stored. Export a JSON backup. '+e.message,'error')).finally(()=>{queuedSaves50--;});
  }catch(e){notify('Could not autosave. Please export a backup.','error');}}
-window.addEventListener('beforeunload',event=>{if(queuedSaves50>0){event.preventDefault();event.returnValue='';}});
+window.addEventListener('beforeunload',event=>{flushRemember();if(queuedSaves50>0){event.preventDefault();event.returnValue='';}});
 function notify(text,kind='ok'){const n=$('toast');const isError=kind==='error';n.setAttribute('role',isError?'alert':'status');n.setAttribute('aria-live',isError?'assertive':'polite');n.setAttribute('aria-atomic','true');n.textContent=text;n.className='toast visible'+(isError?' error':'');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.className='toast',CFG.tuning_ui.notify__001);}
 function safe(fn){try{fn();remember();render();}catch(error){notify(error.message||String(error),'error');}}
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
