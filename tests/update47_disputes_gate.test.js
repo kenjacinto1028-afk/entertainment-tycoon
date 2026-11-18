@@ -1,7 +1,7 @@
 'use strict';const E=require('../dist/engine.js'),A=require('node:assert/strict');let n=0;
 function check(name,fn){try{console.log('PASS',name,JSON.stringify(fn()||{}));n++;}catch(e){console.error('FAIL',name,e.stack);process.exitCode=1;}}
 function build(seed='dispute-47',sector='publishing'){
- const s=E.createGame({seed,era:25,origin:{publishing:'established',movie:'film',tv:'tv',games:'games'}[sector],startingCapital:'funded',aiCount:10});
+ const s=E.createGame({seed,era:25,origin:{publishing:'established',movie:'film',tv:'tv',games:'games'}[sector],startingCapital:'funded',aiCount:10,depth:'veryComplex'});// manual dispute flow (D3 auto-settles disputes in Simple/Standard)
  const data={sector,route:'contract',title:'Independent funded job',size:.6,clientId:'auto'};
  const quote=E.previewProject(s,{...data,withForecast:false});const client=E.eligibleClients(s,quote.contractFee)[0];A(client);
  const offer=E.requestCommission(s,{...data,clientId:client.id});A.equal(offer.status,'accepted');

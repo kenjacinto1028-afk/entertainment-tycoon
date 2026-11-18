@@ -23,7 +23,7 @@ def compose(kind):
 
 config_files=sorted(p for p in CFG.glob('*.json') if p.name not in ('compiled.json',) and not p.stem.endswith('_index'))
 CONFIG={p.stem:json.loads(p.read_text(encoding='utf-8')) for p in config_files}
-assert CONFIG['save']['SAVE_VERSION']==35,'Unexpected save schema version.'
+assert CONFIG['save']['SAVE_VERSION']==36,'Unexpected save schema version.'
 assert set(CONFIG['world']['SECTORS'])=={'publishing','movie','tv','games'}
 assert {k:v['year'] for k,v in CONFIG['world']['SECTORS'].items()}=={'publishing':1,'movie':4,'tv':7,'games':10}
 (CFG/'compiled.json').write_text(json.dumps(CONFIG,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')

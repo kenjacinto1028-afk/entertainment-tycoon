@@ -848,6 +848,7 @@ function createGame(input={}) {
   seedCandidates(s,CFG.tuning_engine.createGame__003);
   prepare43World(s,input);
   setDepth(s,DEPTH_MODES.includes(input.depth)?input.depth:CFG.depth.DEFAULT);
+  s.decisionCards={year:yearAt(s.week),cards:0,low:0,auto:0};
   return s;
 }
 function seedRivals(s,era) {
@@ -3530,6 +3531,7 @@ function audit(s){const problems=[];auditIdentities(s,problems);auditGovernance(
   if(!['operations','finance','franchise'].includes(s.dashboardFocus))problems.push('Invalid saved dashboard layout');
   if(!s.pausePolicy||typeof s.pausePolicy.stopForAdvisory!=='boolean')problems.push('Invalid skip interruption settings');
   if(!DEPTH_MODES.includes(s.settings?.depth))problems.push('Invalid depth mode');
+  {const d=s.decisionCards;if(!d||!['year','cards','low','auto'].every(k=>Number.isInteger(d[k])&&d[k]>=0)||d.low>d.cards||d.year>yearAt(s.week))problems.push('Invalid decision card log');}
   for(const x of s.snapshots||[])if(x.historyComplete===true&&(!s.companies.some(c=>c.id===x.companyId)||!Number.isFinite(x.cash)||!Number.isFinite(x.revenue)||!Number.isFinite(x.expense)||!Number.isFinite(x.profit)||!Number.isFinite(x.annualRevenue)||!Number.isFinite(x.annualExpense)||!Number.isFinite(x.annualProfit)||Math.abs(money(x.annualRevenue-x.annualExpense-x.annualProfit))>EPS))problems.push('Invalid historical entity close snapshot');
   for(const r of REGIONS){const v=s.regionalEconomy?.[r.name];if(!v||!Number.isFinite(v.fxRate)||v.fxRate<r.baseFx*CFG.tuning_engine.audit__001||v.fxRate>r.baseFx*CFG.tuning_engine.audit__002||!Number.isFinite(v.wageIndex)||v.wageIndex<CFG.tuning_engine.audit__003||v.wageIndex>CFG.tuning_engine.audit__004||!Number.isFinite(v.interestIndex)||v.interestIndex<CFG.tuning_engine.audit__005||v.interestIndex>CFG.tuning_engine.audit__006)problems.push(r.name+': invalid regional macro indicators');}
   for(const x of s.economicShocks||[])if(!REGIONS.some(r=>r.name===x.region)||!['supply','confidence'].includes(x.kind)||x.week>s.week)problems.push('Invalid historical economic disruption');
@@ -4107,6 +4109,8 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
   if(!s.commissionPolicy)s.commissionPolicy={autoCounter:false,maxFee:CFG.tuning_engine.loadState__092,minMargin:CFG.tuning_engine.loadState__093};
   // v35: pre-depth saves become the default depth (old saves were test-only; owner decision 2026-11-18).
   if(s.settings&&!DEPTH_MODES.includes(s.settings.depth)&&s.pausePolicy&&s.talentPolicy&&s.rightsPolicy)setDepth(s,CFG.depth.DEFAULT);
+  // v36: yearly Inbox decision-card log (depth modes D3); older saves start an empty log for the current year.
+  if(!s.decisionCards&&Number.isInteger(s.week))s.decisionCards={year:yearAt(s.week),cards:0,low:0,auto:0};
   if(!s.regionalEconomy)s.regionalEconomy=Object.fromEntries(REGIONS.map(r=>[r.name,{confidence:1,inflation:CFG.tuning_engine.loadState__094,employment:1}]));
   for(const r of REGIONS){
     if(!s.regionalEconomy[r.name])s.regionalEconomy[r.name]={confidence:1,inflation:CFG.tuning_engine.loadState__095,employment:1};
@@ -6157,6 +6161,72 @@ function commissionResolve47(s,projectId,decision){
  news(s,'Arbitration settled: '+p.title,CFG.events.messages.commissionResolve47__002,'company');
  return {decision,refunded:refund,sellerAward:award,earned};
 }
+// Depth modes D3 — yearly Inbox decision-card limit per mode (config/depth.json INBOX/PRIORITY).
+// Every new Inbox item is triaged: shown as a card, or filed and settled by policy. Urgent items
+// are always shown. Very Complex has no limit, so it only counts cards. No RNG is used here.
+function inboxRulesD3(s){return CFG.depth.INBOX[s.settings?.depth]||CFG.depth.INBOX.veryComplex;}
+function inboxPriorityD3(key){const P=CFG.depth.PRIORITY,hit=list=>list.some(p=>key.startsWith(p));
+ return hit(P.urgent)?'urgent':hit(P.low)?'low':'normal';}
+function decisionYearD3(s){const y=yearAt(s.week);
+ if(!s.decisionCards||s.decisionCards.year!==y)s.decisionCards={year:y,cards:0,low:0,auto:0};return s.decisionCards;}
+function triageInboxItemD3(s,item){
+ const log=decisionYearD3(s),rules=inboxRulesD3(s),priority=inboxPriorityD3(item.key);
+ const dispute=item.key.startsWith('commission-dispute-')&&rules.autoDisputes;
+ const show=!dispute&&(priority==='urgent'||rules.yearlyCards===null||
+  (log.cards<rules.yearlyCards&&(priority==='normal'||log.cards<rules.lowPriorityCards)));
+ if(show){log.cards++;if(priority==='low')log.low++;item.depthTriage='card';return;}
+ item.open=false;item.depthTriage='auto';log.auto++;
+}
+// Settles one filed item. Returns a short outcome, or throws if the decision could not be made.
+function settleInboxItemD3(s,item){
+ const k=item.key,ref=prefix=>k.slice(prefix.length);
+ if(k.startsWith('commission-counter-')){const o=s.commissionOffers.find(x=>x.id===ref('commission-counter-'));
+  if(!o||o.status!=='counter')return 'already handled';
+  // Accepting only agrees terms (no production starts), so any counter that keeps the policy margin is taken.
+  const ok=o.counterFee>=o.baseCost*(1+s.commissionPolicy.minMargin);
+  if(ok)try{answerCommissionOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerCommissionOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('co-offer-')){const o=s.coProductionOffers.find(x=>x.id===ref('co-offer-'));
+  if(!o||o.status!=='counter'||s.week>o.expiresWeek)return 'already handled';
+  const ok=o.commitment<=s.coProductionPolicy.maxCommitment&&o.counterShare<=s.coProductionPolicy.maxShare;
+  if(ok)try{answerCoProductionOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerCoProductionOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('rights-counter-')){const o=s.rightsOffers.find(x=>x.id===ref('rights-counter-'));
+  if(!o||o.status!=='counter')return 'already handled';
+  try{answerRightsOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerRightsOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('approval-')){const a=s.creativeApprovals.find(x=>x.id===ref('approval-'));
+  if(!a||a.status!=='pending')return 'already handled';decideCreativeApproval(s,a.id,true);return 'creator request approved';}
+ if(k.startsWith('commission-dispute-'))return autoResolveDisputeD3(s,ref('commission-dispute-'));
+ return 'filed';
+}
+function autoResolveDisputeD3(s,projectId){
+ const p=s.projects.find(x=>x.id===projectId),e=p&&s.escrows.find(x=>x.id===p.escrowId);
+ if(!e||e.settled||e.review47?.status!=='open')return 'already handled';
+ try{commissionResolve47(s,projectId,'rework');return 'dispute settled with paid rework';}
+ catch(err){commissionResolve47(s,projectId,'arbitrate');return 'dispute settled by neutral arbitration';}
+}
+function settleFiledInboxD3(s){
+ for(const item of [...s.inbox].reverse()){if(item.depthTriage!=='auto')continue;
+  try{const outcome=settleInboxItemD3(s,item);item.depthTriage='settled';
+   if(outcome!=='already handled')news(s,'Handled automatically: '+item.title,'Your '+CFG.depth.LABELS[s.settings.depth].name+' policy: '+outcome+'.','company');}
+  catch(err){item.depthTriage='card';item.open=true;decisionYearD3(s).cards++;}// could not decide safely: hand it to the player
+ }
+}
+const _alertBeforeD3=alert;
+alert=function(s,key,title,body,kind='critical'){const before=s.inbox[0];_alertBeforeD3(s,key,title,body,kind);
+ const item=s.inbox[0];if(item&&item!==before&&item.key===key)triageInboxItemD3(s,item);};
+const _singleWeekBeforeD3=singleWeek;
+singleWeek=function(s){settleFiledInboxD3(s);_singleWeekBeforeD3(s);settleFiledInboxD3(s);};
+const _commissionInspectionBeforeD3=commissionInspection47;
+commissionInspection47=function(s,projectId){const r=_commissionInspectionBeforeD3(s,projectId);
+ if(r.status!=='open'||!inboxRulesD3(s).autoDisputes)return r;
+ settleFiledInboxD3(s);
+ const p=s.projects.find(x=>x.id===projectId),e=p&&s.escrows.find(x=>x.id===p.escrowId);
+ return {...(e?.review47||r),autoResolved:true};};
+function decisionCardLog(s){const y=yearAt(s.week),d=s.decisionCards?.year===y?s.decisionCards:{year:y,cards:0,low:0,auto:0};
+ return {...d,limit:inboxRulesD3(s).yearlyCards,lowLimit:inboxRulesD3(s).lowPriorityCards};}
+
 function audit47A(s,problems){
  for(const e of s.escrows||[]){if(!e.review47)continue;
   const r=e.review47,p=s.projects.find(x=>x.id===e.projectId);
@@ -6331,6 +6401,6 @@ const _auditBefore49=audit;
 audit=function(s){const problems=_auditBefore49(s);audit49(s,problems);return problems;};
 
 
-return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,advance,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney};
+return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,decisionCardLog,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,advance,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney};
 });
 

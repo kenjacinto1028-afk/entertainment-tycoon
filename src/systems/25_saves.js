@@ -210,6 +210,8 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
   if(!s.commissionPolicy)s.commissionPolicy={autoCounter:false,maxFee:CFG.tuning_engine.loadState__092,minMargin:CFG.tuning_engine.loadState__093};
   // v35: pre-depth saves become the default depth (old saves were test-only; owner decision 2026-11-18).
   if(s.settings&&!DEPTH_MODES.includes(s.settings.depth)&&s.pausePolicy&&s.talentPolicy&&s.rightsPolicy)setDepth(s,CFG.depth.DEFAULT);
+  // v36: yearly Inbox decision-card log (depth modes D3); older saves start an empty log for the current year.
+  if(!s.decisionCards&&Number.isInteger(s.week))s.decisionCards={year:yearAt(s.week),cards:0,low:0,auto:0};
   if(!s.regionalEconomy)s.regionalEconomy=Object.fromEntries(REGIONS.map(r=>[r.name,{confidence:1,inflation:CFG.tuning_engine.loadState__094,employment:1}]));
   for(const r of REGIONS){
     if(!s.regionalEconomy[r.name])s.regionalEconomy[r.name]={confidence:1,inflation:CFG.tuning_engine.loadState__095,employment:1};

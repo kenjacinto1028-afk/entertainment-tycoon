@@ -169,3 +169,68 @@ function commissionResolve47(s,projectId,decision){
  news(s,'Arbitration settled: '+p.title,CFG.events.messages.commissionResolve47__002,'company');
  return {decision,refunded:refund,sellerAward:award,earned};
 }
+// Depth modes D3 — yearly Inbox decision-card limit per mode (config/depth.json INBOX/PRIORITY).
+// Every new Inbox item is triaged: shown as a card, or filed and settled by policy. Urgent items
+// are always shown. Very Complex has no limit, so it only counts cards. No RNG is used here.
+function inboxRulesD3(s){return CFG.depth.INBOX[s.settings?.depth]||CFG.depth.INBOX.veryComplex;}
+function inboxPriorityD3(key){const P=CFG.depth.PRIORITY,hit=list=>list.some(p=>key.startsWith(p));
+ return hit(P.urgent)?'urgent':hit(P.low)?'low':'normal';}
+function decisionYearD3(s){const y=yearAt(s.week);
+ if(!s.decisionCards||s.decisionCards.year!==y)s.decisionCards={year:y,cards:0,low:0,auto:0};return s.decisionCards;}
+function triageInboxItemD3(s,item){
+ const log=decisionYearD3(s),rules=inboxRulesD3(s),priority=inboxPriorityD3(item.key);
+ const dispute=item.key.startsWith('commission-dispute-')&&rules.autoDisputes;
+ const show=!dispute&&(priority==='urgent'||rules.yearlyCards===null||
+  (log.cards<rules.yearlyCards&&(priority==='normal'||log.cards<rules.lowPriorityCards)));
+ if(show){log.cards++;if(priority==='low')log.low++;item.depthTriage='card';return;}
+ item.open=false;item.depthTriage='auto';log.auto++;
+}
+// Settles one filed item. Returns a short outcome, or throws if the decision could not be made.
+function settleInboxItemD3(s,item){
+ const k=item.key,ref=prefix=>k.slice(prefix.length);
+ if(k.startsWith('commission-counter-')){const o=s.commissionOffers.find(x=>x.id===ref('commission-counter-'));
+  if(!o||o.status!=='counter')return 'already handled';
+  // Accepting only agrees terms (no production starts), so any counter that keeps the policy margin is taken.
+  const ok=o.counterFee>=o.baseCost*(1+s.commissionPolicy.minMargin);
+  if(ok)try{answerCommissionOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerCommissionOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('co-offer-')){const o=s.coProductionOffers.find(x=>x.id===ref('co-offer-'));
+  if(!o||o.status!=='counter'||s.week>o.expiresWeek)return 'already handled';
+  const ok=o.commitment<=s.coProductionPolicy.maxCommitment&&o.counterShare<=s.coProductionPolicy.maxShare;
+  if(ok)try{answerCoProductionOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerCoProductionOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('rights-counter-')){const o=s.rightsOffers.find(x=>x.id===ref('rights-counter-'));
+  if(!o||o.status!=='counter')return 'already handled';
+  try{answerRightsOffer(s,o.id,true);return 'counteroffer accepted';}catch(e){}
+  answerRightsOffer(s,o.id,false);return 'counteroffer declined';}
+ if(k.startsWith('approval-')){const a=s.creativeApprovals.find(x=>x.id===ref('approval-'));
+  if(!a||a.status!=='pending')return 'already handled';decideCreativeApproval(s,a.id,true);return 'creator request approved';}
+ if(k.startsWith('commission-dispute-'))return autoResolveDisputeD3(s,ref('commission-dispute-'));
+ return 'filed';
+}
+function autoResolveDisputeD3(s,projectId){
+ const p=s.projects.find(x=>x.id===projectId),e=p&&s.escrows.find(x=>x.id===p.escrowId);
+ if(!e||e.settled||e.review47?.status!=='open')return 'already handled';
+ try{commissionResolve47(s,projectId,'rework');return 'dispute settled with paid rework';}
+ catch(err){commissionResolve47(s,projectId,'arbitrate');return 'dispute settled by neutral arbitration';}
+}
+function settleFiledInboxD3(s){
+ for(const item of [...s.inbox].reverse()){if(item.depthTriage!=='auto')continue;
+  try{const outcome=settleInboxItemD3(s,item);item.depthTriage='settled';
+   if(outcome!=='already handled')news(s,'Handled automatically: '+item.title,'Your '+CFG.depth.LABELS[s.settings.depth].name+' policy: '+outcome+'.','company');}
+  catch(err){item.depthTriage='card';item.open=true;decisionYearD3(s).cards++;}// could not decide safely: hand it to the player
+ }
+}
+const _alertBeforeD3=alert;
+alert=function(s,key,title,body,kind='critical'){const before=s.inbox[0];_alertBeforeD3(s,key,title,body,kind);
+ const item=s.inbox[0];if(item&&item!==before&&item.key===key)triageInboxItemD3(s,item);};
+const _singleWeekBeforeD3=singleWeek;
+singleWeek=function(s){settleFiledInboxD3(s);_singleWeekBeforeD3(s);settleFiledInboxD3(s);};
+const _commissionInspectionBeforeD3=commissionInspection47;
+commissionInspection47=function(s,projectId){const r=_commissionInspectionBeforeD3(s,projectId);
+ if(r.status!=='open'||!inboxRulesD3(s).autoDisputes)return r;
+ settleFiledInboxD3(s);
+ const p=s.projects.find(x=>x.id===projectId),e=p&&s.escrows.find(x=>x.id===p.escrowId);
+ return {...(e?.review47||r),autoResolved:true};};
+function decisionCardLog(s){const y=yearAt(s.week),d=s.decisionCards?.year===y?s.decisionCards:{year:y,cards:0,low:0,auto:0};
+ return {...d,limit:inboxRulesD3(s).yearlyCards,lowLimit:inboxRulesD3(s).lowPriorityCards};}

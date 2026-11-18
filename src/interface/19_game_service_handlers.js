@@ -1,7 +1,7 @@
 
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u47]');if(!b)return;
  const action=b.dataset.u47,id=b.dataset.id47;
- if(action==='inspect'){safe(()=>{const r=E.commissionInspection47(S,id);notify(r.status==='open'?'Client delivery contested. Review remedy or arbitration.':'Client approved inspection; production continues.');});return;}
+ if(action==='inspect'){safe(()=>{const r=E.commissionInspection47(S,id);notify(r.autoResolved?'Client disputed delivery; settled automatically ('+(r.settlement==='paid-rework'?'paid rework':'neutral arbitration')+').':r.status==='open'?'Client delivery contested. Review remedy or arbitration.':'Client approved inspection; production continues.');});return;}
  if(['remedy','cancel','arbitrate'].includes(action)){
   if(!confirm(action==='arbitrate'?'Accept a neutral ruling that may cancel delivery and split the protected escrow?':action==='cancel'?'Cancel this client project and return unearned protected funds?':'Pay real cash and extend the schedule by two weeks to satisfy the client?'))return;
   safe(()=>{const r=E.commissionResolve47(S,id,action==='remedy'?'rework':action);notify('Delivery dispute resolved: '+r.decision+'.');});return;
