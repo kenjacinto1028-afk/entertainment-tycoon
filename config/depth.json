@@ -74,6 +74,17 @@
     "_note": "D4: maxWeeks = safety cap for the Advance to next decision button (stops after this many weeks even if no decision card opened).",
     "maxWeeks": 52
   },
+  "PACE": {
+    "_note": "D7: spec pace targets = decisions per game year (min/max; null = uncapped). robot = how the D7 scripted test player plays each mode (greenlights and client jobs per year). Used by tests only.",
+    "simple": {"min": 8, "max": 12},
+    "standard": {"min": 15, "max": 25},
+    "veryComplex": {"min": null, "max": null},
+    "robot": {
+      "simple": {"greenlights": 4, "clientJobs": 1},
+      "standard": {"greenlights": 6, "clientJobs": 1},
+      "veryComplex": {"greenlights": 8, "clientJobs": 1}
+    }
+  },
   "PRIORITY": {
     "_note": "Inbox item key prefixes. urgent = always shown as a card. low = shown only under lowPriorityCards. Anything else is normal priority.",
     "urgent": [
