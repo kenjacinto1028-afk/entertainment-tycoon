@@ -72,7 +72,18 @@
     "HIT_MULTIPLE": 3,
     "FLOP_FRACTION": 0.5,
     "FLOP_AGE_WEEKS": 52,
-    "HISTORY_KEEP": 40
+    "HISTORY_KEEP": 40,
+    "BLOCK_SPEND_SHARE": 0.25,
+    "BLOCK_BELOW": 40,
+    "OVERRIDE_BASE": 10,
+    "OVERRIDE_SCALE": 20,
+    "FLOOR": 15,
+    "PERMIT_WEEKS": 13,
+    "PRESSURE_BELOW": 20,
+    "PRESSURE_DIVIDEND_BONUS": 10,
+    "PRESSURE_DIVIDEND_FRACTION": 0.25,
+    "PROMISE_TARGET": 12,
+    "_noteB2": "B2: Standard blocks a spend (greenlight total budget, loan, credit line, acquisition, new subsidiary) only if it is above BLOCK_SPEND_SHARE of company value AND Board Reputation is below BLOCK_BELOW. Override cost = round(OVERRIDE_BASE + OVERRIDE_SCALE x spend / company value); refused if it would leave Board Reputation under FLOOR (the block stands). An override is good for PERMIT_WEEKS weeks for that one spend. Below PRESSURE_BELOW at the yearly review the board sends a pressure card: goodwill dividend (PRESSURE_DIVIDEND_FRACTION of lifetime profit, +PRESSURE_DIVIDEND_BONUS) or promise results (next target worth +/-PROMISE_TARGET)."
   },
   "INBOX": {
     "_note": "D3: yearlyCards = max Inbox decision cards per game year (null = no limit). lowPriorityCards = low-priority items only get a card while fewer than this many cards were shown this year. autoDisputes = client delivery disputes are settled automatically (paid rework if affordable, else neutral arbitration).",
@@ -141,7 +152,9 @@
       "successor-due-",
       "career-transition-",
       "management-control-",
-      "rights-delegation-"
+      "rights-delegation-",
+      "board-block-",
+      "board-pressure-"
     ],
     "low": [
       "postmortem-",

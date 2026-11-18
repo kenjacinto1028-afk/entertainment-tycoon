@@ -81,6 +81,7 @@ function boardVote(s,kind,amount=0){if(kind!=='succession')requireExecutiveContr
  governanceEvent(s,c,'board-resolution',{resolutionId:row.id,kind,approved});
  return {...row};}
 function boardMandate(s,kind,amount,use=false){const c=rootGoverned(s),g=c.corporate;if(g.stage==='founder'||amount<g.policy.reviewLimit)return null;
+ if(s.settings?.depth!=='veryComplex'){const r=boardGate(s,kind,amount,use);if(use&&c.id===s.playerId&&kind!=='restructuring')news(s,'Board approval skipped',CFG.depth.LABELS[s.settings.depth].name+' policy: the board does not vote on this '+kind+' commitment.','company');return r;}// B2: Simple never blocks, Standard uses the Board Reputation rule
  const r=g.resolutions.findLast(r=>r.kind===kind&&r.approved&&!r.used&&r.week<=s.week&&r.expiresWeek>=s.week&&r.amount>=amount);
  if(!r)throw new Error('Board authorization required for material '+kind+' commitments.');
  if(use)r.used=true;return r;}

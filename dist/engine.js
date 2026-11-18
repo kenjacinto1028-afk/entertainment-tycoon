@@ -1503,6 +1503,7 @@ function createProject(s,data={}) {
   const team=selectTeam(s,c,data.teamId,data.genre||'Fantasy');
   if(!team)throw new Error('No available production team. Hire another team or wait for completion.');
   if(c.finance.cash < reserve+CFG.tuning_engine.createProject__004)throw new Error('Not enough available cash. A project requires a 30% initial liquidity reserve plus operating buffer.');
+  if(c.id===s.playerId&&route!=='contract')boardGate(s,'greenlight',money(estimate.budget+estimate.marketing),true);// B2: Standard board block on big greenlights
   const title=(String(data.title||'Untitled Project').trim().slice(0,CFG.tuning_engine.title__002)||'Untitled Project');
   const genre=GENRES.includes(data.genre)?data.genre:pick(s,GENRES);
   const pitch=pitchFrom(data);
@@ -4946,6 +4947,7 @@ function boardVote(s,kind,amount=0){if(kind!=='succession')requireExecutiveContr
  governanceEvent(s,c,'board-resolution',{resolutionId:row.id,kind,approved});
  return {...row};}
 function boardMandate(s,kind,amount,use=false){const c=rootGoverned(s),g=c.corporate;if(g.stage==='founder'||amount<g.policy.reviewLimit)return null;
+ if(s.settings?.depth!=='veryComplex'){const r=boardGate(s,kind,amount,use);if(use&&c.id===s.playerId&&kind!=='restructuring')news(s,'Board approval skipped',CFG.depth.LABELS[s.settings.depth].name+' policy: the board does not vote on this '+kind+' commitment.','company');return r;}// B2: Simple never blocks, Standard uses the Board Reputation rule
  const r=g.resolutions.findLast(r=>r.kind===kind&&r.approved&&!r.used&&r.week<=s.week&&r.expiresWeek>=s.week&&r.amount>=amount);
  if(!r)throw new Error('Board authorization required for material '+kind+' commitments.');
  if(use)r.used=true;return r;}
@@ -5417,7 +5419,7 @@ function acquireCompany(s,targetId,{price,financeWith='cash',creditLineId=null}=
  if(!Number.isFinite(Number(price??quote.ask))||bid<quote.ask||bid<actualBook||bid>CFG.tuning_engine.acquireCompany__001)
    throw new Error('Owners have not accepted a funded offer at or above the defensible book-value floor.');
  if(s.companies.filter(c=>c.parentId===buyer.id).length>=CFG.tuning_engine.acquireCompany__002)throw new Error('Maximum five controlled subsidiaries.');
- boardMandate(s,'expansion',bid);
+ boardMandate(s,'expansion',bid,s.settings?.depth!=='veryComplex');
  const financing=spendAcquisition(s,bid,financeWith,creditLineId);
  // The acquired company is NOT paid for its own shares; consideration goes to
  // the independent former shareholders. Its existing cash/debts stay inside it.
@@ -5439,7 +5441,7 @@ function acquireAsset(s,{kind='ip',id:assetId,price,financeWith='cash',creditLin
  if(!Number.isFinite(Number(price??quote.price))||bid<quote.price||bid>CFG.tuning_engine.acquireAsset__001)throw new Error('Seller did not agree to the purchase price.');
  const buyer=player(s),seller=company(s,quote.ownerId),asset=kind==='ip'?s.ips.find(x=>x.id===assetId):s.works.find(x=>x.id===assetId);
  if(seller.bankrupt&&seller.finance.cash<-CFG.tuning_engine.acquireAsset__002)throw new Error('Court-controlled bankruptcy asset sale unavailable.');
- boardMandate(s,'expansion',bid);const financing=spendAcquisition(s,bid,financeWith,creditLineId);
+ boardMandate(s,'expansion',bid,s.settings?.depth!=='veryComplex');const financing=spendAcquisition(s,bid,financeWith,creditLineId);
  // Conservative simplified accounting: acquired rights cost is recognized as
  // an expense, not an invented arbitrary carrying asset; no fictitious gain.
  transact(s,buyer,'purchased-ip-rights',{cash:-bid,expense:bid},'External source or completed-work rights purchase');
@@ -5459,7 +5461,7 @@ function integrateAcquisition(s,childId,{choice='lean',capital=0}={}){
  if(choice==='recapitalize'){
   const amount=money(Number(capital)),needed=money(Math.max(0,weeklyOverhead(child,s)*CFG.tuning_engine.needed__004+child.finance.payable-child.finance.cash));
   if(!Number.isFinite(Number(capital))||amount<Math.max(CFG.tuning_engine.integrateAcquisition__001,needed)||buyer.finance.cash<amount+CFG.tuning_engine.integrateAcquisition__002)throw new Error('Rescue must be real funded capital sufficient for documented cash obligations.');
-  boardMandate(s,'expansion',amount);
+  boardMandate(s,'expansion',amount,s.settings?.depth!=='veryComplex');
   transact(s,buyer,'subsidiary-rescue-investment',{cash:-amount,investment:amount},'Additional paid-in equity; no phantom sales revenue');
   transact(s,child,'subsidiary-paid-in-capital',{cash:amount,equity:amount},'Owned subsidiary receives real parent capital');
   child.investedCapital=money(child.investedCapital+amount);
@@ -6060,10 +6062,11 @@ function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c
   if(snap&&snap.annualProfit!==null){
    const bits=[];let total=0;
    if(r.target&&r.target.year===year-1){const hit=snap.annualProfit>0&&snap.annualRevenue>=r.target.minRevenue;
-    total+=boardRepChange(s,c,hit?B.TARGET_HIT:B.TARGET_MISS,hit?'Board target met':'Board target missed');bits.push(hit?'The board\'s target was met.':'The board\'s target was missed.');}
+    const pr=r.promise,mag=pr?B.PROMISE_TARGET:B.TARGET_HIT;r.promise=false;total+=boardRepChange(s,c,hit?mag:-mag,hit?'Board target met':'Board target missed');bits.push(hit?'The board\'s target was met.':'The board\'s target was missed.');}
    total+=boardRepChange(s,c,snap.annualProfit>0?B.PROFIT_YEAR:B.LOSS_YEAR,snap.annualProfit>0?'Profitable year':'Loss-making year');bits.push(snap.annualProfit>0?'The studio made a profit.':'The studio made a loss.');
    news(s,c.name+' board reviews the year','Board Reputation '+(total>=0?'+':'')+total+' to '+r.value+'. '+bits.join(' '),'company');
   }
+  boardPressureCard(s,c,r);
   r.target={year,minRevenue:snap&&snap.annualRevenue!==null?money(snap.annualRevenue*B.TARGET_REVENUE_GROWTH):0};
  }
  for(const p of s.projects){ // release effects: Hit and Flop, once per title
@@ -6072,6 +6075,47 @@ function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c
   if(!m.boardHit&&!m.boardFlop&&p.directRevenue>=p.directCost*B.HIT_MULTIPLE){m.boardHit=true;boardRepChange(s,c,B.RELEASE_HIT,'Hit: '+p.title);news(s,p.title+' is a hit with the board','Board Reputation +'+B.RELEASE_HIT+'.','company');}
   else if(!m.boardFlop&&!m.boardHit&&s.week-p.releaseWeek>=B.FLOP_AGE_WEEKS&&p.directRevenue<p.directCost*B.FLOP_FRACTION){m.boardFlop=true;boardRepChange(s,c,B.RELEASE_FLOP,'Flop: '+p.title);news(s,p.title+' disappoints the board','Board Reputation '+B.RELEASE_FLOP+'.','company');}
  }}
+
+// B2 — Board blocks and overrides (depth modes step 2). No new save fields: a block lives on its Inbox card (item.boardBlock).
+// Simple never blocks. Standard blocks a spend only if it is above BLOCK_SPEND_SHARE of company value AND Board Reputation is below BLOCK_BELOW.
+// Very Complex keeps the old board votes (boardMandate). Overrides cost Board Reputation and are refused at FLOOR.
+function boardOverrideCost(spend,value){const B=CFG.depth.BOARD;return Math.round(B.OVERRIDE_BASE+B.OVERRIDE_SCALE*spend/Math.max(1,value));}
+function boardBlockCards(s){return s.inbox.filter(a=>a.boardBlock);}
+function boardGate(s,kind,amount,use=false){
+ const c=player(s),r=c?.corporate?.boardRep,mode=s.settings?.depth;
+ if(!r||mode==='simple'||mode==='veryComplex'||kind==='restructuring')return null;
+ const B=CFG.depth.BOARD,spend=money(Number(amount)),value=Math.max(1,corporateValuation(s).expected);
+ if(!(spend>value*B.BLOCK_SPEND_SHARE)||r.value>=B.BLOCK_BELOW)return null;
+ const permit=boardBlockCards(s).find(a=>a.boardBlock.status==='overridden'&&!a.boardBlock.used&&a.boardBlock.kind===kind&&a.boardBlock.spend>=spend&&a.boardBlock.expiresWeek>=s.week);
+ if(permit){if(use)permit.boardBlock.used=true;return {permit:permit.boardBlock.id};}
+ const cost=boardOverrideCost(spend,value);
+ let card=boardBlockCards(s).find(a=>a.boardBlock.status==='open'&&a.boardBlock.kind===kind&&a.boardBlock.spend===spend);
+ if(!card){const bid=id(s,'boardblock');
+  alert(s,'board-block-'+bid,'The board blocks this '+kind.replace('greenlight','greenlight')+' ('+shortMoney(spend)+')','The board will not back a '+shortMoney(spend)+' spend, more than '+Math.round(B.BLOCK_SPEND_SHARE*100)+'% of company value, while Board Reputation is '+r.value+'. Accept the block, or override it for '+cost+' Board Reputation.','critical');
+  card=s.inbox.find(a=>a.key==='board-block-'+bid);
+  if(card){card.boardBlock={id:bid,kind,spend,value:money(value),cost,status:'open',used:false,expiresWeek:null};r.blocks++;}}
+ throw new Error('The board has blocked this '+kind+' ('+shortMoney(spend)+'). Open the Inbox to accept the block or override it.');}
+function boardBlockAnswer(s,cardId,override){
+ const c=player(s),r=c?.corporate?.boardRep,card=s.inbox.find(a=>a.id===cardId&&a.boardBlock),B=CFG.depth.BOARD;
+ if(!r||!card||card.boardBlock.status!=='open')throw new Error('That board decision is no longer open.');
+ const b=card.boardBlock;
+ if(!override){b.status='accepted';card.open=false;news(s,'Board block accepted','The spend of '+shortMoney(b.spend)+' was cancelled. No cost.','company');return {status:'accepted'};}
+ if(r.value-b.cost<B.FLOOR){b.status='stands';card.open=false;news(s,'The board\'s block stands','Overriding would take Board Reputation under '+B.FLOOR+'. The '+shortMoney(b.spend)+' spend stays blocked.','company');throw new Error('Board Reputation is too low to override: the block stands.');}
+ boardRepChange(s,c,-b.cost,'Overrode the board: '+b.kind);r.overrides++;
+ b.status='overridden';b.expiresWeek=s.week+B.PERMIT_WEEKS;card.open=false;
+ news(s,'Board overridden','Board Reputation -'+b.cost+'. Go ahead with the '+shortMoney(b.spend)+' '+b.kind+' within '+B.PERMIT_WEEKS+' weeks.','company');
+ return {status:'overridden',cost:b.cost,expiresWeek:b.expiresWeek};}
+function boardPressureAnswer(s,cardId,choice){
+ const c=player(s),r=c?.corporate?.boardRep,card=s.inbox.find(a=>a.id===cardId&&a.boardPressure),B=CFG.depth.BOARD;
+ if(!r||!card||!card.open)throw new Error('That board decision is no longer open.');
+ if(choice==='dividend'){const q=money(Math.max(0,companyProfit(c))*B.PRESSURE_DIVIDEND_FRACTION);payDividend(s,q);boardRepChange(s,c,B.PRESSURE_DIVIDEND_BONUS,'Goodwill dividend');}
+ else if(choice==='promise'){r.promise=true;news(s,'Results promised to the board','Next year\'s target is worth +/-'+B.PROMISE_TARGET+' Board Reputation.','company');}
+ else throw new Error('Unknown board choice.');
+ card.open=false;card.boardPressure='done';return {choice};}
+function boardPressureCard(s,c,r){const B=CFG.depth.BOARD;
+ if(s.settings?.depth!=='standard'||r.value>=B.PRESSURE_BELOW)return;
+ alert(s,'board-pressure-'+yearAt(s.week),'The board is losing patience','Board Reputation is '+r.value+'. Pay a goodwill dividend (+'+B.PRESSURE_DIVIDEND_BONUS+') or promise results (next year\'s target is worth +/-'+B.PROMISE_TARGET+').','critical');
+ const card=s.inbox.find(a=>a.key==='board-pressure-'+yearAt(s.week));if(card&&!card.boardPressure)card.boardPressure='open';}
 
 // UPDATE 44A — fair sector-entrant financing and funded payroll work.
 // New industry competitors use the SAME finite entrepreneur reserve as later
@@ -6508,7 +6552,7 @@ const _auditBefore49=audit;
 audit=function(s){const problems=_auditBefore49(s);audit49(s,problems);return problems;};
 
 
-return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,boardRepStatus,decisionCardLog,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,contractTier,contractSizeLockMessage,advance,advanceToDecision,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney};
+return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,boardRepStatus,boardGate,boardBlockAnswer,boardPressureAnswer,boardOverrideCost,decisionCardLog,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,contractTier,contractSizeLockMessage,advance,advanceToDecision,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney};
 
 });
 
