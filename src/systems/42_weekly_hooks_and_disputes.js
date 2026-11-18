@@ -138,6 +138,20 @@ function industryDebutFirm44(s,sector,year,name){
  rivalEvent(s,firm,'funded-industry-debut',{capital,sector,source:'finite-entrepreneur-pool'});
  return firm;
 }
+// R6 — formal insolvency. A studio paused (furloughed) for INSOLVENCY.furloughWeeks in a row that still cannot
+// restart goes insolvent: rivals close, the player's run ends. Uses the existing furlough start week (no new
+// save fields, no RNG). Debts, royalties and contracts stay binding; no bailout.
+function insolvencyR6(s,c,state){
+ const R=CFG.depth.INSOLVENCY;if(!R||!R.furloughWeeks||c.bankrupt||s.runStatus==='ended')return;
+ const left=R.furloughWeeks-(s.week-state.startWeek);
+ if(c.isPlayer&&R.warnWeeks.includes(left)){
+  alert(s,'insolvency-warning-'+c.id+'-'+left,'Insolvency in '+left+' weeks','Your studio has been paused with no way to restart. In '+left+' weeks it will be declared insolvent and your run will end. Raise cash (sell rights, take a loan, or sell equity) to restart operations.','critical');
+  return;}
+ if(left>0)return;
+ c.bankrupt=true;c.active=null;
+ if(c.isPlayer){news(s,c.name+' declared insolvent','After '+R.furloughWeeks+' weeks paused without funds, the studio was closed. Its debts and contracts remain with the old company.','company');}
+ else news(s,c.name+' closes its doors','The paused '+SECTORS[c.sector].name+' firm never recovered and was declared insolvent. Its debts and contracts remain binding.','competitor');
+}
 function fundedPayroll44(s,c){
  ensure44A(s);
  const state=c.operating44,weekly=weeklyOverhead(c,s),cash=c.finance.cash;
@@ -147,7 +161,7 @@ function fundedPayroll44(s,c){
   if(cash>=weekly*CFG.tuning_engine.fundedPayroll44__001&&c.finance.payable<=cash+weekly*CFG.tuning_engine.fundedPayroll44__002){
    state.furloughed=false;state.unfundedWeeks=0;state.resumptions++;
    if(c.isPlayer)news(s,'Operations resume at '+c.name,CFG.events.messages.fundedPayroll44__001,'company');
-  }else return false;
+  }else{insolvencyR6(s,c,state);return false;}
  }
  if(cash<weekly*CFG.tuning_engine.fundedPayroll44__003){state.unfundedWeeks++;
   if(state.unfundedWeeks>=CFG.tuning_engine.fundedPayroll44__004){
@@ -368,3 +382,8 @@ singleWeek=function(s){const rules=paceRulesD7(s);
  _singleWeekBeforeD7(s);
  for(const p of active)if(p.status==='released')alert(s,'project-done-'+p.id,'Released: '+p.title,
   'This project is finished and on sale. Your team is free: greenlight your next project in Productions.','advisory');};
+
+// R6: a player company closed by insolvency ends the run once the week has finished posting
+// (ending mid-week would block the other companies' ledger entries).
+const _singleWeekBeforeR6=singleWeek;
+singleWeek=function(s){_singleWeekBeforeR6(s);const c=player(s);if(c&&c.bankrupt&&s.runStatus!=='ended')endRun(s);};

@@ -6,6 +6,7 @@
 const E=require('../dist/engine.js'),assert=require('node:assert/strict');
 const PACE=E.CONFIG.depth.PACE,INBOX=E.CONFIG.depth.INBOX,PRIORITY=E.CONFIG.depth.PRIORITY;
 const ADV=E.CONFIG.depth.ADVANCE_TO_DECISION,MODES=['simple','standard','veryComplex'],SEEDS=['d7-pace-a','d7-pace-b'],YEARS=10;
+E.CONFIG.depth.INSOLVENCY.furloughWeeks=0;// R6: this test measures pace for a long-paused studio; insolvency has its own test
 let total=0;const report=[];
 function check(label,fn){try{const evidence=fn();console.log('PASS',label,evidence?JSON.stringify(evidence):'');total++;}catch(e){console.error('FAIL',label,e.stack);process.exitCode=1;}}
 const urgent=a=>PRIORITY.urgent.some(p=>a.key.startsWith(p)),low=a=>PRIORITY.low.some(p=>a.key.startsWith(p));
