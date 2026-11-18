@@ -23,6 +23,7 @@ document.addEventListener('click',event=>{const b=event.target.closest('button,[
 
  if(b.dataset.view){view=b.dataset.view;document.querySelector('.sidebar').classList.remove('visible');render();return;}
  if(b.dataset.industry){industry=b.dataset.industry;render();document.querySelector(`[data-industry="${industry}"]`)?.focus();return;}
+ if(b.dataset.advanceDecision){const result=E.advanceToDecision(S);remember();render();$('turn-msg').textContent=result.found?'Advanced '+result.weeks+' week'+(result.weeks===1?'':'s')+' · A decision needs you · '+E.periodLabel(S.week):result.weeks?result.reason+' · '+E.periodLabel(S.week):result.reason;if(result.found&&result.weeks)notify('A decision card is waiting in your Inbox.');return;}
  if(b.dataset.advance){const result=E.advance(S,Number(b.dataset.advance));remember();render();$('turn-msg').textContent=result.stopped?'Skip interrupted · Review Action Inbox':'Advanced '+result.weeks+' week'+(result.weeks===1?'':'s')+' · '+E.periodLabel(S.week);if(result.stopped)notify('Stopped for a critical management issue.');return;}
  if(b.dataset.tvOrder){if(!confirm('Approve funded season resizing and the schedule effects?'))return;safe(()=>{E.tvPlanSeason(S,b.dataset.tvId,Number(b.dataset.tvOrder));notify('Episode order approved.');});return;}
  if(b.dataset.tvRoom){if(!confirm('Fund a writers room supervised by your existing team leader?'))return;safe(()=>{E.tvWritersRoom(S,b.dataset.tvId,b.dataset.tvRoom);notify('Writers room funded.');});return;}
