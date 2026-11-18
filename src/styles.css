@@ -88,3 +88,23 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
 }
 
 .sector-icon{vertical-align:-3px;margin-right:3px}.small-stat input[type=range]{width:120px;vertical-align:middle}
+/* GUIDE: guided tutorial card, highlight and Help button */
+.guide-help{font-size:15px;font-weight:800;min-width:38px}
+.guide-card{position:fixed;right:20px;bottom:92px;z-index:25;width:340px;max-width:calc(100vw - 24px);background:var(--surface);border:2px solid var(--accent);border-radius:14px;box-shadow:0 16px 44px rgba(0,0,0,.22);padding:15px 16px}
+.guide-card h3{margin:8px 0 6px;font-size:15px}
+.guide-card p{margin:0 0 12px;font-size:12.5px;line-height:1.5;color:var(--text)}
+.guide-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.guide-count{font-size:10px;letter-spacing:.09em;font-weight:800;color:var(--accent)}
+.guide-x{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:7px;width:28px;height:26px}
+.guide-bar{height:4px;background:var(--surface-3);border-radius:4px;margin-top:8px;overflow:hidden}.guide-bar i{display:block;height:100%;background:var(--accent)}
+.guide-actions{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.guide-wait{font-size:11px;color:var(--muted);font-style:italic;margin-right:auto}
+.guide-card.guide-min{width:auto;padding:0;border-width:1px}
+.guide-pill{border:0;background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:10px 14px;border-radius:12px}
+.dark .guide-pill{color:#102419}
+.guide-glow{outline:3px solid var(--gold)!important;outline-offset:3px;box-shadow:0 0 0 7px rgba(220,174,121,.35)!important;animation:guidePulse 1.6s ease-in-out infinite}
+@keyframes guidePulse{50%{box-shadow:0 0 0 12px rgba(220,174,121,.12)}}
+.guide-h{font-size:14px;margin:16px 0 6px}.guide-list{margin:0 0 12px;padding-left:20px;font-size:12.5px;line-height:1.6}
+body.tabs5 .guide-card{bottom:150px}
+@media(max-width:850px){.guide-card{bottom:150px}}
+@media(max-width:600px){.guide-card,body.tabs5 .guide-card{left:8px;right:8px;width:auto;top:72px;bottom:auto}.guide-card.guide-min{left:auto}}
