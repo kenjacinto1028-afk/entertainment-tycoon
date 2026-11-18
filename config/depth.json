@@ -47,18 +47,18 @@
     }
   },
   "REPUTATION": {
-    "_note": "B4: company Reputation gains (all modes, player titles only, contract jobs ignored). Each level is awarded once per title when lifetime receipts >= multiple x the title's cost. Legendary also needs quality or critic score >= minScore. Studio milestones give +1 once each. Reputation cap comes from tuning_engine recognizeCreativeAwards__002.",
+    "_note": "B4: company Reputation gains (all modes, player titles only, contract jobs ignored). Each level is awarded once per title when its success multiple >= multiple. Success multiple (R1, save v38) = (lifetime receipts - sales costs after launch) / cost up to launch; older titles keep receipts / direct cost. Multiples retuned 3/6/8 -> 6/12/16 with R1 so roughly 10% of titles are Hits, 3% Smashes and under 1% Legendary. Legendary also needs quality or critic score >= minScore. Studio milestones give +1 once each. Reputation cap comes from tuning_engine recognizeCreativeAwards__002.",
     "TITLE_LEVELS": [
-      {"key": "hit", "label": "Hit", "multiple": 3, "reputation": 2, "minScore": 0},
-      {"key": "smash", "label": "Smash", "multiple": 6, "reputation": 3, "minScore": 0},
-      {"key": "legendary", "label": "Legendary", "multiple": 8, "reputation": 5, "minScore": 85}
+      {"key": "hit", "label": "Hit", "multiple": 6, "reputation": 2, "minScore": 0},
+      {"key": "smash", "label": "Smash", "multiple": 12, "reputation": 3, "minScore": 0},
+      {"key": "legendary", "label": "Legendary", "multiple": 16, "reputation": 5, "minScore": 85}
     ],
     "STUDIO_MILESTONE_REPUTATION": 1,
     "RELEASE_COUNTS": [10, 25, 50, 100],
     "LEGENDS_KEEP": 200
   },
   "BOARD": {
-    "_note": "B1: Board Reputation meter (0-100). Starts at START when the studio incorporates. Yearly review at the first week of each year: target = profit > 0 and revenue >= last year x TARGET_REVENUE_GROWTH. Release effects count only for titles released after incorporation; contract jobs are ignored. A Hit = lifetime receipts >= HIT_MULTIPLE x cost; a Flop = receipts < FLOP_FRACTION x cost once the title is FLOP_AGE_WEEKS old.",
+    "_note": "B1: Board Reputation meter (0-100). Starts at START when the studio incorporates. Yearly review at the first week of each year: target = profit > 0 and revenue >= last year x TARGET_REVENUE_GROWTH. Release effects count only for titles released after incorporation; contract jobs are ignored. A Hit = success multiple >= HIT_MULTIPLE; a Flop = success multiple < FLOP_FRACTION once the title is FLOP_AGE_WEEKS old (success multiple: see REPUTATION note; R1 raised HIT_MULTIPLE 3 -> 6).",
     "START": 50,
     "MIN": 0,
     "MAX": 100,
@@ -69,7 +69,7 @@
     "LOSS_YEAR": -6,
     "RELEASE_HIT": 3,
     "RELEASE_FLOP": -2,
-    "HIT_MULTIPLE": 3,
+    "HIT_MULTIPLE": 6,
     "FLOP_FRACTION": 0.5,
     "FLOP_AGE_WEEKS": 52,
     "HISTORY_KEEP": 40,
@@ -252,6 +252,8 @@
       {"key": "strong", "label": "Strong", "odds": 0.16, "mult": 1.4, "legs": 1.25, "news": "strong word of mouth"},
       {"key": "breakout", "label": "Breakout", "odds": 0.08, "mult": 3, "legs": 1.8, "news": "a breakout success"}
     ],
+    "SPREAD": {"movie": 0.7},
+    "_noteSpread": "SPREAD softens (below 1) or sharpens (above 1) the reception effect per sector: the used multiplier is mult^SPREAD and legs^SPREAD.",
     "QUALITY_PIVOT": 60,
     "QUALITY_SHIFT": 0.004,
     "MAX_SHIFT": 0.12

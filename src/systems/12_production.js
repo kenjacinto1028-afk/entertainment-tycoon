@@ -198,6 +198,7 @@ function projectWork(s,p) {
     if(p.coProductionId)refundPartnerReserve(s,p,'released');
     if(p.route==='contract') {if(p.escrowId)deliverClientFee(s,p);else finalizeContract(s,c,p.earnedFee,p.advance,p.id);p.directRevenue=money(p.directRevenue+p.earnedFee);}
     else {initPrintEdition(s,p);const work={id:id(s,'work'),title:p.title,ipId:p.ipId,projectId:p.id,sector:p.sector,ownerId:c.id,releaseWeek:s.week};s.works.push(work);const ip=s.ips.find(x=>x.id===p.ipId);if(ip)ip.works.push(work.id);}
+    p.releaseCost=money(p.directCost); // R1: money spent up to launch, incl. the first print run (base for Hit/Smash/Legendary)
     if(team){const leader=s.employees?.find(e=>e.id===team.leaderId&&e.status==='employed');
       if(leader){leader.completed++;leader.morale=clamp(leader.morale+(p.quality>=CFG.tuning_engine.projectWork__021?CFG.tuning_engine.projectWork__022:-1),CFG.tuning_engine.projectWork__023,CFG.tuning_engine.projectWork__024);leader.history.push({week:s.week,kind:'release',companyId:c.id,teamId:team.id,projectId:p.id,quality:p.quality});if(leader.history.length>CFG.tuning_engine.projectWork__025)leader.history.shift();}
       if(c.isPlayer&&s.founder){s.founder.experience=(s.founder.experience||0)+1;s.founder.lastReleaseWeek=s.week;}

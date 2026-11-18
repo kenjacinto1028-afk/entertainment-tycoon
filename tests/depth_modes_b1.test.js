@@ -42,7 +42,7 @@ check('Hit and flop effects apply once per player title; contract jobs and pre-i
  early.status='released';early.releaseWeek=s.week-100;early.directCost=1000;early.directRevenue=1e6;
  E.advance(s,2);E.incorporateStudio(s);const r=rep(s);E.advance(s,2);assert.equal(r.value,50);
  const hit=E.createProject(s,{title:'Board hit',sector:'publishing',route:'original',size:.6});
- hit.status='released';hit.releaseWeek=s.week;hit.directCost=1000;hit.directRevenue=1000*B.HIT_MULTIPLE+5000;
+ hit.status='released';hit.releaseWeek=s.week;hit.directCost=1000;hit.directRevenue=1000*B.HIT_MULTIPLE*3;
  E.advance(s,1);assert.equal(r.value,50+B.RELEASE_HIT);E.advance(s,3);assert.equal(r.value,50+B.RELEASE_HIT);
  const flop=E.createProject(s,{title:'Board flop',sector:'publishing',route:'original',size:.6});
  flop.status='released';flop.releaseWeek=s.week-B.FLOP_AGE_WEEKS;flop.directCost=1e6;flop.directRevenue=1e6*B.FLOP_FRACTION-10000;

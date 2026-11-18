@@ -9,8 +9,15 @@ function receptionRoll(s,p){const R=CFG.depth.RECEPTION;
  const roll=receptionUnit(s,p),shift=clamp(((p.quality||0)-R.QUALITY_PIVOT)*R.QUALITY_SHIFT,-R.MAX_SHIFT,R.MAX_SHIFT),x=clamp(roll+shift,0,0.999999);
  let acc=0,L=R.LEVELS[R.LEVELS.length-1];for(const l of R.LEVELS){acc+=l.odds;if(x<acc){L=l;break;}}
  p.reception={key:L.key,label:L.label,mult:L.mult,legs:L.legs??1,roll:Math.round(roll*1e4)/1e4};return p.reception;}
-function receptionMult(p){return p.reception?.mult??1;}
-function receptionLegs(p){return p.reception?.legs??1;}
+function receptionSpread(p){return CFG.depth.RECEPTION.SPREAD?.[p.sector]??1;}
+function receptionMult(p){return (p.reception?.mult??1)**receptionSpread(p);}
+function receptionLegs(p){return (p.reception?.legs??1)**receptionSpread(p);}
+// Title success multiple for Hit/Smash/Legendary and board Hit/Flop: what the title earned after its sales costs
+// (store fees, printed copies, sales bonuses) divided by what it cost to make and launch (p.releaseCost).
+// Plain receipts / total cost can never pass ~3x because sales costs grow with sales; this measure can.
+// Titles released before v38 have no releaseCost and keep the old receipts / direct cost measure.
+function titleBaseCost(p){return p.releaseCost>0?p.releaseCost:p.directCost;}
+function titleMultiple(p){if(p.releaseCost>0)return (p.directRevenue-Math.max(0,p.directCost-p.releaseCost))/p.releaseCost;return p.directCost>0?p.directRevenue/p.directCost:0;}
 
 // B4 — Reputation from title levels (Hit/Smash/Legendary) and studio milestones. Config: depth.json REPUTATION.
 function repGain(s,c,n){c.reputation=Math.round(clamp(c.reputation+n,CFG.tuning_engine.recognizeCreativeAwards__001,CFG.tuning_engine.recognizeCreativeAwards__002));}
@@ -18,7 +25,7 @@ function repMilestoneWeek(s){const c=player(s);if(!c||c.bankrupt)return;const R=
  if(!Array.isArray(s.legends))s.legends=[];
  let releases=0;
  for(const p of s.projects){if(p.companyId!==c.id||p.status!=='released'||p.route==='contract')continue;releases++;
-  if(!(p.directCost>0))continue;const m=p.repMilestones||(p.repMilestones={}),x=p.directRevenue/p.directCost;
+  if(!(titleBaseCost(p)>0))continue;const m=p.repMilestones||(p.repMilestones={}),x=titleMultiple(p);
   for(const L of R.TITLE_LEVELS){if(m[L.key]||x<L.multiple)continue;
    if(L.minScore&&Math.max(p.quality||0,p.criticScore||0)<L.minScore)continue;
    m[L.key]=true;repGain(s,c,L.reputation);
@@ -54,10 +61,10 @@ function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c
   r.target={year,minRevenue:snap&&snap.annualRevenue!==null?money(snap.annualRevenue*B.TARGET_REVENUE_GROWTH):0};
  }
  for(const p of s.projects){ // release effects: Hit and Flop, once per title
-  if(p.companyId!==c.id||p.status!=='released'||p.route==='contract'||p.releaseWeek===null||p.releaseWeek<r.sinceWeek||!(p.directCost>0))continue;
+  if(p.companyId!==c.id||p.status!=='released'||p.route==='contract'||p.releaseWeek===null||p.releaseWeek<r.sinceWeek||!(titleBaseCost(p)>0))continue;
   const m=p.repMilestones||(p.repMilestones={});
-  if(!m.boardHit&&!m.boardFlop&&p.directRevenue>=p.directCost*B.HIT_MULTIPLE){m.boardHit=true;boardRepChange(s,c,B.RELEASE_HIT,'Hit: '+p.title);news(s,p.title+' is a hit with the board','Board Reputation +'+B.RELEASE_HIT+'.','company');}
-  else if(!m.boardFlop&&!m.boardHit&&s.week-p.releaseWeek>=B.FLOP_AGE_WEEKS&&p.directRevenue<p.directCost*B.FLOP_FRACTION){m.boardFlop=true;boardRepChange(s,c,B.RELEASE_FLOP,'Flop: '+p.title);news(s,p.title+' disappoints the board','Board Reputation '+B.RELEASE_FLOP+'.','company');}
+  if(!m.boardHit&&!m.boardFlop&&titleMultiple(p)>=B.HIT_MULTIPLE){m.boardHit=true;boardRepChange(s,c,B.RELEASE_HIT,'Hit: '+p.title);news(s,p.title+' is a hit with the board','Board Reputation +'+B.RELEASE_HIT+'.','company');}
+  else if(!m.boardFlop&&!m.boardHit&&s.week-p.releaseWeek>=B.FLOP_AGE_WEEKS&&titleMultiple(p)<B.FLOP_FRACTION){m.boardFlop=true;boardRepChange(s,c,B.RELEASE_FLOP,'Flop: '+p.title);news(s,p.title+' disappoints the board','Board Reputation '+B.RELEASE_FLOP+'.','company');}
  }}
 
 // B2 — Board blocks and overrides (depth modes step 2). No new save fields: a block lives on its Inbox card (item.boardBlock).

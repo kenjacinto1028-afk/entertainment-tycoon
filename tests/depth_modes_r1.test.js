@@ -1,6 +1,6 @@
 'use strict';
 // R1: release reception roll (flops and breakouts). Config: depth.json RECEPTION. Save v38 field p.reception.
-const E=require('../dist/engine.js'),assert=require('node:assert/strict');let total=0;const N=10;
+const E=require('../dist/engine.js'),assert=require('node:assert/strict');let total=0;const N=12;
 function check(label,fn){try{const ev=fn();console.log('PASS',label,ev?JSON.stringify(ev):'');total++;}catch(e){console.error('FAIL',label,e.stack);process.exitCode=1;}}
 const R=E.CONFIG.depth.RECEPTION;
 const game=(seed,depth='standard')=>E.createGame({seed,era:25,origin:'established',startingCapital:'funded',aiCount:6,depth});
@@ -56,11 +56,21 @@ check('Mode switch mid-game does not change rolls; same seed gives the same game
 check('Save v38: round trip keeps reception; v37 saves migrate (old titles neutral) and audit rejects bad data',()=>{
  const s=game('r1-save');E.advance(s,60);const rel=s.projects.find(p=>p.reception);assert(rel);
  const t=E.loadState(JSON.stringify(s));assert.equal(t.version,E.SAVE_VERSION);assert.equal(E.SAVE_VERSION,38);assert.deepEqual(t.projects.find(p=>p.id===rel.id).reception,rel.reception);assert.deepEqual(E.audit(t),[]);
- const old=JSON.parse(JSON.stringify(s));old.version=37;for(const p of old.projects)delete p.reception;
- const u=E.loadState(old);assert.equal(u.version,E.SAVE_VERSION);assert(u.projects.every(p=>p.reception===null));assert.deepEqual(E.audit(u),[]);E.advance(u,4);assert.deepEqual(E.audit(u),[]);
+ const old=JSON.parse(JSON.stringify(s));old.version=37;for(const p of old.projects){delete p.reception;delete p.releaseCost;}
+ const u=E.loadState(old);assert.equal(u.version,E.SAVE_VERSION);assert(u.projects.every(p=>p.reception===null&&p.releaseCost===null));assert.deepEqual(E.audit(u),[]);E.advance(u,4);assert.deepEqual(E.audit(u),[]);
  t.projects.find(p=>p.id===rel.id).reception={key:'mega',mult:9};assert(E.audit(t).some(x=>/Invalid reception/.test(x)));
 });
 check('Contract jobs and breakout/flop titles do not post revenue outside the sales ledger',()=>{
  const s=game('r1-ledger');E.advance(s,104);assert.deepEqual(E.audit(s),[]);const bridge=E.consolidatedStatements(s).balance;assert(Math.abs(bridge.difference)<.035);
+});
+check('Release records the launch cost; success multiple leaves out sales costs and can pass 3x',()=>{
+ const s=game('r1-cost');const p=E.createProject(s,{title:'Cost Test',sector:'publishing',route:'original',size:.6});let w=0;while(p.status!=='released'&&w++<120)E.advance(s,1);
+ assert(p.releaseCost>0&&p.releaseCost<=p.directCost);
+ const q={releaseCost:1000,directCost:3000,directRevenue:8000};assert.equal(E.titleMultiple(q),6);// (8000-2000)/1000; old measure would be 2.67
+ assert.equal(E.titleMultiple({releaseCost:null,directCost:2000,directRevenue:5000}),2.5);// pre-v38 titles keep receipts / direct cost
+ const t=E.loadState(JSON.stringify(s));assert.equal(t.projects.find(x=>x.id===p.id).releaseCost,p.releaseCost);
+});
+check('Hit levels: config multiples 6/12/16 and board Hit 6',()=>{
+ assert.deepEqual(E.CONFIG.depth.REPUTATION.TITLE_LEVELS.map(l=>l.multiple),[6,12,16]);assert.equal(E.CONFIG.depth.BOARD.HIT_MULTIPLE,6);
 });
 console.log(`DEPTH R1 ${total}/${N} passed`);

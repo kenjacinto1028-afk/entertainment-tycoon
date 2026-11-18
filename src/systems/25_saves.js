@@ -219,7 +219,7 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
     if(!s.studioMilestones)s.studioMilestones={};if(!Array.isArray(s.legends))s.legends=[];
   }
   // v38: release reception roll (R1). Titles released before v38 keep their old sales (no reception, multiplier 1).
-  for(const p of s.projects||[])if(p.reception===undefined)p.reception=null;
+  for(const p of s.projects||[]){if(p.reception===undefined)p.reception=null;if(p.releaseCost===undefined)p.releaseCost=null;}
   if(!s.regionalEconomy)s.regionalEconomy=Object.fromEntries(REGIONS.map(r=>[r.name,{confidence:1,inflation:CFG.tuning_engine.loadState__094,employment:1}]));
   for(const r of REGIONS){
     if(!s.regionalEconomy[r.name])s.regionalEconomy[r.name]={confidence:1,inflation:CFG.tuning_engine.loadState__095,employment:1};
