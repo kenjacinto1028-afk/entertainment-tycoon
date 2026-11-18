@@ -30,7 +30,7 @@ check('Cancelled client work returns unearned escrow, preserves earned milestone
  A.equal(p.directRevenue,escrow.advance);A(p.directRevenue<funded);A.equal(p.status,'cancelled');audit(s);return {funded,earned:escrow.advance};
 });
 check('Unfunded prospective client cannot commission or create unbacked liabilities',()=>{
- const s=E.createGame({seed:'no-free-client45',era:25,origin:'games',aiCount:12}),p=E.player(s);
+ const s=E.createGame({seed:'no-free-client45',era:25,origin:'games',aiCount:12}),p=E.player(s);p.reputation=90;
  const poor=s.companies.find(c=>c.id!==p.id&&c.finance.cash>1000);A(poor);
  const before={cash:p.finance.cash,finance:poor.finance.cash,escrows:s.escrows.length};
  A.throws(()=>E.requestCommission(s,{title:'Free labor',sector:'games',clientId:poor.id,size:2.2,fee:999999}),/fund|fee|viable/i);
