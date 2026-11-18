@@ -132,6 +132,7 @@
     "maxWeeks": 52,
     "perMode": {"simple": 13, "standard": 8, "veryComplex": 52}
   },
+  "INSOLVENCY": {"_note":"R6: a studio paused (furloughed) this many weeks in a row without being able to restart goes insolvent (rivals close, the player run ends). warnWeeks = weeks-left countdown warnings to the player. null/0 furloughWeeks = off.","furloughWeeks":52,"warnWeeks":[26,8]},
   "PACE_RULES": {
     "_note": "D7 pace levers. releaseCards = a 'Released' card when a player project finishes. allPostmortems = a release report card for every original release, not only major ones (low priority). cashWarningWeeks = a paused (furloughed) studio gets at most one cash warning per this many weeks (null = no limit). mergeCashWeeks = otherwise the low-cash and cash-stress warnings merge within this many weeks.",
     "simple": {"releaseCards": true, "allPostmortems": false, "cashWarningWeeks": 13, "mergeCashWeeks": 4},
