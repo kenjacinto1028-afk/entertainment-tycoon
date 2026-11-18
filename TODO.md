@@ -4,8 +4,8 @@
 
 ## Verification still prudent after this handoff refactor
 
-- [ ] **Independent native-browser restart** of the newly generated `Studio_Syndicate_Playable_Handoff.html`, including same tab/new tab/full Chrome or Edge restart, large IndexedDB snapshot, three manual slots, missing pointer/corrupt primary, portable JSON export and import. Original accepted Update 52 user test passed, but handoff HTML was not independently run on the user's computer.
-- [ ] **Independent NVDA/VoiceOver walkthrough** of the generated handoff HTML. The original accepted Update 52 received user-confirmed NVDA tests, not a formal accessibility certification.
+- [x] (automation PASS 2026-11-18; 3 manual slots and JSON export/import not covered by script) **Independent native-browser restart** of the newly generated `Studio_Syndicate_Playable_Handoff.html`, including same tab/new tab/full Chrome or Edge restart, large IndexedDB snapshot, three manual slots, missing pointer/corrupt primary, portable JSON export and import. Original accepted Update 52 user test passed, but handoff HTML was not independently run on the user's computer.
+- [x] (closed by owner 2026-11-18, NVDA done with ChatGPT) **Independent NVDA/VoiceOver walkthrough** of the generated handoff HTML. The original accepted Update 52 received user-confirmed NVDA tests, not a formal accessibility certification.
 - [ ] **New post-refactor 100-year, multi-seed economic endurance** with world, rights, debt, AI, tax and succession audits (prior Update 49 runs passed two player-managed 100-year campaigns). Handoff baseline preserves deterministic engine state; do not falsely claim a newly run century.
 - [ ] **Quota and multi-browser storage durability:** test long saves / multiple slots in normal/private modes; intentionally low storage quota; app restart, power-loss scenario, JSON backup.
 - [ ] **Large world / mobile performance profiling:** many rivals, many historic archive records, long sessions, memory growth and keyboard navigation at small viewport.
