@@ -86,7 +86,7 @@ def main():
                 page.locator('#new-game-form button[type="submit"]').click()
                 page.locator('#new-game-form').wait_for(state='detached',timeout=15000)
                 step('Create named manual slot 1')
-                page.locator('[data-view="settings"]').first.click()
+                page.locator('[data-view="saves"]').first.click()
                 page.locator('#save-name-1').fill('Real origin checkpoint')
                 page.get_by_role('button',name='Save campaign in slot 1').click()
                 page.wait_for_function('''()=>{const v=localStorage.getItem('studio-syndicate-f1-slot-1');return v&&v.includes('Real origin checkpoint')}''')
@@ -154,7 +154,7 @@ def main():
                 verify(result['length']==len(large) and hashlib.sha256(result['value'].encode()).hexdigest()==checksum,
                        f'large save mismatch after restart: result_length={result["length"]!r}, expected={len(large)}')
                 step('Roll back manual save slot after restart')
-                page.locator('[data-view="settings"]').first.click()
+                page.locator('[data-view="saves"]').first.click()
                 page.get_by_role('button',name='Load campaign from slot 1').click()
                 # loadSlot() awaits IndexedDB. A click returns before that asynchronous
                 # read finishes. Waiting for the restored date prevents a false FAIL.
