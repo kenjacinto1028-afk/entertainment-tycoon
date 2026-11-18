@@ -187,6 +187,14 @@
     ]
   },
   "HIDE": {
+    "_noteForms": "Forms: field names hidden inside the Greenlight form per mode. Hidden fields keep their default values (UI only). veryComplex hides nothing. Release window is in the spec but the form has no such field yet.",
+    "forms": {
+      "greenlight": {
+        "standard": ["leadCharacter", "theme", "targetAudience", "positioning", "flagship", "productionRegion", "teamId"],
+        "simple": ["leadCharacter", "theme", "targetAudience", "positioning", "flagship", "productionRegion", "teamId", "format", "marketing"]
+      }
+    },
+    "heirNoteSimple": "Heir: chosen automatically if you ever step down.",
     "_note": "D5: panels whose heading starts with a listed text are not drawn in that mode. simple = standard list + simpleExtra. veryComplex hides nothing. nav = left-menu views hidden per mode (a hidden view falls back to the Overview).",
     "panels": {
       "standard": [

@@ -24,6 +24,8 @@ const badge=(label,type='')=>`<span class="status ${type}">${esc(label)}</span>`
 const empty=(head,detail,icon='✦')=>`<div class="empty"><span class="empty-icon">${icon}</span><strong>${esc(head)}</strong>${esc(detail)}</div>`;
 const pageHeader=(eyebrow,title,sub,buttons='')=>`<section class="page-head"><div><div class="eyebrow">${eyebrow}</div><h1 class="page-title">${title}</h1><p class="page-sub">${sub}</p></div><div class="head-actions">${buttons}</div></section>`;
 function depthHide45(kind,name){try{const m=S&&S.settings&&S.settings.depth||CFG.depth.DEFAULT,H=CFG.depth.HIDE;if(!H||m==='veryComplex')return false;if(kind==='nav')return (H.nav[m]||[]).includes(name);const l=m==='simple'?H.panels.standard.concat(H.panels.simpleExtra):H.panels.standard;return l.some(t=>String(name).startsWith(t));}catch(e){return false;}}
+function depthFormHide(form){try{const m=S&&S.settings&&S.settings.depth||CFG.depth.DEFAULT,F=CFG.depth.HIDE&&CFG.depth.HIDE.forms&&CFG.depth.HIDE.forms[form];return m==='veryComplex'||!F?[]:(F[m]||[]);}catch(e){return [];}}
+function hideFormFields(names){names.forEach(n=>{document.querySelectorAll('#modal [name="'+n+'"]').forEach(el=>{const f=el.closest('.form-field');if(f)f.style.display='none';});});}
 const panel=(title,body,extra='',sub='')=>depthHide45('panel',title)?'':`<section class="panel"><div class="panel-header"><div><h2 class="panel-heading">${title}</h2>${sub?`<p class="panel-sub">${sub}</p>`:''}</div>${extra}</div>${body}</section>`;
 const btn=(text,attrs='',type='outline')=>`<button type="button" class="btn btn-${type}" ${attrs}>${text}</button>`;
 const timeTag=w=>`<time>${weekLabel(w)}</time>`;
