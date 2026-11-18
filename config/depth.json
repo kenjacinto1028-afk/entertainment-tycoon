@@ -108,13 +108,13 @@
     "tabs": [
       {"id": "dashboard", "label": "Dashboard", "icon": "▦", "views": ["dashboard"]},
       {"id": "projects", "label": "Projects", "icon": "▣", "views": ["productions", "library", "teams"]},
-      {"id": "market", "label": "Market & Rivals", "icon": "◎", "views": ["world", "news"]},
-      {"id": "company", "label": "Company", "icon": "▥", "views": ["finance", "career", "settings"]},
+      {"id": "market", "label": "Market & Rivals", "icon": "◎", "views": ["world", "news", "history"]},
+      {"id": "company", "label": "Company", "icon": "▥", "views": ["finance", "chistory", "career", "settings"]},
       {"id": "inbox", "label": "Inbox", "icon": "✉", "views": ["inbox"]}
     ],
     "viewLabels": {
       "dashboard": "Overview", "productions": "Productions", "library": "Library & Rights", "teams": "Teams",
-      "world": "World & Rivals", "news": "Industry News", "finance": "Financials", "career": "Career & Ownership",
+      "world": "World & Rivals", "news": "Industry News", "history": "Industry History", "chistory": "Company History", "finance": "Financials", "career": "Career & Ownership",
       "settings": "Game & Saves", "inbox": "Inbox"
     }
   },

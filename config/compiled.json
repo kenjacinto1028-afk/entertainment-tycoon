@@ -233,7 +233,8 @@
           "icon": "◎",
           "views": [
             "world",
-            "news"
+            "news",
+            "history"
           ]
         },
         {
@@ -242,6 +243,7 @@
           "icon": "▥",
           "views": [
             "finance",
+            "chistory",
             "career",
             "settings"
           ]
@@ -262,6 +264,8 @@
         "teams": "Teams",
         "world": "World & Rivals",
         "news": "Industry News",
+        "history": "Industry History",
+        "chistory": "Company History",
         "finance": "Financials",
         "career": "Career & Ownership",
         "settings": "Game & Saves",

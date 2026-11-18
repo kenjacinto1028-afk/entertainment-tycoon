@@ -54,3 +54,6 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
  body.tabs5 .main-shell{padding-bottom:140px}
 }
 @media(max-width:600px){body.tabs5 .main-shell{padding-bottom:190px}body.tabs5 .tab5{padding-left:2px;padding-right:2px}}
+.hist-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;font-size:12px;color:var(--muted)}
+.hist-table td{vertical-align:top}
+@media(max-width:600px){.list-table.hist-table,.hist-table tbody{display:block;overflow:visible}.hist-table thead{display:none}.hist-table tr{display:block;border-top:1px solid var(--border);padding:10px 0}.hist-table td{display:flex;justify-content:space-between;gap:12px;border:0;padding:4px 0}.hist-table td::before{content:attr(data-label);color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase;flex:none}.hist-table td>*{text-align:right}}
