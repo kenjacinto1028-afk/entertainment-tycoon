@@ -25,4 +25,4 @@ check('A card that was already open (advisory) does not stop the next advance',(
 check('Changing the cap in config changes how far it goes',()=>{
  const s=game('simple'),old=CAP.perMode.simple;CAP.perMode.simple=5;try{const r=E.advanceToDecision(s);assert.equal(r.weeks,5);assert(r.capped);}finally{CAP.perMode.simple=old;}});
 check('Same seed gives the same result (no new randomness; save stays v36)',()=>{
- const a=game('standard'),b=game('standard');E.advanceToDecision(a);E.advanceToDecision(b);assert.equal(a.week,b.week);assert.equal(JSON.stringify(a.inbox),JSON.stringify(b.inbox));assert.equal(a.version,36);});
+ const a=game('standard'),b=game('standard');E.advanceToDecision(a);E.advanceToDecision(b);assert.equal(a.week,b.week);assert.equal(JSON.stringify(a.inbox),JSON.stringify(b.inbox));assert.equal(a.version,E.SAVE_VERSION);});

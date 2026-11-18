@@ -892,7 +892,7 @@ function careerPanel(){
  const board=incorporated?panel('Board and shareholder authority',
   row('Founder voting share',Math.round(status.ownership.founderShare*CFG.tuning_ui.board__001)/CFG.tuning_ui.board__002+'%')+
   row('Founder / private investors / public shares',`${status.ownership.founder} / ${status.ownership.investor} / ${status.ownership.public}`)+
-  row('Board seats',status.board.map(x=>esc(x.role)).join(' · '))+
+  row('Board seats',status.board.map(x=>esc(x.role)).join(' · '))+(status.boardRep?row('Board Reputation (0–100)',status.boardRep.value+(status.boardRep.target?` · this year\'s target: profit and revenue ≥ ${fmt(status.boardRep.target.minRevenue)}`:''))+`<div class="progress" title="Board Reputation ${status.boardRep.value}/100"><i style="width:${status.boardRep.value}%"></i></div>`:'')+
   row('Board review limit',fmt(status.policy.reviewLimit))+
   row('Outside investor capital remaining',fmt(S.investorPool))+
   `<p class="panel-sub">Board authorization is binding for large new subsidiary investments and new loans. Vote once, then make the actual funded decision. Investor shares never receive automatic IP ownership.</p>`+

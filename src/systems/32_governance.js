@@ -55,7 +55,7 @@ function governanceEvent(s,c,kind,detail={}){
 function requireExecutiveControl(s){if(s.runStatus==='ended'||s.management?.status!=='active')throw new Error('No active executive authority over this company; resolve succession or start a lawful independent firm.');}
 function corporateStatus(s){const c=rootGoverned(s),g=c.corporate,total=Object.values(g.shares).reduce((a,b)=>a+b,0);
  return {companyId:c.id,stage:g.stage,board:g.board?g.board.slice():null,ownership:{...g.shares,total,founderShare:total?g.shares.founder/total:0},
-  manager:{...s.management},founderFunds:s.founderFunds,policy:{...g.policy},recent:g.lineage.slice(-CFG.tuning_engine.corporateStatus__001),runStatus:s.runStatus};}
+  manager:{...s.management},founderFunds:s.founderFunds,policy:{...g.policy},recent:g.lineage.slice(-CFG.tuning_engine.corporateStatus__001),runStatus:s.runStatus,boardRep:g.boardRep?boardRepStatus(s,c):null};}
 function corporateReadiness(s){const c=rootGoverned(s),f=c.finance;
  const checks={solvent:!c.bankrupt&&f.cash>=CFG.tuning_engine.checks__001&&f.payable<Math.max(CFG.tuning_engine.checks__002,f.cash*CFG.tuning_engine.checks__003),
   leadership:!!(c.teams||[]).find(t=>t.leaderId&&(s.employees||[]).some(e=>e.id===t.leaderId&&e.status==='employed')),
@@ -70,7 +70,7 @@ function incorporateStudio(s){requireExecutiveControl(s);const c=rootGoverned(s)
  c.corporate.stage='private-corporation';c.corporate.board=[{id:s.founder.id,role:'founder-director',orientation:'growth'},
  {id:c.id+':independent:1',role:'independent-director',orientation:'conservative'},
  {id:c.id+':independent:2',role:'independent-director',orientation:'balanced'}];
- c.corporate.historyComplete=true;
+ c.corporate.historyComplete=true;c.corporate.boardRep=boardRepNew(s);
  governanceEvent(s,c,'incorporated',{legalCost:legal});news(s,c.name+' incorporates',
   CFG.events.messages.incorporateStudio__001,'company');
  return corporateStatus(s);}

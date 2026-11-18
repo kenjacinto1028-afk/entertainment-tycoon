@@ -1,5 +1,33 @@
 
-function update43CWeek(s){gamePublisherWeek43(s);rivalResearch43(s);}
+function update43CWeek(s){gamePublisherWeek43(s);rivalResearch43(s);boardRepWeek(s);}
+
+// B1 — Board Reputation (depth modes step 2). Tuning lives in config/depth.json BOARD.
+function boardRepNew(s){return {value:CFG.depth.BOARD.START,target:null,history:[],overrides:0,blocks:0,promise:false,sinceWeek:s.week,lastReviewYear:yearAt(s.week)};}
+function boardRepChange(s,c,delta,why){const B=CFG.depth.BOARD,r=c.corporate?.boardRep;if(!r||!delta)return 0;
+ const before=r.value;r.value=clamp(Math.round(r.value+delta),B.MIN,B.MAX);
+ r.history.push({week:s.week,delta:r.value-before,why,value:r.value});if(r.history.length>B.HISTORY_KEEP)r.history.splice(0,r.history.length-B.HISTORY_KEEP);
+ return r.value-before;}
+function boardRepStatus(s,c=player(s)){const r=c?.corporate?.boardRep;if(!r)return null;
+ return {value:r.value,target:r.target?{...r.target}:null,history:r.history.slice(-10),overrides:r.overrides,blocks:r.blocks,promise:r.promise};}
+function boardRepWeek(s){const c=player(s),r=c?.corporate?.boardRep;if(!c||!r||c.bankrupt)return;
+ const B=CFG.depth.BOARD,year=yearAt(s.week);
+ if(r.lastReviewYear<year){ // yearly review, first week of the new year
+  r.lastReviewYear=year;const snap=[...s.snapshots].reverse().find(x=>x.companyId===c.id&&x.year===year-1);
+  if(snap&&snap.annualProfit!==null){
+   const bits=[];let total=0;
+   if(r.target&&r.target.year===year-1){const hit=snap.annualProfit>0&&snap.annualRevenue>=r.target.minRevenue;
+    total+=boardRepChange(s,c,hit?B.TARGET_HIT:B.TARGET_MISS,hit?'Board target met':'Board target missed');bits.push(hit?'The board\'s target was met.':'The board\'s target was missed.');}
+   total+=boardRepChange(s,c,snap.annualProfit>0?B.PROFIT_YEAR:B.LOSS_YEAR,snap.annualProfit>0?'Profitable year':'Loss-making year');bits.push(snap.annualProfit>0?'The studio made a profit.':'The studio made a loss.');
+   news(s,c.name+' board reviews the year','Board Reputation '+(total>=0?'+':'')+total+' to '+r.value+'. '+bits.join(' '),'company');
+  }
+  r.target={year,minRevenue:snap&&snap.annualRevenue!==null?money(snap.annualRevenue*B.TARGET_REVENUE_GROWTH):0};
+ }
+ for(const p of s.projects){ // release effects: Hit and Flop, once per title
+  if(p.companyId!==c.id||p.status!=='released'||p.route==='contract'||p.releaseWeek===null||p.releaseWeek<r.sinceWeek||!(p.directCost>0))continue;
+  const m=p.repMilestones||(p.repMilestones={});
+  if(!m.boardHit&&!m.boardFlop&&p.directRevenue>=p.directCost*B.HIT_MULTIPLE){m.boardHit=true;boardRepChange(s,c,B.RELEASE_HIT,'Hit: '+p.title);news(s,p.title+' is a hit with the board','Board Reputation +'+B.RELEASE_HIT+'.','company');}
+  else if(!m.boardFlop&&!m.boardHit&&s.week-p.releaseWeek>=B.FLOP_AGE_WEEKS&&p.directRevenue<p.directCost*B.FLOP_FRACTION){m.boardFlop=true;boardRepChange(s,c,B.RELEASE_FLOP,'Flop: '+p.title);news(s,p.title+' disappoints the board','Board Reputation '+B.RELEASE_FLOP+'.','company');}
+ }}
 
 // UPDATE 44A — fair sector-entrant financing and funded payroll work.
 // New industry competitors use the SAME finite entrepreneur reserve as later
