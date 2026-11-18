@@ -87,6 +87,8 @@ function forecastProject(s,data,plan,c) {
   const averageRatio=comparable.length?comparable.reduce((n,r)=>n+clamp(r.actualGross/r.expectedGross,CFG.tuning_engine.averageRatio__001,CFG.tuning_engine.averageRatio__002),0)/comparable.length:1;
   const marketCalibration=money(clamp(1+(averageRatio-1)*comparable.length/(comparable.length+CFG.tuning_engine.marketCalibration__001),CFG.tuning_engine.marketCalibration__002,CFG.tuning_engine.marketCalibration__003));
   const revenueByScenario={};
+  // R4: fatigue from releases already out (known today), aged to each future week; this title counts too once released.
+  const fatigueAt={},FW=CFG.depth.GENRE_FATIGUE.windowWeeks,fatigueMult=(week,regionName,genre)=>{const P=(fatigueAt[week] ||= genreFatiguePressure(s,plan.sector,week));const own=route!=='contract'&&genre===candidate.genre?Math.max(0,1-(week-s.week-plan.weeks)/FW):0;return CFG.depth.GENRE_FATIGUE.modes.includes(s.settings?.depth)?genreFatigueMult(plan.sector,(P[regionName]?.[genre]||0)+own):1;};
   for(const [scenario,qualityShift,marketShift] of [['conservative',-CFG.tuning_engine.forecastProject__001,CFG.tuning_engine.forecastProject__002],['expected',0,1],['optimistic',CFG.tuning_engine.forecastProject__003,CFG.tuning_engine.forecastProject__004]]) {
     let gross=0;
     if(route!=='contract')for(let i=0;i<horizonWeeks;i++) {
@@ -95,11 +97,11 @@ function forecastProject(s,data,plan,c) {
         const budget=worldMarketBudget(s,plan.sector,region.name,futureWeek)*marketShift*(plan.sector==='publishing'?formatReachShare(s,plan.format,futureWeek):1);
         const decay=Math.exp(-i/(plan.sector==='publishing'?CFG.tuning_engine.decay__001:CFG.tuning_engine.decay__002));
         const reach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(candidate,k),0);
-        const weight=((clamp(candidate.quality+qualityShift,CFG.tuning_engine.weight__006,CFG.tuning_engine.weight__007)/CFG.tuning_engine.weight__008)**CFG.tuning_engine.weight__009)*region.tastes[candidate.genre]*(1+CFG.tuning_engine.weight__010*(candidate.marketingBudget/Math.max(candidate.budget,1)))*decay*reach;
+        const weight=((clamp(candidate.quality+qualityShift,CFG.tuning_engine.weight__006,CFG.tuning_engine.weight__007)/CFG.tuning_engine.weight__008)**CFG.tuning_engine.weight__009)*region.tastes[candidate.genre]*fatigueMult(futureWeek,region.name,candidate.genre)*(1+CFG.tuning_engine.weight__010*(candidate.marketingBudget/Math.max(candidate.budget,1)))*decay*reach;
         const knownCompetition=s.projects.filter(p=>p.sector===plan.sector&&p.status==='released'&&p.releaseWeek<=futureWeek&&futureWeek-p.releaseWeek<CFG.tuning_engine.knownCompetition__001&&p.route!=='contract'&&(!p.grantId||s.grants.some(g=>g.id===p.grantId&&g.type==='license'&&g.startWeek<=futureWeek&&g.endWeek+g.continuationWeeks>futureWeek))).reduce((sum,p)=>{
           const competingAge=futureWeek-p.releaseWeek;
           const rivalReach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(p,k),0);
-          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*receptionMult(p)*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
+          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*fatigueMult(futureWeek,region.name,p.genre)*receptionMult(p)*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
         },0);
         gross+=budget*weight/(CFG.tuning_engine.forecastProject__005+weight+knownCompetition);
       }
@@ -112,7 +114,8 @@ function forecastProject(s,data,plan,c) {
   const advance=route==='contract'?plan.contractFee*CFG.tuning_engine.advance__002:0;
   // Stress-case liquidity before any new consumer sales, not an accounting profit forecast.
   const noSalesCashFloor=money(c.finance.cash+advance-plan.grandTotal-(plan.initialPrintCash||0)-committed-weeklyOverhead(c,s)*plan.weeks-c.finance.payable);
-  return {horizonWeeks,estimatedAtWeek:s.week,estimatedQuality:money(candidate.quality),evidenceSampleSize:comparable.length,marketCalibration,scenario:revenueByScenario,royaltyRate,initialPrintCash:plan.initialPrintCash||0,noSalesCashFloor,
+  const releaseWeek=s.week+plan.weeks,fatigueRegions=activeRegions(s).map(r=>fatigueMult(releaseWeek,r.name,candidate.genre)),genreFatigueAtRelease=route==='contract'?1:Math.round(fatigueRegions.reduce((a,b)=>a+b,0)/Math.max(1,fatigueRegions.length)*1000)/1000;
+  return {horizonWeeks,estimatedAtWeek:s.week,genreFatigueAtRelease,estimatedQuality:money(candidate.quality),evidenceSampleSize:comparable.length,marketCalibration,scenario:revenueByScenario,royaltyRate,initialPrintCash:plan.initialPrintCash||0,noSalesCashFloor,
 downsideWarning:noSalesCashFloor<0?'Possible cash shortfall before release. Other income or financing may be needed.':noSalesCashFloor<weeklyOverhead(c,s)*CFG.tuning_engine.forecastProject__006?'Thin pre-release cash buffer: leave room for operating expenses.':null,
     basis:route==='contract'?'Fixed client delivery fee, subject to completing the work.':stocked?'Estimated first 13 sales weeks; includes expected print COGS/wholesale fees, but retailer returns and stockouts can change results.':'Estimated first 13 sales weeks; future rivals, changing taste and economic shocks are uncertain.'};
 }

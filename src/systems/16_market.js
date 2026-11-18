@@ -55,6 +55,35 @@ function formatPoolShares(s,week=s.week){
 }
 function formatReach(format){return CFG.depth.FORMAT_POOLS.reach[format]||null;}
 function formatReachShare(s,format,week=s.week){const r=formatReach(format);if(!r)return 1;const sh=formatPoolShares(s,week);return r.reduce((n,k)=>n+sh[k],0);}
+// R4 genre fatigue (config depth.json GENRE_FATIGUE). Recent same-genre,
+// same-medium releases sold in a region lower that genre's demand there for
+// everyone alike. Worked out from release history known at s.week (no save
+// field, no RNG). Returns {region:{genre:pressure}}.
+function genreFatiguePressure(s,sector,week=s.week){
+  const F=CFG.depth.GENRE_FATIGUE,W=F.windowWeeks,known=Math.min(week,s.week),out={};
+  if(!F.modes.includes(s.settings?.depth))return out;
+  const regions=activeRegions(s);for(const r of regions)out[r.name]={};
+  const add=(region,genre,w)=>{if(w>0)out[region][genre]=(out[region][genre]||0)+w;};
+  for(const p of s.projects){
+    if(p.sector!==sector||p.status!=='released'||p.route==='contract'||!(p.releaseWeek<=known))continue;
+    const age=week-p.releaseWeek;if(age<0||age>=W)continue;
+    for(const r of regions)if(canDistribute43(s,p,r.name,p.releaseWeek))add(r.name,p.genre,1-age/W);
+  }
+  for(const b of s.backgroundFirms){if(b.sector!==sector)continue;
+    for(const x of b.releases){if(!(x.releaseWeek<=known))continue;const age=week-x.releaseWeek;if(age<0||age>=W)continue;
+      for(const r of regions)add(r.name,x.genre,F.backgroundWeight*(1-age/W));}}
+  return out;
+}
+function genreFatigueMult(sector,pressure){
+  const F=CFG.depth.GENRE_FATIGUE;
+  return Math.max(F.floor,1-F.perPoint[sector]*Math.max(0,(pressure||0)-F.free[sector]));
+}
+// Player-facing view: demand multiplier per genre now, averaged over active regions.
+function genreFatigue(s,sector,week=s.week){
+  const P=genreFatiguePressure(s,sector,week),regions=activeRegions(s),res={};
+  for(const g of GENRES){const m=regions.map(r=>genreFatigueMult(sector,P[r.name]?.[g]));res[g]=Math.round(m.reduce((a,b)=>a+b,0)/Math.max(1,m.length)*1000)/1000;}
+  return res;
+}
 function weekSales(s) {
   s.weeklyConsumerSpend=money((s.streamingWeeklyTotal||0)+Object.values(s.gameMarketReserved||{}).reduce((a,b)=>a+b,0));
   for(const [sector,info] of Object.entries(SECTORS)) {
@@ -64,16 +93,17 @@ function weekSales(s) {
     // Old single-pool maths whenever no format-limited title is selling, so
     // worlds without ebooks/audiobooks/web serials keep identical numbers.
     const pools=sector==='publishing'&&titles.some(p=>formatReach(p.format))?formatPoolShares(s):null;
+    const fatigue=genreFatiguePressure(s,sector);
     for(const region of activeRegions(s)) {
       const budget=Math.max(0,money(worldMarketBudget(s,sector,region.name)-(sector==='tv'?(s.streamingWeeklyReserved?.[region.name]||0):sector==='games'?(s.gameMarketReserved?.[region.name]||0):0)));
-      const background=backgroundWeights(s,sector,region);
+      const background=backgroundWeights(s,sector,region,fatigue[region.name]);
       const cohortShares=audienceCohorts(s,region.name);
       const weights=titles.map(()=>0),minorShares=background.map(()=>0);
       for(const cohort of cohortShares){
         const titleWeights=titles.map(p=>{
           if(!canDistribute43(s,p,region.name,s.week))return 0;
           const age=s.week-p.releaseWeek,decay=Math.exp(-age/((p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004)*receptionLegs(p)));
-          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
+          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
            (p.sector==='movie'&&p.cinema?filmDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='tv'&&p.television?tvDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='games'&&p.videoGame?gameDemandMultiplier(p,s.week,region.name)*gamePlatformDemand49(s,p,region.name):1)*

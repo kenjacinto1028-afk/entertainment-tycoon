@@ -131,7 +131,7 @@ function backgroundProgress(s) {
     if(b.finance.cash<=0&&b.finance.payable>SECTORS[b.sector].cost*CFG.tuning_engine.backgroundProgress__013){b.bankrupt=true;b.active=null;}
   }
 }
-function backgroundWeights(s,sector,region) {
+function backgroundWeights(s,sector,region,fatigue=null) {
   const results=[];
   for(const b of s.backgroundFirms){
     if(b.sector!==sector)continue;
@@ -139,7 +139,7 @@ function backgroundWeights(s,sector,region) {
     // but cannot spend additional production money or restart by fiat.
     for(const p of b.releases){
       const age=s.week-p.releaseWeek;if(age<0||age>=CFG.tuning_engine.backgroundWeights__001)continue;
-      const weight=((p.quality/CFG.tuning_engine.weight__001)**CFG.tuning_engine.weight__002)*region.tastes[p.genre]*(1+CFG.tuning_engine.weight__003*p.marketingRatio)*Math.exp(-age/(sector==='publishing'?CFG.tuning_engine.weight__004:CFG.tuning_engine.weight__005));
+      const weight=((p.quality/CFG.tuning_engine.weight__001)**CFG.tuning_engine.weight__002)*region.tastes[p.genre]*(fatigue?genreFatigueMult(sector,fatigue[p.genre]):1)*(1+CFG.tuning_engine.weight__003*p.marketingRatio)*Math.exp(-age/(sector==='publishing'?CFG.tuning_engine.weight__004:CFG.tuning_engine.weight__005));
       results.push({firm:b,genre:p.genre,weight});
     }
   }
