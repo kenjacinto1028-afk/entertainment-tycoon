@@ -21,11 +21,11 @@ for p in REQUIRED:
  assert p in paths,f'Important runtime or handoff artifact missing: {p}'
 assert len([p for p in items if p.relative_to(ROOT).as_posix().startswith('src/systems/') and p.suffix=='.js'])==44
 assert len([p for p in items if p.relative_to(ROOT).as_posix().startswith('src/interface/') and p.suffix=='.js'])==19
-config=json.loads((ROOT/'config/compiled.json').read_text());assert config['save']['SAVE_VERSION']==37
+config=json.loads((ROOT/'config/compiled.json').read_text());assert config['save']['SAVE_VERSION']==38
 expected={'publishing':1,'movie':4,'tv':7,'games':10}
 assert {k:v['year'] for k,v in config['world']['SECTORS'].items()}==expected
 checks=[{'file':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':hash_bytes(p.read_bytes())} for p in items]
-MAN.write_text(json.dumps({'project':'Studio Syndicate','handoff':'Modular/config-only source for testing and future maintenance, no new features','save_version':37,'sector_debuts':expected,'generated_manifest_excludes_self':True,'file_count_including_manifest':len(checks)+1,'files':checks},indent=2)+'\n')
+MAN.write_text(json.dumps({'project':'Studio Syndicate','handoff':'Modular/config-only source for testing and future maintenance, no new features','save_version':38,'sector_debuts':expected,'generated_manifest_excludes_self':True,'file_count_including_manifest':len(checks)+1,'files':checks},indent=2)+'\n')
 allfiles=[*items,MAN]
 with ZipFile(ZIP,'w',ZIP_DEFLATED,compresslevel=9) as z:
  for p in allfiles:z.write(p,p.relative_to(ROOT).as_posix())
