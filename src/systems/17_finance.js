@@ -16,12 +16,22 @@ function reviewReleases(s) {
       assessment+' after the first 13 sales weeks. Direct contribution '+shortMoney(actual)+(expected===null?' (no original forecast)':' versus '+shortMoney(expected)+' expected')+'. Open Productions for details.','advisory');
   }
 }
+// R3: rivals pick a format from config RIVAL_FORMAT_MIX. The pick is hashed from seed + company + week, so it never touches s.rng.
+function rivalFormat(s,c,sector){
+  const mix=CFG.rivals.RIVAL_FORMAT_MIX?.[sector];if(!mix)return undefined;
+  const sh=sector==='publishing'?formatPoolShares(s):null,opts=[];let total=0;
+  for(const m of mix){if(sector==='publishing'&&!publishingFormatAvailable(s,m.format))continue;
+    const w=m.weight*(m.pool&&sh?sh[m.pool]:1);if(w>0){opts.push([m.format,w]);total+=w;}}
+  if(!opts.length)return undefined;
+  let h=hash(String(s.seed)+':rivalformat:'+c.id+':'+s.week);h^=h>>>16;h=Math.imul(h,0x7feb352d);h^=h>>>15;h=Math.imul(h,0x846ca68b);h^=h>>>16;
+  let x=((h>>>0)/4294967296)*total;for(const [f,w] of opts){if(x<w)return f;x-=w;}return opts[opts.length-1][0];
+}
 function launchAI(s,c) {
   if(c.bankrupt||!available(c.sector,s.week)||s.projects.some(p=>p.companyId===c.id&&p.status==='active'))return;
   if(c.finance.cash<SECTORS[c.sector].cost*CFG.tuning_engine.launchAI__001+CFG.tuning_engine.launchAI__002)return;
   const titlesA=CFG.rivals.RIVAL_RELEASE_TITLES;
   const title=pick(s,titlesA)+' '+(Math.floor(rand(s)*CFG.tuning_engine.title__003)+1);
-  const idea={companyId:c.id,title,sector:c.sector,route:'original',genre:pick(s,GENRES),size:CFG.tuning_engine.idea__001+rand(s)*CFG.tuning_engine.idea__002,marketing:CFG.tuning_engine.idea__003+rand(s)*CFG.tuning_engine.idea__004};
+  const idea={companyId:c.id,title,sector:c.sector,route:'original',format:rivalFormat(s,c,c.sector),genre:pick(s,GENRES),size:CFG.tuning_engine.idea__001+rand(s)*CFG.tuning_engine.idea__002,marketing:CFG.tuning_engine.idea__003+rand(s)*CFG.tuning_engine.idea__004};
   try{
     // Rivals occasionally pool real labor and funds on the same terms as the
     // player. They cannot conscript the player's company as a financier.

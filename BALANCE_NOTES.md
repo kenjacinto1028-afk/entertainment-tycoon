@@ -57,3 +57,7 @@ Controlled player probe (same world/week/title id, only format differs, Standard
 - Year 10 (n=20): Novel 142%; Ebook 185→50%, Audiobook 154→29%, Web Serial 209→49% (digital still young).
 - Year 25 (n=20): Novel 146–149%; Ebook 196→134%, Audiobook 165→114%, Web Serial 220→133%.
 - Year 65 (n=12): Novel 106%; Ebook 140→109%, Audiobook 105→110%, Web Serial 170→109%.
+
+## R3 rival format mix 2026-11-18 (awaiting owner OK to merge)
+
+Rivals now pick a format for each new original title from `config/rivals.json` `RIVAL_FORMAT_MIX` (before, they always took the first format: 0 Ebook / Audiobook / Indie Game). Publishing: Novel 56, Nonfiction 12, Comic 10, Web Serial 30, Ebook 45, Audiobook 45; Web Serial and Ebook weights are multiplied by the R2 digital buyer share, Audiobook by the audio share, so they grow with the world. Games: Premium 78, Indie 22. Formats not yet available are skipped. Film and TV unchanged. The pick is hashed from seed + company + week (`rivalFormat` in `17_finance.js`), no `s.rng`, no save change. Probe (6 worlds, 15 years, Standard, rival originals): before Novel 1412, Film 267, Series 280, Premium 96; after Novel 799, Nonfiction 176, Comic 147, Web Serial 56, Ebook 63, Audiobook 26, Film 265, Series 298, Premium 61, Indie 23. Loss share (titles 2+ years old) before to after: publishing 15 to 16%, movie 8 to 9%, tv 14 to 15%, games 23 to 21%. Tests: `tests/depth_modes_r3.test.js`; the R2 old-path check now limits rivals to full releases.

@@ -45,6 +45,8 @@ check('Same seed gives the same game; save/load mid-sales does not change the re
  assert.equal(run(false),run(false));assert.equal(run(false),run(true));
 });
 check('A world with no digital-only or audio-only titles uses the old single-pool maths',()=>{
- const s=game('r2-oldpath');E.advance(s,52);assert(!s.projects.some(p=>p.sector==='publishing'&&E.formatReach(p.format)&&p.route!=='contract'),'no limited-format originals in an AI-only world');
+ // R3: rivals now make limited formats, so switch the rival mix to full releases only for this check.
+ const M=E.CONFIG.rivals.RIVAL_FORMAT_MIX,keep=M.publishing;M.publishing=[{format:'Novel',weight:1}];
+ try{const s=game('r2-oldpath');E.advance(s,52);assert(!s.projects.some(p=>p.sector==='publishing'&&E.formatReach(p.format)&&p.route!=='contract'),'no limited-format originals when rivals make only full releases');}finally{M.publishing=keep;}
 });
 console.log(total+'/7 R2 checks passed');
