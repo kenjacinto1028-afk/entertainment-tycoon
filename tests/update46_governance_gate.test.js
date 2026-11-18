@@ -1,6 +1,6 @@
 'use strict';const E=require('../dist/engine.js'),A=require('node:assert/strict');let n=0;
 function test(name,fn){try{console.log('PASS',name,JSON.stringify(fn()||{}));n++;}catch(e){console.error('FAIL',name,e.stack);process.exitCode=1;}}
-const init=(seed)=>E.createGame({seed,era:25,origin:'established',startingCapital:'funded',aiCount:8});
+const init=(seed)=>E.createGame({seed,era:25,origin:'established',startingCapital:'funded',aiCount:8,depth:'veryComplex'});
 const check=s=>{A.deepEqual(E.audit(s),[]);A.deepEqual(E.audit(E.loadState(JSON.stringify(s))),[]);};
 test('ordinary startup needs no board, can remain private and cannot fake shareholder decisions',()=>{
  const s=E.createGame({seed:'founder-no-board46'}),c=E.player(s),initial=E.corporateStatus(s);

@@ -144,6 +144,7 @@ function createProject(s,data={}) {
   const team=selectTeam(s,c,data.teamId,data.genre||'Fantasy');
   if(!team)throw new Error('No available production team. Hire another team or wait for completion.');
   if(c.finance.cash < reserve+CFG.tuning_engine.createProject__004)throw new Error('Not enough available cash. A project requires a 30% initial liquidity reserve plus operating buffer.');
+  if(c.id===s.playerId&&route!=='contract')boardGate(s,'greenlight',money(estimate.budget+estimate.marketing),true);// B2: Standard board block on big greenlights
   const title=(String(data.title||'Untitled Project').trim().slice(0,CFG.tuning_engine.title__002)||'Untitled Project');
   const genre=GENRES.includes(data.genre)?data.genre:pick(s,GENRES);
   const pitch=pitchFrom(data);

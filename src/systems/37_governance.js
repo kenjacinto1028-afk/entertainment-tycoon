@@ -144,7 +144,7 @@ function acquireCompany(s,targetId,{price,financeWith='cash',creditLineId=null}=
  if(!Number.isFinite(Number(price??quote.ask))||bid<quote.ask||bid<actualBook||bid>CFG.tuning_engine.acquireCompany__001)
    throw new Error('Owners have not accepted a funded offer at or above the defensible book-value floor.');
  if(s.companies.filter(c=>c.parentId===buyer.id).length>=CFG.tuning_engine.acquireCompany__002)throw new Error('Maximum five controlled subsidiaries.');
- boardMandate(s,'expansion',bid);
+ boardMandate(s,'expansion',bid,s.settings?.depth!=='veryComplex');
  const financing=spendAcquisition(s,bid,financeWith,creditLineId);
  // The acquired company is NOT paid for its own shares; consideration goes to
  // the independent former shareholders. Its existing cash/debts stay inside it.
@@ -166,7 +166,7 @@ function acquireAsset(s,{kind='ip',id:assetId,price,financeWith='cash',creditLin
  if(!Number.isFinite(Number(price??quote.price))||bid<quote.price||bid>CFG.tuning_engine.acquireAsset__001)throw new Error('Seller did not agree to the purchase price.');
  const buyer=player(s),seller=company(s,quote.ownerId),asset=kind==='ip'?s.ips.find(x=>x.id===assetId):s.works.find(x=>x.id===assetId);
  if(seller.bankrupt&&seller.finance.cash<-CFG.tuning_engine.acquireAsset__002)throw new Error('Court-controlled bankruptcy asset sale unavailable.');
- boardMandate(s,'expansion',bid);const financing=spendAcquisition(s,bid,financeWith,creditLineId);
+ boardMandate(s,'expansion',bid,s.settings?.depth!=='veryComplex');const financing=spendAcquisition(s,bid,financeWith,creditLineId);
  // Conservative simplified accounting: acquired rights cost is recognized as
  // an expense, not an invented arbitrary carrying asset; no fictitious gain.
  transact(s,buyer,'purchased-ip-rights',{cash:-bid,expense:bid},'External source or completed-work rights purchase');
@@ -186,7 +186,7 @@ function integrateAcquisition(s,childId,{choice='lean',capital=0}={}){
  if(choice==='recapitalize'){
   const amount=money(Number(capital)),needed=money(Math.max(0,weeklyOverhead(child,s)*CFG.tuning_engine.needed__004+child.finance.payable-child.finance.cash));
   if(!Number.isFinite(Number(capital))||amount<Math.max(CFG.tuning_engine.integrateAcquisition__001,needed)||buyer.finance.cash<amount+CFG.tuning_engine.integrateAcquisition__002)throw new Error('Rescue must be real funded capital sufficient for documented cash obligations.');
-  boardMandate(s,'expansion',amount);
+  boardMandate(s,'expansion',amount,s.settings?.depth!=='veryComplex');
   transact(s,buyer,'subsidiary-rescue-investment',{cash:-amount,investment:amount},'Additional paid-in equity; no phantom sales revenue');
   transact(s,child,'subsidiary-paid-in-capital',{cash:amount,equity:amount},'Owned subsidiary receives real parent capital');
   child.investedCapital=money(child.investedCapital+amount);

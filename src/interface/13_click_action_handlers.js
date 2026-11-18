@@ -131,6 +131,8 @@ document.addEventListener('click',event=>{const b=event.target.closest('button,[
  if(b.dataset.pubImprint){safe(()=>{E.assignPublishingImprint(S,b.dataset.pubImprint,b.dataset.imprintId);notify('Imprint assigned without changing IP ownership.');});return;}
  if(b.dataset.printOrder){printOrderModal(b.dataset.printOrder);return;}
  if(b.dataset.printPolicy){safe(()=>{E.setPrintPolicy(S,b.dataset.printPolicy,b.dataset.enabled==='true');});return;}
+ if(b.dataset.boardBlock){safe(()=>{const r=E.boardBlockAnswer(S,b.dataset.boardBlock,b.dataset.override==='true');notify(r.status==='overridden'?'Board overridden (−'+r.cost+' Board Reputation). Repeat the action now.':'Block accepted; the spend is cancelled.');});return;}
+ if(b.dataset.boardPressure){safe(()=>{E.boardPressureAnswer(S,b.dataset.boardPressure,b.dataset.choice);notify('The board has noted your answer.');});return;}
  if(b.dataset.dismiss){safe(()=>E.dismissAlert(S,b.dataset.dismiss));return;}
  if(b.hasAttribute('data-batch-counters')){if(!confirm('Accept only counteroffer terms that fit your current manager authority? No cash or rights will move and projects still require separate approval.'))return;safe(()=>{const x=E.batchApproveRoutineCounters(S,CFG.tuning_ui.x__001);notify(x.approved.length+' limited counteroffers approved, '+x.deferred.length+' deferred. Funded bookings still need your approval.');});return;}
  if(b.hasAttribute('data-batch-review')){safe(()=>{const n=E.dismissRoutineAdvisories(S);notify(n+' routine advisories reviewed; critical decisions remain open.');});return;}
