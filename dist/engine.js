@@ -5818,6 +5818,7 @@ function adviser43(s){const c=player(s),f=c.finance,critical=s.inbox.filter(i=>i
  if(critical)return {priority:'critical',headline:'Review '+critical+' consequential inbox decisions',reason:'Binding deadlines, major rights issues, or solvency pressure can pause long skips.',screen:'inbox'};
  if(liquidity.runwayWeeks!==null&&liquidity.runwayWeeks<CFG.tuning_engine.adviser43__001)return {priority:'warning',headline:'Protect your cash runway',reason:'Committed staffing, debt and production may exhaust liquid cash before new income is paid.',screen:'finance'};
  if(rights.length)return {priority:'warning',headline:'Rights window approaching',reason:'Inspect expiries before funding another adaptation. Renewals require consent.',screen:'library'};
+ if(active===0&&c.sector==='games'&&!s.projects.some(p=>p.companyId===c.id&&p.status==='released'))return {priority:'opportunity',headline:'Start with an Indie Game',reason:'An Indie Game costs about a quarter less than a full Premium release and returns cash sooner. Leave a payroll buffer.',screen:'productions'};
  if(active===0)return {priority:'opportunity',headline:'Consider a small production',reason:'An original in your available industry builds a catalog. Leave a payroll buffer.',screen:'productions'};
  return {priority:'information',headline:'Monitor your '+active+' active projects',reason:'Weekly work advances by real teams; creative, cash, and audience outcomes are different.',screen:'productions'};
 }
