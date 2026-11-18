@@ -1,5 +1,24 @@
 
-function update43CWeek(s){gamePublisherWeek43(s);rivalResearch43(s);boardRepWeek(s);}
+function update43CWeek(s){gamePublisherWeek43(s);rivalResearch43(s);boardRepWeek(s);repMilestoneWeek(s);}
+
+// B4 — Reputation from title levels (Hit/Smash/Legendary) and studio milestones. Config: depth.json REPUTATION.
+function repGain(s,c,n){c.reputation=Math.round(clamp(c.reputation+n,CFG.tuning_engine.recognizeCreativeAwards__001,CFG.tuning_engine.recognizeCreativeAwards__002));}
+function repMilestoneWeek(s){const c=player(s);if(!c||c.bankrupt)return;const R=CFG.depth.REPUTATION,sm=s.studioMilestones||(s.studioMilestones={});
+ if(!Array.isArray(s.legends))s.legends=[];
+ let releases=0;
+ for(const p of s.projects){if(p.companyId!==c.id||p.status!=='released'||p.route==='contract')continue;releases++;
+  if(!(p.directCost>0))continue;const m=p.repMilestones||(p.repMilestones={}),x=p.directRevenue/p.directCost;
+  for(const L of R.TITLE_LEVELS){if(m[L.key]||x<L.multiple)continue;
+   if(L.minScore&&Math.max(p.quality||0,p.criticScore||0)<L.minScore)continue;
+   m[L.key]=true;repGain(s,c,L.reputation);
+   if(L.key==='legendary'){s.legends.push({projectId:p.id,title:p.title,companyId:c.id,sector:p.sector,week:s.week,multiple:Math.round(x*10)/10,quality:Math.round(p.quality||0)});
+    if(s.legends.length>R.LEGENDS_KEEP)s.legends.splice(0,s.legends.length-R.LEGENDS_KEEP);
+    news(s,p.title+' is a Legendary title','A once-in-a-generation success for '+c.name+': '+(Math.round(x*10)/10)+'x its cost at quality '+Math.round(p.quality||0)+'. Reputation +'+L.reputation+'.','award');}
+   else news(s,p.title+' is a '+L.label,c.name+' title earned '+L.multiple+'x its cost. Reputation +'+L.reputation+'.','company');}}
+ const mile=(key,label)=>{if(sm[key])return;sm[key]=s.week;repGain(s,c,R.STUDIO_MILESTONE_REPUTATION);news(s,c.name+' milestone: '+label,'Reputation +'+R.STUDIO_MILESTONE_REPUTATION+'.','company');};
+ for(const n of R.RELEASE_COUNTS)if(releases>=n)mile('releases'+n,n+' releases');
+ if((s.creativeAwards||[]).some(a=>a.companyId===c.id))mile('firstAward','first yearly award');
+ if(s.legends.some(l=>l.companyId===c.id))mile('firstLegendary','first Legendary title');}
 
 // B1 — Board Reputation (depth modes step 2). Tuning lives in config/depth.json BOARD.
 function boardRepNew(s){return {value:CFG.depth.BOARD.START,target:null,history:[],overrides:0,blocks:0,promise:false,sinceWeek:s.week,lastReviewYear:yearAt(s.week)};}
