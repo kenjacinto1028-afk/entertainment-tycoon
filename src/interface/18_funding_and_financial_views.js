@@ -17,7 +17,7 @@ function technologyTrades43(){const targets=S.companies.filter(c=>c.id!==S.playe
 const baseRenderSettings43=renderSettings,baseRenderDashboard43=renderDashboard,baseRenderWorld43=renderWorld,baseRenderLibrary43=renderLibrary,baseRenderProductions43=renderProductions,baseRenderTeams43=renderTeams,baseCareer43=careerPanel;
 // D2 — Game depth switch (UI only; engine setDepth does the work).
 function depthPanelD2(){const cur=S.settings.depth||CFG.depth.DEFAULT;return panel('Game depth',`<p class="panel-sub" style="margin-bottom:12px">Changes how many decisions the game asks of you. You can switch at any time; your company and money are not affected.</p>${Object.keys(CFG.depth.LABELS).map(m=>{const L=CFG.depth.LABELS[m];return `<div class="small-stat"><span><strong>${esc(L.name)}</strong>${m===cur?' '+badge('Current','active'):''}<small class="item-sub">${esc(L.blurb)}</small></span><span>${m===cur?'':btn('Switch to '+esc(L.name),`data-depth-switch="${m}" aria-label="Switch game depth to ${esc(L.name)}"`,'outline')}</span></div>`}).join('')}${cur==='simple'&&CFG.depth.HIDE.heirNoteSimple?`<p class="panel-sub" style="margin-top:12px">${esc(CFG.depth.HIDE.heirNoteSimple)}</p>`:''}`);}
-renderSettings=function(){return baseRenderSettings43()+depthPanelD2()+managementPanel43()+onboardingPanel43();};
+renderSettings=function(){return baseRenderSettings43()+playtimePanel()+depthPanelD2()+managementPanel43()+onboardingPanel43();};
 renderDashboard=function(){const counsel=E.adviser43(S);return baseRenderDashboard43()+onboardingPanel43()+erasPanel43();};
 renderWorld=function(){return baseRenderWorld43()+erasPanel43()+eventArchive43()+technologyTrades43();};
 renderLibrary=function(){return baseRenderLibrary43()+rightsPackagePanel43();};

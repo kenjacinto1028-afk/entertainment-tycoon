@@ -1,5 +1,5 @@
 
-function slotInfo(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);if(!raw)return 'Empty';const x=JSON.parse(raw);return esc((x.label||x.name)+' · '+x.name+' · Y'+x.year);}catch(e){return 'Unavailable';}}
+function slotInfo(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);if(!raw)return 'Empty';const x=JSON.parse(raw);return esc((x.label||x.name)+' · '+x.name+' · Y'+x.year+(Number.isFinite(x.playtimeSec)?' · played '+playtimeLabel(x.playtimeSec):''));}catch(e){return 'Unavailable';}}
 function slotName(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);return raw?JSON.parse(raw).label||'':'';}catch(e){return '';}}
 // Update 50: explicit names and keyboard containment for consequential decisions.
 // One dialog is visible at a time; routine work remains accessible without a mouse.

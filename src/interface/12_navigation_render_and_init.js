@@ -13,7 +13,7 @@ async function saveSlot(n){try{
  const label=($('save-name-'+n)?.value||'').trim().slice(0,CFG.tuning_ui.label__001)||('Campaign slot '+n);
  if(!['1','2','3'].includes(String(n)))throw new Error('Invalid save slot.');
  if(E.audit(S).length)throw new Error('Cannot store an inconsistent campaign.');
- const raw=JSON.stringify(S),meta={label,name:E.player(S).name,year:E.yearAt(S.week)};
+ const raw=JSON.stringify(S),meta={label,name:E.player(S).name,year:E.yearAt(S.week),playtimeSec:S.playtimeSec||0};
  if(durableStore50){try{
   await durableStore50.save('slot-'+n,raw);
   localStorage.setItem(SLOT_PREFIX+n,JSON.stringify({...meta,data:DB_POINTER50}));

@@ -220,6 +220,8 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
   }
   // v38: release reception roll (R1). Titles released before v38 keep their old sales (no reception, multiplier 1).
   for(const p of s.projects||[]){if(p.reception===undefined)p.reception=null;if(p.releaseCost===undefined)p.releaseCost=null;}
+  // v39: real-world playtime for this save, in seconds (the UI adds to it). Older saves start at 0.
+  if(s.playtimeSec===undefined)s.playtimeSec=0;
   if(!s.regionalEconomy)s.regionalEconomy=Object.fromEntries(REGIONS.map(r=>[r.name,{confidence:1,inflation:CFG.tuning_engine.loadState__094,employment:1}]));
   for(const r of REGIONS){
     if(!s.regionalEconomy[r.name])s.regionalEconomy[r.name]={confidence:1,inflation:CFG.tuning_engine.loadState__095,employment:1};
@@ -257,3 +259,5 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
   if(oldVersion>=1&&oldVersion<CFG.tuning_engine.loadState__097)s.version=SAVE_VERSION;
   if(!s||s.version!==SAVE_VERSION||!Array.isArray(s.companies)||!Array.isArray(s.backgroundFirms)||!Array.isArray(s.remittances)||!Array.isArray(s.loans)||!Array.isArray(s.projects)||!Array.isArray(s.ips)||!Array.isArray(s.grants)||!Array.isArray(s.commissionOffers)||!Array.isArray(s.commissionHistory)||!Array.isArray(s.coProductions)||!Array.isArray(s.coProductionOffers)||!Array.isArray(s.rightsOffers)||!Array.isArray(s.creativeApprovals)||!Array.isArray(s.ledger)||!Array.isArray(s.obligations)||!Array.isArray(s.royaltyAccounts)||!Array.isArray(s.escrows)||!Array.isArray(s.news)||!Array.isArray(s.inbox)||!Array.isArray(s.works)||!Array.isArray(s.reports)||!Number.isInteger(s.week)||!s.companies.some(c=>c.id===s.playerId)||![...s.companies,...s.backgroundFirms].every(c=>c.finance&&Number.isFinite(c.finance.cash)&&Number.isFinite(c.finance.prepaid)&&Number.isFinite(c.finance.receivable)&&Number.isFinite(c.finance.equity))||!Number.isInteger(s.rng))throw new Error('This is not a supported Studio Syndicate prototype save.');
   if(audit(s).length)throw new Error('Save integrity check failed: '+audit(s)[0]);return s;}
+// Playtime: real seconds the player spent in this save. Not part of the simulation (no RNG, no money).
+function addPlaytime(s,seconds){if(!s||!Number.isFinite(seconds)||seconds<=0)return s?.playtimeSec||0;s.playtimeSec=Math.round(((Number.isFinite(s.playtimeSec)?s.playtimeSec:0)+seconds)*10)/10;return s.playtimeSec;}
