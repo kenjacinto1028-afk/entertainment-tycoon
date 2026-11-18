@@ -234,3 +234,30 @@ commissionInspection47=function(s,projectId){const r=_commissionInspectionBefore
  return {...(e?.review47||r),autoResolved:true};};
 function decisionCardLog(s){const y=yearAt(s.week),d=s.decisionCards?.year===y?s.decisionCards:{year:y,cards:0,low:0,auto:0};
  return {...d,limit:inboxRulesD3(s).yearlyCards,lowLimit:inboxRulesD3(s).lowPriorityCards};}
+// Depth modes D7 — pace rules per mode (config/depth.json PACE_RULES). Very Complex has every rule off.
+// No RNG and no new save fields: cards are ordinary Inbox items and go through D3 triage.
+function paceRulesD7(s){return CFG.depth.PACE_RULES[s.settings?.depth]||CFG.depth.PACE_RULES.veryComplex;}
+function cashWarningD7(key){return key.startsWith('liquidity-')||key.startsWith('cash-stress-');}
+// One cash warning at a time: the "low cash" and "cash stress" warnings merge, and a paused (furloughed)
+// studio gets at most one every cashWarningWeeks weeks.
+const _alertBeforeD7=alert;
+alert=function(s,key,title,body,kind='critical'){const rules=paceRulesD7(s);
+ if(rules.cashWarningWeeks&&cashWarningD7(key)){
+  const last=s.inbox.filter(a=>cashWarningD7(a.key)).reduce((m,a)=>Math.max(m,a.week),-Infinity);
+  const gap=player(s)?.operating44?.furloughed?rules.cashWarningWeeks:rules.mergeCashWeeks;
+  if(s.week-last<gap)return;}
+ _alertBeforeD7(s,key,title,body,kind);};
+// Release reports for every original release (not just major ones).
+const _reviewReleasesBeforeD7=reviewReleases;
+reviewReleases=function(s){const rules=paceRulesD7(s);
+ const due=rules.allPostmortems?s.projects.filter(p=>p.companyId===s.playerId&&p.status==='released'&&!p.review&&!p.major&&p.route!=='contract'):[];
+ _reviewReleasesBeforeD7(s);
+ for(const p of due)if(p.review)alert(s,'postmortem-'+p.id,'Release report: '+p.title,
+  p.review.assessment+' after the first 13 sales weeks. Direct contribution '+shortMoney(p.review.actualDirect)+'. Open Productions for details.','advisory');};
+// "Project finished" card: each player release asks what to make next.
+const _singleWeekBeforeD7=singleWeek;
+singleWeek=function(s){const rules=paceRulesD7(s);
+ const active=rules.releaseCards?s.projects.filter(p=>p.companyId===s.playerId&&p.status==='active'):[];
+ _singleWeekBeforeD7(s);
+ for(const p of active)if(p.status==='released')alert(s,'project-done-'+p.id,'Released: '+p.title,
+  'This project is finished and on sale. Your team is free: greenlight your next project in Productions.','advisory');};

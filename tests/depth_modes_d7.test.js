@@ -5,7 +5,7 @@
 // Set STUDIO_D7_REPORT=1 to print the full per-year table.
 const E=require('../dist/engine.js'),assert=require('node:assert/strict');
 const PACE=E.CONFIG.depth.PACE,INBOX=E.CONFIG.depth.INBOX,PRIORITY=E.CONFIG.depth.PRIORITY;
-const CAP=E.CONFIG.depth.ADVANCE_TO_DECISION.maxWeeks,MODES=['simple','standard','veryComplex'],SEEDS=['d7-pace-a','d7-pace-b'],YEARS=10;
+const ADV=E.CONFIG.depth.ADVANCE_TO_DECISION,MODES=['simple','standard','veryComplex'],SEEDS=['d7-pace-a','d7-pace-b'],YEARS=10;
 let total=0;const report=[];
 function check(label,fn){try{const evidence=fn();console.log('PASS',label,evidence?JSON.stringify(evidence):'');total++;}catch(e){console.error('FAIL',label,e.stack);process.exitCode=1;}}
 const urgent=a=>PRIORITY.urgent.some(p=>a.key.startsWith(p)),low=a=>PRIORITY.low.some(p=>a.key.startsWith(p));
@@ -27,7 +27,7 @@ function walletCap(s,tag){const ceiling=E.activeRegions(s).reduce((acc,r)=>acc+O
 // style 'struggling': lean start, never produces; shows how many urgent cash warnings a weak studio meets.
 function play(depth,seed,style){
  const s=E.createGame({seed,era:25,origin:'established',startingCapital:style==='healthy'?'funded':'lean',aiCount:10,depth});
- const plan=PACE.robot[depth],years=[];const seen=new Set(s.inbox.map(a=>a.id));let since=0,n=0;
+ const plan=PACE.robot[depth],CAP=ADV.perMode[depth]??ADV.maxWeeks,years=[];const seen=new Set(s.inbox.map(a=>a.id));let since=0,n=0;
  for(let y=1;y<=YEARS&&s.runStatus!=='ended';y++){
   const row={year:y,cards:0,urgent:0,low:0,greenlights:0,clientJobs:0,loans:0,advanceStops:0};
   const dueWeeks=new Set(Array.from({length:plan.greenlights},(_,i)=>Math.floor(52*i/plan.greenlights)));
@@ -84,6 +84,16 @@ check('Simple and Standard never show more non-urgent cards per year than their 
   if(depth==='simple')assert.equal(r.low,0);}
  return {simpleMaxCards:Math.max(...rows('simple','struggling').map(r=>r.cards)),standardMaxCards:Math.max(...rows('standard','struggling').map(r=>r.cards))};
 });
+check('A studio out of cash is not flooded: at most one cash warning a quarter while paused (Simple/Standard stay within target max)',()=>{
+ for(const depth of ['simple','standard'])for(const r of rows(depth,'struggling'))assert(r.decisions<=PACE[depth].max,depth+' '+JSON.stringify(r));
+ return {simple:summary['simple/struggling'],standard:summary['standard/struggling']};
+});
+check('Very Complex is unchanged: no Released cards, no extra release reports, no merged cash warnings',()=>{
+ for(const r of [...runs['veryComplex/healthy'],...runs['veryComplex/struggling']])
+  assert(!r.s.inbox.some(a=>a.key.startsWith('project-done-')||(a.key.startsWith('postmortem-')&&a.title.startsWith('Release report'))));
+ assert.equal(summary['veryComplex/healthy'].cards,0);assert(summary['veryComplex/struggling'].cards>summary['simple/struggling'].cards);
+ assert.equal(ADV.perMode.veryComplex,ADV.maxWeeks);return {cap:ADV.perMode};
+});
 check('Fewer modes ask fewer questions: Simple ≤ Standard ≤ Very Complex in Inbox cards',()=>{
  const c=d=>summary[d+'/struggling'].cards+summary[d+'/healthy'].cards;
  assert(c('simple')<=c('standard')+1e-9&&c('standard')<=c('veryComplex')+1e-9,JSON.stringify([c('simple'),c('standard'),c('veryComplex')]));
@@ -101,4 +111,4 @@ check('6 BALANCE_NOTES invariants hold in every mode (yearly audit, books, oblig
  // 6: automatic handling only removes routine questions: Simple/Standard show no more cards than Very Complex for the same seeds
  return {runs:Object.values(runs).flat().length,auditedYears:report.length};
 });
-console.log(`DEPTH D7 ${total}/6 passed`);
+console.log(`DEPTH D7 ${total}/8 passed`);

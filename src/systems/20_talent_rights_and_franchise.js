@@ -58,7 +58,7 @@ function advance(s,count=1) {
 function advanceToDecision(s){
   if(s.runStatus==='ended')return {weeks:0,stopped:true,reason:'Run concluded.',found:false,capped:false};
   if(s.inbox.some(a=>a.open&&a.kind==='critical'))return {weeks:0,stopped:true,reason:'A decision is already waiting in your Inbox.',found:true,capped:false};
-  const cap=Math.max(1,Math.round(Number(CFG.depth.ADVANCE_TO_DECISION.maxWeeks)||1)),seen=new Set(s.inbox.filter(a=>a.open).map(a=>a.id));
+  const A=CFG.depth.ADVANCE_TO_DECISION,cap=Math.max(1,Math.round(Number(A.perMode?.[s.settings?.depth]??A.maxWeeks)||1)),seen=new Set(s.inbox.filter(a=>a.open).map(a=>a.id));
   let moved=0,found=false;
   while(moved<cap){singleWeek(s);moved++;if(s.runStatus==='ended')break;if(s.inbox.some(a=>a.open&&!seen.has(a.id))){found=true;break;}}
   const capped=!found&&s.runStatus!=='ended';
