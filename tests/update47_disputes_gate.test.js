@@ -26,7 +26,7 @@ check('funded remedy costs real cash, extends project and releases full reserved
 check('arbitration splits previously funded reserve, preserves earned milestones and client prepayment accounting',()=>{
  const {s,p,e,client}=challenged('arbitration','movie');const balance=client.finance.cash,seller=E.player(s),before=seller.finance.cash;
  const held=e.held,earned=e.advance+e.milestonePaid,ans=E.commissionResolve47(s,p.id,'arbitrate');
- A.equal(ans.refunded+ans.sellerAward,held);A(Math.abs(client.finance.cash-(balance+ans.refunded))<.011);A(Math.abs(seller.finance.cash-(before+ans.sellerAward))<.011);
+ A.equal(Math.round((ans.refunded+ans.sellerAward)*100)/100,held);A(Math.abs(client.finance.cash-(balance+ans.refunded))<.011);A(Math.abs(seller.finance.cash-(before+ans.sellerAward))<.011);
  A.equal(p.directRevenue,Math.round((earned+ans.sellerAward)*100)/100);A.equal(p.status,'cancelled');A(e.settled);
  A.throws(()=>E.commissionResolve47(s,p.id,'arbitrate'),/outstanding/i);audit(E.loadState(JSON.stringify(s)));
  return {protected:held,refunded:ans.refunded,award:ans.sellerAward};

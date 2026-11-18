@@ -3,7 +3,8 @@ const E=require('../dist/engine.js'),A=require('node:assert/strict');
 // Independent companies are given player-facing operator privileges only while
 // signing their own funded title + service setup; the test returns original
 // executive control immediately. No synthetic money or catalog title is added.
-const s=E.createGame({seed:'stream-four45',era:25,origin:'tv',startingCapital:'funded',aiCount:12,regionCount:2});
+// Seed changed 2026-11-18 after the economy retune (higher TV cost): the old seed's third TV firm could no longer fund a service at week 60.
+const s=E.createGame({seed:'stream-four45b',era:25,origin:'tv',startingCapital:'funded',aiCount:12,regionCount:2});
 const original=s.playerId, firms=[E.player(s),...s.companies.filter(x=>!x.isPlayer&&x.capabilities.tv).sort((a,b)=>b.finance.cash-a.finance.cash).slice(0,3)];
 A(firms.length>=3);
 const ps=firms.map((c,i)=>E.createProject(s,{sector:'tv',companyId:c.id,route:'original',title:'Funded Streaming '+i,size:.7}));

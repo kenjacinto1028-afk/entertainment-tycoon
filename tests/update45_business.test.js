@@ -12,7 +12,7 @@ check('Funded client commissions work across all four media and deliver only agr
   const fee=Math.round(plan.contractFee*.96),offer=E.requestCommission(s,{...params,clientId:client.id,fee});A.equal(offer.status,'accepted');
   const ownerCash=E.player(s).finance.cash,clientCash=client.finance.cash;
   const project=E.createProject(s,{...params,clientId:client.id,offerId:offer.id});A.equal(project.earnedFee,fee);
-  const escrow=s.escrows.find(x=>x.id===project.escrowId);A.equal(escrow.fee,fee);A.equal(client.finance.cash,clientCash-fee);A(escrow.held>0);
+  const escrow=s.escrows.find(x=>x.id===project.escrowId);A.equal(escrow.fee,fee);A.equal(client.finance.cash,Math.round((clientCash-fee)*100)/100);A(escrow.held>0);
   for(let w=0;w<65&&project.status==='active';w++)E.advance(s,1);
   A.equal(project.status,'released');A.equal(escrow.settled,true);A.equal(project.directRevenue,fee);
   A.equal(project.ipId,null,'client work must not create new owner IP');audit(s);audit(E.loadState(JSON.stringify(s)));

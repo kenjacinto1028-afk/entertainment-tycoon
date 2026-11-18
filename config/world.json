@@ -3,21 +3,21 @@
     "publishing": {
       "name": "Publishing",
       "year": 1,
-      "cost": 11500,
+      "cost": 15000,
       "weeks": 12,
       "icon": "book-open"
     },
     "movie": {
       "name": "Movies",
       "year": 4,
-      "cost": 52000,
+      "cost": 66000,
       "weeks": 25,
       "icon": "clapperboard"
     },
     "tv": {
       "name": "Television",
       "year": 7,
-      "cost": 34500,
+      "cost": 45000,
       "weeks": 21,
       "icon": "tv"
     },

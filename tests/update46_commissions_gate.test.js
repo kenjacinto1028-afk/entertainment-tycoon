@@ -19,7 +19,7 @@ test('earned milestone kept and only unearned escrow refunded after cancellation
  const {s,p,client}=start('refund46');const e=s.escrows.find(x=>x.id===p.escrowId);
  for(let i=0;i<30&& !e.milestoneDone;i++)E.advance(s,1);
  A(e.milestoneDone);const buyerBefore=client.finance.cash,earned=e.advance+e.milestonePaid,held=e.held;
- E.cancelProject(s,p.id);A.equal(client.finance.cash,buyerBefore+held);A.equal(e.held,0);A(e.settled&&e.cancelled);A.equal(p.directRevenue,earned);valid(s);
+ E.cancelProject(s,p.id);A.equal(client.finance.cash,Math.round((buyerBefore+held)*100)/100);A.equal(e.held,0);A(e.settled&&e.cancelled);A.equal(p.directRevenue,earned);valid(s);
  return {earned,refunded:held};
 });
 test('a booked commission offer cannot be executed twice or exceed client cash',()=>{

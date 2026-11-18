@@ -15,10 +15,10 @@ test('shareholder loss of control permits only personally funded new studio; leg
  A(E.corporateReadiness(s).eligible);E.incorporateStudio(s);
  const sale=E.sellFounderShares(s,600);A(sale.proceeds>25000);
  A.equal(s.management.status,'removed');const before=s.founderFunds,oldEquity=old.finance.equity,oldCash=old.finance.cash,owner=old.id;
- const independent=E.startFreshCompany(s,{name:'New Independent Edition',sector:'publishing',capital:25000});
+ const independent=E.startFreshCompany(s,{name:'New Independent Edition',sector:'publishing',capital:27000}); // 2026-11-18 retune: publishing reserve is now 15000*1.75=26250
  A.equal(s.playerId,independent.id);A.equal(independent.parentId,null);A.equal(old.isPlayer,false);
  A.equal(s.ips.find(x=>x.id===p.ipId).ownerId,owner);A.equal(old.finance.equity,oldEquity);A.equal(old.finance.cash,oldCash);
- A.equal(s.founderFunds,before-25000);A.equal(independent.finance.cash,25000);
+ A.equal(s.founderFunds,before-27000);A.equal(independent.finance.cash,27000);
  A.deepEqual(E.audit(E.loadState(JSON.stringify(s))),[]);return {oldCompany:owner,newCompany:independent.id,founderPersonalCash:s.founderFunds};
 });
 test('new entity cannot be conjured before loss of lawful executive role or from zero founder funds',()=>{
