@@ -14,9 +14,10 @@ if(event.target.id==='sub-sector'){const i=Number(event.target.selectedOptions[0
  if(event.target.id==='import-file'&&event.target.files?.[0]){event.target.files[0].text().then(text=>{const next=E.loadState(text);if(confirm('Replace the current game with this imported campaign?')){S=next;view='dashboard';remember();render();notify('Imported campaign successfully.');}}).catch(e=>notify('Invalid import: '+e.message,'error'));}
 });
 document.addEventListener('submit',event=>{const form=event.target;
- if(!['corporate-raise-form','corporate-board-form','corporate-risk-form','corporate-fresh-form','corporate-rename-form'].includes(form.id))return;
+ if(!['corporate-ipo-form','corporate-raise-form','corporate-board-form','corporate-risk-form','corporate-fresh-form','corporate-rename-form'].includes(form.id))return;
  event.preventDefault();const v=Object.fromEntries(new FormData(form));safe(()=>{
-  if(form.id==='corporate-raise-form'){E.raiseEquity(S,Number(v.amount));notify('Outside shareholder capital funded without new sales.');}
+  if(form.id==='corporate-ipo-form'){E.launchIPO(S,Number(v.float)/100);view='career';notify('Company publicly listed; capital raised is shareholder equity, not sales.');}
+  else if(form.id==='corporate-raise-form'){E.raiseEquity(S,Number(v.amount));notify('Outside shareholder capital funded without new sales.');}
   if(form.id==='corporate-board-form'){const r=E.boardVote(S,v.kind,Number(v.amount));notify(r.approved?'Board approved one material commitment.':'Independent board directors rejected this commitment.');}
   if(form.id==='corporate-risk-form'){E.setRiskPolicy(S,{minCashWeeks:Number(v.minCashWeeks),reviewLimit:Number(v.reviewLimit),maxDebtRatio:Number(v.maxDebtRatio)});notify('Company risk thresholds saved.');}
   if(form.id==='corporate-rename-form'){E.renameCompany(S,v.name);notify('Company legal name updated. IP and contracts remain with the same entity.');}

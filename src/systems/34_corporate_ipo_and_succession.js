@@ -1,14 +1,28 @@
 
-function launchIPO(s,amount=CFG.tuning_engine.launchIPO__001){requireExecutiveControl(s);const c=corporationOnly(s);
+function ipoQuote(s,floatPct=CFG.depth.IPO.DEFAULT_FLOAT){const c=corporationOnly(s),I=CFG.depth.IPO,f=Number(floatPct);
+ if(!Number.isFinite(f)||f<I.MIN_FLOAT-1e-9||f>I.MAX_FLOAT+1e-9)throw new Error('Float must be between '+Math.round(I.MIN_FLOAT*100)+'% and '+Math.round(I.MAX_FLOAT*100)+'%.');
+ const g=c.corporate,total=g.shares.founder+g.shares.investor+g.shares.public,valuation=corporateValuation(s).expected;
+ const raise=money(valuation*f/(1-f)),shares=Math.max(1,Math.ceil(total*f/(1-f))),fee=money(Math.max(I.MIN_FEE,raise*I.FEE_RATE));
+ return {floatPct:f,valuation,raise,fee,newShares:shares,founderShareAfter:g.shares.founder/(total+shares),net:money(raise-fee)};}
+function launchIPO(s,floatPct=CFG.depth.IPO.DEFAULT_FLOAT){requireExecutiveControl(s);const c=corporationOnly(s);
  if(c.corporate.stage==='public-corporation')throw new Error('Company is already publicly listed.');
  if(yearAt(s.week)<CFG.tuning_engine.launchIPO__002)throw new Error('Simplified public markets do not mature until World Year 25.');
  if(!c.teams.length||c.reputation<CFG.tuning_engine.launchIPO__003||c.bankrupt)throw new Error('Company is not eligible for public listing.');
- const approval=boardVote(s,'ipo',Number(amount));if(!approval.approved)throw new Error('Board rejected public listing.');
- const fee=CFG.tuning_engine.fee__014;if(c.finance.cash<fee+CFG.tuning_engine.launchIPO__004)throw new Error('Cannot finance the listing and maintain operating reserves.');
- expense(s,c,fee,'public-listing-fee','Underwriting and simplified disclosure expenses');
- const row=issueShares(s,amount,'public');c.corporate.stage='public-corporation';
- governanceEvent(s,c,'public-listing',{cost:fee,amount:row.amount});
- return {...row,stage:c.corporate.stage,fee};}
+ if(s.runStatus!=='active')throw new Error('Resolve executive control before issuing equity.');
+ const q=ipoQuote(s,floatPct);
+ const approval=boardVote(s,'ipo',Math.min(q.raise,CFG.tuning_engine.boardVote__001));if(!approval.approved)throw new Error('Board rejected public listing.');
+ if(c.finance.cash<q.fee+CFG.tuning_engine.launchIPO__004)throw new Error('Cannot finance the listing and maintain operating reserves.');
+ expense(s,c,q.fee,'public-listing-fee','Underwriting and simplified disclosure expenses');
+ // Public-market investors pay the company treasury: paid-in equity, NOT sales.
+ transact(s,c,'outside-equity-contribution',{cash:q.raise,equity:q.raise},'Public listing capital received (not revenue)');
+ // Public money is new to the world: grow the pool opening by the same amount (pool conservation holds).
+ s.investorPoolOpening=money(s.investorPoolOpening+q.raise);
+ c.corporate.shares.public+=q.newShares;c.corporate.fundings.push({week:s.week,amount:q.raise,shares:q.newShares,kind:'public'});
+ c.corporate.stage='public-corporation';
+ governanceEvent(s,c,'equity-raised',{amount:q.raise,shares:q.newShares,kind:'public'});
+ governanceEvent(s,c,'public-listing',{cost:q.fee,amount:q.raise});
+ if(corporateStatus(s).ownership.founderShare<CFG.tuning_engine.issueShares__004&&s.management.personId===s.founder.id)contestExecutiveControl(s);
+ return {...q,amount:q.raise,stage:c.corporate.stage};}
 function sellFounderShares(s,count){const c=corporationOnly(s),shares=Number(count),g=c.corporate;
  if(s.runStatus==='ended'||!Number.isInteger(shares)||shares<1||shares>g.shares.founder)throw new Error('Founder may sell only valid personally held shares.');
 const price=money(corporateValuation(s).expected/(g.shares.founder+g.shares.investor+g.shares.public));const proceeds=money(price*shares);

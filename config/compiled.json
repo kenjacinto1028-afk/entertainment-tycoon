@@ -160,6 +160,15 @@
       ],
       "LEGENDS_KEEP": 200
     },
+    "IPO": {
+      "_note": "R7: IPO sized from company value. Public holders own FLOAT of the company after listing; raise = expected valuation x FLOAT/(1-FLOAT). Fee = max(MIN_FEE, raise x FEE_RATE). Public-market money tops up the investor pool by the raise (pool conservation unchanged). Proceeds are paid-in equity, never revenue.",
+      "MIN_FLOAT": 0.05,
+      "MAX_FLOAT": 0.4,
+      "STEP": 0.05,
+      "DEFAULT_FLOAT": 0.15,
+      "FEE_RATE": 0.04,
+      "MIN_FEE": 1000
+    },
     "BOARD": {
       "_note": "B1: Board Reputation meter (0-100). Starts at START when the studio incorporates. Yearly review at the first week of each year: target = profit > 0 and revenue >= last year x TARGET_REVENUE_GROWTH. Release effects count only for titles released after incorporation; contract jobs are ignored. A Hit = success multiple >= HIT_MULTIPLE; a Flop = success multiple < FLOP_FRACTION once the title is FLOP_AGE_WEEKS old (success multiple: see REPUTATION note; R1 raised HIT_MULTIPLE 3 -> 6).",
       "START": 50,
