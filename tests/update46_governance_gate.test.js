@@ -5,7 +5,7 @@ const check=s=>{A.deepEqual(E.audit(s),[]);A.deepEqual(E.audit(E.loadState(JSON.
 test('ordinary startup needs no board, can remain private and cannot fake shareholder decisions',()=>{
  const s=E.createGame({seed:'founder-no-board46'}),c=E.player(s),initial=E.corporateStatus(s);
  A.equal(initial.stage,'founder');A.equal(initial.board,null);A.throws(()=>E.boardVote(s,'expansion',5000),/incorporat|corporation/i);
- A.throws(()=>E.launchIPO(s,12000),/incorporat|corporation/i);A.equal(c.corporate.stage,'founder');check(s);
+ A.throws(()=>E.launchIPO(s,0.15),/incorporat|corporation/i);A.equal(c.corporate.stage,'founder');check(s);
  return {stage:c.corporate.stage,board:c.corporate.board};
 });
 test('corporation readiness creates board, rejects disproportionate spending without approving the cash',()=>{
@@ -20,11 +20,11 @@ test('corporation readiness creates board, rejects disproportionate spending wit
 test('IPO is optional and separate; external capital and founder personal share proceeds never count as sales',()=>{
  const s=init('ipo-safety46'),c=E.player(s),p=E.createProject(s,{title:'Corporate owned original',sector:'publishing',route:'original',size:.65});
  const owner=s.ips.find(i=>i.id===p.ipId).ownerId;E.incorporateStudio(s);const revenue=c.finance.revenue;
- const listing=E.launchIPO(s,12000);A.equal(listing.stage,'public-corporation');A.equal(E.corporateStatus(s).stage,'public-corporation');
+ const listing=E.launchIPO(s,0.15);A.equal(listing.stage,'public-corporation');A.equal(E.corporateStatus(s).stage,'public-corporation');
  A.equal(c.finance.revenue,revenue);A.equal(s.ips.find(i=>i.id===p.ipId).ownerId,owner);
  const money=c.finance.cash,founderMoney=s.founderFunds;const v=E.sellFounderShares(s,15);A(v.proceeds>0);
  A.equal(c.finance.cash,money);A.equal(c.finance.revenue,revenue);A(s.founderFunds>founderMoney);A.equal(s.ips.find(i=>i.id===p.ipId).ownerId,owner);
- A.throws(()=>E.launchIPO(s,15000),/already/i);check(s);
+ A.throws(()=>E.launchIPO(s,0.15),/already/i);check(s);
  return {founderShare:E.corporateStatus(s).ownership.founderShare,personalProceeds:v.proceeds};
 });
 test('corporate successor receives management role without acquiring founder shares or IP',()=>{
