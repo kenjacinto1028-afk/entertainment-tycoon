@@ -57,7 +57,7 @@ function safe(fn){try{fn();remember();render();}catch(error){notify(error.messag
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
   $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
   document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
-  let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'settings':html=renderSettings();break;default:html=renderDashboard();}
+  let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'history':case 'chistory':html=renderReleaseHistory(view);break;case 'settings':html=renderSettings();break;default:html=renderDashboard();}
   $('content').innerHTML=html;
   labelControls50($('content'));
   document.querySelectorAll('[data-view]').forEach(b=>{if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});

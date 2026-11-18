@@ -58,7 +58,7 @@ function safe(fn){try{fn();remember();render();}catch(error){notify(error.messag
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
   $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
   document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
-  let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'settings':html=renderSettings();break;default:html=renderDashboard();}
+  let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'history':case 'chistory':html=renderReleaseHistory(view);break;case 'settings':html=renderSettings();break;default:html=renderDashboard();}
   $('content').innerHTML=html;
   labelControls50($('content'));
   document.querySelectorAll('[data-view]').forEach(b=>{if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
@@ -1207,6 +1207,42 @@ renderFinance=function(){return originalRenderFinance47()+bankWorkouts47();};// 
  document.addEventListener('click',event=>{const b=event.target.closest('button[data-tab5]');if(!b||!S)return;
   const t=CFG.depth.TABS5.tabs.find(x=>x.id===b.dataset.tab5);if(!t)return;const v=vis(t);
   view=v.includes(lastSub[t.id])?lastSub[t.id]:(v[0]||'dashboard');render();remember();window.scrollTo(0,0);});
+})();
+
+// Release History pages: industry (view 'history') and player company (view 'chistory'). Read-only; the engine does the filtering, sorting and paging (E.releaseHistory).
+const histState={history:{},chistory:{}};
+const TIER_LABEL={hit:'Hit',smash:'Smash',legendary:'Legendary'};
+function renderReleaseHistory(v){const scope=v==='chistory'?'player':'industry',st=histState[v],q=E.releaseHistory(S,{scope,...st,page:st.page,pageSize:25}),L=q.lists,o=(val,label,cur)=>`<option value="${esc(val)}"${String(cur??'all')===String(val)?' selected':''}>${esc(label)}</option>`;
+ const yrs=['',...L.years],tiers=[['all','All titles'],['any','Any Hit or better'],['hit','Hit'],['smash','Smash'],['legendary','Legendary']];
+ const sorts=[['year','Year'],['title','Title'],['company','Company'],['quality','Quality'],['critic','Critic score'],['sales','Sales'],...(scope==='player'?[['revenue','Revenue'],['profit','Profit']]:[])];
+ const fld=(label,id,inner)=>`<div class="form-field"><label for="hist-${id}">${label}</label>${inner}</div>`,sel=(id,inner)=>`<select id="hist-${id}" data-hist="${id}" data-hview="${v}">${inner}</select>`;
+ const head=pageHeader(scope==='player'?'Company records':'Industry records',scope==='player'?'Company History':'Industry History',scope==='player'?'Every title your company has released, with results. Revenue and profit are your own books.':'Every title released by every company. Rival revenue is private, so rivals show public results only (sales, scores, reception). Pre-game historical titles have no recorded results.');
+ const sm=q.summary,summary=`<div class="metrics" style="margin-bottom:14px"><div class="metric"><div class="metric-top">Titles</div><div class="metric-value">${sm.total}</div></div><div class="metric"><div class="metric-top">Hit or better</div><div class="metric-value">${sm.hits}</div><div class="metric-sub">${sm.legendary} Legendary</div></div>${scope==='player'?`<div class="metric"><div class="metric-top">Total revenue</div><div class="metric-value">${fmt(sm.revenue)}</div></div>`:''}<div class="metric"><div class="metric-top">Top-rated title</div><div class="metric-value" style="font-size:16px;white-space:normal">${esc(sm.best||'—')}</div></div></div>`;
+ const filters=`<div class="form-grid" style="margin-bottom:14px">${fld('SEARCH TITLE','q',`<input class="search-input" id="hist-q" data-hist="query" data-hview="${v}" value="${esc(st.query||'')}" placeholder="Title..." aria-label="Search title">`)}`+
+  (scope==='industry'?fld('COMPANY','c',sel('companyId',o('all','All companies',st.companyId)+L.companies.map(c=>o(c.id,c.name,st.companyId)).join(''))):'')+
+  fld('MEDIUM','s',sel('sector',o('all','All media',st.sector)+L.sectors.map(x=>o(x,sectorName(x),st.sector)).join('')))+
+  fld('GENRE','g',sel('genre',o('all','All genres',st.genre)+L.genres.map(x=>o(x,x,st.genre)).join('')))+
+  fld('FROM YEAR','yf',sel('yearFrom',yrs.map(y=>o(y,y===''?'Any':'Year '+y,st.yearFrom??'')).join('')))+
+  fld('TO YEAR','yt',sel('yearTo',yrs.map(y=>o(y,y===''?'Any':'Year '+y,st.yearTo??'')).join('')))+
+  fld('LEVEL','t',sel('tier',tiers.map(t=>o(t[0],t[1],st.tier)).join('')))+
+  fld('SORT BY','so',sel('sort',sorts.map(x=>o(x[0],x[1],st.sort||'year')).join('')))+
+  fld('ORDER','d',sel('dir',o('desc','High to low / newest first',st.dir||'desc')+o('asc','Low to high / oldest first',st.dir||'desc')))+`</div>`;
+ const n=x=>x==null?'—':x,cell=(lab,val)=>`<td data-label="${lab}">${val}</td>`;
+ const rows=q.rows.map(r=>`<tr>${cell('Title',`<span class="item-name">${esc(r.title)}${r.contract?' <span class="item-sub" style="display:inline">(client job)</span>':''}</span><span class="item-sub">${esc(r.company)}${r.mine&&scope==='industry'?' · you':''}</span>`)}${cell('Year',r.year<=0?'Pre-game '+r.year:r.year)}${cell('Medium',esc(sectorName(r.sector))+(r.format?'<span class="item-sub">'+esc(r.format)+'</span>':''))}${cell('Genre',esc(r.genre||'—'))}${cell('Quality / critics / audience',r.historic?'Not recorded':n(r.quality)+' / '+n(r.critic)+' / '+n(r.audience))}${cell('Sales',r.historic?'Not recorded':fmt(r.sales))}${scope==='player'?cell('Revenue / profit',fmt(r.revenue)+' / '+fmt(r.profit)):''}${cell('Result',esc(r.reception||'—')+(r.tier?` <span class="status active">${TIER_LABEL[r.tier]}</span>`:''))}</tr>`).join('');
+ const table=q.total?`<section class="panel"><table class="list-table hist-table"><thead><tr><th>Title</th><th>Year</th><th>Medium</th><th>Genre</th><th>Quality / critics / audience</th><th>Sales</th>${scope==='player'?'<th>Revenue / profit</th>':''}<th>Result</th></tr></thead><tbody>${rows}</tbody></table>
+  <div class="hist-pager"><button type="button" class="btn btn-outline btn-mini" data-hpage="${q.page-1}" data-hview="${v}"${q.page<=1?' disabled':''}>Previous</button><span aria-live="polite">Page ${q.page} of ${q.pages} · ${q.total} titles</span><button type="button" class="btn btn-outline btn-mini" data-hpage="${q.page+1}" data-hview="${v}"${q.page>=q.pages?' disabled':''}>Next</button></div></section>`:`<div class="empty"><strong>No titles match</strong>${scope==='player'?'Release a title, or loosen the filters.':'Loosen the filters.'}</div>`;
+ st.page=q.page;return head+summary+filters+table;}
+document.addEventListener('change',event=>{const t=event.target,v=t.dataset&&t.dataset.hview;if(!v||!t.dataset.hist||!S)return;const st=histState[v];st[t.dataset.hist]=t.value;st.page=1;render();const el=document.getElementById(t.id);if(el)el.focus();});
+document.addEventListener('click',event=>{const b=event.target.closest('button[data-hpage]');if(!b||!S)return;histState[b.dataset.hview].page=Number(b.dataset.hpage);render();window.scrollTo(0,0);});
+
+// M1: phone polish. On phones, tall read-only panels fold behind "Show more" and plain tables stack as cards.
+(function(){const prev=render;
+ render=function(){const r=prev.apply(this,arguments);
+  if(window.innerWidth>600)return r;
+  document.querySelectorAll('#content table.list-table:not(.hist-table)').forEach(t=>{if(t.querySelector('[colspan],[rowspan]'))return;const h=[...t.querySelectorAll('thead th')].map(x=>x.textContent.trim());if(!h.length)return;t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(h[i])td.setAttribute('data-label',h[i]);}));t.classList.add('m1-stack');});
+  document.querySelectorAll('#content .panel').forEach(p=>{if(p.dataset.m1||p.querySelector('form,input,select,textarea'))return;if(p.scrollHeight<=720)return;p.dataset.m1='1';p.classList.add('m1-collapsed');p.insertAdjacentHTML('beforeend','<button type="button" class="btn btn-outline m1-more" aria-expanded="false">Show more</button>');});
+  return r;};
+ document.addEventListener('click',e=>{const b=e.target.closest('.m1-more');if(!b)return;const p=b.closest('.panel'),open=!p.classList.toggle('m1-collapsed');b.textContent=open?'Show less':'Show more';b.setAttribute('aria-expanded',String(open));});
 })();
 
 document.addEventListener('click',event=>{const b=event.target.closest('button[data-u47]');if(!b)return;
