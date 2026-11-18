@@ -86,3 +86,5 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
  .m1-stack td::before{content:attr(data-label);color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;flex:none}
  .m1-stack td>*{text-align:right}
 }
+
+.sector-icon{vertical-align:-3px;margin-right:3px}.small-stat input[type=range]{width:120px;vertical-align:middle}

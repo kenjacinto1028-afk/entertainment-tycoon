@@ -62,7 +62,7 @@ function rememberNow(){rememberTimer=null;try{
   }).catch(e=>notify('Autosave could not be stored. Export a JSON backup. '+e.message,'error')).finally(()=>{queuedSaves50--;});
  }catch(e){notify('Could not autosave. Please export a backup.','error');}}
 window.addEventListener('beforeunload',event=>{flushRemember();if(queuedSaves50>0){event.preventDefault();event.returnValue='';}});
-function notify(text,kind='ok'){const n=$('toast');const isError=kind==='error';n.setAttribute('role',isError?'alert':'status');n.setAttribute('aria-live',isError?'assertive':'polite');n.setAttribute('aria-atomic','true');n.textContent=text;n.className='toast visible'+(isError?' error':'');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.className='toast',CFG.tuning_ui.notify__001);}
+function notify(text,kind='ok'){const n=$('toast');const isError=kind==='error';n.setAttribute('role',isError?'alert':'status');n.setAttribute('aria-live',isError?'assertive':'polite');n.setAttribute('aria-atomic','true');n.textContent=text;sfx(isError?'warn':'ok');n.className='toast visible'+(isError?' error':'');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.className='toast',CFG.tuning_ui.notify__001);}
 function safe(fn){try{fn();remember();render();}catch(error){notify(error.message||String(error),'error');}}
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
   $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
