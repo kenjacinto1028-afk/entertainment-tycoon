@@ -48,3 +48,12 @@ Each original title (player and AI, not contract jobs) rolls Flop / Weak / Solid
 Loss share (revenue < direct cost, titles at least 2 years old), 6 u50 worlds in Standard, before → after: print 2→19%, film 7→~15–21%, TV 5→22%, games 12→28%.
 
 Hit measure changed with R1 (owner-approved): plain receipts / direct cost could never pass ~3x because direct cost grows with sales (store fees, printed copies). B1/B4 now use the success multiple = (receipts − sales costs after launch) / cost up to launch (`p.releaseCost`); pre-v38 titles keep the old measure. Thresholds Hit 3→6, Smash 6→12, Legendary 8→16 (+ quality 85), board Hit 3→6. Result (Standard, 6 u50 worlds, pooled): about 12% Hits, 3.5% Smashes, 0.3% Legendary (before: 0% at every level). All invariants hold.
+
+## R2 format sub-wallets 2026-11-18 (owner-approved)
+
+Book spending in each region is split into print / digital / audio buyers (`config/depth.json` FORMAT_POOLS; digital 8% → 10% at year 10 → 25% at 30 → 35% from 60; audio 0 before year 4, 3% → 9% at 30 → 15% from 60; print = rest). Novel, Nonfiction and Comic / Manga are full releases that reach every group (unchanged sales); Ebook and Web Serial reach digital only, Audiobook audio only. Each group's money is a share of the same capped publishing wallet, so total spending is unchanged. When no limited-format title is selling the old single-pool maths runs, so worlds without them are bit-identical (u50 multiseed and 15-year state hashes match pre-R2). Cost factors cut to match the smaller reach: `tuning_engine.json` `factor__001` (Web Serial) 0.73→0.41, `factor__004` (Ebook) 0.95→0.41, `factor__005` (Audiobook) 1.36→0.17. No save change, no RNG use. Author-approved manuscripts now default to a Novel (was Ebook once available).
+
+Controlled player probe (same world/week/title id, only format differs, Standard, size 1, 3 years of sales), median direct ROI before → after:
+- Year 10 (n=20): Novel 142%; Ebook 185→50%, Audiobook 154→29%, Web Serial 209→49% (digital still young).
+- Year 25 (n=20): Novel 146–149%; Ebook 196→134%, Audiobook 165→114%, Web Serial 220→133%.
+- Year 65 (n=12): Novel 106%; Ebook 140→109%, Audiobook 105→110%, Web Serial 170→109%.
