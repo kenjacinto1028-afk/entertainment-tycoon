@@ -1,6 +1,7 @@
 """Update52 native DOM/ARIA keyboard checks, with an explicit localStorage double.
 Not an independent screen-reader test and not a real origin persistence test.
 """
+import os,sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 root=Path(__file__).resolve().parents[1]
@@ -8,7 +9,7 @@ html=(root/'Studio_Syndicate_Playable_Handoff.html').read_text()
 shim='''<script>(function(){const items={};Object.defineProperty(window,'localStorage',{configurable:true,value:{
  getItem(k){return items[k]??null},setItem(k,v){items[k]=String(v)},removeItem(k){delete items[k]}}});})();</script>'''
 with sync_playwright() as pw:
- browser=pw.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+ browser=pw.chromium.launch(headless=True,**({'executable_path':os.environ['STUDIO_CHROMIUM_PATH']} if os.environ.get('STUDIO_CHROMIUM_PATH') else {}),args=['--no-sandbox'] if sys.platform.startswith('linux') else [])
  for width in [1360,390]:
   ctx=browser.new_context(viewport={'width':width,'height':830});page=ctx.new_page();page.set_default_timeout(10000)
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('dialog',lambda d:d.accept())

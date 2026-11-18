@@ -1,6 +1,7 @@
 """Adversarial startup recovery for Update52 (simulated localStorage/IndexedDB).
 This does NOT demonstrate persistence across a real browser origin or restart.
 """
+import os,sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 root=Path(__file__).resolve().parents[1]
@@ -34,7 +35,7 @@ scenarios=[
  ('no existing saves displays new world dialog',"",'Syndicate Works',None,True),
 ]
 with sync_playwright() as pw:
- browser=pw.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+ browser=pw.chromium.launch(headless=True,**({'executable_path':os.environ['STUDIO_CHROMIUM_PATH']} if os.environ.get('STUDIO_CHROMIUM_PATH') else {}),args=['--no-sandbox'] if sys.platform.startswith('linux') else [])
  ctx=browser.new_context(viewport={'width':1240,'height':800})
  for i,(label,setup,expected,pointer,dialog) in enumerate(scenarios,1):
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
