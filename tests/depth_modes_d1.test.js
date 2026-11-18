@@ -8,7 +8,7 @@ function switches(s){return {staffAutoFill:E.player(s).staffPolicy.autoFill,tale
 
 check('New games default to Standard with its preset',()=>{
  const s=E.createGame({seed:'depth-d1'});
- assert.equal(E.SAVE_VERSION,35);assert.equal(s.version,35);
+ assert.equal(s.version,E.SAVE_VERSION);
  assert.equal(s.settings.depth,'standard');assert.deepEqual(switches(s),MODES.standard);
  assert.deepEqual(E.audit(s),[]);return {depth:s.settings.depth};
 });
@@ -43,7 +43,7 @@ check('Pre-v35 saves load as Standard',()=>{
  const s=E.createGame({seed:'depth-old',depth:'veryComplex'});E.advance(s,4);
  const old=JSON.parse(JSON.stringify(s));old.version=34;delete old.settings.depth;
  const t=E.loadState(old);
- assert.equal(t.version,35);assert.equal(t.settings.depth,'standard');assert.deepEqual(switches(t),MODES.standard);
+ assert.equal(t.version,E.SAVE_VERSION);assert.equal(t.settings.depth,'standard');assert.deepEqual(switches(t),MODES.standard);
  assert.deepEqual(E.audit(t),[]);
 });
 console.log(`DEPTH D1 ${total}/6 passed`);

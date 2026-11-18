@@ -41,6 +41,7 @@ function createGame(input={}) {
   seedCandidates(s,CFG.tuning_engine.createGame__003);
   prepare43World(s,input);
   setDepth(s,DEPTH_MODES.includes(input.depth)?input.depth:CFG.depth.DEFAULT);
+  s.decisionCards={year:yearAt(s.week),cards:0,low:0,auto:0};
   return s;
 }
 function seedRivals(s,era) {

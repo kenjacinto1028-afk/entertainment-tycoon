@@ -7,7 +7,7 @@ Read the project's WORKING_RULES.md and PROGRESS.md first. Full detail lives in 
 - Edit only `src/` and `config/*.json`. Never edit `dist/`, `config/compiled.json`, or `Studio_Syndicate_Playable_Handoff.html` (generated).
 - Never reorder `src/engine_order.json` / `src/ui_order.json`.
 - Engine: no `Math.random` (use `rand(s)`), money via `money(...)`, don't rewrite ledger transaction legs.
-- Don't change save fields/RNG flow without a migration + test (save schema v35).
+- Don't change save fields/RNG flow without a migration + test (save schema v36).
 - No new features unless the user approves.
 
 ## Build & test

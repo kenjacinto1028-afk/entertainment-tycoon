@@ -96,6 +96,51 @@
         "commissionAutoCounter": false,
         "stopForAdvisory": false
       }
+    },
+    "INBOX": {
+      "_note": "D3: yearlyCards = max Inbox decision cards per game year (null = no limit). lowPriorityCards = low-priority items only get a card while fewer than this many cards were shown this year. autoDisputes = client delivery disputes are settled automatically (paid rework if affordable, else neutral arbitration).",
+      "simple": {
+        "yearlyCards": 10,
+        "lowPriorityCards": 0,
+        "autoDisputes": true
+      },
+      "standard": {
+        "yearlyCards": 20,
+        "lowPriorityCards": 8,
+        "autoDisputes": true
+      },
+      "veryComplex": {
+        "yearlyCards": null,
+        "lowPriorityCards": null,
+        "autoDisputes": false
+      }
+    },
+    "PRIORITY": {
+      "_note": "Inbox item key prefixes. urgent = always shown as a card. low = shown only under lowPriorityCards. Anything else is normal priority.",
+      "urgent": [
+        "liquidity-",
+        "cash-stress-",
+        "overdue-bank-",
+        "unpaid-labor-",
+        "blocked-",
+        "executive-departure-",
+        "successor-due-",
+        "career-transition-",
+        "management-control-",
+        "rights-delegation-"
+      ],
+      "low": [
+        "postmortem-",
+        "commission-counter-",
+        "co-offer-",
+        "tv-cast-",
+        "legal-advance-",
+        "founder-retirement",
+        "print-stock-",
+        "initial-print-",
+        "budget-",
+        "preview-"
+      ]
     }
   },
   "events": {
@@ -750,7 +795,7 @@
     ]
   },
   "save": {
-    "SAVE_VERSION": 35
+    "SAVE_VERSION": 36
   },
   "starting": {
     "ORIGINS": {
@@ -2129,7 +2174,7 @@
     "loadState__094": 0.02,
     "loadState__095": 0.02,
     "loadState__096": 2,
-    "loadState__097": 35,
+    "loadState__097": 36,
     "skill__003": 54,
     "skill__004": 41,
     "filmActorPool__001": 1100,
