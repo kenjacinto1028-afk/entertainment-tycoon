@@ -1,0 +1,26 @@
+{
+  "DEFAULT": "standard",
+  "MODES": {
+    "simple": {
+      "staffAutoFill": true,
+      "talentAutoBook": true,
+      "rightsAutoRenew": true,
+      "commissionAutoCounter": true,
+      "stopForAdvisory": false
+    },
+    "standard": {
+      "staffAutoFill": true,
+      "talentAutoBook": true,
+      "rightsAutoRenew": true,
+      "commissionAutoCounter": true,
+      "stopForAdvisory": false
+    },
+    "veryComplex": {
+      "staffAutoFill": true,
+      "talentAutoBook": false,
+      "rightsAutoRenew": false,
+      "commissionAutoCounter": false,
+      "stopForAdvisory": false
+    }
+  }
+}

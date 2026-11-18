@@ -208,6 +208,8 @@ function loadState(raw){const s=typeof raw==='string'?JSON.parse(raw):raw;
   if(!Array.isArray(s.commissionOffers))s.commissionOffers=[];
   if(!Array.isArray(s.commissionHistory))s.commissionHistory=[];
   if(!s.commissionPolicy)s.commissionPolicy={autoCounter:false,maxFee:CFG.tuning_engine.loadState__092,minMargin:CFG.tuning_engine.loadState__093};
+  // v35: pre-depth saves become the default depth (old saves were test-only; owner decision 2026-11-18).
+  if(s.settings&&!DEPTH_MODES.includes(s.settings.depth)&&s.pausePolicy&&s.talentPolicy&&s.rightsPolicy)setDepth(s,CFG.depth.DEFAULT);
   if(!s.regionalEconomy)s.regionalEconomy=Object.fromEntries(REGIONS.map(r=>[r.name,{confidence:1,inflation:CFG.tuning_engine.loadState__094,employment:1}]));
   for(const r of REGIONS){
     if(!s.regionalEconomy[r.name])s.regionalEconomy[r.name]={confidence:1,inflation:CFG.tuning_engine.loadState__095,employment:1};

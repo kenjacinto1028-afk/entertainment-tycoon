@@ -58,6 +58,32 @@
       ]
     }
   },
+  "depth": {
+    "DEFAULT": "standard",
+    "MODES": {
+      "simple": {
+        "staffAutoFill": true,
+        "talentAutoBook": true,
+        "rightsAutoRenew": true,
+        "commissionAutoCounter": true,
+        "stopForAdvisory": false
+      },
+      "standard": {
+        "staffAutoFill": true,
+        "talentAutoBook": true,
+        "rightsAutoRenew": true,
+        "commissionAutoCounter": true,
+        "stopForAdvisory": false
+      },
+      "veryComplex": {
+        "staffAutoFill": true,
+        "talentAutoBook": false,
+        "rightsAutoRenew": false,
+        "commissionAutoCounter": false,
+        "stopForAdvisory": false
+      }
+    }
+  },
   "events": {
     "messages": {
       "setCompanyCulture__001": "Studio culture policy",
@@ -710,7 +736,7 @@
     ]
   },
   "save": {
-    "SAVE_VERSION": 34
+    "SAVE_VERSION": 35
   },
   "starting": {
     "ORIGINS": {
@@ -2089,7 +2115,7 @@
     "loadState__094": 0.02,
     "loadState__095": 0.02,
     "loadState__096": 2,
-    "loadState__097": 34,
+    "loadState__097": 35,
     "skill__003": 54,
     "skill__004": 41,
     "filmActorPool__001": 1100,

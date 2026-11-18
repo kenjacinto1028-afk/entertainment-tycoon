@@ -18,7 +18,7 @@ check('Four media produce distinct legal releases and reconciled customer ledger
  return results;
 });
 check('Territory and media licenses bind independent film production and expire',()=>{
- const s=E.createGame({era:25,origin:'established',seed:'expiry-movie44',aiCount:12,regionCount:2});
+ const s=E.createGame({era:25,origin:'established',seed:'expiry-movie44',aiCount:12,regionCount:2,depth:'veryComplex'});
  const book=E.createProject(s,{title:'Ledger Dragon',sector:'publishing',route:'original',size:.7,genre:'Fantasy'});
  const filmFirm=s.companies.find(c=>c.id!==s.playerId&&c.capabilities.movie&&c.finance.cash>50000);
  assert(filmFirm,'Need solvent film counterparty');const beforeOwnerCash=E.player(s).finance.cash;

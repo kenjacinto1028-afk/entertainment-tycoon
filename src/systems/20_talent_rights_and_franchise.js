@@ -86,6 +86,14 @@ function batchApproveRoutineCounters(s,limit=CFG.tuning_engine.batchApproveRouti
     note:'Terms only: each production still requires explicit funding and rights approval.'};
 }
 function dismissRoutineAdvisories(s){let count=0;for(const item of s.inbox)if(item.open&&item.kind==='advisory'){item.open=false;count++;}return count;}
+// Depth modes (Simple / Standard / Very Complex) only switch automatic policies;
+// the simulation rules are the same in every mode. Presets live in config/depth.json.
+const DEPTH_MODES=Object.keys(CFG.depth.MODES);
+function applyDepthPreset(s,mode){const p=CFG.depth.MODES[mode];
+ s.pausePolicy.stopForAdvisory=p.stopForAdvisory;s.talentPolicy.autoBook=p.talentAutoBook;
+ s.rightsPolicy.autoRenew=p.rightsAutoRenew;s.commissionPolicy.autoCounter=p.commissionAutoCounter;
+ const c=player(s);if(c&&c.staffPolicy)c.staffPolicy.autoFill=p.staffAutoFill;}
+function setDepth(s,mode){if(!DEPTH_MODES.includes(mode))throw new Error('Invalid depth mode.');s.settings.depth=mode;applyDepthPreset(s,mode);return mode;}
 function setPausePolicy(s,stopForAdvisory){if(typeof stopForAdvisory!=='boolean')throw new Error('Invalid skip interruption policy.');s.pausePolicy={stopForAdvisory};return {...s.pausePolicy};}
 function setDashboardFocus(s,focus){if(!['operations','finance','franchise'].includes(focus))throw new Error('Unknown dashboard layout.');s.dashboardFocus=focus;return focus;}
 function companyProfit(c){return money(c.finance.revenue-c.finance.expense);}

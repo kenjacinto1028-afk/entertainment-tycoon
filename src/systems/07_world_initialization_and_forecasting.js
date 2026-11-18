@@ -40,6 +40,7 @@ function createGame(input={}) {
   seedSpecialists(s);
   seedCandidates(s,CFG.tuning_engine.createGame__003);
   prepare43World(s,input);
+  setDepth(s,DEPTH_MODES.includes(input.depth)?input.depth:CFG.depth.DEFAULT);
   return s;
 }
 function seedRivals(s,era) {
