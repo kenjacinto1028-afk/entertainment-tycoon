@@ -401,7 +401,7 @@ function backgroundProgress(s) {
     if(b.finance.cash<=0&&b.finance.payable>SECTORS[b.sector].cost*CFG.tuning_engine.backgroundProgress__013){b.bankrupt=true;b.active=null;}
   }
 }
-function backgroundWeights(s,sector,region) {
+function backgroundWeights(s,sector,region,fatigue=null) {
   const results=[];
   for(const b of s.backgroundFirms){
     if(b.sector!==sector)continue;
@@ -409,7 +409,7 @@ function backgroundWeights(s,sector,region) {
     // but cannot spend additional production money or restart by fiat.
     for(const p of b.releases){
       const age=s.week-p.releaseWeek;if(age<0||age>=CFG.tuning_engine.backgroundWeights__001)continue;
-      const weight=((p.quality/CFG.tuning_engine.weight__001)**CFG.tuning_engine.weight__002)*region.tastes[p.genre]*(1+CFG.tuning_engine.weight__003*p.marketingRatio)*Math.exp(-age/(sector==='publishing'?CFG.tuning_engine.weight__004:CFG.tuning_engine.weight__005));
+      const weight=((p.quality/CFG.tuning_engine.weight__001)**CFG.tuning_engine.weight__002)*region.tastes[p.genre]*(fatigue?genreFatigueMult(sector,fatigue[p.genre]):1)*(1+CFG.tuning_engine.weight__003*p.marketingRatio)*Math.exp(-age/(sector==='publishing'?CFG.tuning_engine.weight__004:CFG.tuning_engine.weight__005));
       results.push({firm:b,genre:p.genre,weight});
     }
   }
@@ -908,6 +908,8 @@ function forecastProject(s,data,plan,c) {
   const averageRatio=comparable.length?comparable.reduce((n,r)=>n+clamp(r.actualGross/r.expectedGross,CFG.tuning_engine.averageRatio__001,CFG.tuning_engine.averageRatio__002),0)/comparable.length:1;
   const marketCalibration=money(clamp(1+(averageRatio-1)*comparable.length/(comparable.length+CFG.tuning_engine.marketCalibration__001),CFG.tuning_engine.marketCalibration__002,CFG.tuning_engine.marketCalibration__003));
   const revenueByScenario={};
+  // R4: fatigue from releases already out (known today), aged to each future week; this title counts too once released.
+  const fatigueAt={},FW=CFG.depth.GENRE_FATIGUE.windowWeeks,fatigueMult=(week,regionName,genre)=>{const P=(fatigueAt[week] ||= genreFatiguePressure(s,plan.sector,week));const own=route!=='contract'&&genre===candidate.genre?Math.max(0,1-(week-s.week-plan.weeks)/FW):0;return CFG.depth.GENRE_FATIGUE.modes.includes(s.settings?.depth)?genreFatigueMult(plan.sector,(P[regionName]?.[genre]||0)+own):1;};
   for(const [scenario,qualityShift,marketShift] of [['conservative',-CFG.tuning_engine.forecastProject__001,CFG.tuning_engine.forecastProject__002],['expected',0,1],['optimistic',CFG.tuning_engine.forecastProject__003,CFG.tuning_engine.forecastProject__004]]) {
     let gross=0;
     if(route!=='contract')for(let i=0;i<horizonWeeks;i++) {
@@ -916,11 +918,11 @@ function forecastProject(s,data,plan,c) {
         const budget=worldMarketBudget(s,plan.sector,region.name,futureWeek)*marketShift*(plan.sector==='publishing'?formatReachShare(s,plan.format,futureWeek):1);
         const decay=Math.exp(-i/(plan.sector==='publishing'?CFG.tuning_engine.decay__001:CFG.tuning_engine.decay__002));
         const reach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(candidate,k),0);
-        const weight=((clamp(candidate.quality+qualityShift,CFG.tuning_engine.weight__006,CFG.tuning_engine.weight__007)/CFG.tuning_engine.weight__008)**CFG.tuning_engine.weight__009)*region.tastes[candidate.genre]*(1+CFG.tuning_engine.weight__010*(candidate.marketingBudget/Math.max(candidate.budget,1)))*decay*reach;
+        const weight=((clamp(candidate.quality+qualityShift,CFG.tuning_engine.weight__006,CFG.tuning_engine.weight__007)/CFG.tuning_engine.weight__008)**CFG.tuning_engine.weight__009)*region.tastes[candidate.genre]*fatigueMult(futureWeek,region.name,candidate.genre)*(1+CFG.tuning_engine.weight__010*(candidate.marketingBudget/Math.max(candidate.budget,1)))*decay*reach;
         const knownCompetition=s.projects.filter(p=>p.sector===plan.sector&&p.status==='released'&&p.releaseWeek<=futureWeek&&futureWeek-p.releaseWeek<CFG.tuning_engine.knownCompetition__001&&p.route!=='contract'&&(!p.grantId||s.grants.some(g=>g.id===p.grantId&&g.type==='license'&&g.startWeek<=futureWeek&&g.endWeek+g.continuationWeeks>futureWeek))).reduce((sum,p)=>{
           const competingAge=futureWeek-p.releaseWeek;
           const rivalReach=audienceCohorts(s,region.name).reduce((total,k)=>total+k.share*audienceAffinity(p,k),0);
-          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*receptionMult(p)*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
+          return sum+((p.quality/CFG.tuning_engine.knownCompetition__002)**CFG.tuning_engine.knownCompetition__003)*region.tastes[p.genre]*fatigueMult(futureWeek,region.name,p.genre)*receptionMult(p)*(1+CFG.tuning_engine.knownCompetition__004*(p.marketingBudget/Math.max(p.budget,1)))*Math.exp(-competingAge/(p.sector==='publishing'?CFG.tuning_engine.knownCompetition__005:CFG.tuning_engine.knownCompetition__006))*rivalReach;
         },0);
         gross+=budget*weight/(CFG.tuning_engine.forecastProject__005+weight+knownCompetition);
       }
@@ -933,7 +935,8 @@ function forecastProject(s,data,plan,c) {
   const advance=route==='contract'?plan.contractFee*CFG.tuning_engine.advance__002:0;
   // Stress-case liquidity before any new consumer sales, not an accounting profit forecast.
   const noSalesCashFloor=money(c.finance.cash+advance-plan.grandTotal-(plan.initialPrintCash||0)-committed-weeklyOverhead(c,s)*plan.weeks-c.finance.payable);
-  return {horizonWeeks,estimatedAtWeek:s.week,estimatedQuality:money(candidate.quality),evidenceSampleSize:comparable.length,marketCalibration,scenario:revenueByScenario,royaltyRate,initialPrintCash:plan.initialPrintCash||0,noSalesCashFloor,
+  const releaseWeek=s.week+plan.weeks,fatigueRegions=activeRegions(s).map(r=>fatigueMult(releaseWeek,r.name,candidate.genre)),genreFatigueAtRelease=route==='contract'?1:Math.round(fatigueRegions.reduce((a,b)=>a+b,0)/Math.max(1,fatigueRegions.length)*1000)/1000;
+  return {horizonWeeks,estimatedAtWeek:s.week,genreFatigueAtRelease,estimatedQuality:money(candidate.quality),evidenceSampleSize:comparable.length,marketCalibration,scenario:revenueByScenario,royaltyRate,initialPrintCash:plan.initialPrintCash||0,noSalesCashFloor,
 downsideWarning:noSalesCashFloor<0?'Possible cash shortfall before release. Other income or financing may be needed.':noSalesCashFloor<weeklyOverhead(c,s)*CFG.tuning_engine.forecastProject__006?'Thin pre-release cash buffer: leave room for operating expenses.':null,
     basis:route==='contract'?'Fixed client delivery fee, subject to completing the work.':stocked?'Estimated first 13 sales weeks; includes expected print COGS/wholesale fees, but retailer returns and stockouts can change results.':'Estimated first 13 sales weeks; future rivals, changing taste and economic shocks are uncertain.'};
 }
@@ -2261,6 +2264,35 @@ function formatPoolShares(s,week=s.week){
 }
 function formatReach(format){return CFG.depth.FORMAT_POOLS.reach[format]||null;}
 function formatReachShare(s,format,week=s.week){const r=formatReach(format);if(!r)return 1;const sh=formatPoolShares(s,week);return r.reduce((n,k)=>n+sh[k],0);}
+// R4 genre fatigue (config depth.json GENRE_FATIGUE). Recent same-genre,
+// same-medium releases sold in a region lower that genre's demand there for
+// everyone alike. Worked out from release history known at s.week (no save
+// field, no RNG). Returns {region:{genre:pressure}}.
+function genreFatiguePressure(s,sector,week=s.week){
+  const F=CFG.depth.GENRE_FATIGUE,W=F.windowWeeks,known=Math.min(week,s.week),out={};
+  if(!F.modes.includes(s.settings?.depth))return out;
+  const regions=activeRegions(s);for(const r of regions)out[r.name]={};
+  const add=(region,genre,w)=>{if(w>0)out[region][genre]=(out[region][genre]||0)+w;};
+  for(const p of s.projects){
+    if(p.sector!==sector||p.status!=='released'||p.route==='contract'||!(p.releaseWeek<=known))continue;
+    const age=week-p.releaseWeek;if(age<0||age>=W)continue;
+    for(const r of regions)if(canDistribute43(s,p,r.name,p.releaseWeek))add(r.name,p.genre,1-age/W);
+  }
+  for(const b of s.backgroundFirms){if(b.sector!==sector)continue;
+    for(const x of b.releases){if(!(x.releaseWeek<=known))continue;const age=week-x.releaseWeek;if(age<0||age>=W)continue;
+      for(const r of regions)add(r.name,x.genre,F.backgroundWeight*(1-age/W));}}
+  return out;
+}
+function genreFatigueMult(sector,pressure){
+  const F=CFG.depth.GENRE_FATIGUE;
+  return Math.max(F.floor,1-F.perPoint[sector]*Math.max(0,(pressure||0)-F.free[sector]));
+}
+// Player-facing view: demand multiplier per genre now, averaged over active regions.
+function genreFatigue(s,sector,week=s.week){
+  const P=genreFatiguePressure(s,sector,week),regions=activeRegions(s),res={};
+  for(const g of GENRES){const m=regions.map(r=>genreFatigueMult(sector,P[r.name]?.[g]));res[g]=Math.round(m.reduce((a,b)=>a+b,0)/Math.max(1,m.length)*1000)/1000;}
+  return res;
+}
 function weekSales(s) {
   s.weeklyConsumerSpend=money((s.streamingWeeklyTotal||0)+Object.values(s.gameMarketReserved||{}).reduce((a,b)=>a+b,0));
   for(const [sector,info] of Object.entries(SECTORS)) {
@@ -2270,16 +2302,17 @@ function weekSales(s) {
     // Old single-pool maths whenever no format-limited title is selling, so
     // worlds without ebooks/audiobooks/web serials keep identical numbers.
     const pools=sector==='publishing'&&titles.some(p=>formatReach(p.format))?formatPoolShares(s):null;
+    const fatigue=genreFatiguePressure(s,sector);
     for(const region of activeRegions(s)) {
       const budget=Math.max(0,money(worldMarketBudget(s,sector,region.name)-(sector==='tv'?(s.streamingWeeklyReserved?.[region.name]||0):sector==='games'?(s.gameMarketReserved?.[region.name]||0):0)));
-      const background=backgroundWeights(s,sector,region);
+      const background=backgroundWeights(s,sector,region,fatigue[region.name]);
       const cohortShares=audienceCohorts(s,region.name);
       const weights=titles.map(()=>0),minorShares=background.map(()=>0);
       for(const cohort of cohortShares){
         const titleWeights=titles.map(p=>{
           if(!canDistribute43(s,p,region.name,s.week))return 0;
           const age=s.week-p.releaseWeek,decay=Math.exp(-age/((p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004)*receptionLegs(p)));
-          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
+          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
            (p.sector==='movie'&&p.cinema?filmDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='tv'&&p.television?tvDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='games'&&p.videoGame?gameDemandMultiplier(p,s.week,region.name)*gamePlatformDemand49(s,p,region.name):1)*
@@ -6637,7 +6670,7 @@ const _auditBefore49=audit;
 audit=function(s){const problems=_auditBefore49(s);audit49(s,problems);return problems;};
 
 
-return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,boardRepStatus,receptionRoll,receptionUnit,formatPoolShares,formatReach,formatReachShare,titleMultiple,boardGate,boardBlockAnswer,boardPressureAnswer,boardOverrideCost,decisionCardLog,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,contractTier,contractSizeLockMessage,advance,advanceToDecision,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney,releaseHistory};
+return {CONFIG:CFG,rivalMarketConcentration,rivalIntelligence,institutionsReport,automaticLenderDecision,openCreditLine,creditLineStatus,drawCreditLine,closeCreditLine,createDivision,assignTeamDivision,divisionPerformance,setCentralService,groupFinanceReport,companyPurchaseQuote,assetPurchaseQuote,acquisitionDiligence,acquireCompany,acquireAsset,integrateAcquisition,groupInternalLicense,subsidiaryDelegation,STARTUP_PROFILES,eraOverview43,capabilityReadiness43,managementStatus43,setManagement43,productionPath43,OBJECTIVE_DEFS43,TUTORIAL_STEPS43,beginTutorial43,endTutorial43,visitTutorial43,tutorialStatus43,chooseObjective43,objectiveStatus43,adviser43,portraitTraits43,syncWorldEvents43,worldEvents43,rightsPackageReport43,grantRightsPackage43,canDistribute43,gamePublisherQuote43,signGamePublisher43,gamePublisherReport43,technologyOffer43,acquireTechnology43,canUseIp,rivalResearch43,operatingStatus44,commissionInspection47,commissionDispute47,commissionResolve47,loanWorkoutQuote47,restructureLoan47,gamePlatformMarket49,gamePlatformReport49,gameLiveService49,corporateStatus,corporateReadiness,corporateValuation,corporateRisk,setRiskPolicy,setInsurance,insuranceStatus,groupInvestmentReview,renameCompany,investmentCommittee,incorporateStudio,boardVote,raiseEquity,launchIPO,sellFounderShares,payDividend,planLeadership,chooseLeader,stepDown,contestExecutiveControl,startFreshCompany,endRun,careerHistory,SAVE_VERSION,GAME_PLATFORMS,GAME_MECHANICS,GAME_MODELS,gameOfferExclusive,gameAnswerExclusive,gameBookExclusive,gameDesign,gamePrototype,gameBuildEngine,gameChooseEngine,gameQA,gameBeta,gameCertify,gameSetModel,gameCommunity,gameSupport,gameReadiness,openGameStore,gameStoreOffer,gameAnswerStoreOffer,gameListStore,gameSelectStore,gameSubscribeStore,gameStoreReport,gameWindows,requestStreamingLicense,answerStreamingLicense,TV_NETWORKS,TV_SLOTS,STREAM_TIERS,tvPlanSeason,tvWritersRoom,tvEditEpisode,tvCast,tvSchedule,tvUseBacklot,tvRatings,tvRenewSeason,tvEndSeries,streamingReady,launchStreamingService,setStreamingTier,licenseStreamingTitle,streamingCatalog,streamingReport,FILM_METHODS,buildFilmBacklot,useFilmBacklot,filmPremiere,filmActorPool,filmAudition,filmChooseCast,filmDecision,filmDistribution,filmBoxOffice,PUBLISHING_PRICES,openPublishingOutlet,listPublishingOutlet,closePublishingOutlet,publishingOutletReport,requestManuscriptApproval,reviewSerialArc,publishingFormatAvailable,publishingFormatTreatment,translatePublishingEdition,createPublishingImprint,assignPublishingImprint,publishingImprintReport,openPublishingPreorders,manuscriptMarket,negotiateManuscript,answerManuscript,publishingInterest,setPublishingChannel,setSerialCadence,publishingSalesReport,editorialAssessment,editorialDecision,creatorCareer,creativeAwards,worldHistory,scoutEmergingCreator,developEmergingCreator,publishingCharts,candidatePool,employeeRoster,hireCandidate,renewEmployee,releaseEmployee,setCompanyCulture,configureStaffDelegation,configureTalentAuthority,delegateSpecialists,trainTeam,teamPerformance,availableSpecialists,bookSpecialist,setFranchiseReleaseTarget,coordinateFranchiseReleases,franchiseMomentum,franchiseAudienceSignals,routineCounterQueue,batchApproveRoutineCounters,captureAnnualSnapshots,historicalCompanyFinances,portfolioRankings,portfolioRecords,searchNewsArchive,dismissRoutineAdvisories,setPausePolicy,setDepth,DEPTH_MODES,boardRepStatus,receptionRoll,receptionUnit,formatPoolShares,formatReach,formatReachShare,genreFatigue,genreFatiguePressure,genreFatigueMult,titleMultiple,boardGate,boardBlockAnswer,boardPressureAnswer,boardOverrideCost,decisionCardLog,setDashboardFocus,SECTORS,THEMES,TARGET_AUDIENCES,CREATIVE_DIRECTIONS,MARKET_POSITIONINGS,coProductionQuote,investmentComparison,proposeCoProduction,answerCoProductionOffer,configureCoProductionAuthority,startCoProduction,coProductionStatement,requestCommission,answerCommissionOffer,configureCommissionAuthority,cancelProject,counterpartyTrust,WORLD_SCALES,activeRegions,regionalEconomyReport,audienceCohorts,estimateWeeklyPayroll,marketLoanRate,applyEconomicShock,businessTechnology,investResearch,adoptTechnology,technologyReport,worldMarketBudget,worldSetupWarnings,economicBrief,quarterlyMarketHistory,GENRES,FORMATS,MONTHS,ORIGINS,REGIONS,createGame,player,company,previewProject,createProject,franchiseBible,editFranchiseBible,editFranchiseBranch,franchiseSchedule,franchiseOverview,FRANCHISE_BRANCHES,changeProjectTeam,interveneProduction,projectEvidence,projectHistory,canUseIp,createOption,offerRights,offerRenewal,answerRightsOffer,exerciseLicensedOption,requestCreativeApproval,decideCreativeApproval,configureRightsAuthority,enterSector,capabilityCost,hireTeam,eligibleClients,contractTier,contractSizeLockMessage,advance,advanceToDecision,available,yearAt,yearWeek,periodAt,periodLabel,dismissAlert,companyProfit,companyBalance,currentProjectProfit,projectBudget,orderPrintRun,setPrintPolicy,writeOffPrintStock,productionFinancial,franchiseFinancial,financialStatements,settlementEvidence,groupSettlementEvidence,closedSettlementHistory,closedSettlementAudit,obligationExposure,groupObligationIntegrity,portfolioBudget,balanceSheetDetails,activeObligationRegister,rightsCalendar,royaltyStatements,liquidityForecast,loanLimit,borrowLoan,repayLoan,foundSubsidiary,controlledCompanies,chargeSharedServices,consolidatedStatements,audit,loadState,transactionsFor,shortMoney,releaseHistory};
 
 });
 

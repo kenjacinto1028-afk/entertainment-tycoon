@@ -269,5 +269,15 @@
     "QUALITY_PIVOT": 60,
     "QUALITY_SHIFT": 0.004,
     "MAX_SHIFT": 0.12
+  },
+  "GENRE_FATIGUE": {
+    "_note": "R4: same-genre, same-medium releases sold in a region over the last windowWeeks lower that genre's demand there. Each release counts (1 - age/windowWeeks); background firms count backgroundWeight. Pressure above free[sector] cuts demand by perPoint each, never below floor. Worked out from release history: no save field, no RNG.",
+    "modes": ["simple", "standard", "veryComplex"],
+    "windowWeeks": 52,
+    "backgroundWeight": 0.5,
+    "free": {"publishing": 3, "movie": 1.5, "tv": 1.5, "games": 1.5},
+    "perPoint": {"publishing": 0.08, "movie": 0.08, "tv": 0.08, "games": 0.08},
+    "floor": 0.7,
+    "noteThreshold": 0.95
   }
 }
