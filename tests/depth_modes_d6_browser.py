@@ -42,6 +42,10 @@ with sync_playwright() as pw:
    assert ('Career & Ownership' in subs)==(depth=='standard'),subs
    sub(page,'Settings');assert page.locator('[data-depth-switch]').count()>=1
    sub(page,'Saves');assert page.locator('[data-save-slot]').count()==3 and page.locator('[data-depth-switch]').count()==0
+   # Top-right Settings and Saves buttons: visible on every screen, inside the window
+   for v,h in (('saves','Saves'),('settings','Settings')):
+    tb=page.locator(f'.top-actions [data-view="{v}"]');bb=tb.bounding_box();assert tb.is_visible() and bb['x']+bb['width']<=width,(v,bb)
+    tb.click();page.wait_for_timeout(100);assert page.locator('#content h1').first.inner_text().startswith(h)
    tab(page,'Inbox');assert current(page)=='inbox' and page.locator('.subtabs5').count()==0
    tab(page,'Dashboard');assert current(page)=='dashboard'
    # advance button still reachable and not covered by the tab bar
