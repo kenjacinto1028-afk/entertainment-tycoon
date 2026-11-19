@@ -23,3 +23,6 @@
 ## Handoff history and precedence
 
 Accepted design catalog → final acceptance progress → actual maintained modules/config → new reproducible test evidence. Preserve save v34 and worldwide sector debut years 1/4/7/10. Any mismatch between old reports and current source needs verified investigation, not automatic feature expansion.
+
+## Play link
+- [x] GitHub Pages auto-deploy: `.github/workflows/pages.yml` publishes the built game to https://kenjacinto1028-afk.github.io/entertainment-tycoon/ on every push to main.
