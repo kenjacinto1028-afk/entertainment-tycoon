@@ -108,3 +108,5 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
 body.tabs5 .guide-card{bottom:150px}
 @media(max-width:850px){.guide-card{bottom:150px}}
 @media(max-width:600px){.guide-card,body.tabs5 .guide-card{left:8px;right:8px;width:auto;top:72px;bottom:auto}.guide-card.guide-min{left:auto}}
+.form-field input.field-invalid,.form-field select.field-invalid,.form-field textarea.field-invalid,input.field-invalid,select.field-invalid{border-color:var(--danger)!important;box-shadow:0 0 0 3px var(--danger-bg)}.field-error-msg{color:var(--danger)!important;font-size:11px!important;font-weight:700}
+.toast{pointer-events:none}
