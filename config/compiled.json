@@ -268,7 +268,8 @@
             "finance",
             "chistory",
             "career",
-            "settings"
+            "settings",
+            "saves"
           ]
         },
         {
@@ -292,7 +293,8 @@
         "chistory": "Company History",
         "finance": "Financials",
         "career": "Career & Ownership",
-        "settings": "Game & Saves",
+        "settings": "Settings",
+        "saves": "Saves",
         "inbox": "Inbox"
       }
     },
@@ -1158,7 +1160,8 @@
           "history": "Every title released by every company. Filter to see what genres and media do well.",
           "legends": "Hall of Fame: the biggest hits, creators and franchises of all time.",
           "chistory": "Every title your company has released, with revenue and profit.",
-          "settings": "Saves (3 slots plus JSON backup), game depth (Simple, Standard, Very Complex), sound and other options."
+          "settings": "Game depth (Simple, Standard, Very Complex), sound and other options.",
+          "saves": "Your save slots (3 slots) plus JSON backup download and import."
         }
       }
     }

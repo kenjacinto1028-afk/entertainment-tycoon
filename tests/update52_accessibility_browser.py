@@ -21,9 +21,9 @@ with sync_playwright() as pw:
   assert page.evaluate('document.activeElement.closest("#modal")!==null')
   page.locator('#new-game-form button[type="submit"]').click()
   assert page.get_by_role('dialog').count()==0
-  # D6: Standard uses the 5-tab layout; Game & Saves lives under Company
+  # D6: Standard uses the 5-tab layout; Settings and Saves live under Company
   page.locator('#tab5 [data-tab5="company"]').click()
-  page.locator('.subtabs5 [data-view="settings"]').click()
+  page.locator('.subtabs5 [data-view="saves"]').click()
   page.get_by_role('button',name='Load campaign from slot 2').click()
   page.wait_for_function("()=>document.querySelector('#toast')?.textContent?.includes('Load slot failed')")
   assert page.get_by_role('alert').count()==1
@@ -33,6 +33,7 @@ with sync_playwright() as pw:
   page.wait_for_function("()=>document.querySelector('#toast')?.textContent?.includes('Campaign saved')")
   assert page.get_by_role('status').count()==1
   assert page.locator('#toast').get_attribute('aria-live')=='polite'
+  page.locator('.subtabs5 [data-view="settings"]').click()  # New game lives on Settings
   page.locator('[data-new-game]').first.click();assert page.get_by_role('dialog',name='Create your entertainment world').count()==1
   page.keyboard.press('Escape');assert page.get_by_role('dialog').count()==0
   assert page.evaluate('document.activeElement.hasAttribute("data-new-game")')

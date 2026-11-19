@@ -32,7 +32,7 @@ with sync_playwright() as pw:
  page.set_content(html.replace('<head>','<head>'+shim,1),wait_until='domcontentloaded')
  page.wait_for_selector('#new-game-form')
  page.locator('#new-game-form button[type="submit"]').click()
- page.locator('[data-view="settings"]').first.click()
+ page.locator('[data-view="saves"]').first.click()
  page.locator('#save-name-1').fill('IndexedDB slot')
  page.get_by_role('button',name='Save campaign in slot 1').click()
  page.wait_for_function("()=>{const v=localStorage.getItem('studio-syndicate-f1-slot-1');return v&&v.includes('@indexeddb-v50')}")
