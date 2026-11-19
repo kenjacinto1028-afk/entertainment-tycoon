@@ -21,10 +21,10 @@ for t in sorted((ROOT/'tests').glob('depth_modes_*.test.js')):
  call(['node',f'tests/{t.name}'])
  print(f'PASS {t.stem}')
 if a.browser:
- for script in ['tests/update52_accessibility_browser.py','tests/update52_recovery_browser.py','tests/depth_modes_d2_browser.py','tests/depth_modes_d4_browser.py','tests/depth_modes_d5_browser.py','tests/depth_modes_d6_browser.py','tests/depth_modes_form_browser.py','tests/release_history_browser.py','tests/depth_modes_r4_browser.py','tests/popup_sandbox_browser.py','tests/goals_dock_browser.py','tests/guide_browser.py']:
+ for script in ['tests/update52_accessibility_browser.py','tests/update52_recovery_browser.py','tests/depth_modes_d2_browser.py','tests/depth_modes_d4_browser.py','tests/depth_modes_d5_browser.py','tests/depth_modes_d6_browser.py','tests/depth_modes_form_browser.py','tests/release_history_browser.py','tests/depth_modes_r4_browser.py','tests/popup_sandbox_browser.py','tests/goals_dock_browser.py','tests/playtime_browser.py','tests/tooltips_browser.py','tests/guide_browser.py']:
   print(call([sys.executable,script],timeout=140).strip())
 config=json.loads((ROOT/'config/compiled.json').read_text())
-assert config['save']['SAVE_VERSION']==38
+assert config['save']['SAVE_VERSION']==39
 assert {k:v['year'] for k,v in config['world']['SECTORS'].items()}=={'publishing':1,'movie':4,'tv':7,'games':10}
-print('PASS handoff source verification: 35 focused engine suites, engine/UI syntax, 4 debut gates, save v38')
+print('PASS handoff source verification: 35 focused engine suites, engine/UI syntax, 4 debut gates, save v39')
 print('PLAYABLE SHA-256',hashlib.sha256((ROOT/'Studio_Syndicate_Playable_Handoff.html').read_bytes()).hexdigest())

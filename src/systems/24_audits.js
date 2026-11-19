@@ -3,6 +3,7 @@ function audit(s){const problems=[];auditIdentities(s,problems);auditGovernance(
   if(!['operations','finance','franchise'].includes(s.dashboardFocus))problems.push('Invalid saved dashboard layout');
   if(!s.pausePolicy||typeof s.pausePolicy.stopForAdvisory!=='boolean')problems.push('Invalid skip interruption settings');
   if(!DEPTH_MODES.includes(s.settings?.depth))problems.push('Invalid depth mode');
+  if(!Number.isFinite(s.playtimeSec)||s.playtimeSec<0)problems.push('Invalid playtime');
   {const B=CFG.depth.BOARD;for(const c of s.companies||[]){const r=c.corporate?.boardRep;if(r&&(!Number.isInteger(r.value)||r.value<B.MIN||r.value>B.MAX||!Array.isArray(r.history)))problems.push('Invalid Board Reputation');}if(!s.studioMilestones||!Array.isArray(s.legends))problems.push('Missing milestone records');}
   {const keys=CFG.depth.RECEPTION.LEVELS.map(l=>l.key);for(const p of s.projects||[]){const r=p.reception;if(r===undefined||(r!==null&&(!keys.includes(r.key)||!(r.mult>0))))problems.push('Invalid reception: '+p.id);if(p.releaseCost===undefined||(p.releaseCost!==null&&!(p.releaseCost>=0)))problems.push('Invalid release cost: '+p.id);}}
   {const d=s.decisionCards;if(!d||!['year','cards','low','auto'].every(k=>Number.isInteger(d[k])&&d[k]>=0)||d.low>d.cards||d.year>yearAt(s.week))problems.push('Invalid decision card log');}

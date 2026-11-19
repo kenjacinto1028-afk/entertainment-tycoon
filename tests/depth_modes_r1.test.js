@@ -55,7 +55,7 @@ check('Mode switch mid-game does not change rolls; same seed gives the same game
 });
 check('Save v38: round trip keeps reception; v37 saves migrate (old titles neutral) and audit rejects bad data',()=>{
  const s=game('r1-save');E.advance(s,60);const rel=s.projects.find(p=>p.reception);assert(rel);
- const t=E.loadState(JSON.stringify(s));assert.equal(t.version,E.SAVE_VERSION);assert.equal(E.SAVE_VERSION,38);assert.deepEqual(t.projects.find(p=>p.id===rel.id).reception,rel.reception);assert.deepEqual(E.audit(t),[]);
+ const t=E.loadState(JSON.stringify(s));assert.equal(t.version,E.SAVE_VERSION);assert(E.SAVE_VERSION>=38);assert.deepEqual(t.projects.find(p=>p.id===rel.id).reception,rel.reception);assert.deepEqual(E.audit(t),[]);
  const old=JSON.parse(JSON.stringify(s));old.version=37;for(const p of old.projects){delete p.reception;delete p.releaseCost;}
  const u=E.loadState(old);assert.equal(u.version,E.SAVE_VERSION);assert(u.projects.every(p=>p.reception===null&&p.releaseCost===null));assert.deepEqual(E.audit(u),[]);E.advance(u,4);assert.deepEqual(E.audit(u),[]);
  t.projects.find(p=>p.id===rel.id).reception={key:'mega',mult:9};assert(E.audit(t).some(x=>/Invalid reception/.test(x)));

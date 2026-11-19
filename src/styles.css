@@ -125,3 +125,16 @@ body.tabs5 .guide-card{bottom:150px}
 @media(max-width:850px){.guide-card,body.tabs5 .guide-card{z-index:19;left:8px;right:8px;width:auto;max-width:520px;top:72px;bottom:auto}.guide-card.guide-min{left:auto}}
 .form-field input.field-invalid,.form-field select.field-invalid,.form-field textarea.field-invalid,input.field-invalid,select.field-invalid{border-color:var(--danger)!important;box-shadow:0 0 0 3px var(--danger-bg)}.field-error-msg{color:var(--danger)!important;font-size:11px!important;font-weight:700}
 .toast{pointer-events:none}
+
+/* Tooltips and decluttering (22_tooltips_and_declutter.js) */
+.has-tip{text-decoration:underline dotted var(--border);text-decoration-thickness:2px;text-underline-offset:3px;cursor:help}
+.tip-i{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--muted-2);color:var(--muted);font:700 9px/1 Georgia,serif;font-style:italic;vertical-align:2px;margin-left:3px;text-decoration:none}
+#tip-pop{position:fixed;z-index:80;background:var(--sidebar);color:#f3f7f4;border-radius:9px;padding:9px 12px;font-size:12px;line-height:1.45;font-weight:500;letter-spacing:0;text-transform:none;box-shadow:0 10px 28px rgba(0,0,0,.22);pointer-events:none}
+body.dark #tip-pop{background:#2c4739}
+.tip-moved{display:none!important}
+.panel.foldable .panel-header{flex-wrap:wrap}
+.panel.is-folded>.panel-header{margin-bottom:0}
+.panel.is-folded>:not(.panel-header){display:none!important}
+.fold-toggle{margin-left:auto}
+.has-tip:hover{text-decoration-color:var(--muted-2)}
+@media(min-width:851px){body:has(#goals-dock:not(.gd-closed)) .main-shell{padding-bottom:min(60vh,520px)}}
