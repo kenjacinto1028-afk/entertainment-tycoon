@@ -29,13 +29,13 @@ with sync_playwright() as pw:
  page.mouse.click(5,400);page.clock.run_for(30000);assert total()>=a+25,(a,total())
  print('PASS pauses after idle limit and resumes on input',flush=True)
  # Playtime panel: this save (~6 min) vs all games (~1h 29m).
- page.locator('[data-view="settings"]').first.evaluate('b=>b.click()')
+ page.locator('[data-view="saves"]').first.evaluate('b=>b.click()')
  this_save=page.locator('#playtime-save').inner_text();all_games=page.locator('#playtime-total').inner_text()
  assert this_save.endswith('m') and 'h' not in this_save,this_save
  assert all_games.startswith('1h '),all_games
  print('PASS Playtime panel shows this save and all games separately',(this_save,all_games),flush=True)
  page.locator('[data-save-slot="1"]').first.click();page.clock.run_for(2000)
- page.locator('[data-view="settings"]').first.evaluate('b=>b.click()')
+ page.locator('[data-view="saves"]').first.evaluate('b=>b.click()')
  slot=page.evaluate("()=>JSON.parse(localStorage.getItem('studio-syndicate-f1-slot-1')).playtimeSec")
  assert slot>=300,slot
  assert 'played '+this_save in page.locator('main, body').first.inner_text(),'slot label missing'

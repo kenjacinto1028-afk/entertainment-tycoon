@@ -268,7 +268,8 @@
             "finance",
             "chistory",
             "career",
-            "settings"
+            "settings",
+            "saves"
           ]
         },
         {
@@ -292,7 +293,8 @@
         "chistory": "Company History",
         "finance": "Financials",
         "career": "Career & Ownership",
-        "settings": "Game & Saves",
+        "settings": "Settings",
+        "saves": "Saves",
         "inbox": "Inbox"
       }
     },
