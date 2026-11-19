@@ -103,3 +103,5 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
 .goals-dock .gd-next{margin-top:6px}.goals-dock .gd-next small{color:var(--muted);text-transform:uppercase;font-size:10px;font-weight:700}
 .goals-dock.gd-closed{width:auto}
 @media(max-width:850px){.goals-dock{right:10px}.goals-dock.gd-closed .gd-head{min-height:40px;padding:8px 12px}.goals-dock .gd-pin,.goals-dock .gd-link{min-height:44px}}
+.form-field input.field-invalid,.form-field select.field-invalid,.form-field textarea.field-invalid,input.field-invalid,select.field-invalid{border-color:var(--danger)!important;box-shadow:0 0 0 3px var(--danger-bg)}.field-error-msg{color:var(--danger)!important;font-size:11px!important;font-weight:700}
+.toast{pointer-events:none}
