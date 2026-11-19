@@ -66,7 +66,7 @@ window.addEventListener('beforeunload',event=>{flushRemember();if(queuedSaves50>
 function notify(text,kind='ok'){const n=$('toast');const isError=kind==='error';n.setAttribute('role',isError?'alert':'status');n.setAttribute('aria-live',isError?'assertive':'polite');n.setAttribute('aria-atomic','true');n.textContent=text;sfx(isError?'warn':'ok');n.className='toast visible'+(isError?' error':'');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.className='toast',CFG.tuning_ui.notify__001);}
 function safe(fn){try{fn();remember();render();}catch(error){notify(error.message||String(error),'error');}}
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
-  $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
+  $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);playtimeShow();$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
   document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
   let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'history':case 'chistory':html=renderReleaseHistory(view);break;case 'legends':html=renderHallOfFame();break;case 'settings':html=renderSettings();break;case 'saves':html=renderSaves();break;default:html=renderDashboard();}
   $('content').innerHTML=html;
@@ -116,6 +116,22 @@ document.addEventListener('click',event=>{
  if(bad){popupFieldProblem(bad);return;}
  form.dispatchEvent(new SubmitEvent('submit',{bubbles:true,cancelable:true,submitter:btn}));
 },true);
+// Playtime counter: real time on this save (S.playtimeSec, stored in the save) and across all games (browser key, not in saves).
+// Counts only while a game is loaded, the tab is visible, and the player touched something in the last playtimeIdleMs.
+const PLAYTIME_TOTAL='studio-syndicate-playtime-total';
+let playtimeLastInput=Date.now(),playtimeLastTick=Date.now(),playtimeTotalCache=null;
+function playtimeLabel(sec){sec=Math.max(0,Math.floor(Number(sec)||0));const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60);return h?`${h}h ${String(m).padStart(2,'0')}m`:m?`${m}m`:`${sec}s`;}
+function playtimeTotal(){if(playtimeTotalCache===null){try{playtimeTotalCache=Math.max(0,Number(localStorage.getItem(PLAYTIME_TOTAL))||0);}catch(e){playtimeTotalCache=0;}}return playtimeTotalCache;}
+function playtimeShow(){const el=$('top-playtime');if(!el)return;el.hidden=!S;if(S)el.textContent='⏱ '+playtimeLabel(S.playtimeSec);
+ const a=$('playtime-save'),b=$('playtime-total');if(a&&S)a.textContent=playtimeLabel(S.playtimeSec);if(b)b.textContent=playtimeLabel(playtimeTotal());}
+function playtimeTick(){const now=Date.now(),dt=Math.min(now-playtimeLastTick,CFG.tuning_ui.playtimeTickMs*5)/1000;playtimeLastTick=now;
+ if(!S||document.visibilityState!=='visible'||now-playtimeLastInput>CFG.tuning_ui.playtimeIdleMs||!(dt>0))return;
+ E.addPlaytime(S,dt);playtimeTotalCache=Math.round((playtimeTotal()+dt)*10)/10;try{localStorage.setItem(PLAYTIME_TOTAL,String(playtimeTotalCache));}catch(e){}
+ playtimeShow();}
+['pointerdown','keydown','wheel','touchstart','scroll'].forEach(t=>document.addEventListener(t,()=>{playtimeLastInput=Date.now();},{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{playtimeLastTick=Date.now();if(document.visibilityState==='visible')playtimeLastInput=Date.now();});
+setInterval(playtimeTick,CFG.tuning_ui.playtimeTickMs);
+function playtimePanel(){return panel('Playtime',`<div class="small-stat"><span class="subdued">This save</span><strong id="playtime-save">${playtimeLabel(S?.playtimeSec)}</strong></div><div class="small-stat"><span class="subdued">All games on this browser</span><strong id="playtime-total">${playtimeLabel(playtimeTotal())}</strong></div><p class="panel-sub">Counts only while the game is open on screen. Pauses after ${Math.round(CFG.tuning_ui.playtimeIdleMs/60000)} minutes with no input.</p>`);}
 
 function renderDashboard(){const c=E.player(S),f=c.finance,act=activeMine(),released=releasedMine(),alerts=myAlerts(),year=E.yearAt(S.week),cashPlan=E.liquidityForecast(S);
   const heroTitle=act.length?'Your next hit is taking shape.':released.length?'Your catalog is making its mark.':'Every entertainment empire begins with a story.';
@@ -486,7 +502,7 @@ function renderSettings(){const c=E.player(S);return pageHeader('Campaign contro
 function renderSaves(){return pageHeader('Campaign controls','Saves','Portable local saves for your browser-based single-player campaign. Browser storage is not cloud sync.')+
    `<div class="two-cols"><div class="stack">${panel('Saved campaigns',`<p class="panel-sub">Three browser-local save slots. Large campaigns use compressed IndexedDB when the browser permits it; keep exported backups, especially before opening a different HTML file.</p>${[1,CFG.tuning_ui.renderSettings__002,CFG.tuning_ui.renderSettings__003].map(i=>`<div class="small-stat"><span><label for="save-name-${i}">Slot ${i} label</label><input id="save-name-${i}" aria-label="Save slot ${i} label" class="search-input" maxlength="${CFG.forms.htmlValues.renderSettings__maxlength_001}" value="${esc(slotName(i))}" placeholder="e.g. Publishing year 10"><small id="slot-status-${i}" class="item-sub">${slotInfo(i)}</small></span><span>${btn('Save',`data-save-slot="${i}" aria-label="Save campaign in slot ${i}"`,'outline')} ${btn('Load',`data-load-slot="${i}" aria-label="Load campaign from slot ${i}"`,'outline')}</span></div>`).join('')}`)}</div><div class="stack">${panel('Portable backups',`<p class="panel-sub" style="margin-bottom:15px">Export a JSON backup regularly: browser storage can be cleared, restricted or exhausted. Import validates the financial and rights state.</p><div class="head-actions">${btn('Download JSON backup','data-export','primary')} ${btn('Import save file','data-import-trigger','outline')}<input type="file" id="import-file" accept=".json,application/json" class="studio-file-input-50" tabindex="-1" aria-label="Choose save file to import"></div>`)}${panel('Prototype limitations',`<p class="panel-sub">All 309 catalog feature foundations are present, including acquisitions, lending, lawful succession, film, TV, games and distribution. The current catalog completed all 29 technical acceptance gates; extreme-scale performance and browser storage can still vary. Keep exported backups.</p>`)}</div></div>`;
 }
-function slotInfo(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);if(!raw)return 'Empty';const x=JSON.parse(raw);return esc((x.label||x.name)+' · '+x.name+' · Y'+x.year);}catch(e){return 'Unavailable';}}
+function slotInfo(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);if(!raw)return 'Empty';const x=JSON.parse(raw);return esc((x.label||x.name)+' · '+x.name+' · Y'+x.year+(Number.isFinite(x.playtimeSec)?' · played '+playtimeLabel(x.playtimeSec):''));}catch(e){return 'Unavailable';}}
 function slotName(slot){try{const raw=localStorage.getItem(SLOT_PREFIX+slot);return raw?JSON.parse(raw).label||'':'';}catch(e){return '';}}
 // Update 50: explicit names and keyboard containment for consequential decisions.
 // One dialog is visible at a time; routine work remains accessible without a mouse.
@@ -645,7 +661,7 @@ async function saveSlot(n){try{
  const label=($('save-name-'+n)?.value||'').trim().slice(0,CFG.tuning_ui.label__001)||('Campaign slot '+n);
  if(!['1','2','3'].includes(String(n)))throw new Error('Invalid save slot.');
  if(E.audit(S).length)throw new Error('Cannot store an inconsistent campaign.');
- const raw=JSON.stringify(S),meta={label,name:E.player(S).name,year:E.yearAt(S.week)};
+ const raw=JSON.stringify(S),meta={label,name:E.player(S).name,year:E.yearAt(S.week),playtimeSec:S.playtimeSec||0};
  if(durableStore50){try{
   await durableStore50.save('slot-'+n,raw);
   localStorage.setItem(SLOT_PREFIX+n,JSON.stringify({...meta,data:DB_POINTER50}));
@@ -1194,6 +1210,7 @@ const baseRenderSettings43=renderSettings,baseRenderDashboard43=renderDashboard,
 // D2 — Game depth switch (UI only; engine setDepth does the work).
 function depthPanelD2(){const cur=S.settings.depth||CFG.depth.DEFAULT;return panel('Game depth',`<p class="panel-sub" style="margin-bottom:12px">Changes how many decisions the game asks of you. You can switch at any time; your company and money are not affected.</p>${Object.keys(CFG.depth.LABELS).map(m=>{const L=CFG.depth.LABELS[m];return `<div class="small-stat"><span><strong>${esc(L.name)}</strong>${m===cur?' '+badge('Current','active'):''}<small class="item-sub">${esc(L.blurb)}</small></span><span>${m===cur?'':btn('Switch to '+esc(L.name),`data-depth-switch="${m}" aria-label="Switch game depth to ${esc(L.name)}"`,'outline')}</span></div>`}).join('')}${cur==='simple'&&CFG.depth.HIDE.heirNoteSimple?`<p class="panel-sub" style="margin-top:12px">${esc(CFG.depth.HIDE.heirNoteSimple)}</p>`:''}`);}
 renderSettings=function(){return baseRenderSettings43()+depthPanelD2()+managementPanel43()+onboardingPanel43();};
+const baseRenderSavesPlaytime=renderSaves;renderSaves=function(){return baseRenderSavesPlaytime()+playtimePanel();};
 renderDashboard=function(){const counsel=E.adviser43(S);return baseRenderDashboard43()+onboardingPanel43()+erasPanel43();};
 renderWorld=function(){return baseRenderWorld43()+erasPanel43()+eventArchive43()+technologyTrades43();};
 renderLibrary=function(){return baseRenderLibrary43()+rightsPackagePanel43();};
