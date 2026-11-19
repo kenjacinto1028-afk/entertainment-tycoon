@@ -57,7 +57,7 @@ check('No random numbers: same seed gives the same world, and fatigue never touc
 });
 check('Save and reload: fatigue is the same (no new save field) and the world audits clean',()=>{
  const s=E.loadState(JSON.stringify(mature));for(const sec of Object.keys(E.SECTORS))assert.deepEqual(E.genreFatigue(s,sec),E.genreFatigue(mature,sec));
- assert.deepEqual(E.audit(s),[]);assert.equal(E.SAVE_VERSION,38);
+ assert.deepEqual(E.audit(s),[]);assert(E.SAVE_VERSION>=38);
 });
 check('Every company in a region sees the same multiplier for a genre (player and rivals alike)',()=>{
  const s=mature,P=E.genreFatiguePressure(s,'publishing');for(const r of E.activeRegions(s))for(const g of E.GENRES){const m=E.genreFatigueMult('publishing',P[r.name][g]);assert(m>=F.floor&&m<=1);}

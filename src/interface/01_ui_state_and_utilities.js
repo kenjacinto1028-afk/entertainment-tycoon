@@ -65,7 +65,7 @@ window.addEventListener('beforeunload',event=>{flushRemember();if(queuedSaves50>
 function notify(text,kind='ok'){const n=$('toast');const isError=kind==='error';n.setAttribute('role',isError?'alert':'status');n.setAttribute('aria-live',isError?'assertive':'polite');n.setAttribute('aria-atomic','true');n.textContent=text;sfx(isError?'warn':'ok');n.className='toast visible'+(isError?' error':'');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.className='toast',CFG.tuning_ui.notify__001);}
 function safe(fn){try{fn();remember();render();}catch(error){notify(error.message||String(error),'error');}}
 function render(){if(!S)return;const c=E.player(S),f=c.finance;
-  $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
+  $('top-company').textContent=c.name;$('top-subtitle').textContent=c.origin;$('company-avatar').textContent=c.name[0].toUpperCase();$('top-date').textContent='YEAR '+E.yearAt(S.week)+' · WEEK '+E.yearWeek(S.week);playtimeShow();$('top-cash').textContent=fmt(f.cash);$('top-cash').classList.toggle('negative',f.cash<CFG.tuning_ui.render__001);$('inbox-count').textContent=myAlerts().length;
   document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
   let html;switch(view){case 'productions':html=renderProductions();break;case 'library':html=renderLibrary();break;case 'teams':html=renderTeams();break;case 'finance':html=renderFinance();break;case 'career':html=careerPanel();break;case 'world':html=renderWorld();break;case 'inbox':html=renderInbox();break;case 'news':html=renderNews();break;case 'history':case 'chistory':html=renderReleaseHistory(view);break;case 'legends':html=renderHallOfFame();break;case 'settings':html=renderSettings();break;case 'saves':html=renderSaves();break;default:html=renderDashboard();}
   $('content').innerHTML=html;
@@ -115,3 +115,19 @@ document.addEventListener('click',event=>{
  if(bad){popupFieldProblem(bad);return;}
  form.dispatchEvent(new SubmitEvent('submit',{bubbles:true,cancelable:true,submitter:btn}));
 },true);
+// Playtime counter: real time on this save (S.playtimeSec, stored in the save) and across all games (browser key, not in saves).
+// Counts only while a game is loaded, the tab is visible, and the player touched something in the last playtimeIdleMs.
+const PLAYTIME_TOTAL='studio-syndicate-playtime-total';
+let playtimeLastInput=Date.now(),playtimeLastTick=Date.now(),playtimeTotalCache=null;
+function playtimeLabel(sec){sec=Math.max(0,Math.floor(Number(sec)||0));const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60);return h?`${h}h ${String(m).padStart(2,'0')}m`:m?`${m}m`:`${sec}s`;}
+function playtimeTotal(){if(playtimeTotalCache===null){try{playtimeTotalCache=Math.max(0,Number(localStorage.getItem(PLAYTIME_TOTAL))||0);}catch(e){playtimeTotalCache=0;}}return playtimeTotalCache;}
+function playtimeShow(){const el=$('top-playtime');if(!el)return;el.hidden=!S;if(S)el.textContent='⏱ '+playtimeLabel(S.playtimeSec);
+ const a=$('playtime-save'),b=$('playtime-total');if(a&&S)a.textContent=playtimeLabel(S.playtimeSec);if(b)b.textContent=playtimeLabel(playtimeTotal());}
+function playtimeTick(){const now=Date.now(),dt=Math.min(now-playtimeLastTick,CFG.tuning_ui.playtimeTickMs*5)/1000;playtimeLastTick=now;
+ if(!S||document.visibilityState!=='visible'||now-playtimeLastInput>CFG.tuning_ui.playtimeIdleMs||!(dt>0))return;
+ E.addPlaytime(S,dt);playtimeTotalCache=Math.round((playtimeTotal()+dt)*10)/10;try{localStorage.setItem(PLAYTIME_TOTAL,String(playtimeTotalCache));}catch(e){}
+ playtimeShow();}
+['pointerdown','keydown','wheel','touchstart','scroll'].forEach(t=>document.addEventListener(t,()=>{playtimeLastInput=Date.now();},{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{playtimeLastTick=Date.now();if(document.visibilityState==='visible')playtimeLastInput=Date.now();});
+setInterval(playtimeTick,CFG.tuning_ui.playtimeTickMs);
+function playtimePanel(){return panel('Playtime',`<div class="small-stat"><span class="subdued">This save</span><strong id="playtime-save">${playtimeLabel(S?.playtimeSec)}</strong></div><div class="small-stat"><span class="subdued">All games on this browser</span><strong id="playtime-total">${playtimeLabel(playtimeTotal())}</strong></div><p class="panel-sub">Counts only while the game is open on screen. Pauses after ${Math.round(CFG.tuning_ui.playtimeIdleMs/60000)} minutes with no input.</p>`);}

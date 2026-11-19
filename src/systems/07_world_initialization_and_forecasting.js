@@ -42,7 +42,7 @@ function createGame(input={}) {
   prepare43World(s,input);
   setDepth(s,DEPTH_MODES.includes(input.depth)?input.depth:CFG.depth.DEFAULT);
   s.decisionCards={year:yearAt(s.week),cards:0,low:0,auto:0};
-  s.studioMilestones={};s.legends=[];
+  s.studioMilestones={};s.legends=[];s.playtimeSec=0;
   return s;
 }
 function seedRivals(s,era) {

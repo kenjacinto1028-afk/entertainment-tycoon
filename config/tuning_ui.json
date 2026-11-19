@@ -9,6 +9,8 @@
   "remember__001": 1200000,
   "autosaveDelayMs": 1500,
   "productionRowsPage": 50,
+  "playtimeIdleMs": 300000,
+  "playtimeTickMs": 1000,
   "notify__001": 4100,
   "render__001": 3500,
   "projectRows__001": 100,

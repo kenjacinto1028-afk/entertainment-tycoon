@@ -1330,7 +1330,7 @@
     ]
   },
   "save": {
-    "SAVE_VERSION": 38
+    "SAVE_VERSION": 39
   },
   "starting": {
     "ORIGINS": {
@@ -2709,7 +2709,7 @@
     "loadState__094": 0.02,
     "loadState__095": 0.02,
     "loadState__096": 2,
-    "loadState__097": 38,
+    "loadState__097": 39,
     "skill__003": 54,
     "skill__004": 41,
     "filmActorPool__001": 1100,
@@ -3469,6 +3469,8 @@
     "remember__001": 1200000,
     "autosaveDelayMs": 1500,
     "productionRowsPage": 50,
+    "playtimeIdleMs": 300000,
+    "playtimeTickMs": 1000,
     "notify__001": 4100,
     "render__001": 3500,
     "projectRows__001": 100,
