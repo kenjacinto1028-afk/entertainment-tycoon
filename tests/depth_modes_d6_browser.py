@@ -38,9 +38,10 @@ with sync_playwright() as pw:
    tab(page,'Market');sub(page,'Industry News')
    tab(page,'Projects');assert page.locator('.subtabs5 button.active',has_text='Teams').count()==1,'remembers sub-tab'
    tab(page,'Company');subs=[b.inner_text() for b in page.locator('.subtabs5 button').all()]
-   assert 'Financials' in subs and 'Game & Saves' in subs,subs
+   assert 'Financials' in subs and 'Settings' in subs and 'Saves' in subs,subs
    assert ('Career & Ownership' in subs)==(depth=='standard'),subs
-   sub(page,'Game & Saves');assert page.locator('[data-depth-switch]').count()>=1
+   sub(page,'Settings');assert page.locator('[data-depth-switch]').count()>=1
+   sub(page,'Saves');assert page.locator('[data-save-slot]').count()==3 and page.locator('[data-depth-switch]').count()==0
    tab(page,'Inbox');assert current(page)=='inbox' and page.locator('.subtabs5').count()==0
    tab(page,'Dashboard');assert current(page)=='dashboard'
    # advance button still reachable and not covered by the tab bar
@@ -55,7 +56,7 @@ with sync_playwright() as pw:
  page.locator('#main-nav [data-view="settings"],#secondary-nav [data-view="settings"]').first.click()
  page.locator('[data-depth-switch="standard"]').click();page.wait_for_timeout(200)
  assert page.locator('#tab5').is_visible() and not page.locator('.sidebar').is_visible()
- tab(page,'Company');sub(page,'Game & Saves');page.locator('[data-depth-switch="veryComplex"]').click();page.wait_for_timeout(200)
+ tab(page,'Company');sub(page,'Settings');page.locator('[data-depth-switch="veryComplex"]').click();page.wait_for_timeout(200)
  assert page.locator('.sidebar').is_visible() and not page.locator('#tab5').is_visible() and page.locator('.subtabs5').count()==0
  assert not errors,errors;ctx.close()
  print('PASS Very Complex keeps the left menu; live switching',flush=True)
