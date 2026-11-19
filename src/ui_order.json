@@ -23,7 +23,8 @@
     "src/interface/19_game_service_handlers.js",
     "src/interface/20_art_and_sound.js",
     "src/interface/21_goals_window.js",
-    "src/interface/22_tooltips_and_declutter.js"
+    "src/interface/22_tooltips_and_declutter.js",
+    "src/interface/23_guide_and_help.js"
   ],
   "close": "src/ui_bootstrap/close.js",
   "partsDetail": [

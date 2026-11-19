@@ -1027,6 +1027,144 @@
       "payableTolerance": 0.01,
       "secureCashMinimumWeeks": 4,
       "industryReachCount": 2
+    },
+    "GUIDE": {
+      "_note": "Guided tutorial + Help button (UI only, no save fields). Progress is remembered per campaign in browser storage. Each step finishes when its 'check' is true in the real game. Text can differ per depth mode: 'text' is the default, 'veryComplex' / 'simple' override it. 'targets' = buttons to highlight (first visible one wins).",
+      "storageKey": "studio-syndicate-guide-v1",
+      "offerTitle": "New to Studio Syndicate?",
+      "offerText": "Take a short guided tour of your first year. It points at the right button for each step, and you can stop any time. You can restart it later from the ? Help button.",
+      "pdfNote": "For the full picture, read the Studio Syndicate Player Guide (PDF) that came with the game.",
+      "steps": [
+        {
+          "key": "welcome",
+          "title": "Welcome, studio boss",
+          "check": "ack",
+          "text": "You run an entertainment company. You start as a small book publisher in Year 1. Movies arrive in Year 4, TV in Year 7 and video games in Year 10. Your cash is the green number at the top. Run out of cash and you are in trouble, so watch it.",
+          "targets": [
+            "#top-cash"
+          ]
+        },
+        {
+          "key": "greenlight",
+          "title": "Start your first book",
+          "check": "firstProject",
+          "text": "Press \"+ Greenlight a project\" on the Overview. Type any title, pick a genre you like, and set Project scale to Focused (cheapest and safest). Then press \"Approve project\" at the bottom of the form.",
+          "simple": "Press \"+ Greenlight a project\" on the Overview. Type any title, pick a genre, keep Project scale on Focused, and press \"Approve project\". The game picks the rest for you.",
+          "targets": [
+            "[data-project]"
+          ],
+          "view": "dashboard"
+        },
+        {
+          "key": "advance",
+          "title": "Move time forward",
+          "check": "advanced",
+          "text": "Nothing happens until you move time. At the bottom of the screen press \"Advance to next decision\". The game runs week by week and stops when something needs you.",
+          "targets": [
+            "#advance-decision"
+          ]
+        },
+        {
+          "key": "inbox",
+          "title": "Check your Inbox",
+          "check": "seenInbox",
+          "text": "News and decisions land in the Inbox (the number shows how many are waiting). Open the Inbox tab, read the items, and press \"Mark reviewed\" on the ones you are done with.",
+          "veryComplex": "News and decisions land in the Action Inbox in the left menu. Open it, read the items, and press \"Mark reviewed\" on the ones you are done with.",
+          "targets": [
+            "[data-tab5=\"inbox\"]",
+            "nav [data-view=\"inbox\"]"
+          ]
+        },
+        {
+          "key": "release",
+          "title": "Release your first book",
+          "check": "firstRelease",
+          "text": "Keep pressing \"Advance to next decision\". A small book takes about 12 weeks. When it comes out you get a \"Released\" message and money starts coming in.",
+          "targets": [
+            "#advance-decision"
+          ]
+        },
+        {
+          "key": "busy",
+          "title": "Keep both teams busy",
+          "check": "twoProjects",
+          "text": "You have 2 production teams, so you can make 2 things at once. A free team earns nothing, so greenlight another project. Tip: once books sell, try Standard scale for bigger results.",
+          "view": "dashboard",
+          "targets": [
+            "[data-project]",
+            "[data-tab5=\"projects\"]",
+            "nav [data-view=\"productions\"]"
+          ]
+        },
+        {
+          "key": "money",
+          "title": "Look at your money",
+          "check": "seenFinance",
+          "text": "Open Company, then Financials. Cash is money you can spend today. Profit is what you earned after costs. A book can be profitable but still take weeks to pay you in cash.",
+          "veryComplex": "Open Financials in the left menu. Cash is money you can spend today. Profit is what you earned after costs. Very Complex shows full accounting; you only need the top numbers to start.",
+          "targets": [
+            "[data-tab5=\"company\"]",
+            "nav [data-view=\"finance\"]"
+          ]
+        },
+        {
+          "key": "market",
+          "title": "Meet your rivals",
+          "check": "seenWorld",
+          "text": "Open Market & Rivals. Here you see rival studios, market share and when new industries open. Plan ahead: Movies open in Year 4 and cost much more to enter.",
+          "veryComplex": "Open World & Rivals in the left menu. Here you see rival studios, market share and when new industries open. Plan ahead: Movies open in Year 4 and cost much more to enter.",
+          "targets": [
+            "[data-tab5=\"market\"]",
+            "nav [data-view=\"world\"]"
+          ]
+        },
+        {
+          "key": "goal",
+          "title": "Pick a goal",
+          "check": "goalPicked",
+          "text": "Open the Goals window in the corner of the screen and press \"Pin\" on a goal, for example Catalog builder (release 3 works). Pinned goals stay on screen so you always know what to aim for.",
+          "targets": [
+            "[data-goal-pin]",
+            "[data-u43=\"goal\"]"
+          ],
+          "view": "dashboard"
+        },
+        {
+          "key": "done",
+          "title": "You are ready",
+          "check": "ack",
+          "text": "That is the core loop: greenlight, advance time, read the Inbox, release, repeat. Grow Reputation with good releases to unlock bigger client jobs, and save cash to enter Movies in Year 4. Press ? Help any time for tips on the screen you are on.",
+          "targets": [
+            "#guide-help-btn"
+          ]
+        }
+      ],
+      "help": {
+        "basics": [
+          "Greenlight projects to make books, films, TV shows and games.",
+          "Time only moves when you press an Advance button at the bottom.",
+          "Watch cash at the top. Keep a few months of costs in reserve.",
+          "Good releases raise Reputation, which unlocks bigger client jobs and better sales.",
+          "New industries open in Year 4 (Movies), Year 7 (TV) and Year 10 (Games).",
+          "The Inbox collects decisions. Mark items reviewed when you are done."
+        ],
+        "views": {
+          "dashboard": "Your home screen: cash, profit, active productions and Reputation, plus shortcuts. Start projects from \"+ Greenlight a project\".",
+          "productions": "Everything you are making and have released. Use Details on a project for its numbers, and the industry tabs to start projects in each medium.",
+          "library": "The stories (IP) you own and the rights you sold or bought. Licensing a story to another studio can earn money without making anything.",
+          "teams": "Your production teams and staff. More teams means more projects at the same time, but higher weekly payroll.",
+          "finance": "Your money. Cash = spendable now. Profit = earnings after costs. Loans live here too; borrow only for a clear plan.",
+          "career": "You as the founder: your company's ownership, the board (after you incorporate), going public (IPO) and who takes over later.",
+          "world": "The wider market: rival studios, their market share and strategy, and when each industry opens.",
+          "inbox": "Decisions and news that need you. Board blocks, offers and warnings show buttons; everything else just needs \"Mark reviewed\".",
+          "news": "Industry headlines: releases, awards and rival moves. Search by year or type.",
+          "history": "Every title released by every company. Filter to see what genres and media do well.",
+          "legends": "Hall of Fame: the biggest hits, creators and franchises of all time.",
+          "chistory": "Every title your company has released, with revenue and profit.",
+          "settings": "Game depth (Simple, Standard, Very Complex), sound and other options.",
+          "saves": "Your save slots (3 slots) plus JSON backup download and import."
+        }
+      }
     }
   },
   "publishing": {
