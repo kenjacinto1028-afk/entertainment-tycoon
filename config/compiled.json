@@ -1122,8 +1122,9 @@
           "key": "goal",
           "title": "Pick a goal",
           "check": "goalPicked",
-          "text": "On the Overview, scroll to \"Optional adviser, goals and tutorial\" and press \"Set goal\" on one, for example Catalog builder (release 3 works). Goals give you a direction for your first years.",
+          "text": "Open the Goals window in the corner of the screen and press \"Pin\" on a goal, for example Catalog builder (release 3 works). Pinned goals stay on screen so you always know what to aim for.",
           "targets": [
+            "[data-goal-pin]",
             "[data-u43=\"goal\"]"
           ],
           "view": "dashboard"

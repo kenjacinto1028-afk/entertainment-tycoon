@@ -22,7 +22,8 @@
     "src/interface/18_funding_and_financial_views.js",
     "src/interface/19_game_service_handlers.js",
     "src/interface/20_art_and_sound.js",
-    "src/interface/21_guide_and_help.js"
+    "src/interface/21_goals_window.js",
+    "src/interface/22_guide_and_help.js"
   ],
   "close": "src/ui_bootstrap/close.js",
   "partsDetail": [
