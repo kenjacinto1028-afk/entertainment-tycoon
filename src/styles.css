@@ -88,3 +88,5 @@ body.tabs5 .tab5{display:flex;gap:6px;padding:8px 40px;background:var(--surface)
 }
 
 .sector-icon{vertical-align:-3px;margin-right:3px}.small-stat input[type=range]{width:120px;vertical-align:middle}
+.form-field input.field-invalid,.form-field select.field-invalid,.form-field textarea.field-invalid,input.field-invalid,select.field-invalid{border-color:var(--danger)!important;box-shadow:0 0 0 3px var(--danger-bg)}.field-error-msg{color:var(--danger)!important;font-size:11px!important;font-weight:700}
+.toast{pointer-events:none}
