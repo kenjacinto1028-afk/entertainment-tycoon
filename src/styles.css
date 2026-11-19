@@ -138,3 +138,9 @@ body.dark #tip-pop{background:#2c4739}
 .fold-toggle{margin-left:auto}
 .has-tip:hover{text-decoration-color:var(--muted-2)}
 @media(min-width:851px){body:has(#goals-dock:not(.gd-closed)) .main-shell{padding-bottom:min(60vh,520px)}}
+/* Top-right Settings and Saves buttons: on every screen, PC and phone. Label hidden on phones. */
+.top-view-btn{display:inline-flex;align-items:center;gap:6px;font-size:15px;line-height:1}
+.top-view-btn .top-view-label{font-size:13px;font-weight:700}
+.top-view-btn.active{border-color:var(--accent);color:var(--accent)}
+@media (max-width:1100px){.top-view-btn .top-view-label{display:none}.top-view-btn{padding:7px 9px}}
+@media (max-width:600px){.top-actions{gap:4px}.top-actions .theme-btn{padding:6px 7px;font-size:16px}.top-company{min-width:0;flex:1 1 auto}.top-company>span:last-child{min-width:0;overflow:hidden}.top-company strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.top-actions{flex:0 0 auto}}
