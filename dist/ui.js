@@ -78,6 +78,45 @@ function projectRows(items,compact=false){if(!items.length)return empty('No prod
 function feed(news,count=CFG.tuning_ui.feed__001){const list=news.slice(0,count);return list.length?list.map(n=>`<div class="feed-item"><span class="feed-dot"></span><div style="flex:1;min-width:0"><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p></div>${timeTag(n.week)}</div>`).join(''):empty('Quiet newsdesk','Industry events will appear as the world progresses.');}
 function alertRows(items,count=CFG.tuning_ui.alertRows__001){const list=items.slice(0,count);return list.length?list.map(a=>`<div class="inbox-item"><span class="flag">${a.kind==='critical'?'!':'✦'}</span><div style="flex:1"><h3>${esc(a.title)} ${a.kind==='critical'?badge('Needs attention','warning'):badge('Information')}</h3><p>${esc(a.body)}</p>${a.boardBlock&&a.boardBlock.status==='open'?`<button class="btn btn-primary btn-mini" data-board-block="${esc(a.id)}" data-override="true">Override (−${a.boardBlock.cost} Board Reputation)</button> <button class="btn btn-outline btn-mini" data-board-block="${esc(a.id)}" data-override="false">Accept block</button>`:a.boardPressure==='open'?`<button class="btn btn-primary btn-mini" data-board-pressure="${esc(a.id)}" data-choice="dividend">Pay goodwill dividend</button> <button class="btn btn-outline btn-mini" data-board-pressure="${esc(a.id)}" data-choice="promise">Promise results</button>`:`<button class="btn btn-outline btn-mini" data-dismiss="${esc(a.id)}">Mark reviewed</button>`}</div></div>`).join(''):empty('All clear','No decisions require your attention right now.','✓');}
 function metric(title,value,sub,ico='◈',kind=''){return `<div class="metric"><div class="metric-top"><span>${title}</span><span class="metric-icon">${ico}</span></div><div class="metric-value ${kind}">${value}</div><div class="metric-sub">${sub}</div></div>`;}
+// Popup buttons keep working when the game is opened inside a preview window that blocks
+// normal form sending and browser yes/no boxes. Submit buttons run the game's own form
+// handlers directly, missing fields are pointed out clearly, and a blocked yes/no box
+// turns into "click again to confirm".
+const nativeConfirmPopup=typeof window.confirm==='function'?window.confirm.bind(window):null;
+let popupConfirmPending=null;
+function confirm(message){
+ const key=String(message??'');
+ if(popupConfirmPending&&popupConfirmPending.key===key&&Date.now()-popupConfirmPending.at<CFG.tuning_ui.popupConfirmRepeatMs){popupConfirmPending=null;return true;}
+ popupConfirmPending=null;
+ const started=performance.now();let ok=false;
+ try{ok=nativeConfirmPopup?nativeConfirmPopup(key):false;}catch(e){ok=false;}
+ if(ok)return true;
+ if(performance.now()-started<CFG.tuning_ui.popupConfirmBlockedMs){popupConfirmPending={key,at:Date.now()};notify('Click the same button again to confirm. '+key,'error');}
+ return false;
+}
+function popupFieldProblem(field){
+ const form=field.form;
+ form?.querySelectorAll('.field-invalid').forEach(x=>x.classList.remove('field-invalid'));
+ form?.querySelectorAll('.field-error-msg').forEach(x=>x.remove());
+ const wrap=field.closest('.form-field');
+ const label=(wrap?.querySelector('label')?.textContent||field.getAttribute('aria-label')||field.name||'this field').trim();
+ const msg=field.validationMessage||'Please check this field.';
+ field.classList.add('field-invalid');
+ if(wrap){const note=document.createElement('small');note.className='field-error-msg';note.setAttribute('role','alert');note.textContent=msg;wrap.appendChild(note);}
+ const clear=()=>{field.classList.remove('field-invalid');wrap?.querySelector('.field-error-msg')?.remove();};
+ field.addEventListener('input',clear,{once:true});field.addEventListener('change',clear,{once:true});
+ if(field.offsetParent!==null){field.scrollIntoView({block:'center',behavior:'smooth'});field.focus({preventScroll:true});}
+ notify('Check '+label+': '+msg,'error');
+}
+document.addEventListener('click',event=>{
+ const btn=event.target?.closest?.('button[type="submit"],input[type="submit"],form button:not([type])');
+ const form=btn?.form;if(!form||!form.id||btn.disabled)return;
+ event.preventDefault();
+ const bad=[...form.elements].find(el=>el.willValidate&&!el.checkValidity());
+ if(bad){popupFieldProblem(bad);return;}
+ form.dispatchEvent(new SubmitEvent('submit',{bubbles:true,cancelable:true,submitter:btn}));
+},true);
+
 function renderDashboard(){const c=E.player(S),f=c.finance,act=activeMine(),released=releasedMine(),alerts=myAlerts(),year=E.yearAt(S.week),cashPlan=E.liquidityForecast(S);
   const heroTitle=act.length?'Your next hit is taking shape.':released.length?'Your catalog is making its mark.':'Every entertainment empire begins with a story.';
   const heroText=act.length?'Projects advance automatically each week. Manage the big decisions while your team handles production.':released.length?'Your released works can earn catalog revenue, while new productions grow your reach.':'Greenlight your first '+sectorName(c.sector).toLowerCase()+' production. You can remain a specialist or expand into other industries when ready.';
