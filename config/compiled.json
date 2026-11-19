@@ -3810,6 +3810,8 @@
     "audit49__003": 1250
   },
   "tuning_ui": {
+    "popupConfirmBlockedMs": 40,
+    "popupConfirmRepeatMs": 8000,
     "hireQuote__001": 7200,
     "hireQuote__002": 1.22,
     "hireQuote__003": 0.82,
