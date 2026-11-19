@@ -21,7 +21,8 @@
     "src/interface/17_portraits_and_rights.js",
     "src/interface/18_funding_and_financial_views.js",
     "src/interface/19_game_service_handlers.js",
-    "src/interface/20_art_and_sound.js"
+    "src/interface/20_art_and_sound.js",
+    "src/interface/22_tooltips_and_declutter.js"
   ],
   "close": "src/ui_bootstrap/close.js",
   "partsDetail": [
