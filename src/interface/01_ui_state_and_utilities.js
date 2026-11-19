@@ -76,7 +76,46 @@ function projectRows(items,compact=false){if(!items.length)return empty('No prod
   return `<div style="overflow-x:auto"><table class="list-table"><thead><tr><th>Production</th><th>Status</th><th>${compact?'Schedule':'Investment'}</th><th>${compact?'Progress':'Direct result'}</th></tr></thead><tbody>${items.map(p=>`<tr><td><span class="item-name">${esc(p.title)}</span><span class="item-sub">${esc(p.genre)} · ${esc(sectorName(p.sector))} · ${esc(p.format)}${p.reception?' · Reception: '+esc(p.reception.label):''}</span><span class="item-sub">${p.teamId?'Team: '+esc(E.company(S,p.companyId)?.teams?.find(t=>t.id===p.teamId)?.name||'Historical team'):'Legacy production'}${p.clientId?' · Client: '+esc(E.company(S,p.clientId)?.name||'Unknown'):''}</span>${p.pitch?`<span class="item-sub">${esc(p.pitch.theme)} · ${esc(p.pitch.targetAudience)} audience · ${esc(p.pitch.direction)} creative · ${esc(p.pitch.positioning)} positioning</span>`:''}${p.phase?`<span class="item-sub">Milestone: ${esc(p.phase)}${p.creativeQuality!==null&&p.technicalQuality!==null?' · Creative / technical '+p.creativeQuality+' / '+p.technicalQuality:''}</span>`:''}${p.criticScore!==null&&p.criticScore!==undefined?`<span class="item-sub">Critics ${p.criticScore}/100 · Audience ${p.audienceScore}/100</span>`:''}${p.printStock?`<span class="item-sub">Print stock: ${p.printStock.stock.toLocaleString()} copies · ${fmt(p.printStock.stock*p.printStock.unitCost)} asset · ${p.printStock.sold.toLocaleString()} sold · ${p.printStock.returned} returned · ${p.printStock.writtenOff} written off</span><button class="btn btn-outline btn-mini" data-print-order="${esc(p.id)}">Manage copies</button> <button class="btn btn-outline btn-mini" data-print-policy="${esc(p.id)}" data-enabled="${p.printStock.autoReprint?'false':'true'}">${p.printStock.autoReprint?'Auto-reprint: On':'Auto-reprint: Off'}</button>`:''}${p.review?`<button class="btn btn-outline btn-mini review-button" data-review="${esc(p.id)}">13-week review</button>`:''}<button class="btn btn-outline btn-mini" data-project-detail="${esc(p.id)}">Details</button>${p.status==='active'&&p.companyId===S.playerId?`<button class="btn btn-outline btn-mini" data-cancel-project="${esc(p.id)}">Cancel work</button>`:''}</td><td>${badge(p.status==='active'?'In production':p.status==='cancelled'?'Cancelled':'Released',p.status==='active'?'active':p.status==='cancelled'?'warning':'release')}</td><td>${compact?`${Math.ceil(Math.max(0,p.weeksTotal-p.weeksDone))} work units left`:`${fmt(p.directCost)} spent`}</td><td>${compact?`<div class="progress" title="${p.weeksDone}/${p.weeksTotal} weeks"><i style="width:${Math.round(p.weeksDone/p.weeksTotal*CFG.tuning_ui.projectRows__001)}%"></i></div>`:`<strong class="${E.currentProjectProfit(p)<0?'negative':'positive'}">${signed(E.currentProjectProfit(p))}</strong><span class="item-sub">Budget: ${fmt(E.projectBudget(S,p.id).plannedTotal)} · Forecast total: ${E.projectBudget(S,p.id).historyComplete?fmt(E.projectBudget(S,p.id).estimatedTotal):'History unavailable'}</span><span class="item-sub">Cost variance: ${E.projectBudget(S,p.id).historyComplete?signed(E.projectBudget(S,p.id).projectedVariance):'History unavailable'} ${p.status==='released'?'actual':'estimated'} · Shared overhead: ${fmt(E.productionFinancial(S,p.id).allocatedOverhead)}${p.overheadHistoryComplete?'':' · recent only'}</span>`}</td></tr>`).join('')}</tbody></table></div>`;}
 function feed(news,count=CFG.tuning_ui.feed__001){const list=news.slice(0,count);return list.length?list.map(n=>`<div class="feed-item"><span class="feed-dot"></span><div style="flex:1;min-width:0"><strong>${esc(n.title)}</strong><p>${esc(n.body)}</p></div>${timeTag(n.week)}</div>`).join(''):empty('Quiet newsdesk','Industry events will appear as the world progresses.');}
 function alertRows(items,count=CFG.tuning_ui.alertRows__001){const list=items.slice(0,count);return list.length?list.map(a=>`<div class="inbox-item"><span class="flag">${a.kind==='critical'?'!':'✦'}</span><div style="flex:1"><h3>${esc(a.title)} ${a.kind==='critical'?badge('Needs attention','warning'):badge('Information')}</h3><p>${esc(a.body)}</p>${a.boardBlock&&a.boardBlock.status==='open'?`<button class="btn btn-primary btn-mini" data-board-block="${esc(a.id)}" data-override="true">Override (−${a.boardBlock.cost} Board Reputation)</button> <button class="btn btn-outline btn-mini" data-board-block="${esc(a.id)}" data-override="false">Accept block</button>`:a.boardPressure==='open'?`<button class="btn btn-primary btn-mini" data-board-pressure="${esc(a.id)}" data-choice="dividend">Pay goodwill dividend</button> <button class="btn btn-outline btn-mini" data-board-pressure="${esc(a.id)}" data-choice="promise">Promise results</button>`:`<button class="btn btn-outline btn-mini" data-dismiss="${esc(a.id)}">Mark reviewed</button>`}</div></div>`).join(''):empty('All clear','No decisions require your attention right now.','✓');}
-function metric(title,value,sub,ico='◈',kind=''){return `<div class="metric"><div class="metric-top"><span>${title}</span><span class="metric-icon">${ico}</span></div><div class="metric-value ${kind}">${value}</div><div class="metric-sub">${sub}</div></div>`;}// Playtime counter: real time on this save (S.playtimeSec, stored in the save) and across all games (browser key, not in saves).
+function metric(title,value,sub,ico='◈',kind=''){return `<div class="metric"><div class="metric-top"><span>${title}</span><span class="metric-icon">${ico}</span></div><div class="metric-value ${kind}">${value}</div><div class="metric-sub">${sub}</div></div>`;}
+// Popup buttons keep working when the game is opened inside a preview window that blocks
+// normal form sending and browser yes/no boxes. Submit buttons run the game's own form
+// handlers directly, missing fields are pointed out clearly, and a blocked yes/no box
+// turns into "click again to confirm".
+const nativeConfirmPopup=typeof window.confirm==='function'?window.confirm.bind(window):null;
+let popupConfirmPending=null;
+function confirm(message){
+ const key=String(message??'');
+ if(popupConfirmPending&&popupConfirmPending.key===key&&Date.now()-popupConfirmPending.at<CFG.tuning_ui.popupConfirmRepeatMs){popupConfirmPending=null;return true;}
+ popupConfirmPending=null;
+ const started=performance.now();let ok=false;
+ try{ok=nativeConfirmPopup?nativeConfirmPopup(key):false;}catch(e){ok=false;}
+ if(ok)return true;
+ if(performance.now()-started<CFG.tuning_ui.popupConfirmBlockedMs){popupConfirmPending={key,at:Date.now()};notify('Click the same button again to confirm. '+key,'error');}
+ return false;
+}
+function popupFieldProblem(field){
+ const form=field.form;
+ form?.querySelectorAll('.field-invalid').forEach(x=>x.classList.remove('field-invalid'));
+ form?.querySelectorAll('.field-error-msg').forEach(x=>x.remove());
+ const wrap=field.closest('.form-field');
+ const label=(wrap?.querySelector('label')?.textContent||field.getAttribute('aria-label')||field.name||'this field').trim();
+ const msg=field.validationMessage||'Please check this field.';
+ field.classList.add('field-invalid');
+ if(wrap){const note=document.createElement('small');note.className='field-error-msg';note.setAttribute('role','alert');note.textContent=msg;wrap.appendChild(note);}
+ const clear=()=>{field.classList.remove('field-invalid');wrap?.querySelector('.field-error-msg')?.remove();};
+ field.addEventListener('input',clear,{once:true});field.addEventListener('change',clear,{once:true});
+ if(field.offsetParent!==null){field.scrollIntoView({block:'center',behavior:'smooth'});field.focus({preventScroll:true});}
+ notify('Check '+label+': '+msg,'error');
+}
+document.addEventListener('click',event=>{
+ const btn=event.target?.closest?.('button[type="submit"],input[type="submit"],form button:not([type])');
+ const form=btn?.form;if(!form||!form.id||btn.disabled)return;
+ event.preventDefault();
+ const bad=[...form.elements].find(el=>el.willValidate&&!el.checkValidity());
+ if(bad){popupFieldProblem(bad);return;}
+ form.dispatchEvent(new SubmitEvent('submit',{bubbles:true,cancelable:true,submitter:btn}));
+},true);
+// Playtime counter: real time on this save (S.playtimeSec, stored in the save) and across all games (browser key, not in saves).
 // Counts only while a game is loaded, the tab is visible, and the player touched something in the last playtimeIdleMs.
 const PLAYTIME_TOTAL='studio-syndicate-playtime-total';
 let playtimeLastInput=Date.now(),playtimeLastTick=Date.now(),playtimeTotalCache=null;
