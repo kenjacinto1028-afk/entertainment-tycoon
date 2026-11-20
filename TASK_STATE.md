@@ -8,3 +8,13 @@ Baseline: independently accepted Update52 final package. Preserve exact gameplay
 - [x] 4. Final rebuild passed 35/35 retained engine suites, 2/2 desktop/mobile accessibility and 7/7 simulated recovery checks; Node syntax valid; 3 fixed-seed 78-week saved-state SHA-256 signatures match original (initial baseline validation). See `reports/handoff/*_FINAL.log`, `tests/fixtures/baseline_signatures.json`. User native-origin and NVDA acceptance belongs to original Update52, not a new independent test of refactored HTML.
 - [x] 5. Authored complete `HANDOFF.md` (engine, game, formulas, save, build, every-file map), `KNOWN_BUGS.md`, `TODO.md`, `BALANCE_NOTES.md`, `DATA_INVENTORY.md`, `TEST_REPORT_Handoff.md`, `README.md`; produced exact source-line `HARD_CODED_VALUES.tsv` (2,444 positions) and `HARD_CODED_STRINGS.tsv` (9,107 positions); native browser test uses user-proven diagnostic test flow. No new gameplay features.
 - [x] 6. Built complete `../Studio_Syndicate_Complete_Handoff.zip` with root docs, maintained 44 engine/19 UI sections, all 16 JSON inputs, build tools, standalone HTML, `dist/`, tests, report history, original accepted reference and `PACKAGE_MANIFEST_Handoff.json`. ZIP CRC+SHA-256 and every manifest entry verified; extracted in clean temporary directory, rebuilt exact HTML hash, and passed rights regression. No new features or save schema change.
+
+## 2026-11-20 — Approved film-production and A+B interface update
+
+- [x] Inspect existing repository and game state: source-order build, film decision API, capped market and save schema v39 checked.
+- [ ] Wire approved tutorial, sound, declutter, goals UI modules into ordered build.
+- [ ] Extend film theatrical windows with quality-based legs and weekly decay while keeping one shared audience wallet.
+- [ ] Implement film Production Center with automatic stage tracker, uncertainty, release timeline, decision queue and theater status.
+- [ ] Apply restrained cinematic dark visual system across game and responsive production interface.
+- [ ] Add player-facing weekly film summary and complete/archive distinction.
+- [ ] Build/deploy via GitHub Actions, inspect checks, record test outcomes and verify site.
