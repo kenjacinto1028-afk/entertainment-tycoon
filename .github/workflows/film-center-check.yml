@@ -1,0 +1,22 @@
+name: Validate Production Center
+on:
+  push:
+    branches:
+      - feature/film-production-center-ab-20261120
+  pull_request:
+    branches: [main]
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python tools/build.py
+      - run: node --check dist/engine.js && node --check dist/ui.js
+      - run: node tests/film_center_acceptance.test.js
+      - run: node tests/update48_film_gate.test.js
