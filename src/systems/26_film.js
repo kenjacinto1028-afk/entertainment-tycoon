@@ -112,5 +112,19 @@ function filmDistribution(s,projectId,mode){
  else p.cinema.actions.push({week:s.week,action:'distribution',cost:0});
  p.cinema.distribution=mode;return {mode,cost};
 }
-function filmWindowChannel(p,week){const age=week-p.releaseWeek;
- return age<CFG.tuning_engine.filmWindowChannel__001?'theatrical':age<CFG.tuning_engine.filmWindowChannel__002?'premium-rental':'catalog';}
+// Theatrical play is a real multi-week window. A film's reviews, word of mouth,
+// promotion and reception determine its legs, without consuming save RNG or adding
+// new audience money. Old save files derive the same value from recorded releases.
+function filmTheatricalRunWeeks(p){
+ const audience=Number.isFinite(p.audienceScore)?p.audienceScore:(p.quality||50);
+ const critics=Number.isFinite(p.criticScore)?p.criticScore:(p.quality||50);
+ const marketing=Math.min(1.7,Math.max(0,p.marketingBudget||0)/Math.max(1,p.budget||1)*3);
+ const legs=Math.max(0.65,Math.min(1.8,p.reception?.legs||1));
+ const route=p.cinema?.distribution==='wide'?1:p.cinema?.distribution==='limited'?-1:0;
+ const duration=Math.round(2+Math.max(0,audience-40)/10+Math.max(0,critics-55)/30+marketing+(legs-1)*3+route);
+ return Math.max(2,Math.min(16,duration));
+}
+function filmWindowChannel(p,week){
+ const age=week-p.releaseWeek,theaters=filmTheatricalRunWeeks(p);
+ return age<theaters?'theatrical':age<Math.max(CFG.tuning_engine.filmWindowChannel__002,theaters+10)?'premium-rental':'catalog';
+}
