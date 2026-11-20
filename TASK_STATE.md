@@ -12,9 +12,9 @@ Baseline: independently accepted Update52 final package. Preserve exact gameplay
 ## 2026-11-20 — Approved film-production and A+B interface update
 
 - [x] Inspect existing repository and game state: source-order build, film decision API, capped market and save schema v39 checked.
-- [ ] Wire approved tutorial, sound, declutter, goals UI modules into ordered build.
-- [ ] Extend film theatrical windows with quality-based legs and weekly decay while keeping one shared audience wallet.
-- [ ] Implement film Production Center with automatic stage tracker, uncertainty, release timeline, decision queue and theater status.
-- [ ] Apply restrained cinematic dark visual system across game and responsive production interface.
-- [ ] Add player-facing weekly film summary and complete/archive distinction.
-- [ ] Build/deploy via GitHub Actions, inspect checks, record test outcomes and verify site.
+- [x] Confirmed tutorial, sound, goals and declutter modules already included on main; retained existing `src/interface/20_*.js` through `23_*.js` in production build.
+- [x] Film theatrical run and word-of-mouth decay in `src/systems/26_film.js`, `27_television.js`; exported window logic via `44_platform_audit_and_exports.js`.
+- [x] Film workspace, progress, quality range, hype, choice queue and box office in `src/interface/24_film_production_center.js`, `03_games.js`, `src/ui_order.json`.
+- [x] Responsive charcoal/gold/teal visual system in `src/styles.css`, dark default with opt-out stored in `12_navigation_render_and_init.js`.
+- [x] Actual weekly report, theater-to-rental-to-catalog and recorded annual awards dialog in `src/interface/25_weekly_reports_and_awards.js`, `13_click_action_handlers.js`.
+- [ ] Add regression coverage, build and verify generated site via GitHub Actions; merge/deploy and inspect checks.
