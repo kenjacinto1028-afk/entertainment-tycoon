@@ -30,7 +30,7 @@ async function loadSlot(n){try{
  const loaded=E.loadState(payload);S=loaded;view='dashboard';remember();render();notify('Loaded campaign from slot '+n+'.');
  }catch(e){notify('Load slot failed: '+e.message,'error');}}
 function toggleTheme(){document.body.classList.toggle('dark');try{localStorage.setItem('studio-syndicate-theme',document.body.classList.contains('dark')?'dark':'light');}catch(e){}}
-async function init(){try{if(localStorage.getItem('studio-syndicate-theme')==='dark')document.body.classList.add('dark');}catch(e){}
+async function init(){try{if(localStorage.getItem('studio-syndicate-theme')!=='light')document.body.classList.add('dark');}catch(e){document.body.classList.add('dark');}
  let raw=null,localPointer=null,orphanedDatabase=false;
  try{
   // Prefer a valid localStorage campaign when it is present: an old orphaned
