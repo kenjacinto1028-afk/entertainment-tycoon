@@ -8,3 +8,13 @@ Baseline: independently accepted Update52 final package. Preserve exact gameplay
 - [x] 4. Final rebuild passed 35/35 retained engine suites, 2/2 desktop/mobile accessibility and 7/7 simulated recovery checks; Node syntax valid; 3 fixed-seed 78-week saved-state SHA-256 signatures match original (initial baseline validation). See `reports/handoff/*_FINAL.log`, `tests/fixtures/baseline_signatures.json`. User native-origin and NVDA acceptance belongs to original Update52, not a new independent test of refactored HTML.
 - [x] 5. Authored complete `HANDOFF.md` (engine, game, formulas, save, build, every-file map), `KNOWN_BUGS.md`, `TODO.md`, `BALANCE_NOTES.md`, `DATA_INVENTORY.md`, `TEST_REPORT_Handoff.md`, `README.md`; produced exact source-line `HARD_CODED_VALUES.tsv` (2,444 positions) and `HARD_CODED_STRINGS.tsv` (9,107 positions); native browser test uses user-proven diagnostic test flow. No new gameplay features.
 - [x] 6. Built complete `../Studio_Syndicate_Complete_Handoff.zip` with root docs, maintained 44 engine/19 UI sections, all 16 JSON inputs, build tools, standalone HTML, `dist/`, tests, report history, original accepted reference and `PACKAGE_MANIFEST_Handoff.json`. ZIP CRC+SHA-256 and every manifest entry verified; extracted in clean temporary directory, rebuilt exact HTML hash, and passed rights regression. No new features or save schema change.
+
+## 2026-11-20 — Approved film-production and A+B interface update
+
+- [x] Inspect existing repository and game state: source-order build, film decision API, capped market and save schema v39 checked.
+- [x] Confirmed tutorial, sound, goals and declutter modules already included on main; retained existing `src/interface/20_*.js` through `23_*.js` in production build.
+- [x] Film theatrical run and word-of-mouth decay in `src/systems/26_film.js`, `27_television.js`; exported window logic via `44_platform_audit_and_exports.js`.
+- [x] Film workspace, progress, quality range, hype, choice queue and box office in `src/interface/24_film_production_center.js`, `03_games.js`, `src/ui_order.json`.
+- [x] Responsive charcoal/gold/teal visual system in `src/styles.css`, dark default with opt-out stored in `12_navigation_render_and_init.js`.
+- [x] Actual weekly report, theater-to-rental-to-catalog and recorded annual awards dialog in `src/interface/25_weekly_reports_and_awards.js`, `13_click_action_handlers.js`.
+- [ ] Add regression coverage, build and verify generated site via GitHub Actions; merge/deploy and inspect checks.

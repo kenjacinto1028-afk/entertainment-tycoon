@@ -14,6 +14,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python tools/build.py
+      - name: Validate production engine and UI
+        run: |
+          node --check dist/engine.js
+          node --check dist/ui.js
+          node tests/film_center_acceptance.test.js
+          node tests/update48_film_gate.test.js
       - name: Publish to gh-pages
         run: |
           mkdir site
