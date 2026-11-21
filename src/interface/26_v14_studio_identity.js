@@ -19,4 +19,17 @@ function studioIdentityPanel14(){
  return panel('Studio identity · '+esc(i.tier),'<div class="v14-identity"><h3>'+esc(i.classification)+'</h3><p>'+esc(detail)+'</p><div class="v14-identity-grid">'+rows+'</div><p class="panel-sub">'+message+'</p></div>');
 }
 const _renderDashboardBeforeIdentity14=renderDashboard;
-renderDashboard=function(){return _renderDashboardBeforeIdentity14.apply(this,arguments)+studioIdentityPanel14();};
+renderDashboard=function(){return _renderDashboardBeforeIdentity14.apply(this,arguments)+studioIdentityPanel14()+industryRadarPanel14();};
+
+function industryRadarPanel14(){
+ if(!S)return '';
+ const c=E.player(S),sector=c.capabilities?.movie?'movie':c.sector;
+ const snapshot=E.industryPulse14(S,sector),rivals=E.rivalWatch14(S,sector);
+ const rows=snapshot.genres.slice(0,4).map(g=>'<div class="v14-radar-row"><strong>'+esc(g.genre)+'</strong><span>'+esc(g.trend)+'</span><span>'+Math.round(g.multiplier*100)+'% relative attention</span></div>').join('');
+ const slate=rivals.active.slice(0,3).map(p=>'<div class="v14-radar-rival"><strong>'+esc(p.company)+'</strong> · '+esc(p.title)+' <small>('+esc(p.genre)+' · '+p.completion+'% produced)</small></div>').join('');
+ const takeaway=snapshot.leader?'Strongest current interest: '+snapshot.leader.genre+'. '+(snapshot.laggard?'Cooler: '+snapshot.laggard.genre+'.':''):'Trend data unavailable.';
+ return panel('Living industry · '+esc(E.SECTORS[sector].name),
+  '<p class="panel-sub">World quarter '+(snapshot.quarter+1)+' · '+esc(takeaway)+' Audience attention changes with seasonal tastes, recent successes and crowded release schedules.</p>'+
+  '<div class="v14-radar"><div><h3>Genre interest</h3>'+rows+'</div><div><h3>Rival productions</h3>'+(slate||'<p class="panel-sub">No competing projects are currently in production.</p>')+
+  '<p class="panel-sub">'+rivals.releases.length+' recent rival releases on record. Only public commitments are shown.</p></div></div>');
+}

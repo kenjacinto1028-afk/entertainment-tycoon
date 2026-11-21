@@ -96,6 +96,7 @@ function weekSales(s) {
     const fatigue=genreFatiguePressure(s,sector);
     // v14: finite-wallet demand recognizes established studio styles.
     const studioBrands=new Map(titles.map(p=>[p.id,studioBrandMultiplier14(s,p)]));
+    const industryHeat14=Object.fromEntries(industryPulse14(s,sector).genres.map(g=>[g.genre,g.multiplier]));
     for(const region of activeRegions(s)) {
       const budget=Math.max(0,money(worldMarketBudget(s,sector,region.name)-(sector==='tv'?(s.streamingWeeklyReserved?.[region.name]||0):sector==='games'?(s.gameMarketReserved?.[region.name]||0):0)));
       const background=backgroundWeights(s,sector,region,fatigue[region.name]);
@@ -105,7 +106,7 @@ function weekSales(s) {
         const titleWeights=titles.map(p=>{
           if(!canDistribute43(s,p,region.name,s.week))return 0;
           const age=s.week-p.releaseWeek,decay=Math.exp(-age/((p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004)*receptionLegs(p)));
-          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*(studioBrands.get(p.id)||1)*
+          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*(studioBrands.get(p.id)||1)*(industryHeat14[p.genre]||1)*
            (p.sector==='movie'&&p.cinema?filmDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='tv'&&p.television?tvDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='games'&&p.videoGame?gameDemandMultiplier(p,s.week,region.name)*gamePlatformDemand49(s,p,region.name):1)*
@@ -114,7 +115,7 @@ function weekSales(s) {
              (p.preorderCampaign&&age<CFG.tuning_engine.titleWeights__006?CFG.tuning_engine.titleWeights__007:1)*
              (p.format==='Web Serial'?(p.serialReaderMomentum||1):1):1);
         });
-        const minorWeights=background.map(b=>b.weight*cohort.tastes[b.genre]);
+        const minorWeights=background.map(b=>b.weight*cohort.tastes[b.genre]*(industryHeat14[b.genre]||1));
         if(!pools){
         const denominator=CFG.tuning_engine.denominator__001+titleWeights.reduce((a,b)=>a+b,0)+minorWeights.reduce((a,b)=>a+b,0);
         for(let i=0;i<weights.length;i++)weights[i]+=cohort.share*titleWeights[i]/denominator;
