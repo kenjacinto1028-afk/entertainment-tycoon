@@ -22,4 +22,5 @@ Baseline: independently accepted Update52 final package. Preserve exact gameplay
 ## 2026-11-21 — v14 staged gameplay implementation
 - [x] Stage 1: Release-based studio classification, theme/genre/creator/cast identity, bounded brand effect on finite audience wallets, dashboard evidence panel; deterministic acceptance checks in tests/v14_identity.test.js.
 - [x] Stage 2: Deterministic genre cycles, wallet redistribution, funded rival genre strategy and public slate events; tests/v14_industry.test.js.
-- [ ] Stage 3: Validation, performance and remaining roadmap.
+- [x] Stage 3: Real-cash fan screenings and legacy catalog restoration, audience effects, post-release film center controls and source audit. Automated tests: tests/v14_aftercare.test.js.
+- [ ] Stage 4: Multi-seed long-run tests, tuning and further narrative/rival strategic depth.

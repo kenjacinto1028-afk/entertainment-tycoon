@@ -57,7 +57,7 @@ function filmCenterMilestones(p,st){
  return "<section class='fc-subpanel'><h3>Production milestones</h3><ol class='fc-milestones'>"+items+"</ol></section>";
 }
 function filmCenterChoice(p,st){
- if(!st.active)return "<section class='fc-subpanel fc-note'><h3>Automatic progression</h3><p>The theatrical result is recorded each week. Rental and catalog windows follow automatically, without a new release order.</p></section>";
+ if(!st.active)return filmAftercarePanel14(p,st);
  const acts=p.cinema?.actions||[],has=k=>acts.some(a=>a.action===k);
  const eligible=p.route!=='contract';
  let choice=null;

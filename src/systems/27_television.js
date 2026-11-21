@@ -14,7 +14,7 @@ function filmDemandMultiplier(p,week,region){
  const hold=Math.max(0.72,Math.min(0.93,0.66+audience/360));
  const legs=Math.max(0.7,Math.min(1.7,p.reception?.legs||1));
  const weekFactor=theatrical?Math.pow(hold,Math.max(0,age)/legs):channel==='premium-rental'?0.50:0.28;
- return clamp(releaseFactor*ratingFactor*localPremiere*(p.cinema.festival?.won?CFG.tuning_engine.filmDemandMultiplier__001:1),CFG.tuning_engine.filmDemandMultiplier__002,CFG.tuning_engine.filmDemandMultiplier__003)*weekFactor;
+ return clamp(releaseFactor*ratingFactor*localPremiere*(p.cinema.festival?.won?CFG.tuning_engine.filmDemandMultiplier__001:1),CFG.tuning_engine.filmDemandMultiplier__002,CFG.tuning_engine.filmDemandMultiplier__003)*weekFactor*filmAftercareFactor14(p,week,channel);
 }
 function filmBoxOffice(s,projectId){
  const {p}=filmRequire(s,projectId,false);const f=p.cinema;

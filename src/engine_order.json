@@ -47,6 +47,7 @@
     "src/systems/43_games.js",
     "src/systems/45_v14_studio_identity.js",
     "src/systems/46_v14_industry_competition.js",
+    "src/systems/47_v14_aftercare.js",
     "src/systems/44_platform_audit_and_exports.js"
   ],
   "close": "src/engine_bootstrap/close.js",

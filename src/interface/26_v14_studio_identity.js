@@ -33,3 +33,23 @@ function industryRadarPanel14(){
   '<div class="v14-radar"><div><h3>Genre interest</h3>'+rows+'</div><div><h3>Rival productions</h3>'+(slate||'<p class="panel-sub">No competing projects are currently in production.</p>')+
   '<p class="panel-sub">'+rivals.releases.length+' recent rival releases on record. Only public commitments are shown.</p></div></div>');
 }
+
+function filmAftercarePanel14(p,st){
+ if(p.status!=='released'||!p.cinema)return "<section class='fc-subpanel fc-note'><h3>Release complete</h3><p>No further actions are available.</p></section>";
+ const q=E.filmAftercareQuote14(S,p.id);
+ const list=q.options.map(o=>{
+  const description=o.kind==='fan-tour'?'Paid screenings with the cast briefly strengthen word of mouth during the theatrical window.':
+   'A restored catalog edition can renew interest for 26 weeks. Returns depend on the film and current market.';
+  const button=o.available?'<button class="btn btn-primary btn-mini" type="button" data-film-aftercare="'+esc(o.kind)+'" data-film-id="'+esc(p.id)+'">Fund · '+fmt(o.cost)+'</button>':
+   '<small>'+esc(o.reason)+'</small>';
+  return '<div class="fc-aftercare-option"><strong>'+esc(o.label)+'</strong><p>'+esc(description)+'</p>'+button+'</div>';
+ }).join('');
+ return "<section class='fc-subpanel fc-note'><h3>After the premiere</h3><p>Engagement can continue after release. Both campaigns are optional, cost real money, and compete for the same audience.</p><div class='fc-aftercare-choices'>"+list+"</div></section>";
+}
+document.addEventListener('click',event=>{
+ const b=event.target.closest('button[data-film-aftercare]');
+ if(!b)return;
+ try{E.filmAftercare14(S,b.dataset.filmId,b.dataset.filmAftercare);
+  remember();render();notify('Post-release campaign funded. Audience response will appear in future weekly results.');
+ }catch(e){notify(e.message,'error');}
+});

@@ -20,6 +20,7 @@ jobs:
           node --check dist/ui.js
           node tests/v14_identity.test.js
           node tests/v14_industry.test.js
+          node tests/v14_aftercare.test.js
           node tests/film_center_acceptance.test.js
           node tests/update48_film_gate.test.js
       - name: Publish to gh-pages
