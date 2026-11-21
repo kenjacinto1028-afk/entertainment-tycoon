@@ -94,6 +94,8 @@ function weekSales(s) {
     // worlds without ebooks/audiobooks/web serials keep identical numbers.
     const pools=sector==='publishing'&&titles.some(p=>formatReach(p.format))?formatPoolShares(s):null;
     const fatigue=genreFatiguePressure(s,sector);
+    // v14: finite-wallet demand recognizes established studio styles.
+    const studioBrands=new Map(titles.map(p=>[p.id,studioBrandMultiplier14(s,p)]));
     for(const region of activeRegions(s)) {
       const budget=Math.max(0,money(worldMarketBudget(s,sector,region.name)-(sector==='tv'?(s.streamingWeeklyReserved?.[region.name]||0):sector==='games'?(s.gameMarketReserved?.[region.name]||0):0)));
       const background=backgroundWeights(s,sector,region,fatigue[region.name]);
@@ -103,7 +105,7 @@ function weekSales(s) {
         const titleWeights=titles.map(p=>{
           if(!canDistribute43(s,p,region.name,s.week))return 0;
           const age=s.week-p.releaseWeek,decay=Math.exp(-age/((p.sector==='publishing'?CFG.tuning_engine.decay__003:CFG.tuning_engine.decay__004)*receptionLegs(p)));
-          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*
+          return ((p.quality/CFG.tuning_engine.titleWeights__001)**CFG.tuning_engine.titleWeights__002)*region.tastes[p.genre]*genreFatigueMult(sector,fatigue[region.name]?.[p.genre])*cohort.tastes[p.genre]*(1+CFG.tuning_engine.titleWeights__003*(p.marketingBudget/Math.max(p.budget,1)))*decay*audienceAffinity(p,cohort)*franchiseMomentum(s,p,s.week)*receptionMult(p)*(studioBrands.get(p.id)||1)*
            (p.sector==='movie'&&p.cinema?filmDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='tv'&&p.television?tvDemandMultiplier(p,s.week,region.name):1)*
            (p.sector==='games'&&p.videoGame?gameDemandMultiplier(p,s.week,region.name)*gamePlatformDemand49(s,p,region.name):1)*

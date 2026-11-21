@@ -22,6 +22,7 @@
     "src/interface/18_funding_and_financial_views.js",
     "src/interface/24_film_production_center.js",
     "src/interface/25_weekly_reports_and_awards.js",
+    "src/interface/26_v14_studio_identity.js",
     "src/interface/19_game_service_handlers.js",
     "src/interface/20_art_and_sound.js",
     "src/interface/21_goals_window.js",

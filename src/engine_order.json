@@ -45,6 +45,7 @@
     "src/systems/41_games.js",
     "src/systems/42_weekly_hooks_and_disputes.js",
     "src/systems/43_games.js",
+    "src/systems/45_v14_studio_identity.js",
     "src/systems/44_platform_audit_and_exports.js"
   ],
   "close": "src/engine_bootstrap/close.js",
