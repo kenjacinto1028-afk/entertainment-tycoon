@@ -57,7 +57,7 @@ function filmCenterMilestones(p,st){
  return "<section class='fc-subpanel'><h3>Production milestones</h3><ol class='fc-milestones'>"+items+"</ol></section>";
 }
 function filmCenterChoice(p,st){
- if(!st.active)return filmAftercarePanel14(p,st);
+ if(!st.active)return "<section class='fc-subpanel fc-note'><h3>Automatic progression</h3><p>The theatrical result is recorded each week. Rental and catalog windows follow automatically, without a new release order.</p></section>";
  const acts=p.cinema?.actions||[],has=k=>acts.some(a=>a.action===k);
  const eligible=p.route!=='contract';
  let choice=null;
@@ -108,19 +108,6 @@ function filmProductionCenter(projects){
  const theaterBox=theaterFilm?filmCenterBoxOffice(theaterFilm,filmCenterStage(theaterFilm)):"<section class='fc-theaters fc-wait'><div><small>THEATRICAL BOX OFFICE</small><h3>Upcoming releases</h3><p>Weekly sales and estimated run length appear here when a film opens.</p></div></section>";
  return "<section class='film-center' aria-label='Film production and release tracking'>"+summary+"<div class='fc-layout'><div class='fc-main'>"+hero+"<div class='fc-details'>"+filmCenterMilestones(choice,st)+decision+"</div></div>"+list+"</div>"+theaterBox+"</section>";
 }
-function filmAftercarePanel14(p,st){
- if(p.status!=='released'||!p.cinema)return "<section class='fc-subpanel fc-note'><h3>Release complete</h3><p>No further actions are available.</p></section>";
- const q=E.filmAftercareQuote14(S,p.id);
- const list=q.options.map(o=>{
-  const description=o.kind==='fan-tour'?'Paid screenings with the cast briefly strengthen word of mouth during the theatrical window.':
-   'A restored catalog edition can renew interest for 26 weeks. Returns depend on the film and current market.';
-  const button=o.available?'<button class="btn btn-primary btn-mini" type="button" data-film-aftercare="'+esc(o.kind)+'" data-film-id="'+esc(p.id)+'">Fund · '+fmt(o.cost)+'</button>':
-   '<small>'+esc(o.reason)+'</small>';
-  return '<div class="fc-aftercare-option"><strong>'+esc(o.label)+'</strong><p>'+esc(description)+'</p>'+button+'</div>';
- }).join('');
- return "<section class='fc-subpanel fc-note'><h3>After the premiere</h3><p>Engagement can continue after release. Both campaigns are optional, cost real money, and compete for the same audience.</p><div class='fc-aftercare-choices'>"+list+"</div></section>";
-}
-
 document.addEventListener('click',event=>{
  const b=event.target.closest('button');if(!b)return;
  if(b.dataset.filmFocus){filmCenterFocusId=b.dataset.filmFocus;render();return;}

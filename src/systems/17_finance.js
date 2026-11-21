@@ -31,16 +31,13 @@ function launchAI(s,c) {
   if(c.finance.cash<SECTORS[c.sector].cost*CFG.tuning_engine.launchAI__001+CFG.tuning_engine.launchAI__002)return;
   const titlesA=CFG.rivals.RIVAL_RELEASE_TITLES;
   const title=pick(s,titlesA)+' '+(Math.floor(rand(s)*CFG.tuning_engine.title__003)+1);
-  const idea={companyId:c.id,title,sector:c.sector,route:'original',format:rivalFormat(s,c,c.sector),genre:rivalGenrePick14(s,c,pick(s,GENRES)),size:CFG.tuning_engine.idea__001+rand(s)*CFG.tuning_engine.idea__002,marketing:CFG.tuning_engine.idea__003+rand(s)*CFG.tuning_engine.idea__004};
+  const idea={companyId:c.id,title,sector:c.sector,route:'original',format:rivalFormat(s,c,c.sector),genre:pick(s,GENRES),size:CFG.tuning_engine.idea__001+rand(s)*CFG.tuning_engine.idea__002,marketing:CFG.tuning_engine.idea__003+rand(s)*CFG.tuning_engine.idea__004};
   try{
     // Rivals occasionally pool real labor and funds on the same terms as the
     // player. They cannot conscript the player's company as a financier.
     if(rand(s)<CFG.tuning_engine.launchAI__003){const q=coProductionQuote(s,{...idea,capitalFraction:CFG.tuning_engine.q__001});
       if(q.partners.length){startCoProduction(s,{...idea,partnerId:q.partners[Math.floor(rand(s)*Math.min(q.partners.length,CFG.tuning_engine.launchAI__004))].id,capitalFraction:CFG.tuning_engine.launchAI__005});return;}}
-    const committed=createProject(s,idea);
-    ensure42A(s);
-    rivalEvent(s,c,'creative-slate',{projectId:committed.id,genre:committed.genre,sector:committed.sector});
-    if(committed.sector==='movie')news(s,c.name+' greenlights '+committed.title,'Rival film slate confirmed: '+committed.genre+' production. Its audience competition is real.','competitor');
+    createProject(s,idea);
   }catch(e){/* Rival waits for real financing, rights or capacity. */}
 }
 function newEntrants(s,year) {
