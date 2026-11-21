@@ -24,3 +24,5 @@ Baseline: independently accepted Update52 final package. Preserve exact gameplay
 - [x] Stage 2: Deterministic genre cycles, wallet redistribution, funded rival genre strategy and public slate events; tests/v14_industry.test.js.
 - [x] Stage 3: Real-cash fan screenings and legacy catalog restoration, audience effects, post-release film center controls and source audit. Automated tests: tests/v14_aftercare.test.js.
 - [ ] Stage 4: Multi-seed long-run tests, tuning and further narrative/rival strategic depth.
+
+- [x] Stage 3 compatibility correction: Keep the aftercare rendering helper alongside the film Production Center so standalone film UI acceptance harness can exercise released movies without importing unrelated dashboard modules. See follow-up CI.
